@@ -1,5 +1,6 @@
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
+import EventStrip from '@/components/EventStrip'
 import Leistungen from '@/components/Leistungen'
 import Cocktailbar from '@/components/Cocktailbar'
 import Ueber from '@/components/Ueber'
@@ -16,6 +17,7 @@ export default function Home() {
       <Navbar />
       <RevealWrapper>
         <Hero />
+        <EventStrip />
         <Leistungen />
         <Cocktailbar />
         <Ueber />
