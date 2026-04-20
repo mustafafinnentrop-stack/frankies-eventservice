@@ -1,0 +1,1587 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frankies Eventservice | Getränkeservice für Schützenfeste & Hochzeiten im Sauerland</title>
+    <meta name="description" content="Frankies Eventservice – Professioneller Getränke- und Thekenservice sowie mobile Cocktailbar mit Bulli und Bambustheke für Schützenfeste, Hochzeiten und Veranstaltungen in Lennestadt, Olpe und dem Sauerland.">
+    <meta name="keywords" content="Eventservice Sauerland, Getränkeservice Schützenfest, Thekenservice Hochzeit, Barservice Lennestadt, Eventservice Olpe, Zapfservice NRW, mobile Cocktailbar Sauerland, Cocktailbar mieten, Bulli Bar">
+    <meta name="author" content="Frankies Eventservice">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="canonical" href="https://frankies-eventservice.de/">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Frankies Eventservice",
+        "description": "Professioneller Getränke- und Thekenservice für Schützenfeste, Hochzeiten und Veranstaltungen im Sauerland.",
+        "telephone": "+4915142840916",
+        "email": "info@frankies-eventservice.de",
+        "url": "https://frankies-eventservice.de",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Hachener Str. 7",
+            "addressLocality": "Lennestadt",
+            "addressRegion": "NRW",
+            "postalCode": "57368",
+            "addressCountry": "DE"
+        },
+        "areaServed": ["Lennestadt", "Olpe", "Attendorn", "Finnentrop", "Kirchhundem", "Schmallenberg", "Sauerland"],
+        "serviceType": ["Getränkeservice", "Thekenservice", "Barservice", "Eventservice", "Mobile Cocktailbar", "Cocktail Catering"],
+        "image": "https://frankies-eventservice.de/wp-content/uploads/2026/03/preview-1.webp",
+        "priceRange": "€€"
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --color-bg: #0C0C0C;
+            --color-surface: #161616;
+            --color-surface-2: #1E1E1E;
+            --color-gold: #C8A44E;
+            --color-gold-light: #E4C76B;
+            --color-gold-dark: #9A7B2F;
+            --color-text: #F0ECE3;
+            --color-text-muted: #8A8578;
+            --color-accent: #D4A843;
+            --font-display: 'DM Serif Display', Georgia, serif;
+            --font-body: 'Outfit', system-ui, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: var(--font-body);
+            background: var(--color-bg);
+            color: var(--color-text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            padding: 1.25rem 2rem;
+            display: flex; justify-content: space-between; align-items: center;
+            transition: all 0.4s ease; background: transparent;
+        }
+        nav.scrolled {
+            background: rgba(12,12,12,0.95); backdrop-filter: blur(20px);
+            padding: 0.75rem 2rem; border-bottom: 1px solid rgba(200,164,78,0.15);
+        }
+        .nav-logo {
+            font-family: var(--font-display); font-size: 1.5rem;
+            color: var(--color-gold); text-decoration: none; letter-spacing: 0.02em;
+        }
+        .nav-logo span {
+            color: var(--color-text); font-family: var(--font-body);
+            font-size: 0.65rem; font-weight: 300; text-transform: uppercase;
+            letter-spacing: 0.3em; display: block; margin-top: -4px;
+        }
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+        .nav-links a {
+            color: var(--color-text-muted); text-decoration: none;
+            font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em;
+            text-transform: uppercase; transition: color 0.3s ease; position: relative;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 1px; background: var(--color-gold); transition: width 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--color-gold); }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-cta {
+            background: transparent !important; border: 1px solid var(--color-gold);
+            color: var(--color-gold) !important; padding: 0.5rem 1.25rem;
+            font-size: 0.8rem !important; letter-spacing: 0.1em; cursor: pointer;
+            transition: all 0.3s ease !important;
+        }
+        .nav-cta:hover { background: var(--color-gold) !important; color: var(--color-bg) !important; }
+
+        /* MOBILE */
+        .mobile-toggle {
+            display: none; flex-direction: column; gap: 5px;
+            cursor: pointer; background: none; border: none; padding: 5px;
+        }
+        .mobile-toggle span { width: 24px; height: 2px; background: var(--color-gold); transition: all 0.3s ease; }
+        .mobile-menu {
+            display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(12,12,12,0.98); z-index: 99;
+            flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
+        }
+        .mobile-menu.active { display: flex; }
+        .mobile-menu a {
+            color: var(--color-text); text-decoration: none; font-size: 1.2rem;
+            font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+        .mobile-menu a:hover { color: var(--color-gold); }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh; display: flex; align-items: center;
+            justify-content: center; position: relative; overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse at 20% 50%, rgba(200,164,78,0.08) 0%, transparent 60%),
+                        radial-gradient(ellipse at 80% 20%, rgba(200,164,78,0.05) 0%, transparent 50%),
+                        radial-gradient(ellipse at 50% 80%, rgba(200,164,78,0.03) 0%, transparent 40%);
+        }
+        .hero-pattern {
+            position: absolute; inset: 0; opacity: 0.03;
+            background-image: repeating-linear-gradient(45deg, transparent, transparent 40px,
+                rgba(200,164,78,0.5) 40px, rgba(200,164,78,0.5) 41px);
+        }
+        .hero-content {
+            text-align: center; position: relative; z-index: 2;
+            padding: 2rem 2rem 6rem; max-width: 900px;
+        }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.5rem 1.25rem; border: 1px solid rgba(200,164,78,0.3);
+            font-size: 0.7rem; font-weight: 500; letter-spacing: 0.25em;
+            text-transform: uppercase; color: var(--color-gold); margin-bottom: 2.5rem;
+            animation: fadeInDown 0.8s ease 0.2s both;
+        }
+        .hero-badge::before {
+            content: ''; width: 6px; height: 6px; background: var(--color-gold);
+            border-radius: 50%; animation: pulse-dot 2s ease infinite;
+        }
+        @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.3} }
+        .hero h1 {
+            font-family: var(--font-display); font-size: clamp(3rem,8vw,6.5rem);
+            font-weight: 400; line-height: 1.05; margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+        .hero h1 em { color: var(--color-gold); font-style: italic; }
+        
+        /* Rotating words */
+        .rotating-wrapper {
+            display: inline-block;
+            position: relative;
+            min-width: 280px;
+            text-align: center;
+        }
+        .rotating-words {
+            display: inline-block;
+            position: relative;
+        }
+        .rotating-word {
+            display: inline-block;
+            opacity: 0;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            white-space: nowrap;
+            color: var(--color-gold);
+            font-style: italic;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .rotating-word.active {
+            opacity: 1;
+            position: relative;
+            left: auto;
+            transform: translateX(0) translateY(0);
+        }
+        .rotating-word.exit {
+            opacity: 0;
+            transform: translateX(-50%) translateY(-20px);
+        }
+        .hero-sub {
+            font-size: 1.1rem; font-weight: 300; color: var(--color-text-muted);
+            max-width: 550px; margin: 0 auto 3rem; line-height: 1.8;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+        .hero-actions {
+            display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.8s both;
+        }
+        .btn-primary {
+            background: var(--color-gold); color: var(--color-bg);
+            padding: 1rem 2.5rem; font-family: var(--font-body);
+            font-size: 0.85rem; font-weight: 600; letter-spacing: 0.1em;
+            text-transform: uppercase; border: none; cursor: pointer;
+            text-decoration: none; transition: all 0.3s ease; display: inline-block;
+        }
+        .btn-primary:hover {
+            background: var(--color-gold-light); transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(200,164,78,0.25);
+        }
+        .btn-secondary {
+            background: transparent; color: var(--color-text);
+            padding: 1rem 2.5rem; font-family: var(--font-body);
+            font-size: 0.85rem; font-weight: 400; letter-spacing: 0.1em;
+            text-transform: uppercase; border: 1px solid rgba(240,236,227,0.2);
+            cursor: pointer; text-decoration: none; transition: all 0.3s ease;
+        }
+        .btn-secondary:hover { border-color: var(--color-gold); color: var(--color-gold); }
+        .hero-scroll {
+            position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%);
+            display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+            color: var(--color-text-muted); font-size: 0.65rem; letter-spacing: 0.2em;
+            text-transform: uppercase; animation: fadeIn 1s ease 1.2s both;
+            z-index: 1;
+        }
+        .hero-scroll .line {
+            width: 1px; height: 40px;
+            background: linear-gradient(to bottom, var(--color-gold), transparent);
+            animation: scroll-line 2s ease infinite;
+        }
+        @keyframes scroll-line {
+            0%{transform:scaleY(0);transform-origin:top}
+            50%{transform:scaleY(1);transform-origin:top}
+            51%{transform:scaleY(1);transform-origin:bottom}
+            100%{transform:scaleY(0);transform-origin:bottom}
+        }
+
+        /* SECTIONS */
+        section { padding: 6rem 2rem; }
+        .section-container { max-width: 1100px; margin: 0 auto; }
+        .section-label {
+            font-size: 0.7rem; font-weight: 500; letter-spacing: 0.3em;
+            text-transform: uppercase; color: var(--color-gold); margin-bottom: 1rem;
+        }
+        .section-title {
+            font-family: var(--font-display); font-size: clamp(2rem,4vw,3.2rem);
+            font-weight: 400; line-height: 1.15; margin-bottom: 1.5rem;
+        }
+        .section-text {
+            font-size: 1rem; font-weight: 300; color: var(--color-text-muted);
+            max-width: 600px; line-height: 1.8;
+        }
+
+        /* LEISTUNGEN */
+        #leistungen { background: var(--color-surface); }
+        .services-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem; margin-top: 3.5rem;
+        }
+        .service-card {
+            background: var(--color-surface-2); border: 1px solid rgba(200,164,78,0.08);
+            padding: 2.5rem; transition: all 0.4s ease; position: relative; overflow: hidden;
+        }
+        .service-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+            opacity: 0; transition: opacity 0.4s ease;
+        }
+        .service-card:hover { border-color: rgba(200,164,78,0.2); transform: translateY(-4px); }
+        .service-card:hover::before { opacity: 1; }
+        .service-icon {
+            width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;
+            border: 1px solid rgba(200,164,78,0.3); color: var(--color-gold);
+            font-size: 1.2rem; margin-bottom: 1.5rem;
+        }
+        .service-card h3 {
+            font-family: var(--font-display); font-size: 1.35rem;
+            margin-bottom: 0.75rem; font-weight: 400;
+        }
+        .service-card p { font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.7; font-weight: 300; }
+
+        /* ÜBER UNS */
+        .about-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+            align-items: center; margin-top: 3rem;
+        }
+
+        /* COCKTAILBAR */
+        .cocktail-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+            align-items: center;
+        }
+        .cocktail-visual {
+            aspect-ratio: 4/5; background: var(--color-surface);
+            border: 1px solid rgba(200,164,78,0.1); position: relative; overflow: hidden;
+        }
+
+        /* GLOW FRAME for images */
+        .glow-frame {
+            position: relative;
+            border: 1px solid rgba(200,164,78,0.25);
+            box-shadow: 
+                0 0 15px rgba(200,164,78,0.1),
+                0 0 40px rgba(200,164,78,0.06),
+                0 0 80px rgba(200,164,78,0.03),
+                inset 0 0 15px rgba(200,164,78,0.05);
+            transition: all 0.5s ease;
+        }
+        .glow-frame:hover {
+            border-color: rgba(200,164,78,0.45);
+            box-shadow: 
+                0 0 20px rgba(200,164,78,0.18),
+                0 0 50px rgba(200,164,78,0.1),
+                0 0 100px rgba(200,164,78,0.05),
+                inset 0 0 20px rgba(200,164,78,0.08);
+        }
+        .glow-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .cocktail-features {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+            margin-top: 2rem;
+        }
+        .cocktail-feature {
+            display: flex; align-items: flex-start; gap: 0.75rem;
+            padding: 1rem; background: var(--color-surface);
+            border: 1px solid rgba(200,164,78,0.08);
+            transition: all 0.3s ease;
+        }
+        .cocktail-feature:hover {
+            border-color: rgba(200,164,78,0.2);
+        }
+        .cocktail-feature-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+        .cocktail-feature strong {
+            display: block; font-size: 0.85rem; font-weight: 600;
+            color: var(--color-text); margin-bottom: 2px;
+        }
+        .cocktail-feature span {
+            font-size: 0.78rem; color: var(--color-text-muted); font-weight: 300;
+            line-height: 1.4;
+        }
+        .about-visual {
+            aspect-ratio: 4/5; background: var(--color-surface);
+            border: 1px solid rgba(200,164,78,0.1); position: relative; overflow: hidden;
+        }
+        .about-visual-inner {
+            position: absolute; inset: 0; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 1rem;
+            background: radial-gradient(ellipse at center, rgba(200,164,78,0.06) 0%, transparent 70%);
+        }
+        .about-visual-icon { font-size: 4rem; opacity: 0.6; }
+        .about-visual-text {
+            font-family: var(--font-display); font-size: 1.2rem;
+            color: var(--color-text-muted); font-style: italic;
+        }
+        .about-stats {
+            display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem;
+            margin-top: 2.5rem; padding-top: 2.5rem;
+            border-top: 1px solid rgba(200,164,78,0.1);
+        }
+        .stat-number { font-family: var(--font-display); font-size: 2.2rem; color: var(--color-gold); }
+        .stat-label {
+            font-size: 0.75rem; color: var(--color-text-muted); text-transform: uppercase;
+            letter-spacing: 0.1em; margin-top: 0.25rem; font-weight: 400;
+        }
+
+        /* ABLAUF */
+        #ablauf { background: var(--color-surface); }
+        .process-steps {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+            gap: 2rem; margin-top: 3.5rem;
+        }
+        .process-step { position: relative; padding: 2rem; }
+        .step-number {
+            font-family: var(--font-display); font-size: 3.5rem;
+            color: rgba(200,164,78,0.15); line-height: 1; margin-bottom: 1rem;
+        }
+        .process-step h3 { font-family: var(--font-display); font-size: 1.2rem; margin-bottom: 0.75rem; font-weight: 400; }
+        .process-step p { font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.7; font-weight: 300; }
+
+        /* REGION */
+        .region-tags { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+        .region-tag {
+            padding: 0.5rem 1.25rem; border: 1px solid rgba(200,164,78,0.15);
+            font-size: 0.8rem; color: var(--color-text-muted); font-weight: 400;
+            transition: all 0.3s ease;
+        }
+        .region-tag:hover { border-color: var(--color-gold); color: var(--color-gold); }
+
+        /* CTA */
+        .cta-section {
+            background: var(--color-surface); text-align: center;
+            padding: 7rem 2rem; position: relative; overflow: hidden;
+        }
+        .cta-section::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(200,164,78,0.08) 0%, transparent 60%);
+        }
+        .cta-content { position: relative; z-index: 2; }
+        .cta-section .section-title { max-width: 700px; margin: 0 auto 1rem; }
+        .cta-section .section-text { max-width: 500px; margin: 0 auto 2.5rem; }
+        .cta-contact {
+            margin-top: 2rem; display: flex; gap: 2rem;
+            justify-content: center; flex-wrap: wrap;
+        }
+        .cta-contact-item {
+            display: flex; align-items: center; gap: 0.5rem;
+            color: var(--color-text-muted); font-size: 0.9rem; font-weight: 300;
+        }
+        .cta-contact-item .icon { color: var(--color-gold); }
+        .cta-contact-item a { color: var(--color-text); text-decoration: none; transition: color 0.3s ease; }
+        .cta-contact-item a:hover { color: var(--color-gold); }
+
+        /* CONTACT FORM */
+        .contact-form {
+            max-width: 600px; margin: 2.5rem auto 0; text-align: left;
+        }
+        .form-row {
+            margin-bottom: 1.25rem;
+        }
+        .form-row label {
+            display: block; font-size: 0.8rem; font-weight: 500;
+            letter-spacing: 0.05em; color: var(--color-text-muted);
+            margin-bottom: 0.4rem; text-transform: uppercase;
+        }
+        .form-row input,
+        .form-row select,
+        .form-row textarea {
+            width: 100%; padding: 0.85rem 1rem;
+            background: var(--color-surface-2); border: 1px solid rgba(200,164,78,0.15);
+            color: var(--color-text); font-family: var(--font-body); font-size: 0.95rem;
+            transition: border-color 0.3s ease; outline: none;
+        }
+        .form-row input:focus,
+        .form-row select:focus,
+        .form-row textarea:focus {
+            border-color: var(--color-gold);
+        }
+        .form-row select {
+            appearance: none; cursor: pointer;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C8A44E' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: right 1rem center;
+        }
+        .form-row select option { background: var(--color-surface-2); color: var(--color-text); }
+        .form-row textarea { resize: vertical; min-height: 100px; }
+        .form-row-double { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .form-submit {
+            background: var(--color-gold); color: var(--color-bg);
+            padding: 1rem 2.5rem; font-family: var(--font-body);
+            font-size: 0.85rem; font-weight: 600; letter-spacing: 0.1em;
+            text-transform: uppercase; border: none; cursor: pointer;
+            transition: all 0.3s ease; width: 100%; margin-top: 0.5rem;
+        }
+        .form-submit:hover {
+            background: var(--color-gold-light); transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(200,164,78,0.25);
+        }
+        .form-success {
+            display: none; text-align: center; padding: 2rem;
+            border: 1px solid rgba(200,164,78,0.3);
+            background: rgba(200,164,78,0.05);
+        }
+        .form-success h3 {
+            font-family: var(--font-display); font-size: 1.5rem;
+            color: var(--color-gold); margin-bottom: 0.75rem;
+        }
+        .form-success p { color: var(--color-text-muted); font-size: 0.95rem; }
+        .form-hint { font-size: 0.75rem; color: var(--color-text-muted); margin-top: 0.3rem; }
+        @media (max-width: 768px) {
+            .form-row-double { grid-template-columns: 1fr; }
+        }
+
+        /* FOOTER */
+        footer { padding: 3rem 2rem; border-top: 1px solid rgba(200,164,78,0.08); }
+        .footer-inner {
+            max-width: 1100px; margin: 0 auto; display: flex;
+            justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+        }
+        .footer-copy { font-size: 0.8rem; color: var(--color-text-muted); font-weight: 300; }
+        .footer-links { display: flex; gap: 2rem; }
+        .footer-links a {
+            font-size: 0.8rem; color: var(--color-text-muted);
+            text-decoration: none; transition: color 0.3s ease;
+        }
+        .footer-links a:hover { color: var(--color-gold); }
+
+        /* LEGAL PAGES */
+        .legal-overlay {
+            display: none; position: fixed; inset: 0; z-index: 200;
+            background: rgba(12,12,12,0.95); backdrop-filter: blur(20px);
+            overflow-y: auto; padding: 2rem;
+        }
+        .legal-overlay.active { display: block; }
+        .legal-content {
+            max-width: 800px; margin: 4rem auto; padding: 3rem;
+            background: var(--color-surface); border: 1px solid rgba(200,164,78,0.1);
+        }
+        .legal-content h1 {
+            font-family: var(--font-display); font-size: 2rem;
+            margin-bottom: 2rem; color: var(--color-gold);
+        }
+        .legal-content h2 {
+            font-family: var(--font-display); font-size: 1.3rem;
+            margin: 2rem 0 0.75rem; font-weight: 400;
+        }
+        .legal-content h3 {
+            font-family: var(--font-display); font-size: 1.1rem;
+            margin: 1.5rem 0 0.5rem; font-weight: 400;
+        }
+        .legal-content p {
+            font-size: 0.9rem; color: var(--color-text-muted);
+            line-height: 1.8; margin-bottom: 1rem; font-weight: 300;
+        }
+        .legal-content a { color: var(--color-gold); }
+        .legal-close {
+            position: fixed; top: 1.5rem; right: 2rem; z-index: 210;
+            background: none; border: 1px solid rgba(200,164,78,0.3);
+            color: var(--color-gold); font-size: 1.5rem; width: 44px; height: 44px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: all 0.3s ease;
+        }
+        .legal-close:hover { background: var(--color-gold); color: var(--color-bg); }
+
+        /* ===== ANIMATIONS & MOTION DESIGN ===== */
+        
+        @keyframes fadeInUp { from{opacity:0;transform:translateY(40px)} to{opacity:1;transform:translateY(0)} }
+        @keyframes fadeInDown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
+        @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+        @keyframes fadeInLeft { from{opacity:0;transform:translateX(-50px)} to{opacity:1;transform:translateX(0)} }
+        @keyframes fadeInRight { from{opacity:0;transform:translateX(50px)} to{opacity:1;transform:translateX(0)} }
+        @keyframes shimmer { 0%{background-position:-200% center} 100%{background-position:200% center} }
+        @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+        @keyframes glow-pulse { 0%,100%{box-shadow:0 0 15px rgba(200,164,78,0.1)} 50%{box-shadow:0 0 30px rgba(200,164,78,0.25)} }
+        
+        /* Reveal variants */
+        .reveal { opacity:0; transform:translateY(40px); transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .reveal.visible { opacity:1; transform:translateY(0); }
+        .reveal-left { opacity:0; transform:translateX(-60px); transition: all 0.9s cubic-bezier(0.16,1,0.3,1); }
+        .reveal-left.visible { opacity:1; transform:translateX(0); }
+        .reveal-right { opacity:0; transform:translateX(60px); transition: all 0.9s cubic-bezier(0.16,1,0.3,1); }
+        .reveal-right.visible { opacity:1; transform:translateX(0); }
+        .reveal-scale { opacity:0; transform:scale(0.8); transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .reveal-scale.visible { opacity:1; transform:scale(1); }
+        
+        /* Stagger children */
+        .stagger-children.visible > * { opacity:0; animation: fadeInUp 0.6s cubic-bezier(0.16,1,0.3,1) forwards; }
+        .stagger-children.visible > *:nth-child(1) { animation-delay: 0.1s; }
+        .stagger-children.visible > *:nth-child(2) { animation-delay: 0.2s; }
+        .stagger-children.visible > *:nth-child(3) { animation-delay: 0.3s; }
+        .stagger-children.visible > *:nth-child(4) { animation-delay: 0.4s; }
+        
+        /* Nav logo hover */
+        .nav-logo { transition: all 0.3s ease; }
+        .nav-logo:hover { transform: scale(1.05); filter: brightness(1.2); }
+        
+        /* Button ripple effect */
+        .btn-primary { position: relative; overflow: hidden; }
+        .btn-primary::after {
+            content: ''; position: absolute; top: 50%; left: 50%;
+            width: 0; height: 0; border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            transform: translate(-50%,-50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+        .btn-primary:hover::after { width: 300px; height: 300px; }
+        .btn-primary:active { transform: translateY(0) scale(0.98) !important; }
+        
+        .btn-secondary { position: relative; overflow: hidden; }
+        .btn-secondary::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(200,164,78,0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        .btn-secondary:hover::before { left: 100%; }
+        
+        /* Service cards 3D tilt + glow */
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+            transform-style: preserve-3d;
+        }
+        .service-card:hover {
+            border-color: rgba(200,164,78,0.3); transform: translateY(-8px) rotateX(2deg);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 30px rgba(200,164,78,0.08);
+        }
+        .service-card::after {
+            content: ''; position: absolute; top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(200,164,78,0.06) 0%, transparent 60%);
+            opacity: 0; transition: opacity 0.4s ease; pointer-events: none;
+        }
+        .service-card:hover::after { opacity: 1; }
+        .service-icon { transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1); }
+        .service-card:hover .service-icon {
+            transform: scale(1.15) rotate(5deg);
+            border-color: var(--color-gold);
+            box-shadow: 0 0 20px rgba(200,164,78,0.2);
+        }
+        
+        /* Glow frame enhanced */
+        .glow-frame { transition: all 0.6s cubic-bezier(0.16,1,0.3,1); }
+        .glow-frame:hover {
+            transform: scale(1.02);
+            border-color: rgba(200,164,78,0.5);
+            box-shadow: 0 0 25px rgba(200,164,78,0.2), 0 0 60px rgba(200,164,78,0.1),
+                        0 0 100px rgba(200,164,78,0.05), inset 0 0 25px rgba(200,164,78,0.1);
+        }
+        .glow-frame img { transition: all 0.6s cubic-bezier(0.16,1,0.3,1); }
+        .glow-frame:hover img { transform: scale(1.05); }
+        
+        /* Cocktail features slide-in */
+        .cocktail-feature {
+            transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+        }
+        .cocktail-feature:hover {
+            transform: translateX(8px);
+            border-color: rgba(200,164,78,0.3);
+            background: rgba(200,164,78,0.03);
+        }
+        .cocktail-feature-icon { transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1); }
+        .cocktail-feature:hover .cocktail-feature-icon { transform: scale(1.3) rotate(-10deg); }
+        
+        /* Process steps number glow */
+        .process-step { transition: all 0.3s ease; }
+        .process-step:hover .step-number {
+            color: rgba(200,164,78,0.4);
+            text-shadow: 0 0 30px rgba(200,164,78,0.2);
+        }
+        .step-number { transition: all 0.4s ease; }
+        
+        /* Region tags bounce */
+        .region-tag { transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1); }
+        .region-tag:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(200,164,78,0.15);
+        }
+        
+        /* Stats hover scale */
+        .stat-number { transition: all 0.4s cubic-bezier(0.16,1,0.3,1); }
+        .about-stats > div:hover .stat-number {
+            transform: scale(1.15);
+            text-shadow: 0 0 20px rgba(200,164,78,0.3);
+        }
+        
+        /* Section label animated underline */
+        .section-label { position: relative; display: inline-block; padding-bottom: 4px; }
+        .section-label::after {
+            content: ''; position: absolute; bottom: 0; left: 0;
+            height: 1px; background: var(--color-gold);
+            width: 0; transition: width 0.6s cubic-bezier(0.16,1,0.3,1) 0.3s;
+        }
+        .reveal.visible .section-label::after,
+        .reveal-left.visible .section-label::after { width: 100%; }
+        
+        /* Section title shimmer */
+        .section-title {
+            background: linear-gradient(90deg, var(--color-text) 40%, var(--color-gold) 50%, var(--color-text) 60%);
+            background-size: 200% auto;
+            -webkit-background-clip: text; background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .reveal.visible .section-title { animation: shimmer 2s ease 0.5s 1 forwards; }
+        
+        /* Hero badge float on hover */
+        .hero-badge:hover { animation: float 2s ease infinite; border-color: var(--color-gold); }
+        
+        /* Form glow on focus */
+        .form-row input:focus, .form-row select:focus, .form-row textarea:focus {
+            border-color: var(--color-gold);
+            box-shadow: 0 0 15px rgba(200,164,78,0.1), inset 0 0 5px rgba(200,164,78,0.05);
+        }
+        .form-submit { position: relative; overflow: hidden; }
+        .form-submit::after {
+            content: ''; position: absolute; top: 50%; left: 50%;
+            width: 0; height: 0; border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            transform: translate(-50%,-50%);
+            transition: width 0.5s ease, height 0.5s ease;
+        }
+        .form-submit:hover::after { width: 400px; height: 400px; }
+        
+        /* Footer link underline */
+        .footer-links a { position: relative; }
+        .footer-links a::after {
+            content: ''; position: absolute; bottom: -2px; left: 0;
+            width: 0; height: 1px; background: var(--color-gold);
+            transition: width 0.3s ease;
+        }
+        .footer-links a:hover::after { width: 100%; }
+        
+        /* Contact items hover lift */
+        .cta-contact-item { transition: all 0.3s ease; }
+        .cta-contact-item:hover { transform: translateY(-2px); }
+        .cta-contact-item .icon { transition: transform 0.3s ease; }
+        .cta-contact-item:hover .icon { transform: scale(1.2); }
+        
+        /* Legal close spin */
+        .legal-close { transition: all 0.3s ease; }
+        .legal-close:hover { transform: rotate(90deg); }
+        
+        /* Cursor glow trail */
+        .cursor-glow {
+            position: fixed; width: 300px; height: 300px;
+            border-radius: 50%; pointer-events: none; z-index: 1;
+            background: radial-gradient(circle, rgba(200,164,78,0.04) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease; opacity: 0;
+        }
+        body:hover .cursor-glow { opacity: 1; }
+        
+        /* Smooth page entrance */
+        body { animation: fadeIn 0.5s ease; }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-toggle { display: flex; }
+            .about-grid { grid-template-columns: 1fr; }
+            .services-grid { grid-template-columns: 1fr; }
+            .cocktail-grid { grid-template-columns: 1fr; }
+            .cocktail-features { grid-template-columns: 1fr; }
+            .cocktail-visual { aspect-ratio: 16/9; }
+            .about-visual { aspect-ratio: 16/9; }
+            .about-stats { grid-template-columns: repeat(3,1fr); gap: 1rem; }
+            .process-steps { grid-template-columns: 1fr 1fr; }
+            section { padding: 4rem 1.25rem; }
+            .hero-actions { flex-direction: column; align-items: center; }
+            .cta-contact { flex-direction: column; align-items: center; }
+            .legal-content { padding: 2rem 1.5rem; margin: 3rem auto; }
+        }
+        @media (max-width: 480px) { .process-steps { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav id="navbar">
+        <a href="#hero" class="nav-logo">Frankies<span>Eventservice</span></a>
+        <ul class="nav-links">
+            <li><a href="#leistungen">Leistungen</a></li>
+            <li><a href="#cocktailbar">Cocktailbar</a></li>
+            <li><a href="#ueber">Über uns</a></li>
+            <li><a href="#ablauf">Ablauf</a></li>
+            <li><a href="#region">Region</a></li>
+            <li><a href="#kontakt" class="nav-cta">Kontakt</a></li>
+        </ul>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Menü öffnen">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#leistungen" onclick="closeMobile()">Leistungen</a>
+        <a href="#cocktailbar" onclick="closeMobile()">Cocktailbar</a>
+        <a href="#ueber" onclick="closeMobile()">Über uns</a>
+        <a href="#ablauf" onclick="closeMobile()">Ablauf</a>
+        <a href="#region" onclick="closeMobile()">Region</a>
+        <a href="#kontakt" onclick="closeMobile()">Kontakt</a>
+    </div>
+
+    <!-- HERO -->
+    <header class="hero" id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-pattern"></div>
+        <div class="hero-content">
+            <div class="hero-badge">Eventservice im Sauerland</div>
+            <h1>Wir machen Ihr<br><span class="rotating-wrapper"><span class="rotating-words" id="rotatingWords"><span class="rotating-word active">Fest</span><span class="rotating-word">Schützenfest</span><span class="rotating-word">Event</span><span class="rotating-word">Hochzeit</span><span class="rotating-word">Cocktailabend</span><span class="rotating-word">Dorffest</span><span class="rotating-word">Firmenfeier</span><span class="rotating-word">Party</span><span class="rotating-word">JGA</span><span class="rotating-word">Jubiläum</span><span class="rotating-word">Vereinsfest</span><span class="rotating-word">Sommerfest</span></span></span><br>perfekt</h1>
+            <p class="hero-sub">
+                Ob Schützenfest, Hochzeit oder Firmenfeier — wir liefern den kompletten 
+                Getränke- und Thekenservice. Außerdem bringen wir unsere mobile Cocktailbar 
+                mit Bulli und Bambustheke direkt zu Ihnen.
+            </p>
+            <div class="hero-actions">
+                <a href="tel:+4915142840916" class="btn-primary">Jetzt anrufen</a>
+                <a href="#leistungen" class="btn-secondary">Unsere Leistungen</a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <div class="line"></div>
+            Mehr erfahren
+        </div>
+    </header>
+
+    <!-- LEISTUNGEN -->
+    <section id="leistungen">
+        <div class="section-container">
+            <div class="reveal">
+                <p class="section-label">Was wir bieten</p>
+                <h2 class="section-title">Getränkeservice für<br>Ihre Veranstaltung</h2>
+                <p class="section-text">
+                    Egal ob kleines Gartenfest oder großes Schützenfest — wir übernehmen den 
+                    kompletten Getränkeausschank. Dadurch können Sie sich voll und ganz auf 
+                    Ihre Gäste konzentrieren. Denn wir kümmern uns um alles: von der Theke 
+                    bis zum letzten Glas.
+                </p>
+            </div>
+            <div class="services-grid stagger-children reveal">
+                <div class="service-card reveal">
+                    <div class="service-icon">🍺</div>
+                    <h3>Schützenfeste</h3>
+                    <p>Wir übernehmen den kompletten Thekenservice bei Ihrem Schützenfest. 
+                    Dabei sorgt unser eingespieltes Team für professionellen Zapfbetrieb 
+                    und einen reibungslosen Ablauf — von Freitag bis Montag.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">🥂</div>
+                    <h3>Hochzeiten &amp; Feiern</h3>
+                    <p>Ihr besonderer Tag verdient besonderen Service. Deshalb kümmern wir uns 
+                    um den gesamten Ausschank, während Sie entspannt mit Ihren Gästen feiern. 
+                    So bleibt Ihnen mehr Zeit für die schönen Momente.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">🍹</div>
+                    <h3>Mobile Cocktailbar</h3>
+                    <p>Unser Bulli kommt direkt zu Ihnen — zusammen mit einer stylischen 
+                    Bambustheke und frisch zubereiteten Cocktails. Auf diese Weise wird 
+                    jede Feier zu einem unvergesslichen Erlebnis.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">🎪</div>
+                    <h3>Firmen- &amp; Vereinsfeste</h3>
+                    <p>Ob Betriebsfeier, Vereinsjubiläum oder Dorffest — bei uns bekommen 
+                    Sie erfahrenes Personal und professionellen Getränkeausschank. 
+                    Darüber hinaus passen wir uns flexibel an Ihre Wünsche an.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COCKTAILBAR HIGHLIGHT -->
+    <section id="cocktailbar">
+        <div class="section-container">
+            <div class="cocktail-grid">
+                <div class="cocktail-visual reveal-left glow-frame">
+                    <img src="https://frankies-eventservice.de/wp-content/uploads/2026/03/preview-1.webp" alt="Frankies Eventservice – Mobile Cocktailbar mit Bambustheke für Events im Sauerland" width="600" height="750" loading="lazy">
+                </div>
+                <div class="reveal">
+                    <p class="section-label">Unser Highlight</p>
+                    <h2 class="section-title">Mobile Cocktailbar —<br>Bulli &amp; Bambustheke</h2>
+                    <p class="section-text">
+                        Wir kommen mit unserem Bulli und einer echten Bambustheke direkt 
+                        zu Ihnen. Egal ob Geburtstag im Garten, Hochzeitsfeier unter freiem 
+                        Himmel oder Firmen-Sommerfest — unsere mobile Cocktailbar verwandelt 
+                        jede Location in eine Bar.
+                    </p>
+                    <h3 style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 400; margin-top: 1.5rem; margin-bottom: 0.75rem;">Was Sie erwartet</h3>
+                    <p class="section-text">
+                        Neben frisch zubereiteten Cocktails erwartet Sie außerdem ein professioneller 
+                        Barkeeper-Service. Zusätzlich sorgt das einzigartige Ambiente unserer 
+                        Bambustheke dafür, dass Ihre Gäste begeistert sind.
+                    </p>
+                    <div class="cocktail-features stagger-children reveal">
+                        <div class="cocktail-feature">
+                            <span class="cocktail-feature-icon">🚐</span>
+                            <div>
+                                <strong>Bulli-Bar</strong>
+                                <span>Unser Bulli als mobiler Blickfang</span>
+                            </div>
+                        </div>
+                        <div class="cocktail-feature">
+                            <span class="cocktail-feature-icon">🎋</span>
+                            <div>
+                                <strong>Bambustheke</strong>
+                                <span>Stilvolle Theke mit Urlaubsflair</span>
+                            </div>
+                        </div>
+                        <div class="cocktail-feature">
+                            <span class="cocktail-feature-icon">🍸</span>
+                            <div>
+                                <strong>Frische Cocktails</strong>
+                                <span>Klassiker &amp; individuelle Kreationen</span>
+                            </div>
+                        </div>
+                        <div class="cocktail-feature">
+                            <span class="cocktail-feature-icon">📍</span>
+                            <div>
+                                <strong>Überall einsetzbar</strong>
+                                <span>Garten, Wiese, Hof, Halle — wir kommen zu Ihnen</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#kontakt" class="btn-primary" style="margin-top: 2rem;">Cocktailbar anfragen</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ÜBER UNS -->
+    <section id="ueber">
+        <div class="section-container">
+            <div class="about-grid">
+                <div class="about-visual reveal-left glow-frame">
+                    <img src="https://frankies-eventservice.de/wp-content/uploads/2026/03/Frankies_Eventservice_Logo.png" alt="Frankies Eventservice Logo – Getränke- und Thekenservice Lennestadt Sauerland" width="600" height="750" loading="lazy">
+                </div>
+                <div class="reveal">
+                    <p class="section-label">Über uns</p>
+                    <h2 class="section-title">Aus dem Sauerland,<br>für das Sauerland</h2>
+                    <p class="section-text">
+                        Frankies Eventservice steht für zuverlässigen und professionellen 
+                        Getränkeservice bei Veranstaltungen in der Region. Dabei wissen wir 
+                        genau, wie ein Schützenfest abläuft und was eine gelungene 
+                        Hochzeitsfeier ausmacht. Deshalb können Sie sich darauf verlassen, 
+                        dass bei uns jeder Handgriff sitzt.
+                    </p>
+                    <h3 style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 400; margin-top: 1.5rem; margin-bottom: 0.75rem;">Unser Versprechen</h3>
+                    <p class="section-text">
+                        Pünktlich vor Ort, sauber aufgebaut, professionell durchgeführt 
+                        und ordentlich hinterlassen. So stellen wir sicher, dass Ihre 
+                        Veranstaltung genau so wird, wie Sie sie sich vorstellen. 
+                        Darüber hinaus stehen wir Ihnen auch bei der Planung beratend 
+                        zur Seite.
+                    </p>
+                    <div class="about-stats">
+                        <div>
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Einsatz</div>
+                        </div>
+                        <div>
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Erreichbar</div>
+                        </div>
+                        <div>
+                            <div class="stat-number">A–Z</div>
+                            <div class="stat-label">Full Service</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABLAUF -->
+    <section id="ablauf">
+        <div class="section-container">
+            <div class="reveal">
+                <p class="section-label">So arbeiten wir</p>
+                <h2 class="section-title">In vier Schritten<br>zu Ihrem Event</h2>
+            </div>
+            <div class="process-steps">
+                <div class="process-step reveal">
+                    <div class="step-number">01</div>
+                    <h3>Anfrage</h3>
+                    <p>Zunächst kontaktieren Sie uns mit Datum, Ort und Art der Veranstaltung. Anschließend melden wir uns innerhalb von 24 Stunden bei Ihnen zurück.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-number">02</div>
+                    <h3>Planung</h3>
+                    <p>Danach besprechen wir gemeinsam den Umfang und die Personalgröße. Außerdem klären wir alle Details, damit der Ablauf reibungslos funktioniert.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-number">03</div>
+                    <h3>Durchführung</h3>
+                    <p>Am Veranstaltungstag ist unser Team pünktlich vor Ort. Sobald alles aufgebaut ist, übernehmen wir den kompletten Getränkeservice.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-number">04</div>
+                    <h3>Abschluss</h3>
+                    <p>Nach der Veranstaltung räumen wir alles sauber auf. Folglich hinterlassen wir den Veranstaltungsort ordentlich und aufgeräumt — ohne Mehraufwand für Sie.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REGION -->
+    <section id="region">
+        <div class="section-container">
+            <div class="reveal">
+                <p class="section-label">Unser Einsatzgebiet</p>
+                <h2 class="section-title">Veranstaltungsservice<br>in Ihrer Nähe</h2>
+                <p class="section-text">
+                    Wir sind im gesamten Sauerland und der Umgebung für Sie im Einsatz. 
+                    Dabei spielt es keine Rolle, ob Ihr Fest in Lennestadt, Olpe oder 
+                    anderswo in der Region stattfindet — denn wir kommen zu Ihnen. 
+                    Nehmen Sie einfach Kontakt auf und wir besprechen die Details.
+                </p>
+                <div class="region-tags stagger-children reveal">
+                    <span class="region-tag">Lennestadt</span>
+                    <span class="region-tag">Olpe</span>
+                    <span class="region-tag">Attendorn</span>
+                    <span class="region-tag">Finnentrop</span>
+                    <span class="region-tag">Kirchhundem</span>
+                    <span class="region-tag">Schmallenberg</span>
+                    <span class="region-tag">Wenden</span>
+                    <span class="region-tag">Drolshagen</span>
+                    <span class="region-tag">Plettenberg</span>
+                    <span class="region-tag">Meschede</span>
+                    <span class="region-tag">Kreuztal</span>
+                    <span class="region-tag">Siegen</span>
+                    <span class="region-tag">und weitere</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / KONTAKT -->
+    <section class="cta-section" id="kontakt">
+        <div class="cta-content">
+            <p class="section-label reveal">Jetzt anfragen</p>
+            <h2 class="section-title reveal">Ihr nächstes Event<br>steht an?</h2>
+            <p class="section-text reveal">
+                Füllen Sie das Formular aus und wir melden uns innerhalb von 24 Stunden 
+                bei Ihnen. Oder rufen Sie uns direkt an.
+            </p>
+
+            <!-- CONTACT FORM -->
+            <div class="contact-form reveal" id="contactForm">
+                <div class="form-row-double">
+                    <div class="form-row">
+                        <label for="fname">Vorname *</label>
+                        <input type="text" id="fname" name="fname" required placeholder="Ihr Vorname">
+                    </div>
+                    <div class="form-row">
+                        <label for="lname">Nachname *</label>
+                        <input type="text" id="lname" name="lname" required placeholder="Ihr Nachname">
+                    </div>
+                </div>
+                <div class="form-row-double">
+                    <div class="form-row">
+                        <label for="email">E-Mail *</label>
+                        <input type="email" id="email" name="email" required placeholder="ihre@email.de">
+                    </div>
+                    <div class="form-row">
+                        <label for="phone">Telefon</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Ihre Telefonnummer">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label for="eventtype">Art der Veranstaltung *</label>
+                    <select id="eventtype" name="eventtype" required>
+                        <option value="" disabled selected>Bitte wählen...</option>
+                        <option value="Schützenfest">Schützenfest</option>
+                        <option value="Hochzeit">Hochzeit</option>
+                        <option value="Mobile Cocktailbar">Mobile Cocktailbar</option>
+                        <option value="Firmenfeier">Firmenfeier</option>
+                        <option value="Vereinsfest">Vereinsfest</option>
+                        <option value="Geburtstag">Geburtstag</option>
+                        <option value="JGA">Junggesellenabschied</option>
+                        <option value="Dorffest">Dorffest</option>
+                        <option value="Sonstiges">Sonstiges</option>
+                    </select>
+                </div>
+                <div class="form-row-double">
+                    <div class="form-row">
+                        <label for="eventdate">Wunschdatum</label>
+                        <input type="date" id="eventdate" name="eventdate">
+                    </div>
+                    <div class="form-row">
+                        <label for="guests">Erwartete Gästeanzahl</label>
+                        <select id="guests" name="guests">
+                            <option value="" disabled selected>Bitte wählen...</option>
+                            <option value="bis 50">bis 50 Gäste</option>
+                            <option value="50-100">50 – 100 Gäste</option>
+                            <option value="100-200">100 – 200 Gäste</option>
+                            <option value="200-500">200 – 500 Gäste</option>
+                            <option value="über 500">über 500 Gäste</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label for="location">Veranstaltungsort</label>
+                    <input type="text" id="location" name="location" placeholder="Stadt / Ort der Veranstaltung">
+                </div>
+                <div class="form-row">
+                    <label for="message">Ihre Nachricht</label>
+                    <textarea id="message" name="message" placeholder="Erzählen Sie uns kurz, was Sie planen..."></textarea>
+                </div>
+                <button type="button" class="form-submit" onclick="submitForm()">Unverbindlich anfragen</button>
+                <p class="form-hint">* Pflichtfelder. Ihre Daten werden nur zur Bearbeitung Ihrer Anfrage verwendet.</p>
+            </div>
+
+            <!-- SUCCESS MESSAGE -->
+            <div class="form-success" id="formSuccess">
+                <h3>Vielen Dank!</h3>
+                <p>Ihre Anfrage ist bei uns eingegangen. Wir melden uns innerhalb von 24 Stunden bei Ihnen. Sie erhalten in Kürze eine Bestätigung per E-Mail.</p>
+            </div>
+
+            <div class="cta-contact reveal" style="margin-top: 2.5rem;">
+                <div class="cta-contact-item">
+                    <span class="icon">✉</span>
+                    <a href="mailto:info@frankies-eventservice.de">info@frankies-eventservice.de</a>
+                </div>
+                <div class="cta-contact-item">
+                    <span class="icon">✆</span>
+                    <a href="tel:+4915142840916">0151 42840916</a>
+                </div>
+                <div class="cta-contact-item">
+                    <span class="icon">◉</span>
+                    Lennestadt, NRW
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <p class="footer-copy">&copy; 2026 Frankies Eventservice — Mustafa Yildirim. Alle Rechte vorbehalten.</p>
+            <div class="footer-links">
+                <a href="#" onclick="openLegal('impressum'); return false;">Impressum</a>
+                <a href="#" onclick="openLegal('datenschutz'); return false;">Datenschutz</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- IMPRESSUM OVERLAY -->
+    <div class="legal-overlay" id="impressum">
+        <button class="legal-close" onclick="closeLegal('impressum')">&times;</button>
+        <div class="legal-content">
+            <h1>Impressum</h1>
+
+            <h2>Angaben gemäß § 5 TMG</h2>
+            <p>
+                Frankies Eventservice<br>
+                Mustafa Yildirim<br>
+                Hachener Str. 7<br>
+                57368 Lennestadt<br>
+                Deutschland
+            </p>
+
+            <h2>Kontakt</h2>
+            <p>
+                Telefon: 0151 42840916<br>
+                E-Mail: <a href="mailto:info@frankies-eventservice.de">info@frankies-eventservice.de</a>
+            </p>
+
+            <h2>Umsatzsteuer</h2>
+            <p>
+                Umsatzsteuer wird nicht ausgewiesen, da der Verkäufer Kleinunternehmer 
+                im Sinne des UStG ist.
+            </p>
+
+            <h2>EU-Streitschlichtung</h2>
+            <p>
+                Plattform der EU-Kommission zur Online-Streitbeilegung: 
+                <a href="https://ec.europa.eu/odr" target="_blank" rel="noopener">https://ec.europa.eu/odr</a>
+            </p>
+
+            <h2>Verbraucherstreitbeilegung</h2>
+            <p>
+                Wir sind zur Teilnahme an einem Streitbeilegungsverfahren vor einer 
+                Verbraucherschlichtungsstelle weder verpflichtet noch bereit.
+            </p>
+
+            <h2>Haftung für Inhalte</h2>
+            <p>
+                Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte 
+                auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach 
+                §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, 
+                übermittelte oder gespeicherte fremde Informationen zu überwachen oder 
+                nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. 
+                Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen 
+                nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche 
+                Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten 
+                Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen 
+                werden wir diese Inhalte umgehend entfernen.
+            </p>
+
+            <h2>Haftung für Links</h2>
+            <p>
+                Unser Angebot enthält Links zu externen Websites Dritter, auf deren 
+                Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden 
+                Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten 
+                Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten 
+                verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung 
+                auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum 
+                Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche 
+                Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte 
+                einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von 
+                Rechtsverletzungen werden wir derartige Links umgehend entfernen.
+            </p>
+
+            <h2>Urheberrecht</h2>
+            <p>
+                Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen 
+                Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, 
+                Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der 
+                Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des 
+                jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite 
+                sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.
+            </p>
+        </div>
+    </div>
+
+    <!-- DATENSCHUTZ OVERLAY -->
+    <div class="legal-overlay" id="datenschutz">
+        <button class="legal-close" onclick="closeLegal('datenschutz')">&times;</button>
+        <div class="legal-content">
+            <h1>Datenschutzerklärung</h1>
+
+            <h2>1. Datenschutz auf einen Blick</h2>
+            <h3>Allgemeine Hinweise</h3>
+            <p>
+                Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit 
+                Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. 
+                Personenbezogene Daten sind alle Daten, mit denen Sie persönlich 
+                identifiziert werden können. Ausführliche Informationen zum Thema 
+                Datenschutz entnehmen Sie der nachfolgenden Datenschutzerklärung.
+            </p>
+
+            <h3>Datenerfassung auf dieser Website</h3>
+            <p>
+                Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. 
+                Dessen Kontaktdaten können Sie dem folgenden Abschnitt entnehmen. 
+                Darüber hinaus werden Ihre Daten zum Teil automatisch beim Besuch der 
+                Website durch unsere IT-Systeme erfasst. Dabei handelt es sich vor allem 
+                um technische Daten wie beispielsweise Internetbrowser, Betriebssystem 
+                oder Uhrzeit des Seitenaufrufs. Zusätzlich setzen wir Analyse-Tools 
+                ein, die jedoch erst nach Ihrer ausdrücklichen Einwilligung aktiviert werden.
+            </p>
+
+            <h2>2. Verantwortliche Stelle</h2>
+            <p>
+                Frankies Eventservice<br>
+                Mustafa Yildirim<br>
+                Hachener Str. 7<br>
+                57368 Lennestadt<br>
+                E-Mail: <a href="mailto:info@frankies-eventservice.de">info@frankies-eventservice.de</a><br>
+                Telefon: 0151 42840916
+            </p>
+            <p>
+                Verantwortliche Stelle ist die natürliche oder juristische Person, die 
+                allein oder gemeinsam mit anderen über die Zwecke und Mittel der 
+                Verarbeitung von personenbezogenen Daten entscheidet.
+            </p>
+
+            <h2>3. Hosting</h2>
+            <p>
+                Diese Website wird bei der STRATO AG, Pascalstraße 10, 10587 Berlin gehostet. 
+                Wenn Sie unsere Website besuchen, erfasst der Server automatisch Informationen 
+                in sogenannten Server-Logfiles. Diese umfassen unter anderem Browsertyp 
+                und -version, verwendetes Betriebssystem, Referrer URL, Hostname des 
+                zugreifenden Rechners, Uhrzeit der Serveranfrage sowie Ihre IP-Adresse. 
+                Die Erfassung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO, 
+                da der Websitebetreiber ein berechtigtes Interesse an der technisch fehlerfreien 
+                Darstellung seiner Website hat.
+            </p>
+
+            <h2>4. Allgemeine Hinweise und Pflichtinformationen</h2>
+            <h3>Datenschutz</h3>
+            <p>
+                Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten 
+                sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und 
+                entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser 
+                Datenschutzerklärung. Wenn Sie diese Website benutzen, werden verschiedene 
+                personenbezogene Daten erhoben. Dabei erläutert diese Datenschutzerklärung, 
+                welche Daten wir erheben und wofür wir sie nutzen.
+            </p>
+
+            <h3>Ihre Rechte</h3>
+            <p>
+                Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Herkunft, 
+                Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten. Außerdem 
+                haben Sie das Recht, die Berichtigung oder Löschung dieser Daten zu verlangen. 
+                Falls Sie eine Einwilligung zur Datenverarbeitung erteilt haben, können Sie 
+                diese jederzeit für die Zukunft widerrufen. Darüber hinaus haben Sie das Recht, 
+                unter bestimmten Umständen die Einschränkung der Verarbeitung zu verlangen. 
+                Des Weiteren steht Ihnen ein Beschwerderecht bei der zuständigen 
+                Aufsichtsbehörde zu.
+            </p>
+
+            <h3>Widerruf Ihrer Einwilligung</h3>
+            <p>
+                Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung 
+                möglich. Sie können eine bereits erteilte Einwilligung jederzeit widerrufen. 
+                Dazu reicht eine formlose Mitteilung per E-Mail an uns. Die Rechtmäßigkeit 
+                der bis zum Widerruf erfolgten Datenverarbeitung bleibt davon unberührt.
+            </p>
+
+            <h2>5. Cookies</h2>
+            <h3>Was sind Cookies?</h3>
+            <p>
+                Unsere Website verwendet sogenannte Cookies. Dabei handelt es sich um kleine 
+                Textdateien, die auf Ihrem Endgerät gespeichert werden. Einige Cookies sind 
+                technisch notwendig, damit die Website ordnungsgemäß funktioniert. Andere 
+                Cookies dienen hingegen der Analyse Ihres Nutzerverhaltens. Diese werden 
+                erst nach Ihrer ausdrücklichen Einwilligung gesetzt.
+            </p>
+
+            <h3>Technisch notwendige Cookies</h3>
+            <p>
+                Bestimmte Cookies sind erforderlich, damit die Website korrekt funktioniert. 
+                Diese werden auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO gespeichert, da 
+                der Websitebetreiber ein berechtigtes Interesse an der technisch fehlerfreien 
+                Bereitstellung seiner Website hat. Dazu gehören beispielsweise Cookies für 
+                die Cookie-Einwilligung selbst.
+            </p>
+
+            <h3>Analyse-Cookies</h3>
+            <p>
+                Neben den technisch notwendigen Cookies verwenden wir auch Analyse-Cookies, 
+                um die Nutzung unserer Website statistisch auszuwerten. Diese Cookies werden 
+                jedoch erst aktiviert, nachdem Sie über unseren Cookie-Banner Ihre 
+                ausdrückliche Einwilligung erteilt haben (Art. 6 Abs. 1 lit. a DSGVO). 
+                Ohne Ihre Zustimmung werden keine Analyse-Cookies gesetzt. Diese Einwilligung 
+                ist jederzeit widerrufbar.
+            </p>
+
+            <h3>Cookie-Einstellungen ändern</h3>
+            <p>
+                Sie können Ihren Browser so einstellen, dass Sie über das Setzen von Cookies 
+                informiert werden. Außerdem können Sie Cookies nur im Einzelfall erlauben, 
+                die Annahme generell ausschließen oder das automatische Löschen beim Schließen 
+                des Browsers aktivieren. Beachten Sie jedoch, dass bei der Deaktivierung von 
+                Cookies die Funktionalität dieser Website eingeschränkt sein kann.
+            </p>
+
+            <h2>6. Analyse-Tools</h2>
+            <h3>Google Analytics</h3>
+            <p>
+                Diese Website nutzt Funktionen des Webanalysedienstes Google Analytics. 
+                Anbieter ist die Google Ireland Limited, Gordon House, Barrow Street, 
+                Dublin 4, Irland. Mithilfe von Google Analytics kann der Websitebetreiber 
+                das Verhalten der Websitebesucher analysieren. Dabei erhält er verschiedene 
+                Nutzungsdaten wie Seitenaufrufe, Verweildauer, verwendete Betriebssysteme 
+                und Herkunft des Nutzers.
+            </p>
+            <p>
+                Google Analytics verwendet Technologien, die die Wiedererkennung des Nutzers 
+                ermöglichen, beispielsweise Cookies oder Device-Fingerprinting. Die erfassten 
+                Informationen über Ihre Benutzung dieser Website werden in der Regel an einen 
+                Server von Google in den USA übertragen und dort gespeichert.
+            </p>
+            <p>
+                Die Nutzung dieses Dienstes erfolgt ausschließlich auf Grundlage Ihrer 
+                Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TTDSG. 
+                Das bedeutet: Google Analytics wird erst aktiv, nachdem Sie über unseren 
+                Cookie-Banner zugestimmt haben. Diese Einwilligung ist jederzeit widerrufbar.
+            </p>
+            <p>
+                Weiterführende Informationen zum Umgang mit Nutzerdaten bei Google Analytics 
+                finden Sie in der Datenschutzerklärung von Google: 
+                <a href="https://support.google.com/analytics/answer/6004245?hl=de" target="_blank" rel="noopener">https://support.google.com/analytics/answer/6004245?hl=de</a>.
+            </p>
+
+            <h3>All in One SEO (AIOSEO)</h3>
+            <p>
+                Wir verwenden das WordPress-Plugin All in One SEO (AIOSEO) zur 
+                Suchmaschinenoptimierung unserer Website. Dieses Plugin verarbeitet 
+                dabei keine personenbezogenen Daten der Websitebesucher. Es dient 
+                ausschließlich der technischen Optimierung der Website für Suchmaschinen, 
+                indem es Meta-Tags, Sitemaps und strukturierte Daten verwaltet.
+            </p>
+
+            <h2>7. Datenerfassung auf dieser Website</h2>
+            <h3>Anfrage per E-Mail oder Telefon</h3>
+            <p>
+                Wenn Sie uns per E-Mail oder Telefon kontaktieren, wird Ihre Anfrage 
+                inklusive aller daraus hervorgehenden personenbezogenen Daten zum Zwecke 
+                der Bearbeitung Ihres Anliegens bei uns gespeichert und verarbeitet. 
+                Dabei geben wir diese Daten nicht ohne Ihre Einwilligung weiter.
+            </p>
+            <p>
+                Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, 
+                sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder 
+                zur Durchführung vorvertraglicher Maßnahmen erforderlich ist. In allen 
+                übrigen Fällen beruht die Verarbeitung auf unserem berechtigten Interesse 
+                an der effektiven Bearbeitung der an uns gerichteten Anfragen 
+                (Art. 6 Abs. 1 lit. f DSGVO).
+            </p>
+
+            <h3>Cookie-Einwilligung mit Complianz</h3>
+            <p>
+                Unsere Website nutzt die Cookie-Consent-Technologie von Complianz, um 
+                Ihre Einwilligung zur Speicherung bestimmter Cookies einzuholen und diese 
+                datenschutzkonform zu dokumentieren. Beim Betreten der Website wird Ihnen 
+                ein Cookie-Banner angezeigt, über das Sie Ihre Einwilligung zu verschiedenen 
+                Cookie-Kategorien erteilen oder ablehnen können. Dadurch stellen wir sicher, 
+                dass nur die Cookies gesetzt werden, denen Sie zugestimmt haben.
+            </p>
+            <p>
+                Complianz speichert dabei Ihre Cookie-Präferenzen in einem Cookie auf Ihrem 
+                Endgerät, damit Ihre Einstellungen bei zukünftigen Besuchen erhalten bleiben. 
+                Dieses Cookie ist technisch notwendig und wird auf Grundlage von 
+                Art. 6 Abs. 1 lit. f DSGVO gesetzt.
+            </p>
+
+            <h2>8. SSL-Verschlüsselung</h2>
+            <p>
+                Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung 
+                vertraulicher Inhalte eine SSL-Verschlüsselung. Eine verschlüsselte 
+                Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von 
+                „http://" auf „https://" wechselt und an dem Schloss-Symbol in Ihrer 
+                Browserzeile. Wenn die SSL-Verschlüsselung aktiviert ist, können die 
+                Daten, die Sie an uns übermitteln, nicht von Dritten mitgelesen werden.
+            </p>
+
+            <h2>9. Hinweis zur Datenweitergabe in die USA</h2>
+            <p>
+                Auf unserer Website sind unter anderem Tools von Unternehmen mit Sitz in 
+                den USA eingebunden (insbesondere Google). Wenn diese Tools aktiv sind, 
+                können Ihre personenbezogenen Daten an die US-Server der jeweiligen 
+                Unternehmen übertragen werden. Wir weisen darauf hin, dass in den USA 
+                kein mit der EU vergleichbares Datenschutzniveau garantiert werden kann. 
+                Die Datenübertragung in die USA wird auf die Standardvertragsklauseln 
+                der EU-Kommission gestützt.
+            </p>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script>
+        // Nav scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Reveal
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger-children').forEach(el => revealObserver.observe(el));
+
+        // Cursor glow trail
+        const cursorGlow = document.createElement('div');
+        cursorGlow.className = 'cursor-glow';
+        document.body.appendChild(cursorGlow);
+        document.addEventListener('mousemove', (e) => {
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
+        });
+
+        // Hero parallax on mouse move
+        const heroBg = document.querySelector('.hero-bg');
+        const heroContent = document.querySelector('.hero-content');
+        document.querySelector('.hero').addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth - 0.5) * 20;
+            const y = (e.clientY / window.innerHeight - 0.5) * 20;
+            heroBg.style.transform = `translate(${x}px, ${y}px)`;
+        });
+
+        // Magnetic effect on buttons
+        document.querySelectorAll('.btn-primary, .btn-secondary, .nav-cta').forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = '';
+            });
+        });
+
+        // Tilt effect on service cards
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width;
+                const y = (e.clientY - rect.top) / rect.height;
+                const rotateX = (y - 0.5) * -8;
+                const rotateY = (x - 0.5) * 8;
+                card.style.transform = `translateY(-8px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                e.preventDefault();
+                const t = document.querySelector(href);
+                if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Mobile menu
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+        function closeMobile() {
+            mobileMenu.classList.remove('active');
+        }
+
+        // Rotating words
+        const words = document.querySelectorAll('.rotating-word');
+        let currentWord = 0;
+        function rotateWords() {
+            const current = words[currentWord];
+            current.classList.add('exit');
+            current.classList.remove('active');
+            currentWord = (currentWord + 1) % words.length;
+            const next = words[currentWord];
+            setTimeout(() => {
+                current.classList.remove('exit');
+                next.classList.add('active');
+            }, 400);
+        }
+        setInterval(rotateWords, 2200);
+
+        // Contact form submission
+        function submitForm() {
+            const fname = document.getElementById('fname').value.trim();
+            const lname = document.getElementById('lname').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const eventtype = document.getElementById('eventtype').value;
+            const eventdate = document.getElementById('eventdate').value;
+            const guests = document.getElementById('guests').value;
+            const location = document.getElementById('location').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            // Validation
+            if (!fname || !lname || !email || !eventtype) {
+                alert('Bitte füllen Sie alle Pflichtfelder aus.');
+                return;
+            }
+            if (!email.includes('@') || !email.includes('.')) {
+                alert('Bitte geben Sie eine gültige E-Mail-Adresse ein.');
+                return;
+            }
+
+            // Build email body for you (Mustafa)
+            const subject = encodeURIComponent('Neue Anfrage: ' + eventtype + ' von ' + fname + ' ' + lname);
+            const body = encodeURIComponent(
+                'NEUE ANFRAGE über frankies-eventservice.de\n' +
+                '==========================================\n\n' +
+                'Name: ' + fname + ' ' + lname + '\n' +
+                'E-Mail: ' + email + '\n' +
+                'Telefon: ' + (phone || 'nicht angegeben') + '\n\n' +
+                'Art der Veranstaltung: ' + eventtype + '\n' +
+                'Wunschdatum: ' + (eventdate || 'nicht angegeben') + '\n' +
+                'Gästeanzahl: ' + (guests || 'nicht angegeben') + '\n' +
+                'Veranstaltungsort: ' + (location || 'nicht angegeben') + '\n\n' +
+                'Nachricht:\n' + (message || 'keine Nachricht') + '\n\n' +
+                '==========================================\n' +
+                'Bitte innerhalb von 24 Stunden antworten!'
+            );
+
+            // Open email client with pre-filled data to you
+            window.location.href = 'mailto:info@frankies-eventservice.de?subject=' + subject + '&body=' + body;
+
+            // Show success message
+            document.getElementById('contactForm').style.display = 'none';
+            document.getElementById('formSuccess').style.display = 'block';
+
+            // Also prepare auto-reply link (customer confirmation)
+            const replySubject = encodeURIComponent('Ihre Anfrage bei Frankies Eventservice');
+            const replyBody = encodeURIComponent(
+                'Hallo ' + fname + ',\n\n' +
+                'vielen Dank für Ihre Anfrage bei Frankies Eventservice!\n\n' +
+                'Wir haben folgende Informationen erhalten:\n' +
+                '- Veranstaltung: ' + eventtype + '\n' +
+                '- Datum: ' + (eventdate || 'noch offen') + '\n' +
+                '- Gäste: ' + (guests || 'noch offen') + '\n' +
+                '- Ort: ' + (location || 'noch offen') + '\n\n' +
+                'Wir melden uns innerhalb von 24 Stunden bei Ihnen.\n\n' +
+                'Herzliche Grüße\n' +
+                'Mustafa Yildirim\n' +
+                'Frankies Eventservice\n' +
+                '0151 42840916\n' +
+                'frankies-eventservice.de'
+            );
+
+            // Store for potential follow-up
+            console.log('Customer email for reply: ' + email);
+            console.log('Reply link: mailto:' + email + '?subject=' + replySubject + '&body=' + replyBody);
+        }
+
+        // Legal overlays
+        function openLegal(id) {
+            document.getElementById(id).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLegal(id) {
+            document.getElementById(id).classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    </script>
+
+</body>
+</html>
