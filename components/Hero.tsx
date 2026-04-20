@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import GradualBlur from './GradualBlur'
 
 const WORDS = [
   'Fest', 'Schützenfest', 'Event', 'Hochzeit', 'Cocktailabend',
@@ -91,6 +92,17 @@ export default function Hero() {
         <div className="line" />
         Mehr erfahren
       </div>
+      <GradualBlur
+        position="bottom"
+        target="parent"
+        height="10rem"
+        strength={3}
+        divCount={8}
+        curve="bezier"
+        exponential={true}
+        opacity={1}
+        zIndex={2}
+      />
     </header>
   )
 }

@@ -1,13 +1,14 @@
 'use client'
 
 import Image from 'next/image'
+import GradualBlur from './GradualBlur'
 
 export default function Cocktailbar() {
   return (
     <section id="cocktailbar">
       <div className="section-container">
         <div className="cocktail-grid">
-          <div className="cocktail-visual reveal-left glow-frame">
+          <div className="cocktail-visual reveal-left glow-frame" style={{ position: 'relative' }}>
             <Image
               src="https://frankies-eventservice.de/wp-content/uploads/2026/03/preview-1.webp"
               alt="Frankies Eventservice – Mobile Cocktailbar mit Bambustheke für Events im Sauerland"
@@ -15,6 +16,16 @@ export default function Cocktailbar() {
               height={750}
               loading="lazy"
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+            <GradualBlur
+              position="bottom"
+              target="parent"
+              height="8rem"
+              strength={3}
+              divCount={6}
+              curve="bezier"
+              opacity={1}
+              zIndex={2}
             />
           </div>
           <div className="reveal">

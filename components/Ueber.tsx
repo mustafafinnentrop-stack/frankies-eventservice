@@ -1,11 +1,12 @@
 import Image from 'next/image'
+import GradualBlur from './GradualBlur'
 
 export default function Ueber() {
   return (
     <section id="ueber">
       <div className="section-container">
         <div className="about-grid">
-          <div className="about-visual reveal-left glow-frame">
+          <div className="about-visual reveal-left glow-frame" style={{ position: 'relative' }}>
             <Image
               src="https://frankies-eventservice.de/wp-content/uploads/2026/03/Frankies_Eventservice_Logo.png"
               alt="Frankies Eventservice Logo – Getränke- und Thekenservice Lennestadt Sauerland"
@@ -13,6 +14,16 @@ export default function Ueber() {
               height={750}
               loading="lazy"
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+            <GradualBlur
+              position="bottom"
+              target="parent"
+              height="8rem"
+              strength={3}
+              divCount={6}
+              curve="bezier"
+              opacity={1}
+              zIndex={2}
             />
           </div>
           <div className="reveal">
