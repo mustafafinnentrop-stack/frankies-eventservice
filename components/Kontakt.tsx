@@ -135,7 +135,7 @@ export default function Kontakt() {
           </div>
           <div className="cta-contact-item">
             <span className="icon">◉</span>
-            Lennestadt, NRW
+            Hachener Str. 7, 57368 Lennestadt
           </div>
         </div>
       </div>
