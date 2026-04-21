@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import RevealWrapper from '@/components/RevealWrapper'
+import BookingCTA from '@/components/BookingCTA'
 
 export const metadata: Metadata = {
   title: 'Eventservice Kreis Olpe | Getränke- & Veranstaltungsservice – Frankies Eventservice',
@@ -26,9 +27,8 @@ export default function EventserviceKreisOlpe() {
               <p className="reveal" style={{ fontSize: '1.05rem', fontWeight: 300, color: 'var(--color-text-muted)', maxWidth: '620px', margin: '0 auto 2.5rem', lineHeight: 1.8 }}>
                 Von Lennestadt bis Attendorn — Frankies Eventservice ist Ihr Ansprechpartner für professionellen Getränke- und Thekenservice im gesamten Kreis Olpe und Sauerland.
               </p>
-              <div className="reveal" style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                <a href="tel:+4915142840916" className="btn-primary">Jetzt anrufen</a>
-                <a href="#details" className="btn-secondary">Unsere Leistungen</a>
+              <div className="reveal">
+                <BookingCTA primary="Termin &amp; Anfrage →" secondary="Kalender buchen" />
               </div>
             </div>
           </section>

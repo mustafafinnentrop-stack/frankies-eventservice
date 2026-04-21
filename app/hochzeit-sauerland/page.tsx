@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import RevealWrapper from '@/components/RevealWrapper'
+import BookingCTA from '@/components/BookingCTA'
 
 export const metadata: Metadata = {
   title: 'Thekenservice Hochzeit Sauerland | Getränkeservice für Hochzeiten – Frankies Eventservice',
@@ -26,9 +27,8 @@ export default function HochzeitSauerland() {
               <p className="reveal" style={{ fontSize: '1.05rem', fontWeight: 300, color: 'var(--color-text-muted)', maxWidth: '620px', margin: '0 auto 2.5rem', lineHeight: 1.8 }}>
                 Ihr Hochzeitstag soll unvergesslich sein. Deshalb übernehmen wir den gesamten Getränkeausschank — so können Sie entspannt mit Ihren Gästen feiern, ohne sich um die Theke kümmern zu müssen.
               </p>
-              <div className="reveal" style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                <a href="tel:+4915142840916" className="btn-primary">Jetzt anrufen</a>
-                <a href="#details" className="btn-secondary">Leistungen ansehen</a>
+              <div className="reveal">
+                <BookingCTA primary="Termin &amp; Anfrage →" secondary="Kalender buchen" />
               </div>
             </div>
           </section>
@@ -145,10 +145,7 @@ export default function HochzeitSauerland() {
               <p className="section-text" style={{ margin: '0 auto 2.5rem' }}>
                 Lassen Sie uns über Ihre Hochzeit sprechen. Wir melden uns innerhalb von 24 Stunden zurück.
               </p>
-              <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                <a href="tel:+4915142840916" className="btn-primary">0151 42840916</a>
-                <a href="mailto:info@frankies-eventservice.de" className="btn-secondary">E-Mail schreiben</a>
-              </div>
+              <BookingCTA primary="0151 42840916" secondary="E-Mail schreiben" calcomUrl="tel:+4915142840916" />
             </div>
           </section>
 

@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import RevealWrapper from '@/components/RevealWrapper'
+import BookingCTA from '@/components/BookingCTA'
 
 export const metadata: Metadata = {
   title: 'Getränkeservice Schützenfest Sauerland | Zapfservice & Thekenservice – Frankies',
@@ -26,9 +27,8 @@ export default function GetraenkeserviceSchuetzenfest() {
               <p className="reveal" style={{ fontSize: '1.05rem', fontWeight: 300, color: 'var(--color-text-muted)', maxWidth: '620px', margin: '0 auto 2.5rem', lineHeight: 1.8 }}>
                 Wir übernehmen den kompletten Thekenservice bei Ihrem Schützenfest — von Freitag bis Montag, professionell und zuverlässig. Im Kreis Olpe und dem gesamten Sauerland sind wir der richtige Ansprechpartner.
               </p>
-              <div className="reveal" style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                <a href="tel:+4915142840916" className="btn-primary">Jetzt anrufen</a>
-                <a href="#details" className="btn-secondary">Mehr erfahren</a>
+              <div className="reveal">
+                <BookingCTA primary="Termin &amp; Anfrage →" secondary="Kalender buchen" />
               </div>
             </div>
           </section>
@@ -148,10 +148,7 @@ export default function GetraenkeserviceSchuetzenfest() {
               <p className="section-text" style={{ margin: '0 auto 2.5rem' }}>
                 Sprechen wir über Ihr Fest. Termine werden schnell knapp — lieber früh anfragen.
               </p>
-              <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                <a href="tel:+4915142840916" className="btn-primary">0151 42840916</a>
-                <a href="mailto:info@frankies-eventservice.de" className="btn-secondary">E-Mail schreiben</a>
-              </div>
+              <BookingCTA primary="Jetzt anfragen →" secondary="Direkt anrufen" calcomUrl="tel:+4915142840916" />
             </div>
           </section>
 
