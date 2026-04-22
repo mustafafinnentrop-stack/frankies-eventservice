@@ -102,7 +102,7 @@ export default function HochzeitSauerland() {
                 {[
                   { time: 'Nachmittags', title: 'Sektempfang', text: 'Nach der Trauung begrüßen wir Ihre Gäste mit Sekt, Aperol oder alkoholfreien Alternativen.' },
                   { time: 'Abends', title: 'Dinner-Service', text: 'Während des Essens sorgen wir für die passenden Getränke an den Tischen.' },
-                  { time: 'Feier', title: 'Bar &amp; Theke', text: 'Auf der Tanzfläche sorgt unsere Theke für Nachschub — schnell und freundlich.' },
+                  { time: 'Feier', title: 'Bar & Theke', text: 'Auf der Tanzfläche sorgt unsere Theke für Nachschub — schnell und freundlich.' },
                   { time: 'Late Night', title: 'Cocktailbar', text: 'Der Höhepunkt: Unsere Bambustheke öffnet, Barkeeper mixen frische Cocktails bis in die Nacht.' },
                 ].map(phase => (
                   <div key={phase.title} style={{ background: 'var(--color-surface-2)', border: '1px solid rgba(200,164,78,0.12)', padding: '2rem' }}>

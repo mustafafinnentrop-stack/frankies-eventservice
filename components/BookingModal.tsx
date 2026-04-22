@@ -71,11 +71,12 @@ export default function BookingModal({ onClose, initialPackage }: Props) {
     setSending(true)
     setError('')
     try {
-      await fetch('https://api.web3forms.com/submit', {
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           access_key: WEB3FORMS_KEY,
+          botcheck: false,
           subject: `Buchungsanfrage: ${form.eventType} — ${form.firstName} ${form.lastName}`,
           from_name: 'Frankies Eventservice Booking',
           ...(form.cocktailPackage ? { 'Cocktailbar-Paket': form.cocktailPackage } : {}),
@@ -90,9 +91,12 @@ export default function BookingModal({ onClose, initialPackage }: Props) {
           'Nachricht': form.message || '–',
         }),
       })
+      const data = await res.json()
+      if (!data.success) throw new Error(data.message || 'Unbekannter Fehler')
       setDone(true)
-    } catch {
-      setError('Fehler beim Senden. Bitte rufen Sie uns direkt an.')
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : ''
+      setError(`Fehler beim Senden${msg ? `: ${msg}` : ''}. Bitte rufen Sie uns direkt an: 0151 42840916`)
     } finally {
       setSending(false)
     }

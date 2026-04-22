@@ -103,10 +103,10 @@ export default function GetraenkeserviceSchuetzenfest() {
               </div>
               <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '2rem' }}>
                 {[
-                  { day: 'Freitag', title: 'Aufbau &amp; Kommers', text: 'Wir bauen die Theke auf, schließen die Fässer an und sind bereit für den Kommersabend.' },
-                  { day: 'Samstag', title: 'Fest &amp; Ball', text: 'Pünktlich für Vogelschießen, Parade und Krönungsball — auch bei Hochbetrieb.' },
+                  { day: 'Freitag', title: 'Aufbau & Kommers', text: 'Wir bauen die Theke auf, schließen die Fässer an und sind bereit für den Kommersabend.' },
+                  { day: 'Samstag', title: 'Fest & Ball', text: 'Pünktlich für Vogelschießen, Parade und Krönungsball — auch bei Hochbetrieb.' },
                   { day: 'Sonntag', title: 'Frühschoppen', text: 'Schon zum Frühschoppen zapfbereit. Der längste Tag des Festes ist unser Zuhause.' },
-                  { day: 'Montag', title: 'Ausklang &amp; Abbau', text: 'Wir sind bis zum letzten Glas dabei — danach bauen wir alles sauber ab.' },
+                  { day: 'Montag', title: 'Ausklang & Abbau', text: 'Wir sind bis zum letzten Glas dabei — danach bauen wir alles sauber ab.' },
                 ].map(phase => (
                   <div key={phase.day} style={{ background: 'var(--color-surface-2)', border: '1px solid rgba(200,164,78,0.12)', padding: '2rem' }}>
                     <p style={{ fontSize: '0.65rem', letterSpacing: '0.25em', color: 'var(--color-gold)', textTransform: 'uppercase', marginBottom: '0.75rem' }}>{phase.day}</p>
