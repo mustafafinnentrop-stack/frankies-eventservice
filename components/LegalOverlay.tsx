@@ -180,12 +180,43 @@ function Datenschutz() {
         „http://" auf „https://" wechselt und an dem Schloss-Symbol in Ihrem Browser.
       </p>
 
-      <h2>7. Cookies</h2>
+      <h2>7. Cookies und Analyse-Dienste</h2>
+      <h3>Technisch notwendige Cookies</h3>
       <p>
-        Unsere Website verwendet ausschließlich technisch notwendige Cookies, die
-        für den Betrieb der Website erforderlich sind. Es werden keine Werbe- oder
-        Tracking-Cookies eingesetzt. Die Speicherung dieser Cookies erfolgt auf
-        Grundlage von Art. 6 Abs. 1 lit. f DSGVO.
+        Unsere Website verwendet technisch notwendige Cookies, die für den Betrieb
+        der Website erforderlich sind. Diese Cookies können nicht deaktiviert werden.
+        Die Speicherung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO.
+      </p>
+
+      <h3>Google Analytics 4</h3>
+      <p>
+        Mit Ihrer Einwilligung nutzen wir Google Analytics 4 (GA4) der Google Ireland
+        Limited, Gordon House, Barrow Street, Dublin 4, Irland. GA4 verwendet Cookies,
+        die eine Analyse der Benutzung unserer Website ermöglichen. Die durch den Cookie
+        erzeugten Informationen werden in der Regel an einen Server von Google in den
+        USA übertragen und dort gespeichert.
+      </p>
+      <p>
+        Wir haben IP-Anonymisierung aktiviert (<code>anonymize_ip: true</code>), sodass
+        Ihre IP-Adresse von Google innerhalb der EU/EWR vor der Übermittlung in die USA
+        gekürzt wird.
+      </p>
+      <p>
+        Rechtsgrundlage ist Ihre Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO.
+        Sie können Ihre Einwilligung jederzeit widerrufen, indem Sie den Cookie-Banner
+        über den Link im Footer erneut aufrufen oder Cookies in Ihrem Browser löschen.
+        Weitere Informationen:{' '}
+        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
+          Datenschutzerklärung Google
+        </a>.
+      </p>
+
+      <h3>Vercel Analytics</h3>
+      <p>
+        Wir nutzen Vercel Analytics zur anonymen Auswertung von Seitenaufrufen.
+        Vercel Analytics setzt keine Cookies und erhebt keine personenbezogenen
+        Daten — es werden lediglich aggregierte, anonyme Nutzungsstatistiken erfasst.
+        Eine Einwilligung ist daher nicht erforderlich.
       </p>
 
       <h2>8. Ihre Rechte als betroffene Person</h2>

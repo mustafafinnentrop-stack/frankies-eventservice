@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { DM_Serif_Display, Outfit } from 'next/font/google'
 import './globals.css'
 import { Analytics } from '@vercel/analytics/next'
+import CookieConsent from '@/components/CookieConsent'
 
 const dmSerifDisplay = DM_Serif_Display({
   subsets: ['latin'],
@@ -74,6 +75,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         {children}
         <Analytics />
+        <CookieConsent />
       </body>
     </html>
   )
