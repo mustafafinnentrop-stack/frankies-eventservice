@@ -1,7 +1,8 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import GradualBlur from './GradualBlur'
+import BookingModal from './BookingModal'
 
 const WORDS = [
   'Fest', 'Schützenfest', 'Event', 'Hochzeit', 'Cocktailabend',
@@ -11,6 +12,7 @@ const WORDS = [
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null)
   const currentRef = useRef(0)
+  const [bookingOpen, setBookingOpen] = useState(false)
 
   useEffect(() => {
     const container = containerRef.current
@@ -57,6 +59,7 @@ export default function Hero() {
 
   return (
     <header className="hero" id="hero">
+      {bookingOpen && <BookingModal onClose={() => setBookingOpen(false)} />}
       <div className="hero-bg" />
       <div className="hero-pattern" />
       <div className="hero-content">
@@ -82,10 +85,8 @@ export default function Hero() {
           mit Bulli und Bambustheke direkt zu Ihnen.
         </p>
         <div className="hero-actions">
-          <a href="tel:+4915142840916" className="btn-primary">Jetzt anrufen</a>
-          <a href="#leistungen" className="btn-secondary" onClick={(e) => { e.preventDefault(); scrollTo('leistungen') }}>
-            Unsere Leistungen
-          </a>
+          <button onClick={() => setBookingOpen(true)} className="btn-primary">Unverbindlich anfragen →</button>
+          <a href="tel:+4915142840916" className="btn-secondary">0151 42840916</a>
         </div>
       </div>
       <div className="hero-scroll">

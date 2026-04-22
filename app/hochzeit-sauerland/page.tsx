@@ -28,7 +28,7 @@ export default function HochzeitSauerland() {
                 Ihr Hochzeitstag soll unvergesslich sein. Deshalb übernehmen wir den gesamten Getränkeausschank — so können Sie entspannt mit Ihren Gästen feiern, ohne sich um die Theke kümmern zu müssen.
               </p>
               <div className="reveal">
-                <BookingCTA primary="Termin &amp; Anfrage →" secondary="Kalender buchen" />
+                <BookingCTA primary="Unverbindlich anfragen →" secondary="0151 42840916" calcomUrl="tel:+4915142840916" />
               </div>
             </div>
           </section>

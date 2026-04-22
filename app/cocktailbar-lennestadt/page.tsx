@@ -20,6 +20,38 @@ const faq = [
   { q: 'Kommt ihr auch bei Außen-Events?', a: 'Ja. Garten, Wiese, Hof, Festzelt — wir sind vollständig mobil. Bei extremem Wetter besprechen wir das vorab.' },
 ]
 
+const packages = [
+  {
+    badge: 'Einstieg',
+    name: 'Flat 30',
+    highlights: ['30 Cocktails (Mindestabnahme)', '1,5 Stunden Barservice', 'Barkeeper & Equipment inklusive', 'Auf- und Abbau inklusive'],
+    ideal: 'Gartenparty, Geburtstag, kleine Feier',
+    pkg: 'Flat 30',
+  },
+  {
+    badge: 'Beliebt',
+    name: 'Flat 50',
+    highlights: ['50 Cocktails (Mindestabnahme)', '2,5 Stunden Barservice', 'Bambustheke oder Bulli-Bar', 'Barkeeper & Equipment inklusive', 'Auf- und Abbau inklusive'],
+    ideal: 'JGA, Late-Night-Bar bei Hochzeiten, Firmenfeier',
+    pkg: 'Flat 50',
+    featured: true,
+  },
+  {
+    badge: 'Großes Event',
+    name: 'Flat 100',
+    highlights: ['100 Cocktails (Mindestabnahme)', '3,5 Stunden Barservice', 'Bulli + Bambustheke aufgebaut', '2 Barkeeper', 'Auf- und Abbau inklusive'],
+    ideal: 'Hochzeit, Schützenfest, Firmen-Sommerfest',
+    pkg: 'Flat 100',
+  },
+  {
+    badge: 'Maßgeschneidert',
+    name: 'Individuell',
+    highlights: ['Über 100 Cocktails', 'Dauer nach Absprache', 'Für besondere Anforderungen', 'Persönliche Beratung'],
+    ideal: 'Mehrtägige Events, Schützenfeste, große Vereinsfeste',
+    pkg: 'Individuell',
+  },
+]
+
 export default function CocktailbarLennestadt() {
   return (
     <>
@@ -38,7 +70,7 @@ export default function CocktailbarLennestadt() {
                 Unsere mobile Cocktailbar kommt mit Bulli und Bambustheke direkt zu Ihnen — egal ob Garten, Hof, Halle oder Festzelt.
               </p>
               <div className="reveal">
-                <BookingCTA primary="Termin &amp; Anfrage →" secondary="Kalender öffnen" />
+                <BookingCTA primary="Unverbindlich anfragen →" secondary="0151 42840916" calcomUrl="tel:+4915142840916" />
               </div>
             </div>
           </section>
@@ -59,20 +91,71 @@ export default function CocktailbarLennestadt() {
                     <div className="cocktail-feature"><span className="cocktail-feature-icon">🚐</span><div><strong>Bulli-Bar</strong><span>VW-Bulli als mobiler Blickfang</span></div></div>
                     <div className="cocktail-feature"><span className="cocktail-feature-icon">🎋</span><div><strong>Bambustheke</strong><span>Stilvolle Theke mit Urlaubsflair</span></div></div>
                     <div className="cocktail-feature"><span className="cocktail-feature-icon">🍸</span><div><strong>Frische Cocktails</strong><span>Klassiker &amp; Kreationen</span></div></div>
-                    <div className="cocktail-feature"><span className="cocktail-feature-icon">📍</span><div><strong>Mobiler Service</strong><span>Kreis Olpe &amp; Sauerland</span></div></div>
+                    <div className="cocktail-feature"><span className="cocktail-feature-icon">📍</span><div><strong>Mobiler Service</strong><span>±25 km um Lennestadt</span></div></div>
                   </div>
                   <div style={{ marginTop: '2rem' }}>
-                    <BookingCTA primary="Jetzt Termin anfragen →" />
+                    <BookingCTA primary="Termin vereinbaren →" />
                   </div>
                 </div>
               </div>
             </div>
           </section>
 
+          {/* Packages */}
+          <section style={{ padding: '6rem 2rem', background: 'var(--color-surface)' }}>
+            <div className="section-container">
+              <div className="reveal" style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
+                <p className="section-label">Unsere Pakete</p>
+                <h2 className="section-title" style={{ margin: '0 auto 1rem' }}>Das passende Paket für Ihre Feier</h2>
+                <p className="section-text" style={{ margin: '0 auto' }}>
+                  Wählen Sie das Paket, das zu Ihrer Veranstaltung passt — oder wir erstellen Ihnen ein individuelles Angebot.
+                </p>
+              </div>
+              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem' }}>
+                {packages.map(p => (
+                  <div
+                    key={p.name}
+                    style={{
+                      background: p.featured ? 'linear-gradient(145deg, rgba(200,164,78,0.08), var(--color-surface-2))' : 'var(--color-surface-2)',
+                      border: p.featured ? '1px solid rgba(200,164,78,0.45)' : '1px solid rgba(200,164,78,0.12)',
+                      padding: '2rem',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      position: 'relative',
+                    }}
+                  >
+                    {p.featured && (
+                      <span style={{ position: 'absolute', top: '-1px', right: '1.5rem', background: 'var(--color-gold)', color: 'var(--color-bg)', fontSize: '0.6rem', letterSpacing: '0.15em', textTransform: 'uppercase', padding: '0.25rem 0.75rem' }}>
+                        Empfohlen
+                      </span>
+                    )}
+                    <p style={{ fontSize: '0.65rem', letterSpacing: '0.25em', color: 'var(--color-gold)', textTransform: 'uppercase', marginBottom: '0.5rem' }}>{p.badge}</p>
+                    <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.8rem', fontWeight: 400, marginBottom: '1.25rem' }}>{p.name}</h3>
+                    <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.25rem', flex: 1 }}>
+                      {p.highlights.map(h => (
+                        <li key={h} style={{ display: 'flex', gap: '0.6rem', alignItems: 'flex-start', fontSize: '0.88rem', color: 'var(--color-text-muted)', fontWeight: 300, lineHeight: 1.6, marginBottom: '0.4rem' }}>
+                          <span style={{ color: 'var(--color-gold)', flexShrink: 0, marginTop: '0.1rem' }}>✓</span>
+                          {h}
+                        </li>
+                      ))}
+                    </ul>
+                    <p style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', fontStyle: 'italic', marginBottom: '1.5rem' }}>
+                      Ideal für: {p.ideal}
+                    </p>
+                    <BookingCTA primary={`${p.name} anfragen →`} pkg={p.pkg} />
+                  </div>
+                ))}
+              </div>
+              <p className="reveal" style={{ textAlign: 'center', color: 'var(--color-text-muted)', fontSize: '0.85rem', marginTop: '2rem', fontWeight: 300 }}>
+                Alle Preise auf Anfrage — kostenloses Erstgespräch inklusive.
+              </p>
+            </div>
+          </section>
+
           {/* Booking Banner */}
-          <section style={{ padding: '4rem 2rem', background: 'linear-gradient(135deg, rgba(200,164,78,0.07) 0%, var(--color-surface) 100%)', borderTop: '1px solid rgba(200,164,78,0.12)', borderBottom: '1px solid rgba(200,164,78,0.12)' }}>
+          <section style={{ padding: '4rem 2rem', background: 'linear-gradient(135deg, rgba(200,164,78,0.07) 0%, var(--color-bg) 100%)', borderTop: '1px solid rgba(200,164,78,0.12)', borderBottom: '1px solid rgba(200,164,78,0.12)' }}>
             <div className="section-container reveal">
-              <BookingCTA layout="banner" primary="Anfrage + Quiz" />
+              <BookingCTA layout="banner" primary="Unverbindlich anfragen →" />
             </div>
           </section>
 
@@ -107,11 +190,11 @@ export default function CocktailbarLennestadt() {
             <div className="section-container">
               <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
                 <p className="section-label">In 4 Schritten</p>
-                <h2 className="section-title" style={{ margin: '0 auto' }}>So buchen Sie uns</h2>
+                <h2 className="section-title" style={{ margin: '0 auto' }}>So läuft es ab</h2>
               </div>
               <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '2rem' }}>
                 {[
-                  { num: '01', title: 'Anfrage', text: 'Formular ausfüllen oder direkt anrufen.' },
+                  { num: '01', title: 'Anfrage', text: 'Formular ausfüllen oder direkt anrufen — kostenlos und unverbindlich.' },
                   { num: '02', title: 'Angebot', text: 'Individuelles Angebot mit Cocktailkarte innerhalb von 24h.' },
                   { num: '03', title: 'Aufbau', text: 'Bulli rollt an, Bambustheke steht in 45 Minuten.' },
                   { num: '04', title: 'Genießen', text: 'Profi-Barkeeper servieren — Sie feiern entspannt.' },
@@ -147,15 +230,20 @@ export default function CocktailbarLennestadt() {
             </div>
           </section>
 
-          {/* CTA */}
+          {/* Coverage */}
           <section style={{ padding: '6rem 2rem', textAlign: 'center' }}>
             <div className="section-container reveal">
               <p className="section-label">Einsatzgebiet</p>
               <h2 className="section-title" style={{ margin: '0 auto 1rem' }}>Wir kommen zu Ihnen</h2>
-              <p className="section-text" style={{ margin: '0 auto 2.5rem' }}>
-                Lennestadt · Finnentrop · Kirchhundem · Attendorn · Olpe · Drolshagen · Wenden · Schmallenberg
+              <p className="section-text" style={{ margin: '0 auto 1.5rem' }}>
+                Im Umkreis von ca. 25 km um Lennestadt — bei weiter entfernten Events sprechen Sie uns einfach an.
               </p>
-              <BookingCTA primary="Termin anfragen" secondary="0151 42840916" calcomUrl="tel:+4915142840916" />
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem', justifyContent: 'center', marginBottom: '2.5rem' }}>
+                {['Lennestadt', 'Finnentrop', 'Kirchhundem', 'Attendorn', 'Olpe', 'Wenden', 'Drolshagen', 'Schmallenberg', 'Eslohe', 'Plettenberg'].map(ort => (
+                  <span key={ort} style={{ padding: '0.5rem 1.1rem', border: '1px solid rgba(200,164,78,0.2)', fontSize: '0.82rem', color: 'var(--color-text-muted)' }}>{ort}</span>
+                ))}
+              </div>
+              <BookingCTA primary="Jetzt anfragen →" secondary="0151 42840916" calcomUrl="tel:+4915142840916" />
             </div>
           </section>
 
