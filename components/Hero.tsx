@@ -102,7 +102,7 @@ export default function Hero() {
         curve="bezier"
         exponential={true}
         opacity={1}
-        zIndex={2}
+        zIndex={1}
       />
     </header>
   )
