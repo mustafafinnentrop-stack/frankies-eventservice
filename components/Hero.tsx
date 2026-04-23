@@ -85,7 +85,7 @@ export default function Hero() {
           mit Bulli und Bambustheke direkt zu Ihnen.
         </p>
         <div className="hero-actions">
-          <button onClick={() => setBookingOpen(true)} className="btn-primary">Unverbindlich anfragen →</button>
+          <button onClick={() => setBookingOpen(true)} className="btn-primary">Unverbindlich anfragen</button>
           <a href="tel:+4915142840916" className="btn-secondary">Jetzt anrufen</a>
         </div>
       </div>

@@ -99,7 +99,7 @@ export default function CookieConsent() {
                 Nur notwendige
               </button>
               <button onClick={accept} className="btn-primary" style={{ fontSize: '0.78rem', padding: '0.65rem 1.1rem', whiteSpace: 'nowrap' }}>
-                Alle akzeptieren →
+                Alle akzeptieren
               </button>
             </div>
           </div>

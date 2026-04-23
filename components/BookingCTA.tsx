@@ -13,7 +13,7 @@ interface Props {
 
 const CALCOM_URL = process.env.NEXT_PUBLIC_CALCOM_URL || 'https://cal.com/frankies.digital/15min'
 
-export default function BookingCTA({ primary = 'Unverbindlich anfragen →', secondary, calcomUrl, layout = 'row', pkg }: Props) {
+export default function BookingCTA({ primary = 'Unverbindlich anfragen', secondary, calcomUrl, layout = 'row', pkg }: Props) {
   const [open, setOpen] = useState(false)
   const url = calcomUrl || CALCOM_URL
 
@@ -28,7 +28,7 @@ export default function BookingCTA({ primary = 'Unverbindlich anfragen →', sec
           </div>
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
             <button onClick={() => setOpen(true)} className="btn-primary">{primary}</button>
-            <a href={url} target="_blank" rel="noopener noreferrer" className="btn-secondary">Kalender öffnen →</a>
+            <a href={url} target="_blank" rel="noopener noreferrer" className="btn-secondary">Kalender öffnen</a>
           </div>
         </div>
       </>
