@@ -70,7 +70,7 @@ export default function CocktailbarLennestadt() {
                 Unsere mobile Cocktailbar kommt mit Bulli und Bambustheke direkt zu Ihnen — egal ob Garten, Hof, Halle oder Festzelt.
               </p>
               <div className="reveal">
-                <BookingCTA primary="Unverbindlich anfragen →" secondary="0151 42840916" calcomUrl="tel:+4915142840916" />
+                <BookingCTA primary="Unverbindlich anfragen →" secondary="Jetzt anrufen" calcomUrl="tel:+4915142840916" />
               </div>
             </div>
           </section>
@@ -243,7 +243,7 @@ export default function CocktailbarLennestadt() {
                   <span key={ort} style={{ padding: '0.5rem 1.1rem', border: '1px solid rgba(200,164,78,0.2)', fontSize: '0.82rem', color: 'var(--color-text-muted)' }}>{ort}</span>
                 ))}
               </div>
-              <BookingCTA primary="Jetzt anfragen →" secondary="0151 42840916" calcomUrl="tel:+4915142840916" />
+              <BookingCTA primary="Jetzt anfragen →" secondary="Jetzt anrufen" calcomUrl="tel:+4915142840916" />
             </div>
           </section>
 

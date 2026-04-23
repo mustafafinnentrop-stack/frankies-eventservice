@@ -45,7 +45,7 @@ export default function Navbar() {
       bgColor: '#2A2318',
       textColor: '#F0ECE3',
       links: [
-        { label: '0151 42840916', href: 'tel:+4915142840916', ariaLabel: 'Anrufen' },
+        { label: 'Anrufen', href: 'tel:+4915142840916', ariaLabel: 'Anrufen' },
         { label: 'info@frankies-eventservice.de', href: 'mailto:info@frankies-eventservice.de', ariaLabel: 'E-Mail schreiben' },
         { label: 'Hachener Str. 7, Lennestadt', ariaLabel: 'Adresse' },
       ],

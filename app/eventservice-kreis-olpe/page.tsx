@@ -28,7 +28,7 @@ export default function EventserviceKreisOlpe() {
                 Von Lennestadt bis Attendorn — Frankies Eventservice ist Ihr Ansprechpartner für professionellen Getränke- und Thekenservice im gesamten Kreis Olpe und Sauerland.
               </p>
               <div className="reveal">
-                <BookingCTA primary="Unverbindlich anfragen →" secondary="0151 42840916" calcomUrl="tel:+4915142840916" />
+                <BookingCTA primary="Unverbindlich anfragen →" secondary="Jetzt anrufen" calcomUrl="tel:+4915142840916" />
               </div>
             </div>
           </section>
@@ -161,7 +161,7 @@ export default function EventserviceKreisOlpe() {
                   Hachener Str. 7 · 57368 Lennestadt
                 </p>
                 <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                  <a href="tel:+4915142840916" className="btn-primary">0151 42840916</a>
+                  <a href="tel:+4915142840916" className="btn-primary">Jetzt anrufen</a>
                   <a href="mailto:info@frankies-eventservice.de" className="btn-secondary">E-Mail</a>
                 </div>
               </div>
