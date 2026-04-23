@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Script from 'next/script'
 import LegalOverlay from './LegalOverlay'
 
-const GA_ID = 'G-B8C59NNPY7'
+const GA_ID = 'G-MCG3V1FK4Y'
 
 export default function CookieConsent() {
   const [consent, setConsent] = useState<'accepted' | 'declined' | null>(null)
