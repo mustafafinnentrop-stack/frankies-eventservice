@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { DM_Serif_Display, Outfit } from 'next/font/google'
 import './globals.css'
 import { Analytics } from '@vercel/analytics/next'
+import CookieConsent from '@/components/CookieConsent'
 
 const dmSerifDisplay = DM_Serif_Display({
   subsets: ['latin'],
@@ -19,14 +20,18 @@ const outfit = Outfit({
 })
 
 export const metadata: Metadata = {
-  title: 'Frankies Eventservice | Getränkeservice für Schützenfeste & Hochzeiten im Sauerland',
+  title: 'Frankies Eventservice | Getränke- und Veranstaltungsservice im Sauerland',
   description:
-    'Frankies Eventservice – Professioneller Getränke- und Thekenservice sowie mobile Cocktailbar mit Bulli und Bambustheke für Schützenfeste, Hochzeiten und Veranstaltungen in Lennestadt, Olpe und dem Sauerland.',
+    'Frankies Eventservice – Professioneller Getränke- und Thekenservice sowie mobile Cocktailbar für Schützenfeste, Hochzeiten und Veranstaltungen im Kreis Olpe und für alle Veranstaltungen jeder Art.',
   keywords:
     'Eventservice Sauerland, Getränkeservice Schützenfest, Thekenservice Hochzeit, Barservice Lennestadt, Eventservice Olpe, Zapfservice NRW, mobile Cocktailbar Sauerland, Cocktailbar mieten, Bulli Bar',
   authors: [{ name: 'Frankies Eventservice' }],
   robots: 'index, follow',
   alternates: { canonical: 'https://frankies-eventservice.de/' },
+  icons: {
+    icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
+    apple: '/favicon.svg',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -70,6 +75,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         {children}
         <Analytics />
+        <CookieConsent />
       </body>
     </html>
   )
