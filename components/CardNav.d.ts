@@ -28,6 +28,9 @@ export interface CardNavProps {
   ctaLabel?: string;
   ctaHref?: string;
   onCtaClick?: (e: MouseEvent<HTMLAnchorElement>) => void;
+  secondaryCtaLabel?: string;
+  secondaryCtaHref?: string;
+  onSecondaryCtaClick?: (e: MouseEvent<HTMLAnchorElement>) => void;
 }
 
 declare const CardNav: (props: CardNavProps) => JSX.Element;
