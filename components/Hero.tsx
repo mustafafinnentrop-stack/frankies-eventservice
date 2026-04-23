@@ -86,7 +86,7 @@ export default function Hero() {
         </p>
         <div className="hero-actions">
           <button onClick={() => setBookingOpen(true)} className="btn-primary">Unverbindlich anfragen →</button>
-          <a href="tel:+4915142840916" className="btn-secondary">0151 42840916</a>
+          <a href="tel:+4915142840916" className="btn-secondary">Jetzt anrufen</a>
         </div>
       </div>
       <div className="hero-scroll">
