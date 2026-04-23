@@ -17,36 +17,58 @@ export default function CookieConsent() {
     if (stored) setConsent(stored)
   }, [])
 
+  const updateConsent = (granted: boolean) => {
+    if (typeof window !== 'undefined' && typeof (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag === 'function') {
+      (window as unknown as { gtag: (...args: unknown[]) => void }).gtag('consent', 'update', {
+        ad_storage: granted ? 'granted' : 'denied',
+        ad_user_data: granted ? 'granted' : 'denied',
+        ad_personalization: granted ? 'granted' : 'denied',
+        analytics_storage: granted ? 'granted' : 'denied',
+      })
+    }
+  }
+
   const accept = () => {
     localStorage.setItem('cookie-consent', 'accepted')
     setConsent('accepted')
+    updateConsent(true)
   }
 
   const decline = () => {
     localStorage.setItem('cookie-consent', 'declined')
     setConsent('declined')
+    updateConsent(false)
   }
-
-  if (!mounted) return null
 
   return (
     <>
-      {consent === 'accepted' && (
-        <>
-          <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-            strategy="afterInteractive"
-          />
-          <Script id="ga-init" strategy="afterInteractive">{`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${GA_ID}', { anonymize_ip: true });
-          `}</Script>
-        </>
-      )}
+      <Script id="ga-consent-default" strategy="beforeInteractive">{`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
 
-      {consent === null && (
+        var stored = null;
+        try { stored = localStorage.getItem('cookie-consent'); } catch (e) {}
+        var granted = stored === 'accepted';
+
+        gtag('consent', 'default', {
+          ad_storage: granted ? 'granted' : 'denied',
+          ad_user_data: granted ? 'granted' : 'denied',
+          ad_personalization: granted ? 'granted' : 'denied',
+          analytics_storage: granted ? 'granted' : 'denied',
+          wait_for_update: 500
+        });
+      `}</Script>
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+        strategy="afterInteractive"
+      />
+      <Script id="ga-config" strategy="afterInteractive">{`
+        gtag('js', new Date());
+        gtag('config', '${GA_ID}', { anonymize_ip: true });
+      `}</Script>
+
+      {mounted && consent === null && (
         <div style={{
           position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 9998,
           background: 'var(--color-surface)',
