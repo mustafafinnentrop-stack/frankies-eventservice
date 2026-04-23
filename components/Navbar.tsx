@@ -3,6 +3,8 @@
 import { usePathname, useRouter } from 'next/navigation'
 import CardNav from './CardNav'
 
+const CALCOM_URL = process.env.NEXT_PUBLIC_CALCOM_URL || 'https://cal.com/frankies.digital/15min'
+
 export default function Navbar() {
   const pathname = usePathname()
   const router = useRouter()
@@ -45,6 +47,7 @@ export default function Navbar() {
       bgColor: '#2A2318',
       textColor: '#F0ECE3',
       links: [
+        { label: 'Termin buchen', href: CALCOM_URL, ariaLabel: 'Termin buchen' },
         { label: 'Anrufen', href: 'tel:+4915142840916', ariaLabel: 'Anrufen' },
         { label: 'info@frankies-eventservice.de', href: 'mailto:info@frankies-eventservice.de', ariaLabel: 'E-Mail schreiben' },
         { label: 'Hachener Str. 7, Lennestadt', ariaLabel: 'Adresse' },
@@ -70,6 +73,8 @@ export default function Navbar() {
       ctaLabel="Anrufen"
       ctaHref={isHome ? '#kontakt' : 'tel:+4915142840916'}
       onCtaClick={handleCtaClick}
+      secondaryCtaLabel="Termin buchen"
+      secondaryCtaHref={CALCOM_URL}
       ease="power3.out"
     />
   )
