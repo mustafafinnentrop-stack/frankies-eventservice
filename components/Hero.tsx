@@ -5,8 +5,8 @@ import GradualBlur from './GradualBlur'
 import BookingModal from './BookingModal'
 
 const WORDS = [
-  'Fest', 'Schützenfest', 'Event', 'Hochzeit', 'Cocktailabend',
-  'Dorffest', 'Firmenfeier', 'Party', 'JGA', 'Jubiläum', 'Vereinsfest', 'Sommerfest',
+  'Ihr Fest', 'Ihr Schützenfest', 'Ihr Event', 'Ihre Hochzeit', 'Ihren Cocktailabend',
+  'Ihr Dorffest', 'Ihre Firmenfeier', 'Ihre Party', 'Ihren JGA', 'Ihr Jubiläum', 'Ihr Vereinsfest', 'Ihr Sommerfest',
 ]
 
 export default function Hero() {
@@ -65,7 +65,7 @@ export default function Hero() {
       <div className="hero-content">
         <div className="hero-badge">Eventservice im Sauerland</div>
         <h1>
-          Wir machen Ihr
+          Wir machen
           <br />
           <span className="rotating-wrapper">
             <span className="rotating-words" ref={containerRef}>

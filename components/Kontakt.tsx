@@ -7,7 +7,7 @@ interface FormData {
   eventtype: string; eventdate: string; guests: string; location: string; message: string
 }
 
-const CALCOM_URL = process.env.NEXT_PUBLIC_CALCOM_URL || 'https://cal.com/frankies-eventservice/beratung'
+const CALCOM_URL = process.env.NEXT_PUBLIC_CALCOM_URL || 'https://cal.com/frankies.digital/15min'
 const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || ''
 
 export default function Kontakt() {
