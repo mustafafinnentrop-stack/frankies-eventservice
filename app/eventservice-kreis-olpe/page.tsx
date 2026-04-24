@@ -5,15 +5,51 @@ import Footer from '@/components/Footer'
 import RevealWrapper from '@/components/RevealWrapper'
 import BookingCTA from '@/components/BookingCTA'
 
+const PAGE_URL = 'https://frankies-eventservice.de/eventservice-kreis-olpe'
+const OG_IMAGE = 'https://frankies-eventservice.de/wp-content/uploads/2026/03/preview-1.webp'
+
 export const metadata: Metadata = {
   title: 'Eventservice Kreis Olpe | Getränke- & Veranstaltungsservice – Frankies Eventservice',
   description: 'Ihr Eventservice im Kreis Olpe und Sauerland. Professioneller Getränke- und Thekenservice für alle Veranstaltungen jeder Art – zuverlässig, flexibel und erfahren.',
-  alternates: { canonical: 'https://frankies-eventservice.de/eventservice-kreis-olpe' },
+  keywords: 'Eventservice Kreis Olpe, Veranstaltungsservice Sauerland, Getränkeservice Olpe, Thekenservice Attendorn, Barservice Finnentrop, Eventdienstleister NRW, Getränkeausschank mieten',
+  alternates: { canonical: PAGE_URL },
+  openGraph: {
+    type: 'website',
+    locale: 'de_DE',
+    url: PAGE_URL,
+    siteName: 'Frankies Eventservice',
+    title: 'Eventservice Kreis Olpe | Getränke- & Veranstaltungsservice – Frankies Eventservice',
+    description: 'Ihr Eventservice im Kreis Olpe und Sauerland. Professioneller Getränke- und Thekenservice für alle Veranstaltungen jeder Art.',
+    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: 'Eventservice im Kreis Olpe – Frankies Eventservice' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Eventservice Kreis Olpe | Getränke- & Veranstaltungsservice – Frankies Eventservice',
+    description: 'Ihr Eventservice im Kreis Olpe und Sauerland. Professioneller Getränke- und Thekenservice für alle Veranstaltungen jeder Art.',
+    images: [OG_IMAGE],
+  },
+}
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Eventservice Kreis Olpe',
+  description: 'Professioneller Getränke- und Thekenservice für alle Veranstaltungen im Kreis Olpe und Sauerland — Schützenfeste, Hochzeiten, Vereinsfeste, Firmenfeiern.',
+  provider: {
+    '@type': 'LocalBusiness',
+    name: 'Frankies Eventservice',
+    telephone: '+4915142840916',
+    url: 'https://frankies-eventservice.de',
+  },
+  areaServed: ['Lennestadt', 'Olpe', 'Attendorn', 'Finnentrop', 'Kirchhundem', 'Wenden', 'Drolshagen', 'Schmallenberg', 'Sauerland'],
+  serviceType: 'Eventservice',
+  url: PAGE_URL,
 }
 
 export default function EventserviceKreisOlpe() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <Navbar />
       <RevealWrapper>
         <main style={{ paddingTop: '100px', background: 'var(--color-bg)' }}>

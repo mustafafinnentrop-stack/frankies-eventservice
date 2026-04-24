@@ -5,15 +5,51 @@ import Footer from '@/components/Footer'
 import RevealWrapper from '@/components/RevealWrapper'
 import BookingCTA from '@/components/BookingCTA'
 
+const PAGE_URL = 'https://frankies-eventservice.de/hochzeit-sauerland'
+const OG_IMAGE = 'https://frankies-eventservice.de/wp-content/uploads/2026/03/preview-1.webp'
+
 export const metadata: Metadata = {
   title: 'Thekenservice Hochzeit Sauerland | Getränkeservice für Hochzeiten – Frankies Eventservice',
   description: 'Professioneller Thekenservice für Hochzeiten im Sauerland und Kreis Olpe. Wir übernehmen den kompletten Getränkeausschank – damit Sie entspannt feiern können.',
-  alternates: { canonical: 'https://frankies-eventservice.de/hochzeit-sauerland' },
+  keywords: 'Thekenservice Hochzeit Sauerland, Getränkeservice Hochzeit Kreis Olpe, Sektempfang Hochzeit NRW, Barservice Hochzeit, Cocktailbar Hochzeit, Hochzeitsservice Lennestadt',
+  alternates: { canonical: PAGE_URL },
+  openGraph: {
+    type: 'website',
+    locale: 'de_DE',
+    url: PAGE_URL,
+    siteName: 'Frankies Eventservice',
+    title: 'Thekenservice Hochzeit Sauerland | Getränkeservice für Hochzeiten – Frankies Eventservice',
+    description: 'Professioneller Thekenservice für Hochzeiten im Sauerland und Kreis Olpe. Wir übernehmen den kompletten Getränkeausschank.',
+    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: 'Thekenservice für Hochzeiten im Sauerland – Frankies Eventservice' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Thekenservice Hochzeit Sauerland | Getränkeservice für Hochzeiten – Frankies Eventservice',
+    description: 'Professioneller Thekenservice für Hochzeiten im Sauerland und Kreis Olpe. Wir übernehmen den kompletten Getränkeausschank.',
+    images: [OG_IMAGE],
+  },
+}
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Thekenservice Hochzeit Sauerland',
+  description: 'Professioneller Thekenservice und Getränkeausschank für Hochzeiten im Sauerland und Kreis Olpe — von Sektempfang bis Late-Night-Cocktailbar.',
+  provider: {
+    '@type': 'LocalBusiness',
+    name: 'Frankies Eventservice',
+    telephone: '+4915142840916',
+    url: 'https://frankies-eventservice.de',
+  },
+  areaServed: ['Lennestadt', 'Olpe', 'Attendorn', 'Finnentrop', 'Kirchhundem', 'Schmallenberg', 'Sauerland'],
+  serviceType: 'Thekenservice Hochzeit',
+  url: PAGE_URL,
 }
 
 export default function HochzeitSauerland() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <Navbar />
       <RevealWrapper>
         <main style={{ paddingTop: '100px', background: 'var(--color-bg)' }}>
