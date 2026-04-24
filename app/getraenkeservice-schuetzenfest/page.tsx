@@ -5,10 +5,29 @@ import Footer from '@/components/Footer'
 import RevealWrapper from '@/components/RevealWrapper'
 import BookingCTA from '@/components/BookingCTA'
 
+const PAGE_URL = 'https://frankies-eventservice.de/getraenkeservice-schuetzenfest'
+const OG_IMAGE = 'https://frankies-eventservice.de/wp-content/uploads/2026/03/preview-1.webp'
+
 export const metadata: Metadata = {
   title: 'Getränkeservice Schützenfest Sauerland | Zapfservice & Thekenservice – Frankies',
   description: 'Professioneller Getränke- und Zapfservice für Schützenfeste im Kreis Olpe und Sauerland. Kompletter Thekenservice von Freitag bis Montag – zuverlässig und erfahren.',
-  alternates: { canonical: 'https://frankies-eventservice.de/getraenkeservice-schuetzenfest' },
+  keywords: 'Getränkeservice Schützenfest Sauerland, Zapfservice Schützenfest Kreis Olpe, Thekenservice Schützenfest NRW, Bierzapfen Schützenfest, Ausschank mieten Sauerland, Festzelt Getränkeservice',
+  alternates: { canonical: PAGE_URL },
+  openGraph: {
+    type: 'website',
+    locale: 'de_DE',
+    url: PAGE_URL,
+    siteName: 'Frankies Eventservice',
+    title: 'Getränkeservice Schützenfest Sauerland | Zapfservice & Thekenservice – Frankies',
+    description: 'Professioneller Getränke- und Zapfservice für Schützenfeste im Kreis Olpe und Sauerland. Kompletter Thekenservice von Freitag bis Montag.',
+    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: 'Getränkeservice für Schützenfeste im Sauerland – Frankies Eventservice' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Getränkeservice Schützenfest Sauerland | Zapfservice & Thekenservice – Frankies',
+    description: 'Professioneller Getränke- und Zapfservice für Schützenfeste im Kreis Olpe und Sauerland. Kompletter Thekenservice von Freitag bis Montag.',
+    images: [OG_IMAGE],
+  },
 }
 
 export default function GetraenkeserviceSchuetzenfest() {

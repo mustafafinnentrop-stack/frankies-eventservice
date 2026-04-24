@@ -5,10 +5,29 @@ import Footer from '@/components/Footer'
 import RevealWrapper from '@/components/RevealWrapper'
 import BookingCTA from '@/components/BookingCTA'
 
+const PAGE_URL = 'https://frankies-eventservice.de/eventservice-kreis-olpe'
+const OG_IMAGE = 'https://frankies-eventservice.de/wp-content/uploads/2026/03/preview-1.webp'
+
 export const metadata: Metadata = {
   title: 'Eventservice Kreis Olpe | Getränke- & Veranstaltungsservice – Frankies Eventservice',
   description: 'Ihr Eventservice im Kreis Olpe und Sauerland. Professioneller Getränke- und Thekenservice für alle Veranstaltungen jeder Art – zuverlässig, flexibel und erfahren.',
-  alternates: { canonical: 'https://frankies-eventservice.de/eventservice-kreis-olpe' },
+  keywords: 'Eventservice Kreis Olpe, Veranstaltungsservice Sauerland, Getränkeservice Olpe, Thekenservice Attendorn, Barservice Finnentrop, Eventdienstleister NRW, Getränkeausschank mieten',
+  alternates: { canonical: PAGE_URL },
+  openGraph: {
+    type: 'website',
+    locale: 'de_DE',
+    url: PAGE_URL,
+    siteName: 'Frankies Eventservice',
+    title: 'Eventservice Kreis Olpe | Getränke- & Veranstaltungsservice – Frankies Eventservice',
+    description: 'Ihr Eventservice im Kreis Olpe und Sauerland. Professioneller Getränke- und Thekenservice für alle Veranstaltungen jeder Art.',
+    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: 'Eventservice im Kreis Olpe – Frankies Eventservice' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Eventservice Kreis Olpe | Getränke- & Veranstaltungsservice – Frankies Eventservice',
+    description: 'Ihr Eventservice im Kreis Olpe und Sauerland. Professioneller Getränke- und Thekenservice für alle Veranstaltungen jeder Art.',
+    images: [OG_IMAGE],
+  },
 }
 
 export default function EventserviceKreisOlpe() {

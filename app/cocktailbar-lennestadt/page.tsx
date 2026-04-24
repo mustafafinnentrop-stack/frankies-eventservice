@@ -5,10 +5,29 @@ import Footer from '@/components/Footer'
 import RevealWrapper from '@/components/RevealWrapper'
 import BookingCTA from '@/components/BookingCTA'
 
+const PAGE_URL = 'https://frankies-eventservice.de/cocktailbar-lennestadt'
+const OG_IMAGE = 'https://frankies-eventservice.de/wp-content/uploads/2026/03/preview-1.webp'
+
 export const metadata: Metadata = {
   title: 'Mobile Cocktailbar Lennestadt | Bulli-Bar & Bambustheke – Frankies Eventservice',
   description: 'Mobile Cocktailbar in Lennestadt und Kreis Olpe mieten. Mit Bulli-Bar und Bambustheke kommen wir direkt zu Ihnen – für Hochzeiten, Geburtstage, JGA und Firmenfeiern.',
-  alternates: { canonical: 'https://frankies-eventservice.de/cocktailbar-lennestadt' },
+  keywords: 'mobile Cocktailbar Lennestadt, Cocktailbar mieten Kreis Olpe, Bulli Bar, Bambustheke, Cocktailbar Hochzeit Sauerland, JGA Cocktailbar, Barkeeper mieten NRW',
+  alternates: { canonical: PAGE_URL },
+  openGraph: {
+    type: 'website',
+    locale: 'de_DE',
+    url: PAGE_URL,
+    siteName: 'Frankies Eventservice',
+    title: 'Mobile Cocktailbar Lennestadt | Bulli-Bar & Bambustheke – Frankies Eventservice',
+    description: 'Mobile Cocktailbar in Lennestadt und Kreis Olpe mieten. Mit Bulli-Bar und Bambustheke kommen wir direkt zu Ihnen.',
+    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: 'Mobile Cocktailbar mit Bulli und Bambustheke – Frankies Eventservice' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Mobile Cocktailbar Lennestadt | Bulli-Bar & Bambustheke – Frankies Eventservice',
+    description: 'Mobile Cocktailbar in Lennestadt und Kreis Olpe mieten. Mit Bulli-Bar und Bambustheke kommen wir direkt zu Ihnen.',
+    images: [OG_IMAGE],
+  },
 }
 
 const faq = [
