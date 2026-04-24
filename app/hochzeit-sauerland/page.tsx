@@ -119,7 +119,7 @@ export default function HochzeitSauerland() {
                     width={600}
                     height={750}
                     priority
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    unoptimized
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   />
                 </div>
