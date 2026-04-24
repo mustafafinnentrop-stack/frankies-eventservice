@@ -48,6 +48,7 @@ export default function Navbar() {
         { label: '0151 42840916', href: 'tel:+4915142840916', ariaLabel: 'Anrufen' },
         { label: 'info@frankies-eventservice.de', href: 'mailto:info@frankies-eventservice.de', ariaLabel: 'E-Mail schreiben' },
         { label: 'Hachener Str. 7, Lennestadt', ariaLabel: 'Adresse' },
+        { label: 'Termin buchen', href: 'https://cal.com/frankies.digital/15min', ariaLabel: 'Termin online buchen' },
       ],
     },
   ]
@@ -70,6 +71,8 @@ export default function Navbar() {
       ctaLabel="Anrufen"
       ctaHref={isHome ? '#kontakt' : 'tel:+4915142840916'}
       onCtaClick={handleCtaClick}
+      secondaryCtaLabel="Termin buchen"
+      secondaryCtaHref="https://cal.com/frankies.digital/15min"
       ease="power3.out"
     />
   )

@@ -12,7 +12,7 @@ const PACKAGES = [
   { key: 'Individuell', sub: 'Ab 100 Cocktails · nach Absprache' },
 ]
 
-const CALCOM_URL = process.env.NEXT_PUBLIC_CALCOM_URL || 'https://cal.com/frankies-eventservice/beratung'
+const CALCOM_URL = process.env.NEXT_PUBLIC_CALCOM_URL || 'https://cal.com/frankies.digital/15min'
 const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || ''
 
 interface FormState {

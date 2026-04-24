@@ -19,6 +19,9 @@ const outfit = Outfit({
   display: 'swap',
 })
 
+const SITE_URL = 'https://frankies-eventservice.de'
+const OG_IMAGE = `${SITE_URL}/wp-content/uploads/2026/03/preview-1.webp`
+
 export const metadata: Metadata = {
   title: 'Frankies Eventservice | Getränke- und Veranstaltungsservice im Sauerland',
   description:
@@ -27,10 +30,27 @@ export const metadata: Metadata = {
     'Eventservice Sauerland, Getränkeservice Schützenfest, Thekenservice Hochzeit, Barservice Lennestadt, Eventservice Olpe, Zapfservice NRW, mobile Cocktailbar Sauerland, Cocktailbar mieten, Bulli Bar',
   authors: [{ name: 'Frankies Eventservice' }],
   robots: 'index, follow',
-  alternates: { canonical: 'https://frankies-eventservice.de/' },
+  alternates: { canonical: `${SITE_URL}/` },
   icons: {
     icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
     apple: '/favicon.svg',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'de_DE',
+    url: `${SITE_URL}/`,
+    siteName: 'Frankies Eventservice',
+    title: 'Frankies Eventservice | Getränke- und Veranstaltungsservice im Sauerland',
+    description:
+      'Professioneller Getränke- und Thekenservice sowie mobile Cocktailbar für Schützenfeste, Hochzeiten und Veranstaltungen im Sauerland.',
+    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: 'Frankies Eventservice' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Frankies Eventservice | Getränke- und Veranstaltungsservice im Sauerland',
+    description:
+      'Professioneller Getränke- und Thekenservice sowie mobile Cocktailbar für Schützenfeste, Hochzeiten und Veranstaltungen im Sauerland.',
+    images: [OG_IMAGE],
   },
 }
 
@@ -66,7 +86,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 'Getränkeservice', 'Thekenservice', 'Barservice',
                 'Eventservice', 'Mobile Cocktailbar', 'Cocktail Catering',
               ],
-              image: 'https://frankies-eventservice.de/wp-content/uploads/2026/03/preview-1.webp',
+              geo: {
+                '@type': 'GeoCoordinates',
+                latitude: 51.1218,
+                longitude: 8.0648,
+              },
+              hasOfferCatalog: {
+                '@type': 'OfferCatalog',
+                name: 'Leistungen',
+                itemListElement: [
+                  { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Mobile Cocktailbar' } },
+                  { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Getränkeservice Schützenfest' } },
+                  { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Thekenservice Hochzeit' } },
+                  { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Eventservice Kreis Olpe' } },
+                ],
+              },
+              image: OG_IMAGE,
               priceRange: '€€',
             }),
           }}
