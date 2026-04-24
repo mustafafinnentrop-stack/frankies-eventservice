@@ -30,9 +30,26 @@ export const metadata: Metadata = {
   },
 }
 
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Thekenservice Hochzeit Sauerland',
+  description: 'Professioneller Thekenservice und Getränkeausschank für Hochzeiten im Sauerland und Kreis Olpe — von Sektempfang bis Late-Night-Cocktailbar.',
+  provider: {
+    '@type': 'LocalBusiness',
+    name: 'Frankies Eventservice',
+    telephone: '+4915142840916',
+    url: 'https://frankies-eventservice.de',
+  },
+  areaServed: ['Lennestadt', 'Olpe', 'Attendorn', 'Finnentrop', 'Kirchhundem', 'Schmallenberg', 'Sauerland'],
+  serviceType: 'Thekenservice Hochzeit',
+  url: PAGE_URL,
+}
+
 export default function HochzeitSauerland() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <Navbar />
       <RevealWrapper>
         <main style={{ paddingTop: '100px', background: 'var(--color-bg)' }}>

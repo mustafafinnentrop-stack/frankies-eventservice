@@ -71,9 +71,37 @@ const packages = [
   },
 ]
 
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Mobile Cocktailbar Lennestadt',
+  description: 'Mobile Cocktailbar mit Bulli-Bar und Bambustheke für Hochzeiten, JGA, Geburtstage und Firmenfeiern im Kreis Olpe und Sauerland.',
+  provider: {
+    '@type': 'LocalBusiness',
+    name: 'Frankies Eventservice',
+    telephone: '+4915142840916',
+    url: 'https://frankies-eventservice.de',
+  },
+  areaServed: ['Lennestadt', 'Finnentrop', 'Kirchhundem', 'Attendorn', 'Olpe', 'Wenden', 'Drolshagen', 'Sauerland'],
+  serviceType: 'Mobile Cocktailbar',
+  url: PAGE_URL,
+}
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map(item => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+}
+
 export default function CocktailbarLennestadt() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Navbar />
       <RevealWrapper>
         <main style={{ paddingTop: '100px', background: 'var(--color-bg)' }}>

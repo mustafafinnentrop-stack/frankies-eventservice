@@ -30,9 +30,26 @@ export const metadata: Metadata = {
   },
 }
 
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Getränkeservice Schützenfest Sauerland',
+  description: 'Professioneller Getränke- und Zapfservice für Schützenfeste im Kreis Olpe und Sauerland. Kompletter Thekenservice von Freitag bis Montag.',
+  provider: {
+    '@type': 'LocalBusiness',
+    name: 'Frankies Eventservice',
+    telephone: '+4915142840916',
+    url: 'https://frankies-eventservice.de',
+  },
+  areaServed: ['Lennestadt', 'Olpe', 'Attendorn', 'Finnentrop', 'Kirchhundem', 'Wenden', 'Drolshagen', 'Sauerland'],
+  serviceType: 'Getränkeservice Schützenfest',
+  url: PAGE_URL,
+}
+
 export default function GetraenkeserviceSchuetzenfest() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <Navbar />
       <RevealWrapper>
         <main style={{ paddingTop: '100px', background: 'var(--color-bg)' }}>
