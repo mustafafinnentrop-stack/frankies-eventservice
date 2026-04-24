@@ -64,7 +64,8 @@ export default function Navbar() {
 
   return (
     <CardNav
-      logoText={<>Frankies<span>Eventservice</span></>}
+      logo="/IMG_4558.jpeg"
+      logoAlt="Frankies Eventservice"
       items={items}
       baseColor="#161616"
       menuColor="#F0ECE3"
