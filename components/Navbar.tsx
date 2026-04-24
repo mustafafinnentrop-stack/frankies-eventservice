@@ -64,7 +64,7 @@ export default function Navbar() {
 
   return (
     <CardNav
-      logo="/IMG_4558.jpeg"
+      logo="/189d47fa-f715-4552-8ec7-4d36b7c50b65.png"
       logoAlt="Frankies Eventservice"
       items={items}
       baseColor="#161616"
