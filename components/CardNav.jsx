@@ -23,8 +23,6 @@ const CardNav = ({
   ctaLabel = 'Get Started',
   ctaHref = '#',
   onCtaClick,
-  secondaryCtaLabel,
-  secondaryCtaHref,
 }) => {
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
@@ -174,26 +172,14 @@ const CardNav = ({
             )}
           </div>
 
-          <div className="card-nav-cta-group">
-            {secondaryCtaLabel && secondaryCtaHref && (
-              <a
-                href={secondaryCtaHref}
-                className="card-nav-secondary-button"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {secondaryCtaLabel}
-              </a>
-            )}
-            <a
-              href={ctaHref}
-              className="card-nav-cta-button"
-              style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
-              onClick={onCtaClick}
-            >
-              {ctaLabel}
-            </a>
-          </div>
+          <a
+            href={ctaHref}
+            className="card-nav-cta-button"
+            style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
+            onClick={onCtaClick}
+          >
+            {ctaLabel}
+          </a>
         </div>
 
         <div className="card-nav-content" aria-hidden={!isExpanded}>
