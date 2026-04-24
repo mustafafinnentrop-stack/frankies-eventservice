@@ -7,7 +7,7 @@ interface FormData {
   eventtype: string; eventdate: string; guests: string; location: string; message: string
 }
 
-const CALCOM_URL = process.env.NEXT_PUBLIC_CALCOM_URL || 'https://cal.com/frankies-eventservice/beratung'
+const CALCOM_URL = process.env.NEXT_PUBLIC_CALCOM_URL || 'https://cal.com/frankies.digital/15min'
 const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || ''
 
 export default function Kontakt() {
@@ -71,7 +71,7 @@ export default function Kontakt() {
         <div className="reveal" style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '2.5rem' }}>
           <a href="tel:+4915142840916" className="btn-primary">Jetzt anrufen</a>
           <a href={CALCOM_URL} target="_blank" rel="noopener noreferrer" className="btn-secondary">
-            Termin buchen →
+            Termin buchen
           </a>
         </div>
 
@@ -148,7 +148,7 @@ export default function Kontakt() {
             <h3>Vielen Dank!</h3>
             <p>Ihre Anfrage ist eingegangen. Wir melden uns innerhalb von 24 Stunden.</p>
             <a href={calUrl} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ display: 'inline-block', marginTop: '1.5rem' }}>
-              Direkt Termin buchen →
+              Direkt Termin buchen
             </a>
           </div>
         )}

@@ -5,8 +5,8 @@ import GradualBlur from './GradualBlur'
 import BookingModal from './BookingModal'
 
 const WORDS = [
-  'Fest', 'Schützenfest', 'Event', 'Hochzeit', 'Cocktailabend',
-  'Dorffest', 'Firmenfeier', 'Party', 'JGA', 'Jubiläum', 'Vereinsfest', 'Sommerfest',
+  'Ihr Fest', 'Ihr Schützenfest', 'Ihr Event', 'Ihre Hochzeit', 'Ihren Cocktailabend',
+  'Ihr Dorffest', 'Ihre Firmenfeier', 'Ihre Party', 'Ihren JGA', 'Ihr Jubiläum', 'Ihr Vereinsfest', 'Ihr Sommerfest',
 ]
 
 export default function Hero() {
@@ -65,7 +65,7 @@ export default function Hero() {
       <div className="hero-content">
         <div className="hero-badge">Eventservice im Sauerland</div>
         <h1>
-          Wir machen Ihr
+          Wir machen
           <br />
           <span className="rotating-wrapper">
             <span className="rotating-words" ref={containerRef}>
@@ -85,7 +85,7 @@ export default function Hero() {
           mit Bulli und Bambustheke direkt zu Ihnen.
         </p>
         <div className="hero-actions">
-          <button onClick={() => setBookingOpen(true)} className="btn-primary">Unverbindlich anfragen →</button>
+          <button onClick={() => setBookingOpen(true)} className="btn-primary">Unverbindlich anfragen</button>
           <a href="tel:+4915142840916" className="btn-secondary">Jetzt anrufen</a>
         </div>
       </div>
@@ -102,7 +102,7 @@ export default function Hero() {
         curve="bezier"
         exponential={true}
         opacity={1}
-        zIndex={2}
+        zIndex={1}
       />
     </header>
   )

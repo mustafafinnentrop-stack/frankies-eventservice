@@ -12,7 +12,7 @@ const PACKAGES = [
   { key: 'Individuell', sub: 'Ab 100 Cocktails · nach Absprache' },
 ]
 
-const CALCOM_URL = process.env.NEXT_PUBLIC_CALCOM_URL || 'https://cal.com/frankies-eventservice/beratung'
+const CALCOM_URL = process.env.NEXT_PUBLIC_CALCOM_URL || 'https://cal.com/frankies.digital/15min'
 const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || ''
 
 interface FormState {
@@ -140,7 +140,7 @@ export default function BookingModal({ onClose, initialPackage }: Props) {
                 Möchten Sie bereits jetzt einen Beratungstermin in unserem Kalender buchen?
               </p>
               <a href={calUrl} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ display: 'block', textAlign: 'center', marginBottom: '1rem' }}>
-                Termin im Kalender buchen →
+                Termin im Kalender buchen
               </a>
               <button onClick={onClose} className="btn-secondary" style={{ width: '100%' }}>
                 Fenster schließen
@@ -195,7 +195,7 @@ export default function BookingModal({ onClose, initialPackage }: Props) {
               <input type="text" placeholder="z.B. Festzelt Kirchhundem" value={form.eventLocation} onChange={e => set('eventLocation', e.target.value)} style={inputStyle} />
 
               <button type="button" onClick={() => setStep(2)} disabled={!step1OK} className="btn-primary" style={{ width: '100%', marginTop: '0.5rem', opacity: step1OK ? 1 : 0.4, cursor: step1OK ? 'pointer' : 'not-allowed' }}>
-                Weiter zu Ihren Daten →
+                Weiter zu Ihren Daten
               </button>
             </div>
           )}
