@@ -6,7 +6,7 @@ import RevealWrapper from '@/components/RevealWrapper'
 import BookingCTA from '@/components/BookingCTA'
 
 const PAGE_URL = 'https://frankies-eventservice.de/eventservice-kreis-olpe'
-const OG_IMAGE = 'https://frankies-eventservice.de/wp-content/uploads/2026/03/preview-1.webp'
+const OG_IMAGE = 'https://frankies-eventservice.de/IMG_5255.jpeg'
 
 export const metadata: Metadata = {
   title: 'Eventservice Kreis Olpe | Getränke- & Veranstaltungsservice – Frankies Eventservice',
@@ -114,7 +114,7 @@ export default function EventserviceKreisOlpe() {
                 </div>
                 <div className="cocktail-visual reveal-right glow-frame">
                   <Image
-                    src="https://frankies-eventservice.de/wp-content/uploads/2026/03/preview-1.webp"
+                    src="/IMG_5255.jpeg"
                     alt="Eventservice und Getränkeservice im Kreis Olpe und Sauerland"
                     width={600}
                     height={750}

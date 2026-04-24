@@ -9,7 +9,7 @@ export default function Cocktailbar() {
         <div className="cocktail-grid">
           <div className="cocktail-visual reveal-left glow-frame">
             <Image
-              src="https://frankies-eventservice.de/wp-content/uploads/2026/03/preview-1.webp"
+              src="/IMG_5255.jpeg"
               alt="Frankies Eventservice – Mobile Cocktailbar mit Bambustheke für Events im Sauerland"
               width={600}
               height={750}

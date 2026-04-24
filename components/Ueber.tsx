@@ -7,7 +7,7 @@ export default function Ueber() {
         <div className="about-grid">
           <div className="about-visual reveal-left glow-frame">
             <Image
-              src="https://frankies-eventservice.de/wp-content/uploads/2026/03/Frankies_Eventservice_Logo.png"
+              src="/IMG_4558.jpeg"
               alt="Frankies Eventservice Logo – Getränke- und Thekenservice Lennestadt Sauerland"
               width={600}
               height={750}

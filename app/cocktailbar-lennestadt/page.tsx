@@ -6,7 +6,7 @@ import RevealWrapper from '@/components/RevealWrapper'
 import BookingCTA from '@/components/BookingCTA'
 
 const PAGE_URL = 'https://frankies-eventservice.de/cocktailbar-lennestadt'
-const OG_IMAGE = 'https://frankies-eventservice.de/wp-content/uploads/2026/03/preview-1.webp'
+const OG_IMAGE = 'https://frankies-eventservice.de/IMG_5255.jpeg'
 
 export const metadata: Metadata = {
   title: 'Mobile Cocktailbar Lennestadt | Bulli-Bar & Bambustheke – Frankies Eventservice',
@@ -127,7 +127,7 @@ export default function CocktailbarLennestadt() {
             <div className="section-container">
               <div className="cocktail-grid">
                 <div className="cocktail-visual reveal-left glow-frame">
-                  <Image src="https://frankies-eventservice.de/wp-content/uploads/2026/03/preview-1.webp" alt="Mobile Cocktailbar mit Bulli und Bambustheke für Events in Lennestadt" width={600} height={750} priority unoptimized style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <Image src="/IMG_5255.jpeg" alt="Mobile Cocktailbar mit Bulli und Bambustheke für Events in Lennestadt" width={600} height={750} priority unoptimized style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
                 <div className="reveal">
                   <p className="section-label">Einzigartiges Flair</p>
