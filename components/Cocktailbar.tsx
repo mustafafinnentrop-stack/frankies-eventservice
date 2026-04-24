@@ -13,7 +13,8 @@ export default function Cocktailbar() {
               alt="Frankies Eventservice – Mobile Cocktailbar mit Bambustheke für Events im Sauerland"
               width={600}
               height={750}
-              loading="lazy"
+              priority
+              sizes="(max-width: 768px) 100vw, 50vw"
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
             />
           </div>

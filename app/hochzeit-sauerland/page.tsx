@@ -118,6 +118,8 @@ export default function HochzeitSauerland() {
                     alt="Thekenservice und Cocktailbar für Hochzeiten im Sauerland"
                     width={600}
                     height={750}
+                    priority
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   />
                 </div>
