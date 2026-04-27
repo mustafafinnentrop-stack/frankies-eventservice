@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import BookingCTA from './BookingCTA'
 
 export default function Cocktailbar() {
   return (
@@ -9,11 +10,12 @@ export default function Cocktailbar() {
         <div className="cocktail-grid">
           <div className="cocktail-visual reveal-left glow-frame">
             <Image
-              src="https://frankies-eventservice.de/wp-content/uploads/2026/03/preview-1.webp"
+              src="/IMG_5255.jpeg"
               alt="Frankies Eventservice – Mobile Cocktailbar mit Bambustheke für Events im Sauerland"
               width={600}
               height={750}
-              loading="lazy"
+              priority
+              unoptimized
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
             />
           </div>
@@ -64,17 +66,9 @@ export default function Cocktailbar() {
                 </div>
               </div>
             </div>
-            <a
-              href="#kontakt"
-              className="btn-primary"
-              style={{ marginTop: '2rem', display: 'inline-block' }}
-              onClick={(e) => {
-                e.preventDefault()
-                document.getElementById('kontakt')?.scrollIntoView({ behavior: 'smooth' })
-              }}
-            >
-              Cocktailbar anfragen
-            </a>
+            <div style={{ marginTop: '2rem' }}>
+              <BookingCTA primary="Cocktailbar anfragen" pkg="Flat 50" />
+            </div>
           </div>
         </div>
       </div>

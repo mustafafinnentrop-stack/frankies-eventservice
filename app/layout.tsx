@@ -20,7 +20,7 @@ const outfit = Outfit({
 })
 
 const BASE_URL = 'https://frankies-eventservice.de'
-const OG_IMAGE = 'https://frankies-eventservice.de/wp-content/uploads/2026/03/preview-1.webp'
+const OG_IMAGE = 'https://frankies-eventservice.de/IMG_5255.jpeg'
 
 export const metadata: Metadata = {
   title: 'Frankies Eventservice | Getränke- und Veranstaltungsservice im Sauerland',
@@ -105,6 +105,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="de" className={`${dmSerifDisplay.variable} ${outfit.variable}`}>
       <head>
+        <link rel="preconnect" href="https://frankies-eventservice.de" />
+        <link rel="dns-prefetch" href="https://frankies-eventservice.de" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}

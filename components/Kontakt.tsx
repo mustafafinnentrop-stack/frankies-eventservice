@@ -166,6 +166,14 @@ export default function Kontakt() {
             <span className="icon">◉</span>
             Hachener Str. 7, 57368 Lennestadt
           </div>
+          <div className="cta-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{ flexShrink: 0, opacity: 0.7 }} aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            <a href="https://www.facebook.com/share/17zxCGQ62q/" target="_blank" rel="noopener noreferrer">Facebook</a>
+          </div>
+          <div className="cta-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, opacity: 0.7 }} aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            <a href="https://www.instagram.com/frankies_eventservice" target="_blank" rel="noopener noreferrer">@frankies_eventservice</a>
+          </div>
         </div>
       </div>
     </section>
