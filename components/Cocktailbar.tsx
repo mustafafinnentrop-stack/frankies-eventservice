@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import BookingCTA from './BookingCTA'
 
 export default function Cocktailbar() {
   return (
@@ -65,17 +66,9 @@ export default function Cocktailbar() {
                 </div>
               </div>
             </div>
-            <a
-              href="#kontakt"
-              className="btn-primary"
-              style={{ marginTop: '2rem', display: 'inline-block' }}
-              onClick={(e) => {
-                e.preventDefault()
-                document.getElementById('kontakt')?.scrollIntoView({ behavior: 'smooth' })
-              }}
-            >
-              Cocktailbar anfragen
-            </a>
+            <div style={{ marginTop: '2rem' }}>
+              <BookingCTA primary="Cocktailbar anfragen" pkg="Flat 50" />
+            </div>
           </div>
         </div>
       </div>
