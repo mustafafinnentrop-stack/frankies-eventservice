@@ -45,7 +45,7 @@ export default function Footer() {
               <div className="footer-links">
                 <a href="#" onClick={(e) => { e.preventDefault(); setLegal('impressum') }}>Impressum</a>
                 <a href="#" onClick={(e) => { e.preventDefault(); setLegal('datenschutz') }}>Datenschutz</a>
-                <a href="#" onClick={(e) => { e.preventDefault(); setLegal('agb') }}>AGB</a>
+                <a href="/agb">AGB</a>
               </div>
             </div>
           </div>
