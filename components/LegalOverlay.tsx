@@ -131,10 +131,10 @@ function Impressum() {
         E-Mail: <a href="mailto:info@frankies-eventservice.de">info@frankies-eventservice.de</a>
       </p>
 
-      <h2>Umsatzsteuer</h2>
+      <h2>Umsatzsteuer-ID</h2>
       <p>
-        Gemäß § 19 UStG wird keine Umsatzsteuer berechnet (Kleinunternehmerregelung).
-        Eine Umsatzsteuer-Identifikationsnummer liegt daher nicht vor.
+        Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br />
+        DE354807768
       </p>
 
       <h2>Berufsbezeichnung und berufsrechtliche Regelungen</h2>
