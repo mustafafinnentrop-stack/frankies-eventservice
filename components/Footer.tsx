@@ -4,7 +4,7 @@ import { useState } from 'react'
 import LegalOverlay from './LegalOverlay'
 
 export default function Footer() {
-  const [legal, setLegal] = useState<'impressum' | 'datenschutz' | null>(null)
+  const [legal, setLegal] = useState<'impressum' | 'datenschutz' | 'agb' | null>(null)
 
   return (
     <>
