@@ -1,4 +1,5 @@
-import type { Metadata } from 'next'
+'use client'
+
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import RevealWrapper from '@/components/RevealWrapper'
