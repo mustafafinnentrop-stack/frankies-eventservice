@@ -25,6 +25,7 @@ export default function Navbar() {
       bgColor: '#1A1A1A',
       textColor: '#F0ECE3',
       links: [
+        { label: 'Service-Pakete & Portfolio', href: '/service', ariaLabel: 'Service-Pakete und Portfolio' },
         { label: 'Mobile Cocktailbar', href: '/cocktailbar-lennestadt', ariaLabel: 'Mobile Cocktailbar Lennestadt' },
         { label: 'Getränkeservice Schützenfest', href: '/getraenkeservice-schuetzenfest', ariaLabel: 'Getränkeservice Schützenfest' },
         { label: 'Thekenservice Hochzeit', href: '/hochzeit-sauerland', ariaLabel: 'Thekenservice Hochzeit Sauerland' },

@@ -11,6 +11,7 @@ export default function Footer() {
       <footer>
         <div className="footer-inner" style={{ flexDirection: 'column', gap: '1.5rem', alignItems: 'flex-start' }}>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem 1.5rem', width: '100%' }}>
+            <a href="/service" style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', textDecoration: 'none' }}>Service-Pakete</a>
             <a href="/cocktailbar-lennestadt" style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', textDecoration: 'none' }}>Cocktailbar Lennestadt</a>
             <a href="/getraenkeservice-schuetzenfest" style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', textDecoration: 'none' }}>Getränkeservice Schützenfest</a>
             <a href="/hochzeit-sauerland" style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', textDecoration: 'none' }}>Thekenservice Hochzeit</a>
