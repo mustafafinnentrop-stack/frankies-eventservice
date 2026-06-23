@@ -171,7 +171,9 @@ const CardNav = ({
             {logoText ? (
               <a href="/" className="card-nav-logo-text">{logoText}</a>
             ) : (
-              <img src={logo} alt={logoAlt} className="logo" />
+              <a href="/" aria-label="Zur Startseite">
+                <img src={logo} alt={logoAlt} className="logo" />
+              </a>
             )}
           </div>
 
