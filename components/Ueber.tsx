@@ -8,7 +8,7 @@ export default function Ueber() {
           <p className="section-label">Über uns</p>
           <h2 className="section-title">Aus dem Sauerland,<br />für das Sauerland</h2>
           
-          <div className="about-visual glow-frame" style={{ maxWidth: '600px', margin: '0 auto 3rem', aspect_ratio: '4/3' }}>
+          <div className="about-visual glow-frame" style={{ maxWidth: '600px', margin: '0 auto 3rem', aspectRatio: '4/3' }}>
             <Image
               src="/IMG_4558.jpeg"
               alt="Frankies Eventservice Logo – Getränke- und Thekenservice Lennestadt Sauerland"
