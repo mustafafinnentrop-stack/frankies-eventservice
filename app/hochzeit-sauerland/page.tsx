@@ -136,7 +136,7 @@ export default function HochzeitSauerland() {
                   Wir begleiten Sie durch den gesamten Tag — mit dem passenden Service zur jeweiligen Phase.
                 </p>
               </div>
-              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '2rem' }}>
+              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '2rem', justifyContent: 'center' }}>
                 {[
                   { time: 'Nachmittags', title: 'Sektempfang', text: 'Nach der Trauung begrüßen wir Ihre Gäste mit Sekt, Aperol oder alkoholfreien Alternativen.' },
                   { time: 'Abends', title: 'Dinner-Service', text: 'Während des Essens sorgen wir für die passenden Getränke an den Tischen.' },
@@ -159,7 +159,7 @@ export default function HochzeitSauerland() {
                 <p className="section-label">Darum Frankies</p>
                 <h2 className="section-title" style={{ margin: '0 auto' }}>Warum Brautpaare uns wählen</h2>
               </div>
-              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.5rem' }}>
+              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.5rem', justifyContent: 'center' }}>
                 {[
                   { icon: '✓', title: 'Alles aus einer Hand', text: 'Von Sektempfang bis Late-Night — ein Ansprechpartner.' },
                   { icon: '⚡', title: 'Schneller Service', text: 'Kein Warten an der Theke — Ihre Gäste werden zügig bedient.' },

@@ -158,7 +158,7 @@ export default function CocktailbarLennestadt() {
                   Wählen Sie das Paket, das zu Ihrer Veranstaltung passt — oder wir erstellen Ihnen ein individuelles Angebot.
                 </p>
               </div>
-              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem' }}>
+              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem', justifyContent: 'center' }}>
                 {packages.map(p => (
                   <div
                     key={p.name}
@@ -213,7 +213,7 @@ export default function CocktailbarLennestadt() {
                 <p className="section-label">Für jeden Anlass</p>
                 <h2 className="section-title" style={{ margin: '0 auto 1rem' }}>Ideal für Ihre Feier</h2>
               </div>
-              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem' }}>
+              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem', justifyContent: 'center' }}>
                 {[
                   { icon: '💍', title: 'Hochzeiten', text: 'Stilvoller Sektempfang oder Late-Night-Cocktailservice.' },
                   { icon: '🎉', title: 'Junggesellenabschied', text: 'Unvergesslicher JGA mit frischen Cocktails und Urlaubsflair.' },

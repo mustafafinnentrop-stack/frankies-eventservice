@@ -152,7 +152,7 @@ export default function EventserviceKreisOlpe() {
                 <p className="section-label">Unsere Leistungen</p>
                 <h2 className="section-title" style={{ margin: '0 auto' }}>Was wir für Sie tun</h2>
               </div>
-              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem' }}>
+              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem', justifyContent: 'center' }}>
                 {[
                   { icon: '🍺', title: 'Getränkeservice', text: 'Kompletter Ausschank inkl. Zapfanlagen, Gläser, Kühlung.', href: '/getraenkeservice-schuetzenfest' },
                   { icon: '🍸', title: 'Mobile Cocktailbar', text: 'Bulli-Bar mit Bambustheke und frischen Cocktails.', href: '/cocktailbar-lennestadt' },
