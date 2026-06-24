@@ -101,6 +101,7 @@ nav.scrolled {
 .hero-content {
     text-align: center; position: relative; z-index: 2;
     padding: 2rem 2rem 6rem; max-width: 900px;
+    margin: 0 auto; display: flex; flex-direction: column; align-items: center;
 }
 .hero-badge {
     display: inline-flex; align-items: center; gap: 0.5rem;
@@ -206,14 +207,17 @@ section { padding: 6rem 2rem; }
 .section-label {
     font-size: 0.7rem; font-weight: 500; letter-spacing: 0.3em;
     text-transform: uppercase; color: var(--color-gold); margin-bottom: 1rem;
+    text-align: center; display: block;
 }
 .section-title {
     font-family: var(--font-display); font-size: clamp(2rem,4vw,3.2rem);
     font-weight: 400; line-height: 1.15; margin-bottom: 1.5rem;
+    text-align: center;
 }
 .section-text {
     font-size: 1rem; font-weight: 300; color: var(--color-text-muted);
-    max-width: 600px; line-height: 1.8;
+    max-width: 700px; line-height: 1.8;
+    text-align: center; margin-left: auto; margin-right: auto;
 }
 
 /* LEISTUNGEN */
@@ -225,6 +229,7 @@ section { padding: 6rem 2rem; }
 .service-card {
     background: var(--color-surface-2); border: 1px solid rgba(200,164,78,0.08);
     padding: 2.5rem; transition: all 0.4s ease; position: relative; overflow: hidden;
+    text-align: center;
 }
 .service-card::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
@@ -237,6 +242,7 @@ section { padding: 6rem 2rem; }
     width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;
     border: 1px solid rgba(200,164,78,0.3); color: var(--color-gold);
     font-size: 1.2rem; margin-bottom: 1.5rem;
+    margin-left: auto; margin-right: auto;
 }
 .service-card h3 {
     font-family: var(--font-display); font-size: 1.35rem;
@@ -347,7 +353,7 @@ section { padding: 6rem 2rem; }
 .process-step p { font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.7; font-weight: 300; }
 
 /* REGION */
-.region-tags { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+.region-tags { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; justify-content: center; }
 .region-tag {
     padding: 0.5rem 1.25rem; border: 1px solid rgba(200,164,78,0.15);
     font-size: 0.8rem; color: var(--color-text-muted); font-weight: 400;
@@ -381,7 +387,7 @@ section { padding: 6rem 2rem; }
 
 /* CONTACT FORM */
 .contact-form {
-    max-width: 600px; margin: 2.5rem auto 0; text-align: left;
+    max-width: 600px; margin: 2.5rem auto 0; text-align: center;
 }
 .form-row {
     margin-bottom: 1.25rem;
@@ -466,18 +472,22 @@ footer { padding: 3rem 2rem; border-top: 1px solid rgba(200,164,78,0.08); }
 .legal-content h1 {
     font-family: var(--font-display); font-size: 2rem;
     margin-bottom: 2rem; color: var(--color-gold);
+    text-align: center;
 }
 .legal-content h2 {
     font-family: var(--font-display); font-size: 1.3rem;
     margin: 2rem 0 0.75rem; font-weight: 400;
+    text-align: center;
 }
 .legal-content h3 {
     font-family: var(--font-display); font-size: 1.1rem;
     margin: 1.5rem 0 0.5rem; font-weight: 400;
+    text-align: center;
 }
 .legal-content p {
     font-size: 0.9rem; color: var(--color-text-muted);
     line-height: 1.8; margin-bottom: 1rem; font-weight: 300;
+    text-align: center;
 }
 .legal-content a { color: var(--color-gold); }
 .legal-close {

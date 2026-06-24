@@ -60,10 +60,10 @@ export default function Kontakt() {
 
   return (
     <section className="cta-section" id="kontakt">
-      <div className="cta-content">
-        <p className="section-label reveal">Jetzt anfragen</p>
-        <h2 className="section-title reveal">Ihr nächstes Event<br />steht an?</h2>
-        <p className="section-text reveal">
+      <div className="cta-content" style={{ textAlign: 'center', alignItems: 'center', display: 'flex', flexDirection: 'column' }}>
+        <p className="section-label reveal" style={{ margin: '0 auto 1rem' }}>Jetzt anfragen</p>
+        <h2 className="section-title reveal" style={{ margin: '0 auto 1rem' }}>Ihr nächstes Event<br />steht an?</h2>
+        <p className="section-text reveal" style={{ margin: '0 auto 2rem' }}>
           Füllen Sie das Formular aus — wir melden uns innerhalb von 24 Stunden.
           Oder buchen Sie direkt einen Beratungstermin.
         </p>
@@ -153,24 +153,24 @@ export default function Kontakt() {
           </div>
         )}
 
-        <div className="cta-contact reveal" style={{ marginTop: '2.5rem' }}>
-          <div className="cta-contact-item">
+        <div className="cta-contact reveal" style={{ marginTop: '2.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <div className="cta-contact-item" style={{ justifyContent: 'center' }}>
             <span className="icon">✉</span>
             <a href="mailto:info@frankies-eventservice.de">info@frankies-eventservice.de</a>
           </div>
-          <div className="cta-contact-item">
+          <div className="cta-contact-item" style={{ justifyContent: 'center' }}>
             <span className="icon">✆</span>
             <a href="tel:+4915142840916">0151 42840916</a>
           </div>
-          <div className="cta-contact-item">
+          <div className="cta-contact-item" style={{ justifyContent: 'center' }}>
             <span className="icon">◉</span>
             Hachener Str. 7, 57368 Lennestadt
           </div>
-          <div className="cta-contact-item">
+          <div className="cta-contact-item" style={{ justifyContent: 'center' }}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{ flexShrink: 0, opacity: 0.7 }} aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
             <a href="https://www.facebook.com/share/17zxCGQ62q/" target="_blank" rel="noopener noreferrer">Facebook</a>
           </div>
-          <div className="cta-contact-item">
+          <div className="cta-contact-item" style={{ justifyContent: 'center' }}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, opacity: 0.7 }} aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
             <a href="https://www.instagram.com/frankies_eventservice" target="_blank" rel="noopener noreferrer">@frankies_eventservice</a>
           </div>

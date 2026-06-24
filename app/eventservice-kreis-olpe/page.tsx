@@ -72,7 +72,7 @@ export default function EventserviceKreisOlpe() {
           <section id="details" style={{ padding: '6rem 2rem' }}>
             <div className="section-container">
               <div className="cocktail-grid">
-                <div className="reveal">
+                <div className="reveal" style={{ textAlign: 'center' }}>
                   <p className="section-label">Ihre Veranstaltung</p>
                   <h2 className="section-title">Veranstaltungsservice<br />für alle Anlässe</h2>
                   <p className="section-text">
@@ -174,11 +174,11 @@ export default function EventserviceKreisOlpe() {
                     </>
                   )
                   return item.href ? (
-                    <a key={item.title} href={item.href} style={{ background: 'var(--color-surface)', border: '1px solid rgba(200,164,78,0.1)', padding: '2rem', textDecoration: 'none', color: 'inherit', transition: 'all 0.3s ease', display: 'block' }}>
+                    <a key={item.title} href={item.href} style={{ background: 'var(--color-surface)', border: '1px solid rgba(200,164,78,0.1)', padding: '2rem', textDecoration: 'none', color: 'inherit', transition: 'all 0.3s ease', display: 'block', textAlign: 'center' }}>
                       {content}
                     </a>
                   ) : (
-                    <div key={item.title} style={{ background: 'var(--color-surface)', border: '1px solid rgba(200,164,78,0.1)', padding: '2rem' }}>
+                    <div key={item.title} style={{ background: 'var(--color-surface)', border: '1px solid rgba(200,164,78,0.1)', padding: '2rem', textAlign: 'center' }}>
                       {content}
                     </div>
                   )

@@ -83,7 +83,7 @@ export default function GetraenkeserviceSchuetzenfest() {
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   />
                 </div>
-                <div className="reveal">
+                <div className="reveal" style={{ textAlign: 'center' }}>
                   <p className="section-label">Erfahrener Zapfservice</p>
                   <h2 className="section-title">Professioneller<br />Thekenservice</h2>
                   <p className="section-text">
@@ -122,9 +122,11 @@ export default function GetraenkeserviceSchuetzenfest() {
                       </div>
                     </div>
                   </div>
-                  <a href="tel:+4915142840916" className="btn-primary" style={{ marginTop: '2rem', display: 'inline-block' }}>
-                    Jetzt anrufen
-                  </a>
+                  <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem' }}>
+                    <a href="tel:+4915142840916" className="btn-primary" style={{ display: 'inline-block' }}>
+                      Jetzt anrufen
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -169,7 +171,7 @@ export default function GetraenkeserviceSchuetzenfest() {
                   { icon: '👥', title: 'Erfahrenes Team', text: 'Geschultes Personal, das auch bei Hochbetrieb den Überblick behält.' },
                   { icon: '📦', title: 'Logistik', text: 'Wir kümmern uns um Anlieferung, Kühlung und Nachschub.' },
                 ].map(item => (
-                  <div key={item.title} style={{ background: 'var(--color-surface)', border: '1px solid rgba(200,164,78,0.1)', padding: '2rem' }}>
+                  <div key={item.title} style={{ background: 'var(--color-surface)', border: '1px solid rgba(200,164,78,0.1)', padding: '2rem', textAlign: 'center' }}>
                     <div style={{ fontSize: '1.8rem', marginBottom: '1rem' }}>{item.icon}</div>
                     <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.15rem', fontWeight: 400, marginBottom: '0.5rem' }}>{item.title}</h3>
                     <p style={{ fontSize: '0.88rem', color: 'var(--color-text-muted)', lineHeight: 1.7, fontWeight: 300 }}>{item.text}</p>

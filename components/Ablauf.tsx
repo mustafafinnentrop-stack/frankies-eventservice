@@ -48,56 +48,60 @@ export default function Ablauf() {
         </div>
 
         <div
-          ref={ref}
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-            gap: '1.5rem',
-          }}
-        >
-          {steps.map((step, i) => (
-            <div
-              key={step.num}
-              className="ablauf-card"
-              style={{
-                background: 'var(--color-surface)',
-                border: '1px solid rgba(200,164,78,0.12)',
-                borderRadius: '4px',
-                padding: '2rem',
-                opacity: 0,
-                transform: 'translateY(24px)',
-                transition: `opacity 0.5s ease ${i * 0.12}s, transform 0.5s ease ${i * 0.12}s`,
-              }}
-            >
-              <div style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: '3rem',
-                color: 'rgba(200,164,78,0.25)',
-                lineHeight: 1,
-                marginBottom: '1rem',
-              }}>
-                {step.num}
-              </div>
-              <h3 style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: '1.3rem',
-                fontWeight: 400,
-                marginBottom: '0.75rem',
-                color: 'var(--color-text)',
-              }}>
-                {step.title}
-              </h3>
-              <p style={{
-                fontSize: '0.875rem',
-                color: 'var(--color-text-muted)',
-                lineHeight: 1.75,
-                fontWeight: 300,
-              }}>
-                {step.text}
-              </p>
-            </div>
-          ))}
-        </div>
+	          ref={ref}
+	          style={{
+	            display: 'grid',
+	            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+	            gap: '1.5rem',
+	            textAlign: 'center'
+	          }}
+	        >
+	          {steps.map((step, i) => (
+	            <div
+	              key={step.num}
+	              className="ablauf-card"
+	              style={{
+	                background: 'var(--color-surface)',
+	                border: '1px solid rgba(200,164,78,0.12)',
+	                borderRadius: '4px',
+	                padding: '2rem',
+	                opacity: 0,
+	                transform: 'translateY(24px)',
+	                transition: `opacity 0.5s ease ${i * 0.12}s, transform 0.5s ease ${i * 0.12}s`,
+	              }}
+	            >
+	              <div style={{
+	                fontFamily: 'var(--font-display)',
+	                fontSize: '3rem',
+	                color: 'rgba(200,164,78,0.25)',
+	                lineHeight: 1,
+	                marginBottom: '1rem',
+	                textAlign: 'center'
+	              }}>
+	                {step.num}
+	              </div>
+	              <h3 style={{
+	                fontFamily: 'var(--font-display)',
+	                fontSize: '1.3rem',
+	                fontWeight: 400,
+	                marginBottom: '0.75rem',
+	                color: 'var(--color-text)',
+	                textAlign: 'center'
+	              }}>
+	                {step.title}
+	              </h3>
+	              <p style={{
+	                fontSize: '0.875rem',
+	                color: 'var(--color-text-muted)',
+	                lineHeight: 1.75,
+	                fontWeight: 300,
+	                textAlign: 'center'
+	              }}>
+	                {step.text}
+	              </p>
+	            </div>
+	          ))}
+	        </div>
       </div>
 
       <style>{`

@@ -167,7 +167,7 @@ export default function ServiceContent() {
               </div>
               <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
                 {portfolioItems.map(item => (
-                  <div key={item.title} style={{ background: 'var(--color-surface-2)', border: '1px solid rgba(200,164,78,0.12)', padding: '2rem' }}>
+                  <div key={item.title} style={{ background: 'var(--color-surface-2)', border: '1px solid rgba(200,164,78,0.12)', padding: '2rem', textAlign: 'center' }}>
                     <div style={{ fontSize: '2.2rem', marginBottom: '1rem' }}>{item.icon}</div>
                     <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.15rem', fontWeight: 400, marginBottom: '0.75rem', color: 'var(--color-gold)' }}>{item.title}</h3>
                     <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.7, fontWeight: 300, margin: 0 }}>{item.text}</p>
@@ -208,13 +208,13 @@ export default function ServiceContent() {
                     <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.7, marginBottom: '1.5rem', fontWeight: 300 }}>{pkg.description}</p>
                     <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 2rem' }}>
                       {pkg.items.map(item => (
-                        <li key={item} style={{ fontSize: '0.88rem', color: 'var(--color-text-muted)', padding: '0.4rem 0', borderBottom: '1px solid rgba(200,164,78,0.08)', display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
-                          <span style={{ color: 'var(--color-gold)', flexShrink: 0, marginTop: '1px' }}>✓</span>
+                        <li key={item} style={{ fontSize: '0.88rem', color: 'var(--color-text-muted)', padding: '0.4rem 0', borderBottom: '1px solid rgba(200,164,78,0.08)', display: 'flex', gap: '0.75rem', alignItems: 'center', justifyContent: 'center' }}>
+                          <span style={{ color: 'var(--color-gold)', flexShrink: 0 }}>✓</span>
                           {item}
                         </li>
                       ))}
                     </ul>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '1.5rem', borderTop: '1px solid rgba(200,164,78,0.1)' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(200,164,78,0.1)' }}>
                       <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.3rem', color: 'var(--color-gold)' }}>{pkg.price}</span>
                       <BookingCTA primary="Anfragen" />
                     </div>
@@ -231,17 +231,17 @@ export default function ServiceContent() {
                 <p className="section-label">Darum Frankies</p>
                 <h2 className="section-title" style={{ margin: '0 auto' }}>Warum Kunden uns wählen</h2>
               </div>
-              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.5rem' }}>
+              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.5rem', justifyContent: 'center' }}>
                 {[
                   { icon: '✓', title: 'Alles aus einer Hand', text: 'Ein Ansprechpartner für Personal, Equipment und Getränke — keine Koordination mehrerer Dienstleister.' },
                   { icon: '⚡', title: 'Zuverlässig & pünktlich', text: 'Wir sind rechtzeitig vor Ort, bauen professionell auf und sorgen für einen reibungslosen Ablauf.' },
-                  { icon: '🤝', title: 'Erfahrenes Team', text: 'Unser Team kennt Events aller Größen — von 50 bis über 500 Gästen im Sauerland und Kreis Olpe.' },
-                  { icon: '💬', title: 'Persönliche Beratung', text: 'Wir nehmen uns Zeit für Ihr Event. Kennenlerngespräch und individuelle Abstimmung vorab sind selbstverständlich.' },
+                  { icon: '🤝', title: 'Erfahrenes Team', text: 'Unser Team weiß genau, worauf es ankommt. Ob Schützenfest oder Hochzeit — wir liefern Qualität.' },
+                  { icon: '💎', title: 'Transparent & fair', text: 'Klare Angebote ohne versteckte Kosten. Wir kalkulieren ehrlich und fair für Ihr Budget.' },
                 ].map(item => (
-                  <div key={item.title} style={{ background: 'var(--color-surface-2)', border: '1px solid rgba(200,164,78,0.1)', padding: '2rem', textAlign: 'center' }}>
-                    <div style={{ fontSize: '1.8rem', color: 'var(--color-gold)', marginBottom: '0.75rem' }}>{item.icon}</div>
+                  <div key={item.title} style={{ textAlign: 'center' }}>
+                    <div style={{ fontSize: '1.5rem', color: 'var(--color-gold)', marginBottom: '0.75rem' }}>{item.icon}</div>
                     <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', fontWeight: 400, marginBottom: '0.5rem' }}>{item.title}</h3>
-                    <p style={{ fontSize: '0.88rem', color: 'var(--color-text-muted)', lineHeight: 1.7, fontWeight: 300, margin: 0 }}>{item.text}</p>
+                    <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)', lineHeight: 1.7, fontWeight: 300, margin: 0 }}>{item.text}</p>
                   </div>
                 ))}
               </div>

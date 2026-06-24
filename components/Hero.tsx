@@ -21,17 +21,25 @@ export default function Hero() {
     const spans = container.querySelectorAll<HTMLSpanElement>('.rotating-word')
     if (!spans.length) return
 
-    const rotate = () => {
-      const current = spans[currentRef.current]
-      current.classList.add('exit')
-      current.classList.remove('active')
-      currentRef.current = (currentRef.current + 1) % spans.length
-      const next = spans[currentRef.current]
-      setTimeout(() => {
-        current.classList.remove('exit')
-        next.classList.add('active')
-      }, 400)
-    }
+	    const rotate = () => {
+	      const current = spans[currentRef.current]
+	      current.classList.add('exit')
+	      current.classList.remove('active')
+	      currentRef.current = (currentRef.current + 1) % spans.length
+	      const next = spans[currentRef.current]
+	      
+	      // Reset position before showing next word
+	      next.style.left = '50%'
+	      next.style.transform = 'translateX(-50%) translateY(20px)'
+	      
+	      setTimeout(() => {
+	        current.classList.remove('exit')
+	        next.classList.add('active')
+	        // Ensure active word stays centered
+	        next.style.left = '50%'
+	        next.style.transform = 'translateX(-50%) translateY(0)'
+	      }, 400)
+	    }
 
     const interval = setInterval(rotate, 2200)
     return () => clearInterval(interval)

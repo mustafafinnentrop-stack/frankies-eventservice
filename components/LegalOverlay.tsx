@@ -16,7 +16,7 @@ export default function LegalOverlay({ id, onClose }: Props) {
   return (
     <div className="legal-overlay active" id={id}>
       <button className="legal-close" onClick={onClose}>&times;</button>
-      <div className="legal-content">
+      <div className="legal-content" style={{ textAlign: 'center' }}>
         {id === 'impressum' ? <Impressum /> : id === 'datenschutz' ? <Datenschutz /> : <AGB />}
       </div>
     </div>

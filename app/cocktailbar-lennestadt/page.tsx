@@ -129,7 +129,7 @@ export default function CocktailbarLennestadt() {
                 <div className="cocktail-visual reveal-left glow-frame">
                   <Image src="/IMG_4855.JPG" alt="Mobile Cocktailbar mit Bulli und Bambustheke für Events in Lennestadt" width={600} height={750} priority unoptimized style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
-                <div className="reveal">
+                <div className="reveal" style={{ textAlign: 'center' }}>
                   <p className="section-label">Einzigartiges Flair</p>
                   <h2 className="section-title">Cocktailbar mieten<br />im Kreis Olpe</h2>
                   <p className="section-text">Frankies Eventservice bietet vollständige mobile Cocktailbars für alle Veranstaltungen in Lennestadt, Finnentrop, Kirchhundem, Attendorn und dem gesamten Kreis Olpe. Unser VW-Bulli mit integrierter Bar ist der Blickfang auf jedem Event.</p>
@@ -178,7 +178,7 @@ export default function CocktailbarLennestadt() {
                     )}
                     <p style={{ fontSize: '0.65rem', letterSpacing: '0.25em', color: 'var(--color-gold)', textTransform: 'uppercase', marginBottom: '0.5rem' }}>{p.badge}</p>
                     <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.8rem', fontWeight: 400, marginBottom: '1.25rem' }}>{p.name}</h3>
-                    <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.25rem', flex: 1 }}>
+                    <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.25rem', flex: 1, textAlign: 'left' }}>
                       {p.highlights.map(h => (
                         <li key={h} style={{ display: 'flex', gap: '0.6rem', alignItems: 'flex-start', fontSize: '0.88rem', color: 'var(--color-text-muted)', fontWeight: 300, lineHeight: 1.6, marginBottom: '0.4rem' }}>
                           <span style={{ color: 'var(--color-gold)', flexShrink: 0, marginTop: '0.1rem' }}>✓</span>
