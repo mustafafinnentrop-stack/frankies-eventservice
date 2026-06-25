@@ -130,8 +130,8 @@ export default function CocktailbarLennestadt() {
                   <Image src="/IMG_4855.JPG" alt="Mobile Cocktailbar mit Bulli und Bambustheke für Events in Lennestadt" width={600} height={750} priority unoptimized style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
                 <div className="reveal" style={{ textAlign: 'center' }}>
-                  <p className="section-label">Einzigartiges Flair</p>
-                  <h2 className="section-title">Cocktailbar mieten<br />im Kreis Olpe</h2>
+                  <p className="section-label" style={{ margin: '0 auto 1rem' }}>Einzigartiges Flair</p>
+                  <h2 className="section-title" style={{ margin: '0 auto 1.5rem' }}>Cocktailbar mieten<br />im Kreis Olpe</h2>
                   <p className="section-text">Frankies Eventservice bietet vollständige mobile Cocktailbars für alle Veranstaltungen in Lennestadt, Finnentrop, Kirchhundem, Attendorn und dem gesamten Kreis Olpe. Unser VW-Bulli mit integrierter Bar ist der Blickfang auf jedem Event.</p>
                   <p className="section-text" style={{ marginTop: '1rem' }}>Die stylische Bambustheke sorgt für einzigartiges Ambiente — Hochzeitsfeier, JGA, Geburtstag oder Firmenfeier. Unsere erfahrenen Barkeeper bereiten frische Cocktailkreationen direkt bei Ihnen zu.</p>
                   <div className="cocktail-features stagger-children reveal" style={{ marginTop: '2rem' }}>

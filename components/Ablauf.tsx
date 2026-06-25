@@ -42,9 +42,9 @@ export default function Ablauf() {
   return (
     <section id="ablauf" style={{ padding: '5rem 2rem', background: 'var(--color-bg)' }}>
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-        <div className="reveal" style={{ marginBottom: '3rem' }}>
-          <p className="section-label">So arbeiten wir</p>
-          <h2 className="section-title">In vier Schritten<br />zu Ihrem Event</h2>
+        <div className="reveal" style={{ marginBottom: '3rem', textAlign: 'center' }}>
+          <p className="section-label" style={{ margin: '0 auto 1rem' }}>So arbeiten wir</p>
+          <h2 className="section-title" style={{ margin: '0 auto' }}>In vier Schritten<br />zu Ihrem Event</h2>
         </div>
 
         <div

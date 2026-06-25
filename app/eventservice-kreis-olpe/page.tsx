@@ -73,8 +73,8 @@ export default function EventserviceKreisOlpe() {
             <div className="section-container">
               <div className="cocktail-grid">
                 <div className="reveal" style={{ textAlign: 'center' }}>
-                  <p className="section-label">Ihre Veranstaltung</p>
-                  <h2 className="section-title">Veranstaltungsservice<br />für alle Anlässe</h2>
+                  <p className="section-label" style={{ margin: '0 auto 1rem' }}>Ihre Veranstaltung</p>
+                  <h2 className="section-title" style={{ margin: '0 auto 1.5rem' }}>Veranstaltungsservice<br />für alle Anlässe</h2>
                   <p className="section-text">
                     Egal ob Schützenfest, Hochzeit, Vereinsjubiläum, Firmenfeier oder Dorffest — wir bieten Ihnen einen zuverlässigen und professionellen Getränkeservice für Veranstaltungen jeder Art und jeder Größe im Kreis Olpe.
                   </p>

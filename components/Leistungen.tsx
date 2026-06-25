@@ -2,10 +2,10 @@ export default function Leistungen() {
   return (
     <section id="leistungen">
       <div className="section-container">
-        <div className="reveal">
-          <p className="section-label">Was wir bieten</p>
-          <h2 className="section-title">Getränkeservice für<br />Ihre Veranstaltung</h2>
-          <p className="section-text">
+        <div className="reveal" style={{ textAlign: 'center' }}>
+          <p className="section-label" style={{ margin: '0 auto 1rem' }}>Was wir bieten</p>
+          <h2 className="section-title" style={{ margin: '0 auto 1.5rem' }}>Getränkeservice für<br />Ihre Veranstaltung</h2>
+          <p className="section-text" style={{ margin: '0 auto 3rem' }}>
             Egal ob kleines Gartenfest oder großes Schützenfest — wir übernehmen den
             kompletten Getränkeausschank. Dadurch können Sie sich voll und ganz auf
             Ihre Gäste konzentrieren. Denn wir kümmern uns um alles: von der Theke

@@ -84,8 +84,8 @@ export default function GetraenkeserviceSchuetzenfest() {
                   />
                 </div>
                 <div className="reveal" style={{ textAlign: 'center' }}>
-                  <p className="section-label">Erfahrener Zapfservice</p>
-                  <h2 className="section-title">Professioneller<br />Thekenservice</h2>
+                  <p className="section-label" style={{ margin: '0 auto 1rem' }}>Erfahrener Zapfservice</p>
+                  <h2 className="section-title" style={{ margin: '0 auto 1.5rem' }}>Professioneller<br />Thekenservice</h2>
                   <p className="section-text">
                     Ein Schützenfest steht und fällt mit dem Thekenservice. Frankies Eventservice übernimmt den gesamten Getränkeausschank — vom Aufbau bis zum Abbau. Unser eingespieltes Team sorgt dafür, dass kein Glas leer bleibt.
                   </p>

@@ -73,8 +73,8 @@ export default function HochzeitSauerland() {
             <div className="section-container">
               <div className="cocktail-grid">
                 <div className="reveal" style={{ textAlign: 'center' }}>
-                  <p className="section-label">Ihr Tag, unser Service</p>
-                  <h2 className="section-title">Thekenservice &amp;<br />Cocktailbar für Hochzeiten</h2>
+                  <p className="section-label" style={{ margin: '0 auto 1rem' }}>Ihr Tag, unser Service</p>
+                  <h2 className="section-title" style={{ margin: '0 auto 1.5rem' }}>Thekenservice &amp;<br />Cocktailbar für Hochzeiten</h2>
                   <p className="section-text">
                     Frankies Eventservice ist Ihr zuverlässiger Partner für Hochzeiten im Kreis Olpe und dem Sauerland. Wir bieten sowohl klassischen Thekenservice als auch unsere mobile Cocktailbar mit Bulli und Bambustheke — je nach Ihren Wünschen.
                   </p>
