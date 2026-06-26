@@ -89,12 +89,10 @@ nav.scrolled {
 }
 .hero-bg {
     position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 20% 50%, rgba(200,164,78,0.08) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 20%, rgba(200,164,78,0.05) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 80%, rgba(200,164,78,0.03) 0%, transparent 40%);
+    background: radial-gradient(ellipse at 50% 50%, rgba(200,164,78,0.04) 0%, transparent 70%);
 }
 .hero-pattern {
-    position: absolute; inset: 0; opacity: 0.03;
+    position: absolute; inset: 0; opacity: 0.02;
     background-image: repeating-linear-gradient(45deg, transparent, transparent 40px,
         rgba(200,164,78,0.5) 40px, rgba(200,164,78,0.5) 41px);
 }
@@ -116,48 +114,20 @@ nav.scrolled {
 }
 @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.3} }
 .hero h1 {
-    font-family: var(--font-display); font-size: clamp(1.8rem,8vw,6.5rem);
-    font-weight: 400; line-height: 1.05; margin-bottom: 1.5rem;
-    animation: fadeInUp 0.8s ease 0.4s both;
+    font-family: var(--font-display); font-size: clamp(2.2rem,6vw,4.5rem);
+    font-weight: 400; line-height: 1.15; margin-bottom: 2rem;
+    animation: fadeInUp 0.8s ease 0.4s both; letter-spacing: -0.02em;
+    color: var(--color-text);
 }
-.hero h1 em { color: var(--color-gold); font-style: italic; }
+.hero-highlight {
+    color: var(--color-gold); font-weight: 400; display: block; margin-top: 0.5rem;
+}
 
-/* Rotating words */
-.rotating-wrapper {
-    display: inline-block;
-    position: relative;
-    min-width: 280px;
-    text-align: center;
-}
-.rotating-words {
-    display: inline-block;
-    position: relative;
-}
-.rotating-word {
-    display: inline-block;
-    opacity: 0;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%) translateY(20px);
-    white-space: nowrap;
-    color: var(--color-gold);
-    font-style: italic;
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.rotating-word.active {
-    opacity: 1;
-    position: relative;
-    left: auto;
-    transform: translateX(0) translateY(0);
-}
-.rotating-word.exit {
-    opacity: 0;
-    transform: translateX(-50%) translateY(-20px);
-}
+/* Removed rotating words for premium look */
 .hero-sub {
-    font-size: 1.1rem; font-weight: 300; color: var(--color-text-muted);
-    max-width: 550px; margin: 0 auto 3rem; line-height: 1.8;
-    animation: fadeInUp 0.8s ease 0.6s both;
+    font-size: 1rem; font-weight: 300; color: var(--color-text-muted);
+    max-width: 600px; margin: 0 auto 3.5rem; line-height: 1.85;
+    animation: fadeInUp 0.8s ease 0.6s both; letter-spacing: 0.01em;
 }
 .hero-actions {
     display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
@@ -165,23 +135,24 @@ nav.scrolled {
 }
 .btn-primary {
     background: var(--color-gold); color: var(--color-bg);
-    padding: 1rem 2.5rem; font-family: var(--font-body);
-    font-size: 0.85rem; font-weight: 600; letter-spacing: 0.1em;
+    padding: 0.95rem 2.75rem; font-family: var(--font-body);
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em;
     text-transform: uppercase; border: none; cursor: pointer;
-    text-decoration: none; transition: all 0.3s ease; display: inline-block;
+    text-decoration: none; transition: all 0.4s ease; display: inline-block;
+    box-shadow: 0 4px 20px rgba(200,164,78,0.15);
 }
 .btn-primary:hover {
-    background: var(--color-gold-light); transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(200,164,78,0.25);
+    background: var(--color-gold-light); transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(200,164,78,0.35);
 }
 .btn-secondary {
     background: transparent; color: var(--color-text);
-    padding: 1rem 2.5rem; font-family: var(--font-body);
-    font-size: 0.85rem; font-weight: 400; letter-spacing: 0.1em;
-    text-transform: uppercase; border: 1px solid rgba(240,236,227,0.2);
-    cursor: pointer; text-decoration: none; transition: all 0.3s ease;
+    padding: 0.95rem 2.75rem; font-family: var(--font-body);
+    font-size: 0.8rem; font-weight: 400; letter-spacing: 0.12em;
+    text-transform: uppercase; border: 1px solid rgba(240,236,227,0.25);
+    cursor: pointer; text-decoration: none; transition: all 0.4s ease;
 }
-.btn-secondary:hover { border-color: var(--color-gold); color: var(--color-gold); }
+.btn-secondary:hover { border-color: var(--color-gold); color: var(--color-gold); background: rgba(200,164,78,0.05); }
 .hero-scroll {
     position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%);
     display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
