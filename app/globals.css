@@ -17,15 +17,29 @@
 html { scroll-behavior: smooth; font-size: 16px; }
 body {
     font-family: var(--font-body);
-    background: var(--color-bg);
+    background-color: var(--color-bg);
+    background-image: url('/bg-full.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center top;
     color: var(--color-text);
     overflow-x: hidden;
     line-height: 1.6;
 }
 
+/* Globale Overlay-Schicht über dem Hintergrundbild */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(12,12,12,0.72);
+    pointer-events: none;
+    z-index: 0;
+}
+
 /* NAV */
 nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100; /* über body::before (z-index:0) */
     padding: 1.25rem 2rem;
     display: flex; justify-content: space-between; align-items: center;
     transition: all 0.4s ease; background: transparent;
@@ -86,15 +100,13 @@ nav.scrolled {
 .hero {
     min-height: 100vh; display: flex; align-items: center;
     justify-content: center; position: relative; overflow: hidden;
+    background: transparent;
 }
 .hero-bg {
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 50% 50%, rgba(200,164,78,0.04) 0%, transparent 70%);
+    display: none;
 }
 .hero-pattern {
-    position: absolute; inset: 0; opacity: 0.02;
-    background-image: repeating-linear-gradient(45deg, transparent, transparent 40px,
-        rgba(200,164,78,0.5) 40px, rgba(200,164,78,0.5) 41px);
+    display: none;
 }
 .hero-content {
     text-align: center; position: relative; z-index: 2;
@@ -222,16 +234,23 @@ section { padding: 6.5rem 2rem; }
     text-align: center; margin-left: auto; margin-right: auto; display: block; letter-spacing: 0.005em;
 }
 
+/* SEKTIONEN - alle transparent damit Panorama-Bild durchscheint */
+section {
+    position: relative;
+    z-index: 1;
+}
+
 /* LEISTUNGEN */
-#leistungen { background: var(--color-surface); }
+#leistungen { background: rgba(22,22,22,0.75); }
 .services-grid {
     display: grid; grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem; margin-top: 3.5rem; place-items: center; justify-content: center;
 }
 .service-card {
-    background: var(--color-surface); border: 1px solid rgba(200,164,78,0.12);
+    background: rgba(22,22,22,0.80); border: 1px solid rgba(200,164,78,0.12);
     padding: 2.75rem 2.5rem; transition: all 0.5s ease; position: relative; overflow: hidden;
     text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    backdrop-filter: blur(8px);
 }
 .service-card::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
@@ -343,7 +362,7 @@ section { padding: 6.5rem 2rem; }
 }
 
 /* ABLAUF */
-#ablauf { background: var(--color-surface); }
+#ablauf { background: rgba(22,22,22,0.80); }
 .process-steps {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
     gap: 2rem; margin-top: 3.5rem; place-items: center; justify-content: center;
@@ -367,7 +386,7 @@ section { padding: 6.5rem 2rem; }
 
 /* CTA */
 .cta-section {
-    background: var(--color-surface); text-align: center;
+    background: rgba(22,22,22,0.82); text-align: center;
     padding: 7rem 2rem; position: relative; overflow: hidden;
 }
 .cta-section::before {
@@ -449,7 +468,7 @@ section { padding: 6.5rem 2rem; }
 }
 
 /* FOOTER */
-footer { padding: 3rem 2rem; border-top: 1px solid rgba(200,164,78,0.08); }
+footer { padding: 3rem 2rem; border-top: 1px solid rgba(200,164,78,0.08); background: rgba(12,12,12,0.90); position: relative; z-index: 1; }
 .footer-inner {
     max-width: 1100px; margin: 0 auto; display: flex;
     justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
@@ -691,6 +710,15 @@ body:hover .cursor-glow { opacity: 1; }
 
 /* Smooth page entrance */
 body { animation: fadeIn 0.5s ease; }
+
+/* MOBILE: background-attachment fixed funktioniert auf iOS nicht - Fallback */
+@media (max-width: 768px) {
+    body {
+        background-attachment: scroll;
+        background-size: auto 300%;
+        background-position: center top;
+    }
+}
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
