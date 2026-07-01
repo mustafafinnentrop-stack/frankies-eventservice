@@ -10,9 +10,48 @@ const WORDS = [
 ]
 
 export default function Hero() {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const currentRef = useRef(0)
   const [bookingOpen, setBookingOpen] = useState(false)
 
+  useEffect(() => {
+    const container = containerRef.current
+    if (!container) return
+    const spans = container.querySelectorAll<HTMLSpanElement>('.rotating-word')
+    if (!spans.length) return
+    const rotate = () => {
+      const current = spans[currentRef.current]
+      current.classList.add('exit')
+      current.classList.remove('active')
+      currentRef.current = (currentRef.current + 1) % spans.length
+      const next = spans[currentRef.current]
 
+      next.style.left = '50%'
+      next.style.transform = 'translateX(-50%) translateY(20px)'
+
+      setTimeout(() => {
+        current.classList.remove('exit')
+        next.classList.add('active')
+        next.style.left = '50%'
+        next.style.transform = 'translateX(-50%) translateY(0)'
+      }, 400)
+    }
+    const interval = setInterval(rotate, 2200)
+    return () => clearInterval(interval)
+  }, [])
+
+  useEffect(() => {
+    const heroBg = document.querySelector<HTMLElement>('.hero-bg')
+    const hero = document.querySelector<HTMLElement>('.hero')
+    if (!heroBg || !hero) return
+    const onMouseMove = (e: MouseEvent) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 20
+      const y = (e.clientY / window.innerHeight - 0.5) * 20
+      heroBg.style.transform = `translate(${x}px, ${y}px)`
+    }
+    hero.addEventListener('mousemove', onMouseMove)
+    return () => hero.removeEventListener('mousemove', onMouseMove)
+  }, [])
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id)
@@ -27,8 +66,19 @@ export default function Hero() {
       <div className="hero-content">
         <div className="hero-badge">Eventservice im Sauerland</div>
         <h1>
-          Professioneller Getränke- & Thekenservice<br />
-          <span className="hero-highlight">für Ihr Event im Sauerland</span>
+          Wir machen
+          <br />
+          <span className="rotating-wrapper">
+            <span className="rotating-words" ref={containerRef}>
+              {WORDS.map((word, i) => (
+                <span key={word} className={`rotating-word${i === 0 ? ' active' : ''}`}>
+                  {word}
+                </span>
+              ))}
+            </span>
+          </span>
+          <br />
+          perfekt
         </h1>
         <p className="hero-sub">
           Ob Schützenfest, Hochzeit oder Firmenfeier — wir liefern den kompletten
