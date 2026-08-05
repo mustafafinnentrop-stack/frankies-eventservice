@@ -55,6 +55,20 @@ body::before {
     z-index: 0;
 }
 
+/* Abschnitts-Abstaende.
+   Vorher standen 6rem fest im Inline-Style jedes <section>. Inline schlaegt
+   jede CSS-Regel, damit war der Abstand auf dem Handy nicht korrigierbar —
+   21 Abschnitte a 192px Luft haben die Startseite auf ueber 10.000px
+   getrieben. Als Klasse laesst er sich pro Breite steuern. */
+.section-block { padding: 6rem 2rem; }
+.section-block--alt { background: var(--color-surface); }
+
+/* Textspalten neben einem Bild waren durchgehend zentriert. Zentrierter
+   Fliesstext ist ueber mehrere Zeilen schwerer zu lesen — das Auge muss
+   jeden Zeilenanfang neu suchen — und laesst jeden Abschnitt gleich wirken. */
+.grid-text { text-align: left; }
+
+
 /* NAV */
 nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100; /* über body::before (z-index:0) */
@@ -427,15 +441,22 @@ section {
     font-family: var(--font-display); font-size: 1.2rem;
     color: var(--color-text-muted); font-style: italic;
 }
-.about-stats {
-    display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem;
-    margin-top: 2.5rem; padding-top: 2.5rem;
-    border-top: 1px solid rgba(200,164,78,0.1); place-items: center; justify-content: center; text-align: center;
+/* Ersetzt die frueheren "Kennzahlen" (100% Einsatz / 24/7 / A-Z). Das waren
+   keine Zahlen, sondern Fuellwerte — sie stehen so auf beliebig vielen Seiten
+   und kosten eher Glaubwuerdigkeit, als sie welche schaffen. Hier stehen jetzt
+   nachpruefbare Angaben. */
+.about-facts {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.75rem; margin-top: 2.5rem; padding-top: 2.5rem;
+    border-top: 1px solid rgba(200,164,78,0.12); text-align: left;
 }
-.stat-number { font-family: var(--font-display); font-size: 2.2rem; color: var(--color-gold); }
-.stat-label {
-    font-size: 0.75rem; color: var(--color-text-muted); text-transform: uppercase;
-    letter-spacing: 0.1em; margin-top: 0.25rem; font-weight: 400;
+.fact-label {
+    font-size: 0.7rem; color: var(--color-gold); text-transform: uppercase;
+    letter-spacing: 0.18em; font-weight: 500; margin-bottom: 0.4rem;
+}
+.fact-value {
+    font-family: var(--font-display); font-size: 1.05rem;
+    color: var(--color-text); line-height: 1.4;
 }
 
 /* ABLAUF */
@@ -730,13 +751,6 @@ footer { padding: 3rem 2rem; border-top: 1px solid rgba(200,164,78,0.08); backgr
     box-shadow: 0 8px 20px rgba(200,164,78,0.15);
 }
 
-/* Stats hover scale */
-.stat-number { transition: all 0.4s cubic-bezier(0.16,1,0.3,1); }
-.about-stats > div:hover .stat-number {
-    transform: scale(1.15);
-    text-shadow: 0 0 20px rgba(200,164,78,0.3);
-}
-
 /* Section label animated underline */
 .section-label { position: relative; display: inline-block; padding-bottom: 4px; }
 .section-label::after {
@@ -954,3 +968,33 @@ body { animation: fadeIn 0.5s ease; }
     .hero h1 { font-size: clamp(2.5rem,10vw,4rem); }
 }
     
+/* =========================================================================
+   Abstaende auf schmalen Geraeten
+   Bewusst am Dateiende: mehrere der hier ueberschriebenen Regeln stehen
+   weiter oben mit gleicher Spezifitaet (#leistungen, .cta-section). Bei
+   gleicher Spezifitaet entscheidet die Reihenfolge — eine Media Query
+   erhoeht sie nicht.
+   Vorher: 6.5rem oben und unten je Abschnitt, dazu 8rem Sockel bei zwei
+   Abschnitten. Auf einem 390px-Display sind das ueber 200px Leerraum pro
+   Abschnitt und in Summe der Hauptgrund fuer die Seitenlaenge.
+   ========================================================================= */
+/* `.section-text` bringt selbst `text-align: center` und automatische
+   Seitenraender mit — die Klasse am Container allein reicht deshalb nicht,
+   die Kindelemente muessen einzeln zurueckgesetzt werden. */
+.grid-text .section-text,
+.grid-text .section-title,
+.grid-text .section-label {
+    text-align: left;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+@media (max-width: 768px) {
+    section { padding: 3.25rem 1.25rem; }
+    .section-block { padding: 3.25rem 1.25rem; }
+    #leistungen, #ablauf { padding-bottom: 4rem; }
+    .cta-section { padding: 3.5rem 1.25rem; }
+    .hero { min-height: auto; padding-top: 7rem; padding-bottom: 3rem; }
+    .hero-content { padding: 1rem 1.25rem 3rem; }
+    .hero-sub { margin-bottom: 2.25rem; }
+}

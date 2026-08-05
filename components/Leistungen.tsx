@@ -2,7 +2,7 @@ export default function Leistungen() {
   return (
     <section id="leistungen">
       <div className="section-container">
-        <div className="reveal" style={{ textAlign: 'center' }}>
+        <div className="reveal grid-text">
           <p className="section-label" style={{ margin: '0 auto 1rem' }}>Unsere Leistungen</p>
           <h2 className="section-title" style={{ margin: '0 auto 1.5rem' }}>Professioneller Service<br />für jeden Anlass</h2>
           <p className="section-text" style={{ margin: '0 auto 3rem' }}>

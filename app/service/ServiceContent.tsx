@@ -160,7 +160,7 @@ export default function ServiceContent() {
           </section>
 
           {/* Portfolio */}
-          <section style={{ padding: '6rem 2rem', background: 'var(--color-surface)' }}>
+          <section className="section-block section-block--alt">
             <div className="section-container">
               <div className="reveal" style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
                 <p className="section-label">Was wir bieten</p>
@@ -182,7 +182,7 @@ export default function ServiceContent() {
           </section>
 
           {/* Pakete */}
-          <section style={{ padding: '6rem 2rem' }}>
+          <section className="section-block">
             <div className="section-container">
               <div className="reveal" style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
                 <p className="section-label">Unsere Pakete</p>
@@ -229,7 +229,7 @@ export default function ServiceContent() {
           </section>
 
           {/* Warum Frankies */}
-          <section style={{ padding: '6rem 2rem', background: 'var(--color-surface)' }}>
+          <section className="section-block section-block--alt">
             <div className="section-container">
               <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
                 <p className="section-label">Darum Frankies</p>

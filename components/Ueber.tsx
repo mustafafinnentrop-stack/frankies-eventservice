@@ -4,7 +4,7 @@ export default function Ueber() {
   return (
     <section id="ueber">
       <div className="section-container">
-        <div className="reveal" style={{ textAlign: 'center' }}>
+        <div className="reveal grid-text">
           <p className="section-label">Über uns</p>
           <h2 className="section-title">Aus dem Sauerland,<br />für das Sauerland</h2>
           
@@ -38,18 +38,18 @@ export default function Ueber() {
             zur Seite.
           </p>
 
-          <div className="about-stats" style={{ justifyContent: 'center', marginTop: '3rem' }}>
+          <div className="about-facts">
             <div>
-              <div className="stat-number">100%</div>
-              <div className="stat-label">Einsatz</div>
+              <div className="fact-label">Sitz</div>
+              <div className="fact-value">Lennestadt, Kreis Olpe</div>
             </div>
             <div>
-              <div className="stat-number">24/7</div>
-              <div className="stat-label">Erreichbar</div>
+              <div className="fact-label">Einsatzgebiet</div>
+              <div className="fact-value">Kreis Olpe &amp; Sauerland</div>
             </div>
             <div>
-              <div className="stat-number">A–Z</div>
-              <div className="stat-label">Full Service</div>
+              <div className="fact-label">Anfragen</div>
+              <div className="fact-value">Antwort binnen 24 Stunden</div>
             </div>
           </div>
         </div>
