@@ -213,7 +213,7 @@ export default function ServiceContent() {
                     <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 2rem' }}>
                       {pkg.items.map(item => (
                         <li key={item} style={{ fontSize: '0.88rem', color: 'var(--color-text-muted)', padding: '0.4rem 0', borderBottom: '1px solid rgba(200,164,78,0.08)', display: 'flex', gap: '0.75rem', alignItems: 'center', justifyContent: 'center' }}>
-                          <span style={{ color: 'var(--color-gold)', flexShrink: 0 }}>check</span>
+                          <span style={{ color: 'var(--color-gold)', flexShrink: 0, display: 'inline-flex' }}><Icon name="check" size={16} /></span>
                           {item}
                         </li>
                       ))}

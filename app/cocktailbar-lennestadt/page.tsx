@@ -182,7 +182,7 @@ export default function CocktailbarLennestadt() {
                     <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.25rem', flex: 1, textAlign: 'left' }}>
                       {p.highlights.map(h => (
                         <li key={h} style={{ display: 'flex', gap: '0.6rem', alignItems: 'flex-start', fontSize: '0.88rem', color: 'var(--color-text-muted)', fontWeight: 300, lineHeight: 1.6, marginBottom: '0.4rem' }}>
-                          <span style={{ color: 'var(--color-gold)', flexShrink: 0, marginTop: '0.1rem' }}>check</span>
+                          <span style={{ color: 'var(--color-gold)', flexShrink: 0, marginTop: '0.15rem', display: 'inline-flex' }}><Icon name="check" size={16} /></span>
                           {h}
                         </li>
                       ))}
