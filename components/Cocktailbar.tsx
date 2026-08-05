@@ -11,12 +11,12 @@ export default function Cocktailbar() {
           <p className="section-label">Unser Highlight</p>
           <h2 className="section-title">Mobile Cocktailbar —<br />Bulli &amp; Bambustheke</h2>
           
-          <div className="cocktail-visual glow-frame" style={{ maxWidth: '600px', margin: '0 auto 3rem', aspectRatio: '4/3' }}>
+          <div className="cocktail-visual glow-frame" style={{ maxWidth: '600px', margin: '0 auto 3rem', aspectRatio: '4/5' }}>
             <Image
-              src="/IMG_5255.jpeg"
+              src="/cocktail.webp"
               alt="Frankies Eventservice – Mobile Cocktailbar mit Bambustheke für Events im Sauerland"
               width={600}
-              height={450}
+              height={750}
               priority
               sizes="(max-width: 768px) 100vw, 600px"
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}

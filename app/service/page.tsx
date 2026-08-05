@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import ServiceContent from './ServiceContent'
 
 const PAGE_URL = 'https://frankies-eventservice.de/service'
-const OG_IMAGE = 'https://frankies-eventservice.de/IMG_5255.jpeg'
+const OG_IMAGE = 'https://frankies-eventservice.de/og/service.jpg'
 
 export const metadata: Metadata = {
   title: 'Service-Pakete & Portfolio | Eventservice aus einer Hand – Frankies Eventservice',

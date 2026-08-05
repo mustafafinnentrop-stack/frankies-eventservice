@@ -6,7 +6,7 @@ import RevealWrapper from '@/components/RevealWrapper'
 import BookingCTA from '@/components/BookingCTA'
 
 const PAGE_URL = 'https://frankies-eventservice.de/hochzeit-sauerland'
-const OG_IMAGE = 'https://frankies-eventservice.de/IMG_5255.jpeg'
+const OG_IMAGE = 'https://frankies-eventservice.de/og/hochzeit.jpg'
 
 export const metadata: Metadata = {
   title: 'Thekenservice Hochzeit Sauerland | Getränkeservice für Hochzeiten – Frankies Eventservice',
@@ -114,7 +114,7 @@ export default function HochzeitSauerland() {
                 </div>
                 <div className="cocktail-visual reveal-right glow-frame">
                   <Image
-                    src="/IMG_5255.jpeg"
+                    src="/glaeser.webp"
                     alt="Thekenservice und Cocktailbar für Hochzeiten im Sauerland"
                     width={600}
                     height={750}
