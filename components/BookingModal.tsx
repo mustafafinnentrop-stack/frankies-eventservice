@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
+import Icon from './Icon'
 
 const EVENT_TYPES = ['Hochzeit', 'Schützenfest', 'Geburtstag', 'Firmenfeier', 'JGA', 'Vereinsfest', 'Dorffest', 'Sonstiges']
 const GUEST_COUNTS = ['bis 50', '50–100', '100–200', '200–300', '300+']
@@ -120,7 +121,7 @@ export default function BookingModal({ onClose, initialPackage }: Props) {
               {done ? 'Abgeschlossen' : `Schritt ${step} von 2`}
             </p>
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 400, margin: 0 }}>
-              {done ? 'Anfrage gesendet ✓' : step === 1 ? 'Ihre Veranstaltung' : 'Ihre Kontaktdaten'}
+              {done ? 'Anfrage gesendet' : step === 1 ? 'Ihre Veranstaltung' : 'Ihre Kontaktdaten'}
             </h2>
           </div>
           <button onClick={onClose} aria-label="Schließen" style={{ background: 'none', border: 'none', color: 'var(--color-text-muted)', fontSize: '1.8rem', cursor: 'pointer', lineHeight: 1, padding: 0, marginTop: '-4px' }}>×</button>
@@ -131,7 +132,7 @@ export default function BookingModal({ onClose, initialPackage }: Props) {
           {/* DONE */}
           {done && (
             <div style={{ textAlign: 'center' }}>
-              <div style={{ width: 64, height: 64, border: '2px solid var(--color-gold)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem', fontSize: '1.5rem', color: 'var(--color-gold)' }}>✓</div>
+              <div style={{ width: 64, height: 64, border: '2px solid var(--color-gold)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem', color: 'var(--color-gold)' }}><Icon name="check" size={30} /></div>
               <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.8, marginBottom: '0.5rem', fontSize: '1rem' }}>
                 Vielen Dank, <strong style={{ color: 'var(--color-text)' }}>{form.firstName}</strong>!<br />
                 Wir melden uns innerhalb von 24 Stunden bei Ihnen.
@@ -242,7 +243,7 @@ export default function BookingModal({ onClose, initialPackage }: Props) {
               <div style={{ display: 'flex', gap: '0.75rem', marginTop: '0.25rem' }}>
                 <button type="button" onClick={() => setStep(1)} className="btn-secondary" style={{ flex: '0 0 auto', padding: '1rem 1.25rem' }}>← Zurück</button>
                 <button type="button" onClick={submit} disabled={!step2OK || sending} className="btn-primary" style={{ flex: 1, opacity: step2OK && !sending ? 1 : 0.4, cursor: step2OK && !sending ? 'pointer' : 'not-allowed' }}>
-                  {sending ? 'Wird gesendet...' : 'Anfrage absenden ✓'}
+                  {sending ? 'Wird gesendet...' : 'Anfrage absenden'}
                 </button>
               </div>
               <p style={{ fontSize: '0.78rem', color: 'var(--color-text-muted)', marginTop: '0.75rem', textAlign: 'center' }}>

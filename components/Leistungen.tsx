@@ -1,3 +1,4 @@
+import Icon from './Icon'
 export default function Leistungen() {
   return (
     <section id="leistungen">
@@ -13,7 +14,7 @@ export default function Leistungen() {
         </div>
         <div className="services-grid stagger-children reveal">
           <div className="service-card reveal">
-            <div className="service-icon">🍺</div>
+            <div className="service-icon"><Icon name="beer" size={26} /></div>
             <h3>Schützenfeste</h3>
             <p>
               Wir übernehmen den kompletten Thekenservice bei Ihrem Schützenfest.
@@ -22,7 +23,7 @@ export default function Leistungen() {
             </p>
           </div>
           <div className="service-card reveal">
-            <div className="service-icon">🥂</div>
+            <div className="service-icon"><Icon name="champagne" size={26} /></div>
             <h3>Hochzeiten &amp; Feiern</h3>
             <p>
               Ihr besonderer Tag verdient besonderen Service. Deshalb kümmern wir uns
@@ -31,7 +32,7 @@ export default function Leistungen() {
             </p>
           </div>
           <div className="service-card reveal">
-            <div className="service-icon">🍹</div>
+            <div className="service-icon"><Icon name="cocktail" size={26} /></div>
             <h3>Mobile Cocktailbar</h3>
             <p>
               Wir kommen direkt zu Ihnen — mit einer stylischen Bambustheke
@@ -40,7 +41,7 @@ export default function Leistungen() {
             </p>
           </div>
           <div className="service-card reveal">
-            <div className="service-icon">🎪</div>
+            <div className="service-icon"><Icon name="tent" size={26} /></div>
             <h3>Firmen- &amp; Vereinsfeste</h3>
             <p>
               Ob Betriebsfeier, Vereinsjubiläum oder Dorffest — bei uns bekommen
