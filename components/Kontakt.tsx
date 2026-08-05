@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Icon from './Icon'
 
 interface FormData {
   fname: string; lname: string; email: string; phone: string
@@ -155,15 +156,15 @@ export default function Kontakt() {
 
         <div className="cta-contact reveal" style={{ marginTop: '2.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <div className="cta-contact-item" style={{ justifyContent: 'center' }}>
-            <span className="icon">✉</span>
+            <span className="icon"><Icon name="mail" size={18} /></span>
             <a href="mailto:info@frankies-eventservice.de">info@frankies-eventservice.de</a>
           </div>
           <div className="cta-contact-item" style={{ justifyContent: 'center' }}>
-            <span className="icon">✆</span>
+            <span className="icon"><Icon name="phone" size={18} /></span>
             <a href="tel:+4915142840916">0151 42840916</a>
           </div>
           <div className="cta-contact-item" style={{ justifyContent: 'center' }}>
-            <span className="icon">◉</span>
+            <span className="icon"><Icon name="pin" size={18} /></span>
             Hachener Str. 7, 57368 Lennestadt
           </div>
           <div className="cta-contact-item" style={{ justifyContent: 'center' }}>

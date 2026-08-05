@@ -1,6 +1,7 @@
 'use client'
 
 import Navbar from '@/components/Navbar'
+import Icon from '@/components/Icon'
 import Footer from '@/components/Footer'
 import RevealWrapper from '@/components/RevealWrapper'
 import BookingCTA from '@/components/BookingCTA'
@@ -8,47 +9,47 @@ import Kontakt from '@/components/Kontakt'
 
 const portfolioItems = [
   {
-    icon: '👥',
+    icon: 'team',
     title: 'Servicepersonal',
     text: 'Erfahrene Servicekräfte, Barkeeper und Event-Manager für einen professionellen und reibungslosen Ablauf Ihrer Veranstaltung. Wir stellen das passende Team zusammen.',
   },
   {
-    icon: '🍺',
+    icon: 'beer',
     title: 'Getränkeservice & Zapfanlage',
     text: 'Bier vom Fass, Weine, Softdrinks und Säfte mit professioneller Zapfanlage inkl. E-Kühler und CO₂-Versorgung. Lieferung, Aufbau und Abbau inklusive.',
   },
   {
-    icon: '🍸',
+    icon: 'cocktail',
     title: 'Mobile Cocktailbar',
     text: 'Unsere elegante mobile Cocktailbar mit Bambus-Teke kommt direkt zu Ihnen. Frisch gemixter Cocktailservice für Hochzeiten, Firmenfeiern und besondere Anlässe.',
   },
   {
-    icon: '🎪',
+    icon: 'tent',
     title: 'Hüpfburgen & Spielgeräte',
     text: 'Hochwertige Hüpfburgen und Spielgeräte für Kinder und Familien. Perfekt für Schützenfeste, Dorffeste, Geburtstage und Familienveranstaltungen.',
   },
   {
-    icon: '🪑',
+    icon: 'chair',
     title: 'Eventmöbel & Ausstattung',
     text: 'Stehtische, Bistrotische, Bestuhlung und stilvolle Raumausstattung. Wir statten Ihre Veranstaltung komplett aus — von der Theke bis zum letzten Stuhl.',
   },
   {
-    icon: '🍿',
+    icon: 'snack',
     title: 'Fun-Food Module',
     text: 'Slush-Eis-Maschinen, Popcornmaschinen, Candy Bar und weitere kulinarische Highlights. Sorgen Sie für Begeisterung bei Jung und Alt.',
   },
   {
-    icon: '📸',
+    icon: 'camera',
     title: 'Fotoboxen & Foto-Mirror',
     text: 'Moderne Fotoboxen und interaktive Foto-Mirror für unvergessliche Erinnerungen. Ihre Gäste nehmen ein Stück Ihrer Feier mit nach Hause.',
   },
   {
-    icon: '💡',
+    icon: 'bulb',
     title: 'Ambiente-Beleuchtung',
     text: 'Stimmungsvolle LED-Beleuchtung, Leuchtbuchstaben und dekorative Lichtinstallationen für die perfekte Atmosphäre bei Ihrer Veranstaltung.',
   },
   {
-    icon: '🎤',
+    icon: 'mic',
     title: 'Licht- & Tontechnik',
     text: 'Professionelle Beschallungsanlagen, DJ-Equipment, Showtechnik und Bühnenbeleuchtung. Für den perfekten Sound und die passende Stimmung.',
   },
@@ -104,14 +105,14 @@ const packages = [
 ]
 
 const eventTypes = [
-  { icon: '🎊', label: 'Schützenfeste' },
-  { icon: '💍', label: 'Hochzeiten' },
-  { icon: '🎂', label: 'Geburtstage' },
-  { icon: '🏢', label: 'Firmenfeiern' },
-  { icon: '🎭', label: 'Vereinsfeste' },
-  { icon: '🌳', label: 'Dorffeste' },
-  { icon: '🎓', label: 'Abschlussfeiern' },
-  { icon: '🎉', label: 'Sonstige Events' },
+  { icon: 'sparkles', label: 'Schützenfeste' },
+  { icon: 'ring', label: 'Hochzeiten' },
+  { icon: 'cake', label: 'Geburtstage' },
+  { icon: 'building', label: 'Firmenfeiern' },
+  { icon: 'sparkles', label: 'Vereinsfeste' },
+  { icon: 'tent', label: 'Dorffeste' },
+  { icon: 'graduation', label: 'Abschlussfeiern' },
+  { icon: 'sparkles', label: 'Sonstige Events' },
 ]
 
 export default function ServiceContent() {
@@ -150,7 +151,7 @@ export default function ServiceContent() {
               <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(140px, 100%), 1fr))', gap: '1rem' }}>
                 {eventTypes.map(e => (
                   <div key={e.label} style={{ background: 'var(--color-surface)', border: '1px solid rgba(200,164,78,0.12)', padding: '1.5rem 1rem', textAlign: 'center' }}>
-                    <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>{e.icon}</div>
+                    <div style={{ color: 'var(--color-gold)', marginBottom: '0.75rem' }}><Icon name={e.icon} size={28} /></div>
                     <p style={{ fontSize: '0.88rem', color: 'var(--color-text-muted)', fontWeight: 300, margin: 0 }}>{e.label}</p>
                   </div>
                 ))}
@@ -171,7 +172,7 @@ export default function ServiceContent() {
               <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))', gap: '1.5rem' }}>
                 {portfolioItems.map(item => (
                   <div key={item.title} style={{ background: 'var(--color-surface-2)', border: '1px solid rgba(200,164,78,0.12)', padding: '2rem', textAlign: 'center' }}>
-                    <div style={{ fontSize: '2.2rem', marginBottom: '1rem' }}>{item.icon}</div>
+                    <div style={{ color: 'var(--color-gold)', marginBottom: '1rem' }}><Icon name={item.icon} size={28} /></div>
                     <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.15rem', fontWeight: 400, marginBottom: '0.75rem', color: 'var(--color-gold)' }}>{item.title}</h3>
                     <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.7, fontWeight: 300, margin: 0 }}>{item.text}</p>
                   </div>
@@ -212,7 +213,7 @@ export default function ServiceContent() {
                     <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 2rem' }}>
                       {pkg.items.map(item => (
                         <li key={item} style={{ fontSize: '0.88rem', color: 'var(--color-text-muted)', padding: '0.4rem 0', borderBottom: '1px solid rgba(200,164,78,0.08)', display: 'flex', gap: '0.75rem', alignItems: 'center', justifyContent: 'center' }}>
-                          <span style={{ color: 'var(--color-gold)', flexShrink: 0 }}>✓</span>
+                          <span style={{ color: 'var(--color-gold)', flexShrink: 0 }}>check</span>
                           {item}
                         </li>
                       ))}
@@ -236,13 +237,13 @@ export default function ServiceContent() {
               </div>
               <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(220px, 100%), 1fr))', gap: '1.5rem', justifyContent: 'center' }}>
                 {[
-                  { icon: '✓', title: 'Alles aus einer Hand', text: 'Ein Ansprechpartner für Personal, Equipment und Getränke — keine Koordination mehrerer Dienstleister.' },
-                  { icon: '⚡', title: 'Zuverlässig & pünktlich', text: 'Wir sind rechtzeitig vor Ort, bauen professionell auf und sorgen für einen reibungslosen Ablauf.' },
-                  { icon: '🤝', title: 'Erfahrenes Team', text: 'Unser Team weiß genau, worauf es ankommt. Ob Schützenfest oder Hochzeit — wir liefern Qualität.' },
-                  { icon: '💎', title: 'Transparent & fair', text: 'Klare Angebote ohne versteckte Kosten. Wir kalkulieren ehrlich und fair für Ihr Budget.' },
+                  { icon: 'check', title: 'Alles aus einer Hand', text: 'Ein Ansprechpartner für Personal, Equipment und Getränke — keine Koordination mehrerer Dienstleister.' },
+                  { icon: 'bolt', title: 'Zuverlässig & pünktlich', text: 'Wir sind rechtzeitig vor Ort, bauen professionell auf und sorgen für einen reibungslosen Ablauf.' },
+                  { icon: 'team', title: 'Erfahrenes Team', text: 'Unser Team weiß genau, worauf es ankommt. Ob Schützenfest oder Hochzeit — wir liefern Qualität.' },
+                  { icon: 'gem', title: 'Transparent & fair', text: 'Klare Angebote ohne versteckte Kosten. Wir kalkulieren ehrlich und fair für Ihr Budget.' },
                 ].map(item => (
                   <div key={item.title} style={{ textAlign: 'center' }}>
-                    <div style={{ fontSize: '1.5rem', color: 'var(--color-gold)', marginBottom: '0.75rem' }}>{item.icon}</div>
+                    <div style={{ color: 'var(--color-gold)', marginBottom: '0.75rem' }}><Icon name={item.icon} size={28} /></div>
                     <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', fontWeight: 400, marginBottom: '0.5rem' }}>{item.title}</h3>
                     <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)', lineHeight: 1.7, fontWeight: 300, margin: 0 }}>{item.text}</p>
                   </div>

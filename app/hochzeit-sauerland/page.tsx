@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import RevealWrapper from '@/components/RevealWrapper'
 import BookingCTA from '@/components/BookingCTA'
+import Icon from '@/components/Icon'
 
 const PAGE_URL = 'https://frankies-eventservice.de/hochzeit-sauerland'
 const OG_IMAGE = 'https://frankies-eventservice.de/og/hochzeit.jpg'
@@ -83,28 +84,28 @@ export default function HochzeitSauerland() {
                   </p>
                   <div className="cocktail-features stagger-children reveal" style={{ marginTop: '2rem' }}>
                     <div className="cocktail-feature">
-                      <span className="cocktail-feature-icon">🥂</span>
+                      <span className="cocktail-feature-icon"><Icon name="champagne" /></span>
                       <div>
                         <strong>Sektempfang</strong>
                         <span>Stilvoller Start in Ihren Tag</span>
                       </div>
                     </div>
                     <div className="cocktail-feature">
-                      <span className="cocktail-feature-icon">🍹</span>
+                      <span className="cocktail-feature-icon"><Icon name="cocktail" /></span>
                       <div>
                         <strong>Cocktailbar</strong>
                         <span>Mobile Bar mit Bambustheke</span>
                       </div>
                     </div>
                     <div className="cocktail-feature">
-                      <span className="cocktail-feature-icon">🍺</span>
+                      <span className="cocktail-feature-icon"><Icon name="beer" /></span>
                       <div>
                         <strong>Ausschank</strong>
                         <span>Bier, Wein, Softdrinks &amp; mehr</span>
                       </div>
                     </div>
                     <div className="cocktail-feature">
-                      <span className="cocktail-feature-icon">💛</span>
+                      <span className="cocktail-feature-icon"><Icon name="heart" /></span>
                       <div>
                         <strong>Persönlich</strong>
                         <span>Individuell auf Sie abgestimmt</span>
@@ -161,13 +162,13 @@ export default function HochzeitSauerland() {
               </div>
               <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(220px, 100%), 1fr))', gap: '1.5rem', justifyContent: 'center' }}>
                 {[
-                  { icon: '✓', title: 'Alles aus einer Hand', text: 'Von Sektempfang bis Late-Night — ein Ansprechpartner.' },
-                  { icon: '⚡', title: 'Schneller Service', text: 'Kein Warten an der Theke — Ihre Gäste werden zügig bedient.' },
-                  { icon: '🤝', title: 'Erfahren', text: 'Wir kennen den Ablauf einer Hochzeit und passen uns an.' },
-                  { icon: '💬', title: 'Persönlich', text: 'Kennenlerngespräch &amp; individuelle Abstimmung vorab.' },
+                  { icon: 'check', title: 'Alles aus einer Hand', text: 'Von Sektempfang bis Late-Night — ein Ansprechpartner.' },
+                  { icon: 'bolt', title: 'Schneller Service', text: 'Kein Warten an der Theke — Ihre Gäste werden zügig bedient.' },
+                  { icon: 'team', title: 'Erfahren', text: 'Wir kennen den Ablauf einer Hochzeit und passen uns an.' },
+                  { icon: 'chat', title: 'Persönlich', text: 'Kennenlerngespräch &amp; individuelle Abstimmung vorab.' },
                 ].map(item => (
                   <div key={item.title} style={{ background: 'var(--color-surface)', border: '1px solid rgba(200,164,78,0.1)', padding: '2rem', textAlign: 'center' }}>
-                    <div style={{ fontSize: '1.8rem', color: 'var(--color-gold)', marginBottom: '0.75rem' }}>{item.icon}</div>
+                    <div style={{ color: 'var(--color-gold)', marginBottom: '0.75rem' }}><Icon name={item.icon} size={28} /></div>
                     <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', fontWeight: 400, marginBottom: '0.5rem' }}>{item.title}</h3>
                     <p style={{ fontSize: '0.88rem', color: 'var(--color-text-muted)', lineHeight: 1.7, fontWeight: 300 }} dangerouslySetInnerHTML={{ __html: item.text }} />
                   </div>

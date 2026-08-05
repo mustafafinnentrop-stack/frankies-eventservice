@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import BookingCTA from './BookingCTA'
+import Icon from './Icon'
 
 export default function Cocktailbar() {
   return (
@@ -41,28 +42,28 @@ export default function Cocktailbar() {
 
           <div className="cocktail-features stagger-children reveal" style={{ justifyContent: 'center', marginTop: '3rem' }}>
             <div className="cocktail-feature" style={{ textAlign: 'left' }}>
-              <span className="cocktail-feature-icon">🚐</span>
+              <span className="cocktail-feature-icon"><Icon name="van" /></span>
               <div>
                 <strong>Voll mobil</strong>
                 <span>Wir kommen zu Ihrer Location</span>
               </div>
             </div>
             <div className="cocktail-feature" style={{ textAlign: 'left' }}>
-              <span className="cocktail-feature-icon">🎋</span>
+              <span className="cocktail-feature-icon"><Icon name="bamboo" /></span>
               <div>
                 <strong>Bambustheke</strong>
                 <span>Stilvolle Theke mit Urlaubsflair</span>
               </div>
             </div>
             <div className="cocktail-feature" style={{ textAlign: 'left' }}>
-              <span className="cocktail-feature-icon">🍸</span>
+              <span className="cocktail-feature-icon"><Icon name="cocktail" /></span>
               <div>
                 <strong>Frische Cocktails</strong>
                 <span>Klassiker &amp; individuelle Kreationen</span>
               </div>
             </div>
             <div className="cocktail-feature" style={{ textAlign: 'left' }}>
-              <span className="cocktail-feature-icon">📍</span>
+              <span className="cocktail-feature-icon"><Icon name="pin" /></span>
               <div>
                 <strong>Überall einsetzbar</strong>
                 <span>Garten, Wiese, Hof, Halle — wir kommen zu Ihnen</span>
