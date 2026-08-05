@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import RevealWrapper from '@/components/RevealWrapper'
 import BookingCTA from '@/components/BookingCTA'
+import Icon from '@/components/Icon'
 
 const PAGE_URL = 'https://frankies-eventservice.de/getraenkeservice-schuetzenfest'
 const OG_IMAGE = 'https://frankies-eventservice.de/og/schuetzenfest.jpg'
@@ -94,28 +95,28 @@ export default function GetraenkeserviceSchuetzenfest() {
                   </p>
                   <div className="cocktail-features stagger-children reveal" style={{ marginTop: '2rem' }}>
                     <div className="cocktail-feature">
-                      <span className="cocktail-feature-icon">🍺</span>
+                      <span className="cocktail-feature-icon"><Icon name="beer" /></span>
                       <div>
                         <strong>Zapfservice</strong>
                         <span>Fassbier-Ausschank</span>
                       </div>
                     </div>
                     <div className="cocktail-feature">
-                      <span className="cocktail-feature-icon">🏅</span>
+                      <span className="cocktail-feature-icon"><Icon name="award" /></span>
                       <div>
                         <strong>Erfahren</strong>
                         <span>Vertraut mit dem Brauchtum</span>
                       </div>
                     </div>
                     <div className="cocktail-feature">
-                      <span className="cocktail-feature-icon">📅</span>
+                      <span className="cocktail-feature-icon"><Icon name="calendar" /></span>
                       <div>
                         <strong>Ganzes Wochenende</strong>
                         <span>Fr · Sa · So · Mo</span>
                       </div>
                     </div>
                     <div className="cocktail-feature">
-                      <span className="cocktail-feature-icon">✓</span>
+                      <span className="cocktail-feature-icon"><Icon name="check" /></span>
                       <div>
                         <strong>Alles aus einer Hand</strong>
                         <span>Aufbau · Service · Abbau</span>
@@ -166,13 +167,13 @@ export default function GetraenkeserviceSchuetzenfest() {
               </div>
               <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(220px, 100%), 1fr))', gap: '1.5rem', justifyContent: 'center' }}>
                 {[
-                  { icon: '🍻', title: 'Zapfanlagen', text: 'Professionelle Fassbier-Zapfanlagen für Hochbetrieb.' },
-                  { icon: '🏗️', title: 'Theken-Aufbau', text: 'Komplette Theken-Infrastruktur, individuell für Ihre Location.' },
-                  { icon: '👥', title: 'Erfahrenes Team', text: 'Geschultes Personal, das auch bei Hochbetrieb den Überblick behält.' },
-                  { icon: '📦', title: 'Logistik', text: 'Wir kümmern uns um Anlieferung, Kühlung und Nachschub.' },
+                  { icon: 'beer', title: 'Zapfanlagen', text: 'Professionelle Fassbier-Zapfanlagen für Hochbetrieb.' },
+                  { icon: 'counter', title: 'Theken-Aufbau', text: 'Komplette Theken-Infrastruktur, individuell für Ihre Location.' },
+                  { icon: 'team', title: 'Erfahrenes Team', text: 'Geschultes Personal, das auch bei Hochbetrieb den Überblick behält.' },
+                  { icon: 'box', title: 'Logistik', text: 'Wir kümmern uns um Anlieferung, Kühlung und Nachschub.' },
                 ].map(item => (
                   <div key={item.title} style={{ background: 'var(--color-surface)', border: '1px solid rgba(200,164,78,0.1)', padding: '2rem', textAlign: 'center' }}>
-                    <div style={{ fontSize: '1.8rem', marginBottom: '1rem' }}>{item.icon}</div>
+                    <div style={{ color: 'var(--color-gold)', marginBottom: '1rem' }}><Icon name={item.icon} size={28} /></div>
                     <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.15rem', fontWeight: 400, marginBottom: '0.5rem' }}>{item.title}</h3>
                     <p style={{ fontSize: '0.88rem', color: 'var(--color-text-muted)', lineHeight: 1.7, fontWeight: 300 }}>{item.text}</p>
                   </div>

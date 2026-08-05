@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import RevealWrapper from '@/components/RevealWrapper'
 import BookingCTA from '@/components/BookingCTA'
+import Icon from '@/components/Icon'
 
 const PAGE_URL = 'https://frankies-eventservice.de/eventservice-kreis-olpe'
 const OG_IMAGE = 'https://frankies-eventservice.de/og/olpe.jpg'
@@ -83,28 +84,28 @@ export default function EventserviceKreisOlpe() {
                   </p>
                   <div className="cocktail-features stagger-children reveal" style={{ marginTop: '2rem' }}>
                     <div className="cocktail-feature">
-                      <span className="cocktail-feature-icon">🎯</span>
+                      <span className="cocktail-feature-icon"><Icon name="target" /></span>
                       <div>
                         <strong>Flexibel</strong>
                         <span>Jede Größe, jeder Anlass</span>
                       </div>
                     </div>
                     <div className="cocktail-feature">
-                      <span className="cocktail-feature-icon">⚡</span>
+                      <span className="cocktail-feature-icon"><Icon name="bolt" /></span>
                       <div>
                         <strong>Schnell vor Ort</strong>
                         <span>Zentrale Lage in Lennestadt</span>
                       </div>
                     </div>
                     <div className="cocktail-feature">
-                      <span className="cocktail-feature-icon">🤝</span>
+                      <span className="cocktail-feature-icon"><Icon name="team" /></span>
                       <div>
                         <strong>Verlässlich</strong>
                         <span>Pünktlich &amp; professionell</span>
                       </div>
                     </div>
                     <div className="cocktail-feature">
-                      <span className="cocktail-feature-icon">📍</span>
+                      <span className="cocktail-feature-icon"><Icon name="pin" /></span>
                       <div>
                         <strong>Region &amp; Kultur</strong>
                         <span>Wir kennen das Sauerland</span>
@@ -154,16 +155,16 @@ export default function EventserviceKreisOlpe() {
               </div>
               <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(240px, 100%), 1fr))', gap: '1.5rem', justifyContent: 'center' }}>
                 {[
-                  { icon: '🍺', title: 'Getränkeservice', text: 'Kompletter Ausschank inkl. Zapfanlagen, Gläser, Kühlung.', href: '/getraenkeservice-schuetzenfest' },
-                  { icon: '🍸', title: 'Mobile Cocktailbar', text: 'Bambustheke mit frisch gemixten Cocktails.', href: '/cocktailbar-lennestadt' },
-                  { icon: '💍', title: 'Hochzeits-Service', text: 'Von Sektempfang bis Late-Night — der passende Rahmen.', href: '/hochzeit-sauerland' },
-                  { icon: '🎪', title: 'Dorf- &amp; Vereinsfeste', text: 'Erfahrung mit traditionellen Festen im Sauerland.' },
-                  { icon: '🏢', title: 'Firmenfeiern', text: 'Sommerfest, Jubiläum oder Weihnachtsfeier mit Stil.' },
-                  { icon: '🎂', title: 'Private Feiern', text: 'Geburtstag, Taufe, Konfirmation oder Gartenparty.' },
+                  { icon: 'beer', title: 'Getränkeservice', text: 'Kompletter Ausschank inkl. Zapfanlagen, Gläser, Kühlung.', href: '/getraenkeservice-schuetzenfest' },
+                  { icon: 'cocktail', title: 'Mobile Cocktailbar', text: 'Bambustheke mit frisch gemixten Cocktails.', href: '/cocktailbar-lennestadt' },
+                  { icon: 'ring', title: 'Hochzeits-Service', text: 'Von Sektempfang bis Late-Night — der passende Rahmen.', href: '/hochzeit-sauerland' },
+                  { icon: 'tent', title: 'Dorf- &amp; Vereinsfeste', text: 'Erfahrung mit traditionellen Festen im Sauerland.' },
+                  { icon: 'building', title: 'Firmenfeiern', text: 'Sommerfest, Jubiläum oder Weihnachtsfeier mit Stil.' },
+                  { icon: 'cake', title: 'Private Feiern', text: 'Geburtstag, Taufe, Konfirmation oder Gartenparty.' },
                 ].map(item => {
                   const content = (
                     <>
-                      <div style={{ fontSize: '1.8rem', marginBottom: '1rem' }}>{item.icon}</div>
+                      <div style={{ color: 'var(--color-gold)', marginBottom: '1rem' }}><Icon name={item.icon} size={28} /></div>
                       <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 400, marginBottom: '0.5rem' }} dangerouslySetInnerHTML={{ __html: item.title }} />
                       <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.7, fontWeight: 300 }} dangerouslySetInnerHTML={{ __html: item.text }} />
                       {item.href && (

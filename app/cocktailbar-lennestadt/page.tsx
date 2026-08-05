@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import RevealWrapper from '@/components/RevealWrapper'
 import BookingCTA from '@/components/BookingCTA'
+import Icon from '@/components/Icon'
 
 const PAGE_URL = 'https://frankies-eventservice.de/cocktailbar-lennestadt'
 const OG_IMAGE = 'https://frankies-eventservice.de/og/cocktailbar.jpg'
@@ -135,10 +136,10 @@ export default function CocktailbarLennestadt() {
                   <p className="section-text">Frankies Eventservice bietet vollständige mobile Cocktailbars für alle Veranstaltungen in Lennestadt, Finnentrop, Kirchhundem, Attendorn und dem gesamten Kreis Olpe. Wir bauen die komplette Bar bei Ihnen vor Ort auf — drinnen wie draußen.</p>
                   <p className="section-text" style={{ marginTop: '1rem' }}>Die stylische Bambustheke sorgt für einzigartiges Ambiente — Hochzeitsfeier, JGA, Geburtstag oder Firmenfeier. Unsere erfahrenen Barkeeper bereiten frische Cocktailkreationen direkt bei Ihnen zu.</p>
                   <div className="cocktail-features stagger-children reveal" style={{ marginTop: '2rem' }}>
-                    <div className="cocktail-feature"><span className="cocktail-feature-icon">🚐</span><div><strong>Voll mobil</strong><span>Wir kommen zu Ihrer Location</span></div></div>
-                    <div className="cocktail-feature"><span className="cocktail-feature-icon">🎋</span><div><strong>Bambustheke</strong><span>Stilvolle Theke mit Urlaubsflair</span></div></div>
-                    <div className="cocktail-feature"><span className="cocktail-feature-icon">🍸</span><div><strong>Frische Cocktails</strong><span>Klassiker &amp; Kreationen</span></div></div>
-                    <div className="cocktail-feature"><span className="cocktail-feature-icon">📍</span><div><strong>Mobiler Service</strong><span>±25 km um Lennestadt</span></div></div>
+                    <div className="cocktail-feature"><span className="cocktail-feature-icon"><Icon name="van" /></span><div><strong>Voll mobil</strong><span>Wir kommen zu Ihrer Location</span></div></div>
+                    <div className="cocktail-feature"><span className="cocktail-feature-icon"><Icon name="bamboo" /></span><div><strong>Bambustheke</strong><span>Stilvolle Theke mit Urlaubsflair</span></div></div>
+                    <div className="cocktail-feature"><span className="cocktail-feature-icon"><Icon name="cocktail" /></span><div><strong>Frische Cocktails</strong><span>Klassiker &amp; Kreationen</span></div></div>
+                    <div className="cocktail-feature"><span className="cocktail-feature-icon"><Icon name="pin" /></span><div><strong>Mobiler Service</strong><span>±25 km um Lennestadt</span></div></div>
                   </div>
                   <div style={{ marginTop: '2rem' }}>
                     <BookingCTA primary="Termin vereinbaren" />
@@ -181,7 +182,7 @@ export default function CocktailbarLennestadt() {
                     <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.25rem', flex: 1, textAlign: 'left' }}>
                       {p.highlights.map(h => (
                         <li key={h} style={{ display: 'flex', gap: '0.6rem', alignItems: 'flex-start', fontSize: '0.88rem', color: 'var(--color-text-muted)', fontWeight: 300, lineHeight: 1.6, marginBottom: '0.4rem' }}>
-                          <span style={{ color: 'var(--color-gold)', flexShrink: 0, marginTop: '0.1rem' }}>✓</span>
+                          <span style={{ color: 'var(--color-gold)', flexShrink: 0, marginTop: '0.1rem' }}>check</span>
                           {h}
                         </li>
                       ))}
@@ -215,15 +216,15 @@ export default function CocktailbarLennestadt() {
               </div>
               <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(240px, 100%), 1fr))', gap: '1.5rem', justifyContent: 'center' }}>
                 {[
-                  { icon: '💍', title: 'Hochzeiten', text: 'Stilvoller Sektempfang oder Late-Night-Cocktailservice.' },
-                  { icon: '🎉', title: 'Junggesellenabschied', text: 'Unvergesslicher JGA mit frischen Cocktails und Urlaubsflair.' },
-                  { icon: '🎂', title: 'Geburtstage', text: 'Runder Geburtstag oder Gartenparty — wir machen das Highlight.' },
-                  { icon: '🏢', title: 'Firmenfeiern', text: 'Sommerfest, Jubiläum oder Weihnachtsfeier.' },
-                  { icon: '🎯', title: 'Schützenfeste', text: 'Cocktail-Highlight neben dem klassischen Ausschank.' },
-                  { icon: '🎪', title: 'Dorf- &amp; Vereinsfeste', text: 'Kompletter Thekenservice mit Cocktail-Bar.' },
+                  { icon: 'ring', title: 'Hochzeiten', text: 'Stilvoller Sektempfang oder Late-Night-Cocktailservice.' },
+                  { icon: 'sparkles', title: 'Junggesellenabschied', text: 'Unvergesslicher JGA mit frischen Cocktails und Urlaubsflair.' },
+                  { icon: 'cake', title: 'Geburtstage', text: 'Runder Geburtstag oder Gartenparty — wir machen das Highlight.' },
+                  { icon: 'building', title: 'Firmenfeiern', text: 'Sommerfest, Jubiläum oder Weihnachtsfeier.' },
+                  { icon: 'target', title: 'Schützenfeste', text: 'Cocktail-Highlight neben dem klassischen Ausschank.' },
+                  { icon: 'tent', title: 'Dorf- &amp; Vereinsfeste', text: 'Kompletter Thekenservice mit Cocktail-Bar.' },
                 ].map(item => (
                   <div key={item.title} style={{ background: 'var(--color-surface-2)', border: '1px solid rgba(200,164,78,0.1)', padding: '2rem' }}>
-                    <div style={{ fontSize: '1.8rem', marginBottom: '1rem' }}>{item.icon}</div>
+                    <div style={{ color: 'var(--color-gold)', marginBottom: '1rem' }}><Icon name={item.icon} size={28} /></div>
                     <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.15rem', fontWeight: 400, marginBottom: '0.5rem' }} dangerouslySetInnerHTML={{ __html: item.title }} />
                     <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.7, fontWeight: 300 }} dangerouslySetInnerHTML={{ __html: item.text }} />
                   </div>
