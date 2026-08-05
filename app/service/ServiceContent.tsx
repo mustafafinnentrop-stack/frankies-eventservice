@@ -65,7 +65,8 @@ const packages = [
       'Bier, Wein & Softdrinks',
       'Auf- und Abbau inklusive',
     ],
-    price: 'ab 350 €',
+    note: 'Individuell kalkuliert',
+    cta: 'Angebot anfordern',
     pkg: undefined,
   },
   {
@@ -79,7 +80,8 @@ const packages = [
       'Ambiente-Beleuchtung',
       'Fotobox oder Foto-Mirror',
     ],
-    price: 'ab 800 €',
+    note: 'Individuell kalkuliert',
+    cta: 'Jetzt Angebot holen',
     pkg: undefined,
     highlight: true,
   },
@@ -95,7 +97,8 @@ const packages = [
       'Profi-Licht- & Tontechnik',
       'Individuelle Beratung & Planung',
     ],
-    price: 'ab 1.500 €',
+    note: 'Auf Ihr Event zugeschnitten',
+    cta: 'Beratung vereinbaren',
     pkg: undefined,
   },
 ]
@@ -215,8 +218,8 @@ export default function ServiceContent() {
                       ))}
                     </ul>
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(200,164,78,0.1)' }}>
-                      <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.3rem', color: 'var(--color-gold)' }}>{pkg.price}</span>
-                      <BookingCTA primary="Anfragen" />
+                      <span style={{ fontSize: '0.8rem', letterSpacing: '0.08em', color: 'var(--color-text-muted)', fontWeight: 300 }}>{pkg.note}</span>
+                      <BookingCTA primary={pkg.cta} />
                     </div>
                   </div>
                 ))}

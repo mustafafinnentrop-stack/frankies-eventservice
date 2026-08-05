@@ -194,7 +194,7 @@ export default function CocktailbarLennestadt() {
                 ))}
               </div>
               <p className="reveal" style={{ textAlign: 'center', color: 'var(--color-text-muted)', fontSize: '0.85rem', marginTop: '2rem', fontWeight: 300 }}>
-                Alle Preise auf Anfrage — kostenloses Erstgespräch inklusive.
+                Jedes Event ist anders — wir kalkulieren Ihr Angebot individuell. Erstgespräch kostenlos.
               </p>
             </div>
           </section>
