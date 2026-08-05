@@ -6,7 +6,7 @@ import RevealWrapper from '@/components/RevealWrapper'
 import BookingCTA from '@/components/BookingCTA'
 
 const PAGE_URL = 'https://frankies-eventservice.de/getraenkeservice-schuetzenfest'
-const OG_IMAGE = 'https://frankies-eventservice.de/IMG_5255.jpeg'
+const OG_IMAGE = 'https://frankies-eventservice.de/og/schuetzenfest.jpg'
 
 export const metadata: Metadata = {
   title: 'Getränkeservice Schützenfest Sauerland | Zapfservice & Thekenservice – Frankies',
@@ -74,7 +74,7 @@ export default function GetraenkeserviceSchuetzenfest() {
               <div className="cocktail-grid">
                 <div className="cocktail-visual reveal-left glow-frame">
                   <Image
-                    src="/IMG_5255.jpeg"
+                    src="/schuetzenfest.webp"
                     alt="Zapfservice und Thekenservice für Schützenfeste im Sauerland"
                     width={600}
                     height={750}

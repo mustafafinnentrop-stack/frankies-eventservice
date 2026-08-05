@@ -20,7 +20,7 @@ const outfit = Outfit({
 })
 
 const BASE_URL = 'https://frankies-eventservice.de'
-const OG_IMAGE = 'https://frankies-eventservice.de/IMG_5255.jpeg'
+const OG_IMAGE = 'https://frankies-eventservice.de/og/home.jpg'
 
 export const metadata: Metadata = {
   title: 'Frankies Eventservice | Getränke- und Veranstaltungsservice im Sauerland',
