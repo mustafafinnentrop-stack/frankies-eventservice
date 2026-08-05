@@ -79,7 +79,7 @@ export default function Hero() {
         <p className="hero-sub">
           Ob Schützenfest, Hochzeit oder Firmenfeier — wir liefern den kompletten
           Getränke- und Thekenservice. Außerdem bringen wir unsere mobile Cocktailbar
-          mit Bulli und Bambustheke direkt zu Ihnen.
+          mit Bambustheke direkt zu Ihnen.
         </p>
         <div className="hero-actions">
           <button onClick={() => setBookingOpen(true)} className="btn-primary">Unverbindlich anfragen</button>

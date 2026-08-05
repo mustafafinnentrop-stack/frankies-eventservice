@@ -9,23 +9,23 @@ const PAGE_URL = 'https://frankies-eventservice.de/cocktailbar-lennestadt'
 const OG_IMAGE = 'https://frankies-eventservice.de/og/cocktailbar.jpg'
 
 export const metadata: Metadata = {
-  title: 'Mobile Cocktailbar Lennestadt | Bulli-Bar & Bambustheke – Frankies Eventservice',
-  description: 'Mobile Cocktailbar in Lennestadt und Kreis Olpe mieten. Mit Bulli-Bar und Bambustheke kommen wir direkt zu Ihnen – für Hochzeiten, Geburtstage, JGA und Firmenfeiern.',
-  keywords: 'mobile Cocktailbar Lennestadt, Cocktailbar mieten Kreis Olpe, Bulli Bar, Bambustheke, Cocktailbar Hochzeit Sauerland, JGA Cocktailbar, Barkeeper mieten NRW',
+  title: 'Mobile Cocktailbar Lennestadt | Bambustheke & Barservice – Frankies Eventservice',
+  description: 'Mobile Cocktailbar in Lennestadt und Kreis Olpe mieten. Mit unserer Bambustheke kommen wir direkt zu Ihnen – für Hochzeiten, Geburtstage, JGA und Firmenfeiern.',
+  keywords: 'mobile Cocktailbar Lennestadt, Cocktailbar mieten Kreis Olpe, Bambustheke, Cocktailbar Hochzeit Sauerland, JGA Cocktailbar, Barkeeper mieten NRW',
   alternates: { canonical: PAGE_URL },
   openGraph: {
     type: 'website',
     locale: 'de_DE',
     url: PAGE_URL,
     siteName: 'Frankies Eventservice',
-    title: 'Mobile Cocktailbar Lennestadt | Bulli-Bar & Bambustheke – Frankies Eventservice',
-    description: 'Mobile Cocktailbar in Lennestadt und Kreis Olpe mieten. Mit Bulli-Bar und Bambustheke kommen wir direkt zu Ihnen.',
-    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: 'Mobile Cocktailbar mit Bulli und Bambustheke – Frankies Eventservice' }],
+    title: 'Mobile Cocktailbar Lennestadt | Bambustheke & Barservice – Frankies Eventservice',
+    description: 'Mobile Cocktailbar in Lennestadt und Kreis Olpe mieten. Mit unserer Bambustheke kommen wir direkt zu Ihnen.',
+    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: 'Mobile Cocktailbar mit Bambustheke – Frankies Eventservice' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Mobile Cocktailbar Lennestadt | Bulli-Bar & Bambustheke – Frankies Eventservice',
-    description: 'Mobile Cocktailbar in Lennestadt und Kreis Olpe mieten. Mit Bulli-Bar und Bambustheke kommen wir direkt zu Ihnen.',
+    title: 'Mobile Cocktailbar Lennestadt | Bambustheke & Barservice – Frankies Eventservice',
+    description: 'Mobile Cocktailbar in Lennestadt und Kreis Olpe mieten. Mit unserer Bambustheke kommen wir direkt zu Ihnen.',
     images: [OG_IMAGE],
   },
 }
@@ -34,7 +34,7 @@ const faq = [
   { q: 'Wie weit im Voraus sollte ich buchen?', a: 'Für Hochzeiten und größere Events empfehlen wir 3–6 Monate im Voraus. Für Geburtstage oder kleinere Feiern reichen oft 4–6 Wochen. Bei kurzfristigen Anfragen einfach anrufen.' },
   { q: 'Was kostet die mobile Cocktailbar?', a: 'Der Preis richtet sich nach Veranstaltungsdauer, Gästeanzahl und Wunschleistungen. Wir erstellen ein individuelles Angebot — das Erstgespräch ist kostenlos.' },
   { q: 'Welche Cocktails gibt es?', a: 'Klassiker wie Mojito, Aperol Spritz, Hugo und Caipirinha plus individuelle Kreationen. Alkoholfreie Alternativen sind selbstverständlich verfügbar.' },
-  { q: 'Wie viel Platz braucht die Bambustheke?', a: 'Ca. 3×2 Meter plus Zugang für den Bulli. Wir klären das bei der Voranfrage — wir passen uns an Ihre Location an.' },
+  { q: 'Wie viel Platz braucht die Bambustheke?', a: 'Ca. 3×2 Meter plus Zufahrt für die Anlieferung. Wir klären das bei der Voranfrage — wir passen uns an Ihre Location an.' },
   { q: 'Bringt ihr auch Gläser und Zutaten mit?', a: 'Ja — Gläser, Shaker, Zutaten und alle nötigen Utensilien sind dabei. Sie müssen sich um nichts kümmern.' },
   { q: 'Kommt ihr auch bei Außen-Events?', a: 'Ja. Garten, Wiese, Hof, Festzelt — wir sind vollständig mobil. Bei extremem Wetter besprechen wir das vorab.' },
 ]
@@ -50,7 +50,7 @@ const packages = [
   {
     badge: 'Beliebt',
     name: 'Flat 50',
-    highlights: ['50 Cocktails (Mindestabnahme)', '2,5 Stunden Barservice', 'Bambustheke oder Bulli-Bar', 'Barkeeper & Equipment inklusive', 'Auf- und Abbau inklusive'],
+    highlights: ['50 Cocktails (Mindestabnahme)', '2,5 Stunden Barservice', 'Bambustheke vor Ort aufgebaut', 'Barkeeper & Equipment inklusive', 'Auf- und Abbau inklusive'],
     ideal: 'JGA, Late-Night-Bar bei Hochzeiten, Firmenfeier',
     pkg: 'Flat 50',
     featured: true,
@@ -58,7 +58,7 @@ const packages = [
   {
     badge: 'Großes Event',
     name: 'Flat 100',
-    highlights: ['100 Cocktails (Mindestabnahme)', '3,5 Stunden Barservice', 'Bulli + Bambustheke aufgebaut', '2 Barkeeper', 'Auf- und Abbau inklusive'],
+    highlights: ['100 Cocktails (Mindestabnahme)', '3,5 Stunden Barservice', 'Bambustheke inkl. Aufbau', '2 Barkeeper', 'Auf- und Abbau inklusive'],
     ideal: 'Hochzeit, Schützenfest, Firmen-Sommerfest',
     pkg: 'Flat 100',
   },
@@ -75,7 +75,7 @@ const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
   name: 'Mobile Cocktailbar Lennestadt',
-  description: 'Mobile Cocktailbar mit Bulli-Bar und Bambustheke für Hochzeiten, JGA, Geburtstage und Firmenfeiern im Kreis Olpe und Sauerland.',
+  description: 'Mobile Cocktailbar mit Bambustheke für Hochzeiten, JGA, Geburtstage und Firmenfeiern im Kreis Olpe und Sauerland.',
   provider: {
     '@type': 'LocalBusiness',
     name: 'Frankies Eventservice',
@@ -114,7 +114,7 @@ export default function CocktailbarLennestadt() {
                 Mobile Cocktailbar<br />in Lennestadt mieten
               </h1>
               <p className="reveal" style={{ fontSize: '1.05rem', fontWeight: 300, color: 'var(--color-text-muted)', maxWidth: '620px', margin: '0 auto 2.5rem', lineHeight: 1.8 }}>
-                Unsere mobile Cocktailbar kommt mit Bulli und Bambustheke direkt zu Ihnen — egal ob Garten, Hof, Halle oder Festzelt.
+                Unsere mobile Cocktailbar kommt mit der Bambustheke direkt zu Ihnen — egal ob Garten, Hof, Halle oder Festzelt.
               </p>
               <div className="reveal">
                 <BookingCTA primary="Unverbindlich anfragen" secondary="Jetzt anrufen" calcomUrl="tel:+4915142840916" />
@@ -127,15 +127,15 @@ export default function CocktailbarLennestadt() {
             <div className="section-container">
               <div className="cocktail-grid">
                 <div className="cocktail-visual reveal-left glow-frame">
-                  <Image src="/bambustheke.webp" alt="Mobile Cocktailbar mit Bulli und Bambustheke für Events in Lennestadt" width={600} height={750} priority sizes="(max-width: 768px) 100vw, 600px" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <Image src="/bambustheke.webp" alt="Mobile Cocktailbar mit Bambustheke für Events in Lennestadt" width={600} height={750} priority sizes="(max-width: 768px) 100vw, 600px" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
                 <div className="reveal" style={{ textAlign: 'center' }}>
                   <p className="section-label" style={{ margin: '0 auto 1rem' }}>Einzigartiges Flair</p>
                   <h2 className="section-title" style={{ margin: '0 auto 1.5rem' }}>Cocktailbar mieten<br />im Kreis Olpe</h2>
-                  <p className="section-text">Frankies Eventservice bietet vollständige mobile Cocktailbars für alle Veranstaltungen in Lennestadt, Finnentrop, Kirchhundem, Attendorn und dem gesamten Kreis Olpe. Unser VW-Bulli mit integrierter Bar ist der Blickfang auf jedem Event.</p>
+                  <p className="section-text">Frankies Eventservice bietet vollständige mobile Cocktailbars für alle Veranstaltungen in Lennestadt, Finnentrop, Kirchhundem, Attendorn und dem gesamten Kreis Olpe. Wir bauen die komplette Bar bei Ihnen vor Ort auf — drinnen wie draußen.</p>
                   <p className="section-text" style={{ marginTop: '1rem' }}>Die stylische Bambustheke sorgt für einzigartiges Ambiente — Hochzeitsfeier, JGA, Geburtstag oder Firmenfeier. Unsere erfahrenen Barkeeper bereiten frische Cocktailkreationen direkt bei Ihnen zu.</p>
                   <div className="cocktail-features stagger-children reveal" style={{ marginTop: '2rem' }}>
-                    <div className="cocktail-feature"><span className="cocktail-feature-icon">🚐</span><div><strong>Bulli-Bar</strong><span>VW-Bulli als mobiler Blickfang</span></div></div>
+                    <div className="cocktail-feature"><span className="cocktail-feature-icon">🚐</span><div><strong>Voll mobil</strong><span>Wir kommen zu Ihrer Location</span></div></div>
                     <div className="cocktail-feature"><span className="cocktail-feature-icon">🎋</span><div><strong>Bambustheke</strong><span>Stilvolle Theke mit Urlaubsflair</span></div></div>
                     <div className="cocktail-feature"><span className="cocktail-feature-icon">🍸</span><div><strong>Frische Cocktails</strong><span>Klassiker &amp; Kreationen</span></div></div>
                     <div className="cocktail-feature"><span className="cocktail-feature-icon">📍</span><div><strong>Mobiler Service</strong><span>±25 km um Lennestadt</span></div></div>
@@ -158,7 +158,7 @@ export default function CocktailbarLennestadt() {
                   Wählen Sie das Paket, das zu Ihrer Veranstaltung passt — oder wir erstellen Ihnen ein individuelles Angebot.
                 </p>
               </div>
-              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem', justifyContent: 'center' }}>
+              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(240px, 100%), 1fr))', gap: '1.5rem', justifyContent: 'center' }}>
                 {packages.map(p => (
                   <div
                     key={p.name}
@@ -213,7 +213,7 @@ export default function CocktailbarLennestadt() {
                 <p className="section-label">Für jeden Anlass</p>
                 <h2 className="section-title" style={{ margin: '0 auto 1rem' }}>Ideal für Ihre Feier</h2>
               </div>
-              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem', justifyContent: 'center' }}>
+              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(240px, 100%), 1fr))', gap: '1.5rem', justifyContent: 'center' }}>
                 {[
                   { icon: '💍', title: 'Hochzeiten', text: 'Stilvoller Sektempfang oder Late-Night-Cocktailservice.' },
                   { icon: '🎉', title: 'Junggesellenabschied', text: 'Unvergesslicher JGA mit frischen Cocktails und Urlaubsflair.' },
@@ -239,11 +239,11 @@ export default function CocktailbarLennestadt() {
                 <p className="section-label">In 4 Schritten</p>
                 <h2 className="section-title" style={{ margin: '0 auto' }}>So läuft es ab</h2>
               </div>
-              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '2rem' }}>
+              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(220px, 100%), 1fr))', gap: '2rem' }}>
                 {[
                   { num: '01', title: 'Anfrage', text: 'Formular ausfüllen oder direkt anrufen — kostenlos und unverbindlich.' },
                   { num: '02', title: 'Angebot', text: 'Individuelles Angebot mit Cocktailkarte innerhalb von 24h.' },
-                  { num: '03', title: 'Aufbau', text: 'Bulli rollt an, Bambustheke steht in 45 Minuten.' },
+                  { num: '03', title: 'Aufbau', text: 'Wir bauen auf — die Bambustheke steht in 45 Minuten.' },
                   { num: '04', title: 'Genießen', text: 'Profi-Barkeeper servieren — Sie feiern entspannt.' },
                 ].map(s => (
                   <div key={s.num} style={{ paddingTop: '1.5rem', borderTop: '1px solid rgba(200,164,78,0.2)' }}>

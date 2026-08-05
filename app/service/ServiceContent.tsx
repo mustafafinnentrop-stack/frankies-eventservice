@@ -147,7 +147,7 @@ export default function ServiceContent() {
                   Egal ob kleines Gartenfest oder großes Schützenfest — wir passen uns flexibel an Ihre Veranstaltung an.
                 </p>
               </div>
-              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '1rem' }}>
+              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(140px, 100%), 1fr))', gap: '1rem' }}>
                 {eventTypes.map(e => (
                   <div key={e.label} style={{ background: 'var(--color-surface)', border: '1px solid rgba(200,164,78,0.12)', padding: '1.5rem 1rem', textAlign: 'center' }}>
                     <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>{e.icon}</div>
@@ -168,7 +168,7 @@ export default function ServiceContent() {
                   Alle Leistungen können einzeln gebucht oder zu einem individuellen Paket kombiniert werden.
                 </p>
               </div>
-              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
+              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))', gap: '1.5rem' }}>
                 {portfolioItems.map(item => (
                   <div key={item.title} style={{ background: 'var(--color-surface-2)', border: '1px solid rgba(200,164,78,0.12)', padding: '2rem', textAlign: 'center' }}>
                     <div style={{ fontSize: '2.2rem', marginBottom: '1rem' }}>{item.icon}</div>
@@ -190,7 +190,7 @@ export default function ServiceContent() {
                   Alle Pakete sind individuell anpassbar. Kontaktieren Sie uns für ein maßgeschneidertes Angebot.
                 </p>
               </div>
-              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', alignItems: 'start' }}>
+              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(300px, 100%), 1fr))', gap: '2rem', alignItems: 'start' }}>
                 {packages.map(pkg => (
                   <div
                     key={pkg.title}
@@ -234,7 +234,7 @@ export default function ServiceContent() {
                 <p className="section-label">Darum Frankies</p>
                 <h2 className="section-title" style={{ margin: '0 auto' }}>Warum Kunden uns wählen</h2>
               </div>
-              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.5rem', justifyContent: 'center' }}>
+              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(220px, 100%), 1fr))', gap: '1.5rem', justifyContent: 'center' }}>
                 {[
                   { icon: '✓', title: 'Alles aus einer Hand', text: 'Ein Ansprechpartner für Personal, Equipment und Getränke — keine Koordination mehrerer Dienstleister.' },
                   { icon: '⚡', title: 'Zuverlässig & pünktlich', text: 'Wir sind rechtzeitig vor Ort, bauen professionell auf und sorgen für einen reibungslosen Ablauf.' },

@@ -34,8 +34,8 @@ export default function Leistungen() {
             <div className="service-icon">🍹</div>
             <h3>Mobile Cocktailbar</h3>
             <p>
-              Unser Bulli kommt direkt zu Ihnen — zusammen mit einer stylischen
-              Bambustheke und frisch zubereiteten Cocktails. Auf diese Weise wird
+              Wir kommen direkt zu Ihnen — mit einer stylischen Bambustheke
+              und frisch zubereiteten Cocktails. Auf diese Weise wird
               jede Feier zu einem unvergesslichen Erlebnis.
             </p>
           </div>

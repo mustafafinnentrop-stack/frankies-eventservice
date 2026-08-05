@@ -9,7 +9,7 @@ export default function Cocktailbar() {
       <div className="section-container">
         <div className="reveal" style={{ textAlign: 'center' }}>
           <p className="section-label">Unser Highlight</p>
-          <h2 className="section-title">Mobile Cocktailbar —<br />Bulli &amp; Bambustheke</h2>
+          <h2 className="section-title">Mobile Cocktailbar —<br />mit echter Bambustheke</h2>
           
           <div className="cocktail-visual glow-frame" style={{ maxWidth: '600px', margin: '0 auto 3rem', aspectRatio: '4/5' }}>
             <Image
@@ -24,8 +24,8 @@ export default function Cocktailbar() {
           </div>
 
           <p className="section-text">
-            Wir kommen mit unserem Bulli und einer echten Bambustheke direkt
-            zu Ihnen. Egal ob Geburtstag im Garten, Hochzeitsfeier unter freiem
+            Wir kommen mit unserer mobilen Cocktailbar und einer echten Bambustheke
+            direkt zu Ihnen. Egal ob Geburtstag im Garten, Hochzeitsfeier unter freiem
             Himmel oder Firmen-Sommerfest — unsere mobile Cocktailbar verwandelt
             jede Location in eine Bar.
           </p>
@@ -43,8 +43,8 @@ export default function Cocktailbar() {
             <div className="cocktail-feature" style={{ textAlign: 'left' }}>
               <span className="cocktail-feature-icon">🚐</span>
               <div>
-                <strong>Bulli-Bar</strong>
-                <span>Unser Bulli als mobiler Blickfang</span>
+                <strong>Voll mobil</strong>
+                <span>Wir kommen zu Ihrer Location</span>
               </div>
             </div>
             <div className="cocktail-feature" style={{ textAlign: 'left' }}>
