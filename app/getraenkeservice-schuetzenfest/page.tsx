@@ -79,7 +79,7 @@ export default function GetraenkeserviceSchuetzenfest() {
                     width={600}
                     height={750}
                     priority
-                    unoptimized
+                    sizes="(max-width: 768px) 100vw, 600px"
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   />
                 </div>
