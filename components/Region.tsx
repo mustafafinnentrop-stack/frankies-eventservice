@@ -8,7 +8,7 @@ export default function Region() {
   return (
     <section id="region">
       <div className="section-container">
-        <div className="reveal" style={{ textAlign: 'center' }}>
+        <div className="reveal grid-text">
           <p className="section-label" style={{ margin: '0 auto 1rem' }}>Unser Einsatzgebiet</p>
           <h2 className="section-title" style={{ margin: '0 auto 1.5rem' }}>Veranstaltungsservice<br />in Ihrer Nähe</h2>
           <p className="section-text" style={{ margin: '0 auto 2.5rem' }}>

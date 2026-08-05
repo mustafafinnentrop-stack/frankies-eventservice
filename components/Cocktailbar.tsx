@@ -8,7 +8,7 @@ export default function Cocktailbar() {
   return (
     <section id="cocktailbar">
       <div className="section-container">
-        <div className="reveal" style={{ textAlign: 'center' }}>
+        <div className="reveal grid-text">
           <p className="section-label">Unser Highlight</p>
           <h2 className="section-title">Mobile Cocktailbar —<br />mit echter Bambustheke</h2>
           

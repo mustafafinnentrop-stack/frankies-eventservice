@@ -70,7 +70,7 @@ export default function GetraenkeserviceSchuetzenfest() {
             </div>
           </section>
 
-          <section id="details" style={{ padding: '6rem 2rem' }}>
+          <section id="details" className="section-block">
             <div className="section-container">
               <div className="cocktail-grid">
                 <div className="cocktail-visual reveal-left glow-frame">
@@ -84,7 +84,7 @@ export default function GetraenkeserviceSchuetzenfest() {
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   />
                 </div>
-                <div className="reveal" style={{ textAlign: 'center' }}>
+                <div className="reveal grid-text">
                   <p className="section-label" style={{ margin: '0 auto 1rem' }}>Erfahrener Zapfservice</p>
                   <h2 className="section-title" style={{ margin: '0 auto 1.5rem' }}>Professioneller<br />Thekenservice</h2>
                   <p className="section-text">
@@ -133,7 +133,7 @@ export default function GetraenkeserviceSchuetzenfest() {
             </div>
           </section>
 
-          <section style={{ padding: '6rem 2rem', background: 'var(--color-surface)' }}>
+          <section className="section-block section-block--alt">
             <div className="section-container">
               <div className="reveal" style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
                 <p className="section-label">Das ganze Wochenende</p>
@@ -159,7 +159,7 @@ export default function GetraenkeserviceSchuetzenfest() {
             </div>
           </section>
 
-          <section style={{ padding: '6rem 2rem' }}>
+          <section className="section-block">
             <div className="section-container">
               <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
                 <p className="section-label">Das bringen wir mit</p>
@@ -182,7 +182,7 @@ export default function GetraenkeserviceSchuetzenfest() {
             </div>
           </section>
 
-          <section style={{ padding: '6rem 2rem', background: 'var(--color-surface)', textAlign: 'center' }}>
+          <section className="section-block section-block--alt" style={{ textAlign: 'center' }}>
             <div className="section-container reveal">
               <p className="section-label">Jetzt anfragen</p>
               <h2 className="section-title" style={{ margin: '0 auto 1rem' }}>Bereit für Ihr Schützenfest?</h2>

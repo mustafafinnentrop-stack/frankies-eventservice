@@ -70,12 +70,12 @@ export default function EventserviceKreisOlpe() {
             </div>
           </section>
 
-          <section id="details" style={{ padding: '6rem 2rem' }}>
+          <section id="details" className="section-block">
             <div className="section-container">
               <div className="cocktail-grid">
-                <div className="reveal" style={{ textAlign: 'center' }}>
-                  <p className="section-label" style={{ margin: '0 auto 1rem' }}>Ihre Veranstaltung</p>
-                  <h2 className="section-title" style={{ margin: '0 auto 1.5rem' }}>Veranstaltungsservice<br />für alle Anlässe</h2>
+                <div className="reveal grid-text">
+                  <p className="section-label">Ihre Veranstaltung</p>
+                  <h2 className="section-title">Veranstaltungsservice<br />für alle Anlässe</h2>
                   <p className="section-text">
                     Egal ob Schützenfest, Hochzeit, Vereinsjubiläum, Firmenfeier oder Dorffest — wir bieten Ihnen einen zuverlässigen und professionellen Getränkeservice für Veranstaltungen jeder Art und jeder Größe im Kreis Olpe.
                   </p>
@@ -128,7 +128,7 @@ export default function EventserviceKreisOlpe() {
             </div>
           </section>
 
-          <section style={{ padding: '6rem 2rem', background: 'var(--color-surface)' }}>
+          <section className="section-block section-block--alt">
             <div className="section-container">
               <div className="reveal" style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
                 <p className="section-label">Unser Einsatzgebiet</p>
@@ -147,7 +147,7 @@ export default function EventserviceKreisOlpe() {
             </div>
           </section>
 
-          <section style={{ padding: '6rem 2rem' }}>
+          <section className="section-block">
             <div className="section-container">
               <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
                 <p className="section-label">Unsere Leistungen</p>
@@ -188,7 +188,7 @@ export default function EventserviceKreisOlpe() {
             </div>
           </section>
 
-          <section style={{ padding: '6rem 2rem', background: 'var(--color-surface)' }}>
+          <section className="section-block section-block--alt">
             <div className="section-container" style={{ textAlign: 'center' }}>
               <div className="reveal" style={{ padding: '3rem 2rem', background: 'var(--color-surface-2)', border: '1px solid rgba(200,164,78,0.15)', maxWidth: '700px', margin: '0 auto' }}>
                 <p className="section-label">Kontakt &amp; Adresse</p>

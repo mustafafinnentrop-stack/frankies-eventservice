@@ -124,13 +124,13 @@ export default function CocktailbarLennestadt() {
           </section>
 
           {/* Image + Features */}
-          <section style={{ padding: '6rem 2rem' }}>
+          <section className="section-block">
             <div className="section-container">
               <div className="cocktail-grid">
                 <div className="cocktail-visual reveal-left glow-frame">
                   <Image src="/bambustheke.webp" alt="Mobile Cocktailbar mit Bambustheke für Events in Lennestadt" width={600} height={750} priority sizes="(max-width: 768px) 100vw, 600px" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
-                <div className="reveal" style={{ textAlign: 'center' }}>
+                <div className="reveal grid-text">
                   <p className="section-label" style={{ margin: '0 auto 1rem' }}>Einzigartiges Flair</p>
                   <h2 className="section-title" style={{ margin: '0 auto 1.5rem' }}>Cocktailbar mieten<br />im Kreis Olpe</h2>
                   <p className="section-text">Frankies Eventservice bietet vollständige mobile Cocktailbars für alle Veranstaltungen in Lennestadt, Finnentrop, Kirchhundem, Attendorn und dem gesamten Kreis Olpe. Wir bauen die komplette Bar bei Ihnen vor Ort auf — drinnen wie draußen.</p>
@@ -150,7 +150,7 @@ export default function CocktailbarLennestadt() {
           </section>
 
           {/* Packages */}
-          <section style={{ padding: '6rem 2rem', background: 'var(--color-surface)' }}>
+          <section className="section-block section-block--alt">
             <div className="section-container">
               <div className="reveal" style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
                 <p className="section-label">Unsere Pakete</p>
@@ -208,7 +208,7 @@ export default function CocktailbarLennestadt() {
           </section>
 
           {/* Occasions */}
-          <section style={{ padding: '6rem 2rem', background: 'var(--color-surface)' }}>
+          <section className="section-block section-block--alt">
             <div className="section-container">
               <div className="reveal" style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
                 <p className="section-label">Für jeden Anlass</p>
@@ -234,7 +234,7 @@ export default function CocktailbarLennestadt() {
           </section>
 
           {/* Process */}
-          <section style={{ padding: '6rem 2rem' }}>
+          <section className="section-block">
             <div className="section-container">
               <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
                 <p className="section-label">In 4 Schritten</p>
@@ -258,7 +258,7 @@ export default function CocktailbarLennestadt() {
           </section>
 
           {/* FAQ */}
-          <section style={{ padding: '6rem 2rem', background: 'var(--color-surface)' }}>
+          <section className="section-block section-block--alt">
             <div className="section-container" style={{ maxWidth: '720px' }}>
               <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
                 <p className="section-label">Häufige Fragen</p>
@@ -279,7 +279,7 @@ export default function CocktailbarLennestadt() {
           </section>
 
           {/* Coverage */}
-          <section style={{ padding: '6rem 2rem', textAlign: 'center' }}>
+          <section className="section-block" style={{ textAlign: 'center' }}>
             <div className="section-container reveal">
               <p className="section-label">Einsatzgebiet</p>
               <h2 className="section-title" style={{ margin: '0 auto 1rem' }}>Wir kommen zu Ihnen</h2>

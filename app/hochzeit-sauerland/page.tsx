@@ -70,12 +70,12 @@ export default function HochzeitSauerland() {
             </div>
           </section>
 
-          <section id="details" style={{ padding: '6rem 2rem' }}>
+          <section id="details" className="section-block">
             <div className="section-container">
               <div className="cocktail-grid">
-                <div className="reveal" style={{ textAlign: 'center' }}>
-                  <p className="section-label" style={{ margin: '0 auto 1rem' }}>Ihr Tag, unser Service</p>
-                  <h2 className="section-title" style={{ margin: '0 auto 1.5rem' }}>Thekenservice &amp;<br />Cocktailbar für Hochzeiten</h2>
+                <div className="reveal grid-text">
+                  <p className="section-label">Ihr Tag, unser Service</p>
+                  <h2 className="section-title">Thekenservice &amp;<br />Cocktailbar für Hochzeiten</h2>
                   <p className="section-text">
                     Frankies Eventservice ist Ihr zuverlässiger Partner für Hochzeiten im Kreis Olpe und dem Sauerland. Wir bieten sowohl klassischen Thekenservice als auch unsere mobile Cocktailbar mit Bambustheke — je nach Ihren Wünschen.
                   </p>
@@ -128,7 +128,7 @@ export default function HochzeitSauerland() {
             </div>
           </section>
 
-          <section style={{ padding: '6rem 2rem', background: 'var(--color-surface)' }}>
+          <section className="section-block section-block--alt">
             <div className="section-container">
               <div className="reveal" style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
                 <p className="section-label">Ihr Hochzeitstag</p>
@@ -154,7 +154,7 @@ export default function HochzeitSauerland() {
             </div>
           </section>
 
-          <section style={{ padding: '6rem 2rem' }}>
+          <section className="section-block">
             <div className="section-container">
               <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
                 <p className="section-label">Darum Frankies</p>
@@ -177,7 +177,7 @@ export default function HochzeitSauerland() {
             </div>
           </section>
 
-          <section style={{ padding: '6rem 2rem', background: 'var(--color-surface)', textAlign: 'center' }}>
+          <section className="section-block section-block--alt" style={{ textAlign: 'center' }}>
             <div className="section-container reveal">
               <p className="section-label">Jetzt anfragen</p>
               <h2 className="section-title" style={{ margin: '0 auto 1rem' }}>Bereit für Ihren großen Tag?</h2>
