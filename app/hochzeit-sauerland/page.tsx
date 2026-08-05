@@ -144,7 +144,7 @@ export default function HochzeitSauerland() {
                   { time: 'Late Night', title: 'Cocktailbar', text: 'Der Höhepunkt: Unsere Bambustheke öffnet, Barkeeper mixen frische Cocktails bis in die Nacht.' },
                 ].map(phase => (
                   <div key={phase.title} style={{ background: 'var(--color-surface-2)', border: '1px solid rgba(200,164,78,0.12)', padding: '2rem', textAlign: 'center' }}>
-                    <p style={{ fontSize: '0.65rem', letterSpacing: '0.25em', color: 'var(--color-gold)', textTransform: 'uppercase', marginBottom: '0.75rem' }}>{phase.time}</p>
+                    <p style={{ fontSize: '0.75rem', letterSpacing: '0.25em', color: 'var(--color-gold)', textTransform: 'uppercase', marginBottom: '0.75rem' }}>{phase.time}</p>
                     <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 400, marginBottom: '0.5rem' }}>{phase.title}</h3>
                     <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.7, fontWeight: 300 }} dangerouslySetInnerHTML={{ __html: phase.text }} />
                   </div>

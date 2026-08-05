@@ -18,13 +18,26 @@ html { scroll-behavior: smooth; font-size: 16px; }
 body {
     font-family: var(--font-body);
     background-color: var(--color-bg);
-    background-image: url('/bg-hero.webp');
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center top;
     color: var(--color-text);
     overflow-x: hidden;
     line-height: 1.6;
+}
+
+/* Hintergrundfoto als eigene fixierte Ebene statt als body-Background.
+   Auf dem body musste die Größe je Gerät getrickst werden, weil sich `cover`
+   dort auf die gesamte Dokumenthöhe bezieht (mobil über 10.000px) statt auf
+   den sichtbaren Bereich. Diese Ebene ist immer exakt so groß wie das Fenster
+   und rendert damit auf Desktop und Mobil identisch.
+   z-index -1: liegt über der body-Hintergrundfarbe, aber unter allen Sektionen. */
+.site-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image: url('/bg-hero.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    pointer-events: none;
 }
 
 /* Globale Overlay-Schicht über dem Hintergrundbild */
@@ -54,7 +67,7 @@ nav.scrolled {
 }
 .nav-logo span {
     color: var(--color-text); font-family: var(--font-body);
-    font-size: 0.65rem; font-weight: 300; text-transform: uppercase;
+    font-size: 0.75rem; font-weight: 300; text-transform: uppercase;
     letter-spacing: 0.3em; display: block; margin-top: -4px;
 }
 .nav-links { display: flex; gap: 2.5rem; list-style: none; }
@@ -150,7 +163,7 @@ body::after {
 .hero-badge {
     display: inline-flex; align-items: center; gap: 0.5rem;
     padding: 0.5rem 1.25rem; border: 1px solid rgba(200,164,78,0.3);
-    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.25em;
+    font-size: 0.78rem; font-weight: 500; letter-spacing: 0.25em;
     text-transform: uppercase; color: var(--color-gold); margin-bottom: 2.5rem;
     animation: fadeInDown 0.8s ease 0.2s both;
 }
@@ -172,7 +185,9 @@ body::after {
 .rotating-wrapper {
     display: inline-block;
     position: relative;
-    min-width: 280px;
+    /* Feste 280px sprengen auf schmalen Geräten die Zeile — auf Viewportbreite begrenzen. */
+    min-width: min(280px, 100%);
+    max-width: 100%;
     text-align: center;
 }
 .rotating-words {
@@ -232,7 +247,7 @@ body::after {
 .hero-scroll {
     position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%);
     display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
-    color: var(--color-text-muted); font-size: 0.65rem; letter-spacing: 0.2em;
+    color: var(--color-text-muted); font-size: 0.75rem; letter-spacing: 0.2em;
     text-transform: uppercase; animation: fadeIn 1s ease 1.2s both;
     z-index: 1;
 }
@@ -252,7 +267,7 @@ body::after {
 section { padding: 6.5rem 2rem; }
 .section-container { max-width: 1100px; margin: 0 auto; }
 .section-label {
-    font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em;
+    font-size: 0.75rem; font-weight: 500; letter-spacing: 0.35em;
     text-transform: uppercase; color: var(--color-gold); margin-bottom: 1.25rem;
     text-align: center; display: block; margin-left: auto; margin-right: auto;
 }
@@ -577,6 +592,24 @@ footer { padding: 3rem 2rem; border-top: 1px solid rgba(200,164,78,0.08); backgr
 .reveal-scale { opacity:0; transform:scale(0.8); transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
 .reveal-scale.visible { opacity:1; transform:scale(1); }
 
+/* Auf schmalen Geräten seitlich statt vertikal einzublenden schiebt Elemente über
+   den rechten Rand hinaus, solange sie noch nicht sichtbar sind. Dort deshalb
+   dieselbe Bewegung wie bei .reveal — nach oben. */
+@media (max-width: 768px) {
+    .reveal-left, .reveal-right { transform: translateY(40px); }
+    .reveal-left.visible, .reveal-right.visible { transform: translateY(0); }
+}
+
+/* Nutzer, die reduzierte Bewegung eingestellt haben, sehen die Inhalte sofort. */
+@media (prefers-reduced-motion: reduce) {
+    .reveal, .reveal-left, .reveal-right, .reveal-scale {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    .stagger-children.visible > * { animation: none; opacity: 1; }
+}
+
 /* Stagger children */
 .stagger-children.visible > * { opacity:0; animation: fadeInUp 0.6s cubic-bezier(0.16,1,0.3,1) forwards; }
 .stagger-children.visible > *:nth-child(1) { animation-delay: 0.1s; }
@@ -745,14 +778,8 @@ body:hover .cursor-glow { opacity: 1; }
 /* Smooth page entrance */
 body { animation: fadeIn 0.5s ease; }
 
-/* MOBILE: background-attachment fixed funktioniert auf iOS nicht - Fallback */
-@media (max-width: 768px) {
-    body {
-        background-attachment: scroll;
-        background-size: auto 300%;
-        background-position: center top;
-    }
-}
+/* Der frühere Mobil-Fallback (background-attachment/-size auf dem body) entfällt:
+   .site-bg ist bereits fixiert und viewportgroß und braucht keine Sonderbehandlung. */
 
 /* RESPONSIVE */
 @media (max-width: 768px) {

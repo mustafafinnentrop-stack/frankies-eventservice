@@ -149,7 +149,7 @@ export default function GetraenkeserviceSchuetzenfest() {
                   { day: 'Montag', title: 'Ausklang & Abbau', text: 'Wir sind bis zum letzten Glas dabei — danach bauen wir alles sauber ab.' },
                 ].map(phase => (
                   <div key={phase.day} style={{ background: 'var(--color-surface-2)', border: '1px solid rgba(200,164,78,0.12)', padding: '2rem' }}>
-                    <p style={{ fontSize: '0.65rem', letterSpacing: '0.25em', color: 'var(--color-gold)', textTransform: 'uppercase', marginBottom: '0.75rem' }}>{phase.day}</p>
+                    <p style={{ fontSize: '0.75rem', letterSpacing: '0.25em', color: 'var(--color-gold)', textTransform: 'uppercase', marginBottom: '0.75rem' }}>{phase.day}</p>
                     <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 400, marginBottom: '0.5rem' }} dangerouslySetInnerHTML={{ __html: phase.title }} />
                     <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.7, fontWeight: 300 }}>{phase.text}</p>
                   </div>

@@ -163,7 +163,7 @@ export default function BookingModal({ onClose, initialPackage }: Props) {
                         style={{ ...chipStyle, ...(form.cocktailPackage === pkg.key ? chipActiveStyle : {}), flexDirection: 'column', alignItems: 'flex-start', padding: '0.6rem 1rem' }}
                       >
                         <span style={{ fontWeight: 500 }}>{pkg.key}</span>
-                        <span style={{ fontSize: '0.72rem', opacity: 0.7 }}>{pkg.sub}</span>
+                        <span style={{ fontSize: '0.78rem', opacity: 0.7 }}>{pkg.sub}</span>
                       </button>
                     ))}
                   </div>
@@ -245,7 +245,7 @@ export default function BookingModal({ onClose, initialPackage }: Props) {
                   {sending ? 'Wird gesendet...' : 'Anfrage absenden ✓'}
                 </button>
               </div>
-              <p style={{ fontSize: '0.72rem', color: 'var(--color-text-muted)', marginTop: '0.75rem', textAlign: 'center' }}>
+              <p style={{ fontSize: '0.78rem', color: 'var(--color-text-muted)', marginTop: '0.75rem', textAlign: 'center' }}>
                 * Pflichtfelder. Daten werden nur zur Bearbeitung Ihrer Anfrage genutzt.
               </p>
             </div>
@@ -267,7 +267,7 @@ export default function BookingModal({ onClose, initialPackage }: Props) {
 }
 
 const labelStyle: React.CSSProperties = {
-  fontSize: '0.68rem', letterSpacing: '0.16em', textTransform: 'uppercase',
+  fontSize: '0.76rem', letterSpacing: '0.16em', textTransform: 'uppercase',
   color: 'var(--color-text-muted)', marginBottom: '0.4rem', marginTop: 0,
 }
 

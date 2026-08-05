@@ -202,11 +202,11 @@ export default function ServiceContent() {
                     }}
                   >
                     {pkg.highlight && (
-                      <div style={{ position: 'absolute', top: '-1px', left: '50%', transform: 'translateX(-50%)', background: 'var(--color-gold)', color: 'var(--color-bg)', fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', padding: '0.3rem 1rem', fontWeight: 600 }}>
+                      <div style={{ position: 'absolute', top: '-1px', left: '50%', transform: 'translateX(-50%)', background: 'var(--color-gold)', color: 'var(--color-bg)', fontSize: '0.75rem', letterSpacing: '0.15em', textTransform: 'uppercase', padding: '0.3rem 1rem', fontWeight: 600 }}>
                         Empfohlen
                       </div>
                     )}
-                    <p style={{ fontSize: '0.65rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '0.5rem' }}>{pkg.label}</p>
+                    <p style={{ fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '0.5rem' }}>{pkg.label}</p>
                     <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', fontWeight: 400, marginBottom: '0.75rem' }}>{pkg.title}</h3>
                     <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.7, marginBottom: '1.5rem', fontWeight: 300 }}>{pkg.description}</p>
                     <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 2rem' }}>
