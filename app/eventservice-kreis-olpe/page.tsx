@@ -152,10 +152,10 @@ export default function EventserviceKreisOlpe() {
                 <p className="section-label">Unsere Leistungen</p>
                 <h2 className="section-title" style={{ margin: '0 auto' }}>Was wir für Sie tun</h2>
               </div>
-              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem', justifyContent: 'center' }}>
+              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(240px, 100%), 1fr))', gap: '1.5rem', justifyContent: 'center' }}>
                 {[
                   { icon: '🍺', title: 'Getränkeservice', text: 'Kompletter Ausschank inkl. Zapfanlagen, Gläser, Kühlung.', href: '/getraenkeservice-schuetzenfest' },
-                  { icon: '🍸', title: 'Mobile Cocktailbar', text: 'Bulli-Bar mit Bambustheke und frischen Cocktails.', href: '/cocktailbar-lennestadt' },
+                  { icon: '🍸', title: 'Mobile Cocktailbar', text: 'Bambustheke mit frisch gemixten Cocktails.', href: '/cocktailbar-lennestadt' },
                   { icon: '💍', title: 'Hochzeits-Service', text: 'Von Sektempfang bis Late-Night — der passende Rahmen.', href: '/hochzeit-sauerland' },
                   { icon: '🎪', title: 'Dorf- &amp; Vereinsfeste', text: 'Erfahrung mit traditionellen Festen im Sauerland.' },
                   { icon: '🏢', title: 'Firmenfeiern', text: 'Sommerfest, Jubiläum oder Weihnachtsfeier mit Stil.' },

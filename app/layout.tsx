@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   description:
     'Frankies Eventservice – Professioneller Getränke- und Thekenservice sowie mobile Cocktailbar für Schützenfeste, Hochzeiten und Veranstaltungen im Kreis Olpe und für alle Veranstaltungen jeder Art.',
   keywords:
-    'Eventservice Sauerland, Getränkeservice Schützenfest, Thekenservice Hochzeit, Barservice Lennestadt, Eventservice Olpe, Zapfservice NRW, mobile Cocktailbar Sauerland, Cocktailbar mieten, Bulli Bar',
+    'Eventservice Sauerland, Getränkeservice Schützenfest, Thekenservice Hochzeit, Barservice Lennestadt, Eventservice Olpe, Zapfservice NRW, mobile Cocktailbar Sauerland, Cocktailbar mieten',
   authors: [{ name: 'Frankies Eventservice' }],
   robots: 'index, follow',
   alternates: { canonical: `${BASE_URL}/` },
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
         url: OG_IMAGE,
         width: 1200,
         height: 630,
-        alt: 'Frankies Eventservice – Mobile Cocktailbar mit Bulli und Bambustheke im Sauerland',
+        alt: 'Frankies Eventservice – Mobile Cocktailbar mit Bambustheke im Sauerland',
       },
     ],
   },

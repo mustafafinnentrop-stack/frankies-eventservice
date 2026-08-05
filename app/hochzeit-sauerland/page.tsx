@@ -76,7 +76,7 @@ export default function HochzeitSauerland() {
                   <p className="section-label" style={{ margin: '0 auto 1rem' }}>Ihr Tag, unser Service</p>
                   <h2 className="section-title" style={{ margin: '0 auto 1.5rem' }}>Thekenservice &amp;<br />Cocktailbar für Hochzeiten</h2>
                   <p className="section-text">
-                    Frankies Eventservice ist Ihr zuverlässiger Partner für Hochzeiten im Kreis Olpe und dem Sauerland. Wir bieten sowohl klassischen Thekenservice als auch unsere mobile Cocktailbar mit Bulli und Bambustheke — je nach Ihren Wünschen.
+                    Frankies Eventservice ist Ihr zuverlässiger Partner für Hochzeiten im Kreis Olpe und dem Sauerland. Wir bieten sowohl klassischen Thekenservice als auch unsere mobile Cocktailbar mit Bambustheke — je nach Ihren Wünschen.
                   </p>
                   <p className="section-text" style={{ marginTop: '1rem' }}>
                     Von der Sektempfang-Begleitung über den Abendausschank bis zum Late-Night-Cocktailservice — wir sind von Anfang bis Ende für Sie da. Gerne stimmen wir das Angebot individuell auf Ihre Hochzeitsfeier ab.
@@ -136,7 +136,7 @@ export default function HochzeitSauerland() {
                   Wir begleiten Sie durch den gesamten Tag — mit dem passenden Service zur jeweiligen Phase.
                 </p>
               </div>
-              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '2rem', justifyContent: 'center' }}>
+              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(240px, 100%), 1fr))', gap: '2rem', justifyContent: 'center' }}>
                 {[
                   { time: 'Nachmittags', title: 'Sektempfang', text: 'Nach der Trauung begrüßen wir Ihre Gäste mit Sekt, Aperol oder alkoholfreien Alternativen.' },
                   { time: 'Abends', title: 'Dinner-Service', text: 'Während des Essens sorgen wir für die passenden Getränke an den Tischen.' },
@@ -159,7 +159,7 @@ export default function HochzeitSauerland() {
                 <p className="section-label">Darum Frankies</p>
                 <h2 className="section-title" style={{ margin: '0 auto' }}>Warum Brautpaare uns wählen</h2>
               </div>
-              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.5rem', justifyContent: 'center' }}>
+              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(220px, 100%), 1fr))', gap: '1.5rem', justifyContent: 'center' }}>
                 {[
                   { icon: '✓', title: 'Alles aus einer Hand', text: 'Von Sektempfang bis Late-Night — ein Ansprechpartner.' },
                   { icon: '⚡', title: 'Schneller Service', text: 'Kein Warten an der Theke — Ihre Gäste werden zügig bedient.' },

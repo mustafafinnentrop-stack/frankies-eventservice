@@ -141,7 +141,7 @@ export default function GetraenkeserviceSchuetzenfest() {
                   Wir sind das gesamte Schützenfest-Wochenende mit einem eingespielten Team vor Ort.
                 </p>
               </div>
-              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '2rem', justifyContent: 'center' }}>
+              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(220px, 100%), 1fr))', gap: '2rem', justifyContent: 'center' }}>
                 {[
                   { day: 'Freitag', title: 'Aufbau & Kommers', text: 'Wir bauen die Theke auf, schließen die Fässer an und sind bereit für den Kommersabend.' },
                   { day: 'Samstag', title: 'Fest & Ball', text: 'Pünktlich für Vogelschießen, Parade und Krönungsball — auch bei Hochbetrieb.' },
@@ -164,7 +164,7 @@ export default function GetraenkeserviceSchuetzenfest() {
                 <p className="section-label">Das bringen wir mit</p>
                 <h2 className="section-title" style={{ margin: '0 auto' }}>Alles was Sie brauchen</h2>
               </div>
-              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.5rem', justifyContent: 'center' }}>
+              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(220px, 100%), 1fr))', gap: '1.5rem', justifyContent: 'center' }}>
                 {[
                   { icon: '🍻', title: 'Zapfanlagen', text: 'Professionelle Fassbier-Zapfanlagen für Hochbetrieb.' },
                   { icon: '🏗️', title: 'Theken-Aufbau', text: 'Komplette Theken-Infrastruktur, individuell für Ihre Location.' },
