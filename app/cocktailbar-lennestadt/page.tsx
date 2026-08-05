@@ -172,11 +172,11 @@ export default function CocktailbarLennestadt() {
                     }}
                   >
                     {p.featured && (
-                      <span style={{ position: 'absolute', top: '-1px', right: '1.5rem', background: 'var(--color-gold)', color: 'var(--color-bg)', fontSize: '0.6rem', letterSpacing: '0.15em', textTransform: 'uppercase', padding: '0.25rem 0.75rem' }}>
+                      <span style={{ position: 'absolute', top: '-1px', right: '1.5rem', background: 'var(--color-gold)', color: 'var(--color-bg)', fontSize: '0.75rem', letterSpacing: '0.15em', textTransform: 'uppercase', padding: '0.25rem 0.75rem' }}>
                         Empfohlen
                       </span>
                     )}
-                    <p style={{ fontSize: '0.65rem', letterSpacing: '0.25em', color: 'var(--color-gold)', textTransform: 'uppercase', marginBottom: '0.5rem' }}>{p.badge}</p>
+                    <p style={{ fontSize: '0.75rem', letterSpacing: '0.25em', color: 'var(--color-gold)', textTransform: 'uppercase', marginBottom: '0.5rem' }}>{p.badge}</p>
                     <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.8rem', fontWeight: 400, marginBottom: '1.25rem' }}>{p.name}</h3>
                     <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.25rem', flex: 1, textAlign: 'left' }}>
                       {p.highlights.map(h => (

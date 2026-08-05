@@ -19,24 +19,20 @@ export default function Hero() {
     if (!container) return
     const spans = container.querySelectorAll<HTMLSpanElement>('.rotating-word')
     if (!spans.length) return
+    // Aus- und Einblenden überlappen bewusst: würde das neue Wort erst nach dem
+    // Ausblenden aktiviert, bliebe die Überschrift dazwischen sichtbar leer.
     const rotate = () => {
       const current = spans[currentRef.current]
-      current.classList.add('exit')
-      current.classList.remove('active')
       currentRef.current = (currentRef.current + 1) % spans.length
       const next = spans[currentRef.current]
 
-      next.style.left = '50%'
-      next.style.transform = 'translateX(-50%) translateY(20px)'
+      current.classList.remove('active')
+      current.classList.add('exit')
+      next.classList.add('active')
 
-      setTimeout(() => {
-        current.classList.remove('exit')
-        next.classList.add('active')
-        next.style.left = '50%'
-        next.style.transform = 'translateX(-50%) translateY(0)'
-      }, 400)
+      window.setTimeout(() => current.classList.remove('exit'), 600)
     }
-    const interval = setInterval(rotate, 2200)
+    const interval = setInterval(rotate, 2600)
     return () => clearInterval(interval)
   }, [])
 

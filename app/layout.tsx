@@ -113,6 +113,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
+        <div className="site-bg" aria-hidden="true" />
         {children}
         <Analytics />
         <CookieConsent />
