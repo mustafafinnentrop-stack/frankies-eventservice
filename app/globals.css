@@ -1118,3 +1118,45 @@ body { animation: fadeIn 0.5s ease; }
 @media (prefers-reduced-motion: reduce) {
     .hiw-card, .hiw-card:hover { transition: none; }
 }
+
+/* =========================================================================
+   Cocktailbar — Scroll-Aufblendung nach der hero-video-Vorlage von 21st.dev
+   Der Abschnitt braucht Scrollweg, damit sich der Fortschritt verteilen kann;
+   daher die Mindesthoehe und der grosse untere Abstand aus der Vorlage.
+   ========================================================================= */
+.cb-scroll {
+    position: relative;
+    width: 100%;
+    min-height: 120vh;
+    padding-bottom: 30%;
+    padding-top: 2rem;
+}
+
+.cb-intro { text-align: center; }
+.cb-intro .section-label { display: inline-block; }
+
+.cb-inset {
+    transform-origin: top;
+    overflow: hidden;
+    margin: 0 2rem;
+}
+.cb-inset img { max-height: 80vh; }
+
+.cb-sub {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin: 0 0 0.75rem;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .cb-scroll { min-height: 100vh; padding-bottom: 40%; }
+    .cb-inset { margin: 0 1rem; }
+}
+
+/* Ohne Bewegung bleibt das Bild schlicht stehen — die clip-path-Animation
+   haengt am Scrollfortschritt und laesst sich nicht sinnvoll abbremsen. */
+@media (prefers-reduced-motion: reduce) {
+    .cb-inset { clip-path: none !important; transform: none !important; }
+}
