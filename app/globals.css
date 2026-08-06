@@ -1048,7 +1048,7 @@ body { animation: fadeIn 0.5s ease; }
     border: 1px solid rgba(200,164,78,0.14);
     border-radius: 25px;
     padding: 0.5rem;
-    box-shadow: var(--elev-rest);
+    /* Die Vorlage setzt im Dark-Mode ausdruecklich `dark:shadow-none`. */
 }
 
 .hiw-pin {
@@ -1076,18 +1076,19 @@ body { animation: fadeIn 0.5s ease; }
     font-style: italic;
 }
 .hiw-card-inner h3 {
-    font-family: var(--font-display);
+    font-family: var(--font-body);
     font-size: 1.5rem;
-    font-weight: 400;
+    font-weight: 600;
     line-height: 1.1;
     color: var(--color-text);
     margin-bottom: 10px;
 }
 .hiw-card-inner p {
-    font-size: 0.9rem;
+    font-size: 0.875rem;
     color: var(--color-text-muted);
-    line-height: 1.5;
-    font-weight: 300;
+    line-height: 1.25rem;
+    letter-spacing: -0.015em;
+    font-weight: 400;
 }
 
 /* Ab Tablet: freie Anordnung entlang der Kurve, Karten leicht gedreht */
@@ -1160,3 +1161,32 @@ body { animation: fadeIn 0.5s ease; }
 @media (prefers-reduced-motion: reduce) {
     .cb-inset { clip-path: none !important; transform: none !important; }
 }
+
+/* Liniertes Raster und Randverlaeufe — beides aus der Vorlage nachgetragen.
+   Ohne sie fehlt der Flaeche der Notizblock-Charakter, auf dem die
+   angehefteten Karten ueberhaupt erst Sinn ergeben. */
+.hiw-wrap { position: relative; }
+
+.hiw-rules {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: linear-gradient(rgba(240,236,227,1) 1px, transparent 1px);
+    background-size: 100% 32px;
+    margin-top: 4px;
+    opacity: 0.10;
+    z-index: 0;
+}
+
+.hiw-fade {
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 50%;
+    pointer-events: none;
+    z-index: 1;
+}
+.hiw-fade-l { left: 0;  background: linear-gradient(to right, var(--color-bg), transparent); }
+.hiw-fade-r { right: 0; background: linear-gradient(to left,  var(--color-bg), transparent); }
+
+/* Inhalte ueber Raster und Masken halten */
+.hiw-wrap > .reveal, .hiw { position: relative; z-index: 2; }

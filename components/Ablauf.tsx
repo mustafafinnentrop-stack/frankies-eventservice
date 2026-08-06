@@ -61,13 +61,20 @@ export default function Ablauf() {
   return (
     <LazyMotion features={domAnimation}>
       <section id="ablauf">
-        <div className="section-container">
+        <div className="section-container hiw-wrap">
           <div className="reveal" style={{ marginBottom: '3rem', textAlign: 'center' }}>
             <p className="section-label">So arbeiten wir</p>
             <h2 className="section-title" style={{ margin: '0 auto' }}>
               In vier Schritten<br />zu Ihrem Event
             </h2>
           </div>
+
+          {/* Liniertes Raster und seitliche Verlaufsmasken — beides gehoert
+              zur Vorlage und gibt der Flaeche den Notizblock-Charakter, auf
+              dem die Karten angeheftet wirken. */}
+          <div className="hiw-rules" aria-hidden="true" />
+          <div className="hiw-fade hiw-fade-l" aria-hidden="true" />
+          <div className="hiw-fade hiw-fade-r" aria-hidden="true" />
 
           <div className="hiw" style={{ ['--hiw-h' as string]: `${HEIGHT}px` }}>
             <svg
