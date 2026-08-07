@@ -1,0 +1,49 @@
+/*
+  Tailwind v4 — bewusst OHNE Preflight.
+  `@import "tailwindcss"` wuerde preflight.css mitziehen und damit die
+  Basis-Styles der bestehenden globals.css ueberschreiben. Hier werden nur
+  Theme und Utilities geladen, sodass beide Systeme nebeneinander laufen:
+  bestehende Seiten nutzen weiter globals.css, neue Komponenten aus
+  Fremdquellen ihre Utility-Klassen.
+*/
+@layer theme, base, components;
+
+@import 'tailwindcss/theme.css' layer(theme);
+
+/*
+  Die Utilities bewusst OHNE layer(). globals.css setzt ungelayert
+  `* { margin: 0; padding: 0 }`, und ungelayertes CSS schlaegt jede @layer
+  unabhaengig von der Spezifitaet. In einer Layer haetten Klassen wie
+  mx-auto oder px-6 deshalb nie gegriffen — sichtbar daran, dass der
+  Footer-Inhalt trotz mx-auto linksbuendig stand.
+  Ungelayert entscheidet wieder die Spezifitaet: .mx-auto schlaegt *.
+*/
+@import 'tailwindcss/utilities.css';
+
+/*
+  Die Farb-Token, die shadcn-Komponenten erwarten — hier auf das Branding
+  der Seite gelegt. Dadurch greifen Klassen wie bg-background,
+  text-foreground oder border-border ohne Aenderung am Komponentencode,
+  und die color-mix()-Ausdruecke der Vorlage liefern passende Werte.
+*/
+@theme inline {
+  --color-background: #0C0C0C;
+  --color-foreground: #F0ECE3;
+  --color-primary: #C8A44E;
+  --color-secondary: #9A7B2F;
+  --color-muted: #161616;
+  --color-muted-foreground: #8A8578;
+  --color-border: rgba(200, 164, 78, 0.18);
+  --color-destructive: #C8A44E;
+}
+
+:root {
+  --background: #0C0C0C;
+  --foreground: #F0ECE3;
+  --primary: #C8A44E;
+  --secondary: #9A7B2F;
+  --muted: #161616;
+  --muted-foreground: #8A8578;
+  --border: rgba(200, 164, 78, 0.18);
+  --destructive: #C8A44E;
+}
