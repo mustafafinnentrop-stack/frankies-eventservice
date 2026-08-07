@@ -16,10 +16,12 @@ export default function Home() {
     <>
       <Navbar />
       {/* Der Footer liegt fixiert unter dem Inhalt und wird beim Scrollen
-          freigelegt. Damit das funktioniert, muss der Inhalt darueber einen
-          eigenen Hintergrund und eine hoehere Ebene haben — sonst scheint der
-          Footer von Anfang an durch. */}
-      <div className="relative z-10 bg-[var(--color-bg)]">
+          freigelegt. Der Inhalt braucht dafuer eine hoehere Ebene, aber
+          keinen deckenden Hintergrund — den Footer schneidet sein eigener
+          clip-path-Wrapper bis zum Seitenende ohnehin weg. Die frueher hier
+          gesetzte Deckfarbe hat nur das Hintergrundfoto verdeckt.
+          Siehe .content-layer in globals.css. */}
+      <div className="content-layer">
         <RevealWrapper>
           <Hero />
           <EventStrip />

@@ -60,6 +60,21 @@ body {
     pointer-events: none;
 }
 
+/* Inhaltsebene der Startseite ueber dem Curtain-Footer.
+   Sie lag zuvor deckend auf var(--color-bg) und hat damit .site-bg (z-index
+   -1) verdeckt — deshalb war das Hintergrundfoto auf der Startseite weg,
+   waehrend es auf allen Unterseiten noch zu sehen war.
+   Die Deckfarbe ist nicht noetig: Der Footer-Wrapper schneidet den fixierten
+   Footer per clip-path auf seine eigene Box zu, und die steht erst am
+   Seitenende. Vorher ist der Footer also ohnehin nicht sichtbar.
+   z-index 10 bleibt, damit der Inhalt ueber dem Footer liegt, sobald sich
+   beide ueberlappen. */
+.content-layer {
+    position: relative;
+    z-index: 10;
+    background: transparent;
+}
+
 /* Globale Overlay-Schicht über dem Hintergrundbild */
 body::before {
     content: '';
@@ -209,11 +224,18 @@ body::after {
     border-radius: 50%; animation: pulse-dot 2s ease infinite;
 }
 @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.3} }
+/* Schrift wie im Rest der Seite.
+   Familie war schon immer --font-display (DM Serif Display) — identisch zu
+   .section-title. Anders aussehen liess den Hero nur die Kombination aus
+   text-transform: uppercase und -0.03em Laufweite: Versalien einer Didone
+   mit negativem Abstand lesen sich wie eine fremde Schnittstelle. Ohne
+   beides greift wieder dasselbe Bild wie bei den Abschnittstiteln, die mit
+   -0.01em und gemischter Schreibweise gesetzt sind. */
 .hero h1 {
     font-family: var(--font-display); font-size: clamp(3rem,8vw,7rem);
-    font-weight: 400; line-height: 1.05; margin-bottom: 2rem;
-    animation: fadeInUp 0.8s ease 0.4s both; letter-spacing: -0.03em;
-    color: var(--color-text); text-transform: uppercase;
+    font-weight: 400; line-height: 1.1; margin-bottom: 2rem;
+    animation: fadeInUp 0.8s ease 0.4s both; letter-spacing: -0.01em;
+    color: var(--color-text);
     hyphens: auto;
     overflow-wrap: break-word;
 }
