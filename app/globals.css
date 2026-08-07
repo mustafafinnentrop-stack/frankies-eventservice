@@ -931,46 +931,12 @@ body { animation: fadeIn 0.5s ease; }
     border-right-color: var(--color-gold);
 }
 
-/* Großes dekoratives Hintergrund-Wort pro Sektion */
-#leistungen .section-container::before {
-    content: 'SERVICE';
-    position: absolute;
-    top: -2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: var(--font-display);
-    font-size: clamp(4rem, 12vw, 10rem);
-    font-weight: 700;
-    color: rgba(200,164,78,0.03);
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    white-space: nowrap;
-    pointer-events: none;
-    z-index: 0;
-    width: auto;
-    height: auto;
-    background: none;
-}
-
-#ablauf .section-container::before {
-    content: 'ABLAUF';
-    position: absolute;
-    top: -2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: var(--font-display);
-    font-size: clamp(4rem, 12vw, 10rem);
-    font-weight: 700;
-    color: rgba(200,164,78,0.03);
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    white-space: nowrap;
-    pointer-events: none;
-    z-index: 0;
-    width: auto;
-    height: auto;
-    background: none;
-}
+/* Die frueheren Riesenwoerter "SERVICE" und "ABLAUF" als Pseudo-Elemente
+   hinter den Sektionen sind entfernt. Sie lagen bei 3% Deckkraft im
+   Hintergrund und waren je nach Bildschirm und Umgebungslicht schwach
+   lesbar — dann wirken sie nicht als Textur, sondern wie ein Darstellungs-
+   fehler. Zudem doppelten sie nur die Ueberschrift, die direkt darueber
+   steht. */
 
 /* Mobile: dekorative Elemente ausblenden */
 @media (max-width: 768px) {
