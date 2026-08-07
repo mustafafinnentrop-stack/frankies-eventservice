@@ -180,6 +180,11 @@ body::after {
     min-height: 100vh; display: flex; align-items: center;
     justify-content: center; position: relative; overflow: hidden;
     background: transparent;
+    /* Die fixierte Navbar sitzt bei top:1.5em und ist 60px hoch, endet also
+       bei rund 84px. Ohne diesen Freiraum zentriert der Hero seinen Inhalt
+       ueber die volle Hoehe — bei kurzem Fenster rutscht das Badge dann
+       hinter die Navbar. */
+    padding-top: 6.5rem;
 }
 .hero-bg {
     display: none;
