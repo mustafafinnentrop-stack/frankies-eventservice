@@ -44,13 +44,17 @@ export default function Cocktailbar() {
             abgerundeten Form auf volle Breite auf. */}
         <ContainerInset className="cb-inset">
           <Image
-            src="/cocktail.webp"
-            alt="Frankies Eventservice – Mobile Cocktailbar mit Bambustheke für Events im Sauerland"
+            src="/theke-vor-ort.webp"
+            alt="Frankies Eventservice – Mobile Cocktailbar mit Bambustheke, aufgebaut unter Pavillon bei einem Event im Sauerland"
             width={1200}
-            height={1500}
+            height={1600}
             priority
             sizes="100vw"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            /* Das Foto ist hochkant, der Ausschnitt hier breit — ohne
+               objectPosition schneidet cover mittig und zeigt die Hecke statt
+               der Theke. Der Wert haelt die Bambustheke mit dem Banner im
+               Bild, auf Desktop wie auf Handy nachgemessen. */
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 68%', display: 'block' }}
           />
         </ContainerInset>
       </ContainerScroll>
