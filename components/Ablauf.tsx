@@ -60,7 +60,14 @@ const PATH =
 export default function Ablauf() {
   return (
     <LazyMotion features={domAnimation}>
-      <section id="ablauf">
+      <section id="ablauf" className="hiw-section">
+        {/* Raster und Masken gehoeren auf die Sektion, nicht in den auf 1100px
+            begrenzten Container — dort endeten sie mit harter Kante und die
+            Seite wirkte eingerahmt. */}
+        <div className="hiw-rules" aria-hidden="true" />
+        <div className="hiw-fade hiw-fade-l" aria-hidden="true" />
+        <div className="hiw-fade hiw-fade-r" aria-hidden="true" />
+
         <div className="section-container hiw-wrap">
           <div className="reveal" style={{ marginBottom: '3rem', textAlign: 'center' }}>
             <p className="section-label">So arbeiten wir</p>
@@ -68,13 +75,6 @@ export default function Ablauf() {
               In vier Schritten<br />zu Ihrem Event
             </h2>
           </div>
-
-          {/* Liniertes Raster und seitliche Verlaufsmasken — beides gehoert
-              zur Vorlage und gibt der Flaeche den Notizblock-Charakter, auf
-              dem die Karten angeheftet wirken. */}
-          <div className="hiw-rules" aria-hidden="true" />
-          <div className="hiw-fade hiw-fade-l" aria-hidden="true" />
-          <div className="hiw-fade hiw-fade-r" aria-hidden="true" />
 
           <div className="hiw" style={{ ['--hiw-h' as string]: `${HEIGHT}px` }}>
             <svg

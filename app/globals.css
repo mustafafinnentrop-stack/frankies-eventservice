@@ -299,7 +299,7 @@ body::after {
 
 /* SECTIONS */
 section { padding: 6.5rem 2rem; }
-.section-container { max-width: 1100px; margin: 0 auto; }
+.section-container { max-width: 1320px; margin: 0 auto; }
 .section-label {
     font-size: 0.75rem; font-weight: 500; letter-spacing: 0.35em;
     text-transform: uppercase; color: var(--color-gold); margin-bottom: 1.25rem;
@@ -846,31 +846,9 @@ body { animation: fadeIn 0.5s ease; }
    TIGRIS-STIL: Dekorative Seitenelemente
    ============================================= */
 
-/* Dekorative vertikale Goldlinie links */
-.section-container::before {
-    content: '';
-    position: absolute;
-    left: -3rem;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 1px;
-    height: 60%;
-    background: linear-gradient(to bottom, transparent, rgba(200,164,78,0.3), transparent);
-    pointer-events: none;
-}
-
-/* Dekorative vertikale Goldlinie rechts */
-.section-container::after {
-    content: '';
-    position: absolute;
-    right: -3rem;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 1px;
-    height: 60%;
-    background: linear-gradient(to bottom, transparent, rgba(200,164,78,0.3), transparent);
-    pointer-events: none;
-}
+/* Die frueheren dekorativen Goldlinien bei -3rem/+3rem des Containers sind
+   entfernt. Sie markierten die 1100px-Inhaltsspalte und liessen die Seite auf
+   breiten Bildschirmen wie ein eingerahmter Kasten wirken statt fensterfuellend. */
 
 .section-container {
     position: relative;
@@ -1131,7 +1109,8 @@ body { animation: fadeIn 0.5s ease; }
 /* Liniertes Raster und Randverlaeufe — beides aus der Vorlage nachgetragen.
    Ohne sie fehlt der Flaeche der Notizblock-Charakter, auf dem die
    angehefteten Karten ueberhaupt erst Sinn ergeben. */
-.hiw-wrap { position: relative; }
+.hiw-section { position: relative; }
+.hiw-wrap { position: relative; z-index: 2; }
 
 .hiw-rules {
     position: absolute;
