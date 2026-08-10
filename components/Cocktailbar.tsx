@@ -46,10 +46,15 @@ export default function Cocktailbar() {
           <Image
             src="/theke-vor-ort.webp"
             alt="Frankies Eventservice – Mobile Cocktailbar mit Bambustheke, aufgebaut unter Pavillon bei einem Event im Sauerland"
-            width={1200}
-            height={1600}
+            width={1100}
+            height={1467}
             priority
-            sizes="100vw"
+            /* sizes stand auf 100vw, obwohl der Rahmen dank der 2rem
+               Seitenabstaende schmaler ist. Dadurch hat der Browser die
+               groesste srcset-Variante angefordert. Der gemessene Rahmen ist
+               1312px bei 1440px Fenster, mobil volle Breite. */
+            sizes="(max-width: 768px) 100vw, 1350px"
+            quality={60}
             /* Das Foto ist hochkant, der Ausschnitt hier breit — ohne
                objectPosition schneidet cover mittig und zeigt die Hecke statt
                der Theke. Der Wert haelt die Bambustheke mit dem Banner im

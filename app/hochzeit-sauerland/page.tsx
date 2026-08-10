@@ -10,7 +10,7 @@ const PAGE_URL = 'https://frankies-eventservice.de/hochzeit-sauerland'
 const OG_IMAGE = 'https://frankies-eventservice.de/og/hochzeit.jpg'
 
 export const metadata: Metadata = {
-  title: 'Thekenservice Hochzeit Sauerland | Getränkeservice für Hochzeiten – Frankies Eventservice',
+  title: 'Thekenservice Hochzeit Sauerland | Frankies Eventservice',
   description: 'Professioneller Thekenservice für Hochzeiten im Sauerland und Kreis Olpe. Wir übernehmen den kompletten Getränkeausschank – damit Sie entspannt feiern können.',
   keywords: 'Thekenservice Hochzeit Sauerland, Getränkeservice Hochzeit Kreis Olpe, Sektempfang Hochzeit NRW, Barservice Hochzeit, Cocktailbar Hochzeit, Hochzeitsservice Lennestadt',
   alternates: { canonical: PAGE_URL },

@@ -5,8 +5,8 @@ const PAGE_URL = 'https://frankies-eventservice.de/service'
 const OG_IMAGE = 'https://frankies-eventservice.de/og/service.jpg'
 
 export const metadata: Metadata = {
-  title: 'Service-Pakete & Portfolio | Eventservice aus einer Hand – Frankies Eventservice',
-  description: 'Professioneller Eventservice im Sauerland: Servicepersonal, Getränkeservice, mobile Cocktailbar, Hüpfburgen, Fotoboxen, Eventmöbel und Licht- & Tontechnik. Alles aus einer Hand.',
+  title: 'Service-Pakete & Eventservice Sauerland | Frankies',
+  description: 'Eventservice aus einer Hand im Sauerland: Servicepersonal, Getränkeservice, mobile Cocktailbar, Hüpfburgen, Fotoboxen und Eventmöbel. Jetzt Angebot anfragen.',
   keywords: 'Eventservice Sauerland, Servicepersonal Kreis Olpe, Getränkeservice Lennestadt, Hüpfburg mieten Sauerland, Fotobox mieten NRW, mobile Cocktailbar Sauerland, Eventmöbel mieten',
   alternates: { canonical: PAGE_URL },
   openGraph: {
