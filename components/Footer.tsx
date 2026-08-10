@@ -16,6 +16,9 @@ export default function Footer() {
             <a href="/getraenkeservice-schuetzenfest" style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', textDecoration: 'none' }}>Getränkeservice Schützenfest</a>
             <a href="/hochzeit-sauerland" style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', textDecoration: 'none' }}>Thekenservice Hochzeit</a>
             <a href="/eventservice-kreis-olpe" style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', textDecoration: 'none' }}>Eventservice Kreis Olpe</a>
+            {/* Blog auf eigener Subdomain — bewusst ohne rel="nofollow",
+                damit das Signal zur Hauptdomain und zurueck fliesst. */}
+            <a href="https://blog.frankies-eventservice.de/blog" style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', textDecoration: 'none' }}>Blog</a>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', gap: '1.5rem' }}>
             <div style={{ textAlign: 'center' }}>

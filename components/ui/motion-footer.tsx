@@ -362,6 +362,13 @@ export function CinematicFooter() {
                 <MagneticButton as="a" href="/cocktailbar-lennestadt" className="footer-glass-pill px-6 py-3 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground">
                   Mobile Cocktailbar
                 </MagneticButton>
+                {/* Der Blog liegt auf einer eigenen Subdomain. Ohne Link von hier
+                    kennt ihn weder ein Besucher noch eine Suchmaschine, die von
+                    der Hauptdomain kommt. Bewusst ohne rel="nofollow" — das
+                    Signal soll fliessen. */}
+                <MagneticButton as="a" href="https://blog.frankies-eventservice.de/blog" className="footer-glass-pill px-6 py-3 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground">
+                  Blog
+                </MagneticButton>
                 <MagneticButton as="a" href="/agb" className="footer-glass-pill px-6 py-3 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground">
                   AGB
                 </MagneticButton>
