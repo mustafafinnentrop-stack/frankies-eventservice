@@ -10,7 +10,7 @@ const PAGE_URL = 'https://frankies-eventservice.de/cocktailbar-lennestadt'
 const OG_IMAGE = 'https://frankies-eventservice.de/og/cocktailbar.jpg'
 
 export const metadata: Metadata = {
-  title: 'Mobile Cocktailbar Lennestadt | Bambustheke & Barservice – Frankies Eventservice',
+  title: 'Mobile Cocktailbar Lennestadt | Frankies Eventservice',
   description: 'Mobile Cocktailbar in Lennestadt und Kreis Olpe mieten. Mit unserer Bambustheke kommen wir direkt zu Ihnen – für Hochzeiten, Geburtstage, JGA und Firmenfeiern.',
   keywords: 'mobile Cocktailbar Lennestadt, Cocktailbar mieten Kreis Olpe, Bambustheke, Cocktailbar Hochzeit Sauerland, JGA Cocktailbar, Barkeeper mieten NRW',
   alternates: { canonical: PAGE_URL },
@@ -128,7 +128,7 @@ export default function CocktailbarLennestadt() {
             <div className="section-container">
               <div className="cocktail-grid">
                 <div className="cocktail-visual reveal-left glow-frame">
-                  <Image src="/bambustheke.webp" alt="Mobile Cocktailbar mit Bambustheke für Events in Lennestadt" width={600} height={750} priority sizes="(max-width: 768px) 100vw, 600px" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <Image src="/bambustheke.webp" alt="Mobile Cocktailbar mit Bambustheke für Events in Lennestadt" width={600} height={750} priority sizes="(max-width: 768px) 100vw, 600px" quality={60} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
                 <div className="reveal grid-text">
                   <p className="section-label" style={{ margin: '0 auto 1rem' }}>Einzigartiges Flair</p>

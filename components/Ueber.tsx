@@ -14,7 +14,7 @@ export default function Ueber() {
               alt="Frankies Eventservice Logo – Getränke- und Thekenservice Lennestadt Sauerland"
               width={600}
               height={750}
-              sizes="(max-width: 768px) 100vw, 600px"
+              sizes="(max-width: 768px) 100vw, 600px" quality={60}
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
             />
           </div>

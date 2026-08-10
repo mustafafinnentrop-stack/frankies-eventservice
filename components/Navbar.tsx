@@ -63,9 +63,13 @@ export default function Navbar() {
     }
   }
 
+  // Das Logo lag als 1840x779-PNG mit 511 KB vor und wurde von CardNav als
+  // einfaches <img> ohne Optimierung auf jeder Seite geladen. Angezeigt wird
+  // es mit 52px Hoehe (mobil 38px), also rund 123px breit. 480px decken selbst
+  // 3x-Retina ab; als WebP sind das 22 KB.
   return (
     <CardNav
-      logo="/189d47fa-f715-4552-8ec7-4d36b7c50b65.png"
+      logo="/logo-frankies.webp"
       logoAlt="Frankies Eventservice"
       items={items}
       baseColor="#161616"
