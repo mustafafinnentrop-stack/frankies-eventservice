@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
+import { CinematicFooter } from '@/components/ui/motion-footer'
 import RevealWrapper from '@/components/RevealWrapper'
 
 const PAGE_URL = 'https://frankies-eventservice.de/agb'
@@ -16,7 +16,8 @@ export default function AGBPage() {
   return (
     <>
       <Navbar />
-      <RevealWrapper>
+      <div className="content-layer">
+        <RevealWrapper>
         <main style={{ paddingTop: '100px', background: 'var(--color-bg)', minHeight: '100vh' }}>
           <section style={{ padding: '5rem 2rem 8rem' }}>
             <div className="section-container" style={{ maxWidth: '800px', margin: '0 auto' }}>
@@ -108,8 +109,9 @@ export default function AGBPage() {
             </div>
           </section>
         </main>
-      </RevealWrapper>
-      <Footer />
+        </RevealWrapper>
+      </div>
+      <CinematicFooter />
     </>
   )
 }

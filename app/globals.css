@@ -1204,3 +1204,33 @@ body { animation: fadeIn 0.5s ease; }
     position: relative;
     background: var(--color-bg);
 }
+
+/* =========================================================================
+   Hintergrundfoto hinter dem Hero — dieselbe Technik wie der Curtain-Footer
+   Der Footer liegt fixiert in einem Wrapper mit clip-path. Dadurch ist er nur
+   innerhalb dieser Box sichtbar und wird beim Scrollen freigelegt.
+   Hier laeuft genau das umgekehrt: Die Foto-Ebene ist fixiert und per
+   clip-path auf die Hero-Box begrenzt. Das Bild bleibt stehen und wird
+   weggeschnitten, sobald der Hero den Bildschirm verlaesst — es verschwindet,
+   statt mitzuwandern oder zugedeckt zu werden.
+   clip-path erzeugt sowohl den Beschnitt als auch den Bezugsrahmen fuer die
+   fixierte Ebene darin, genau wie beim Footer.
+   ========================================================================= */
+.hero-backdrop {
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+.hero-backdrop::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-color: var(--color-bg);
+    background-image:
+        linear-gradient(rgba(12,12,12,0.72), rgba(12,12,12,0.72)),
+        url('/bg-hero.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    pointer-events: none;
+}

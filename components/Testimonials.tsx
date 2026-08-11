@@ -52,7 +52,7 @@ export default function Testimonials() {
             rel="noopener noreferrer"
             style={{ color: 'var(--color-gold)', textDecoration: 'none', fontWeight: 500 }}
           >
-            5,0 ★★★★★ aus 2 Google-Bewertungen — bei Google nachlesen
+            5,0 ★★★★★ aus 2 Google-Bewertungen
           </a>
         </p>
 
@@ -72,10 +72,6 @@ export default function Testimonials() {
             avatar: 'bg-[#161616] text-[#C8A44E]',
           }}
         />
-
-        <p className="section-text" style={{ marginTop: '0.5rem', fontSize: '0.85rem' }}>
-          Karte ziehen oder warten — die Bewertungen wechseln von selbst.
-        </p>
       </div>
     </section>
   )

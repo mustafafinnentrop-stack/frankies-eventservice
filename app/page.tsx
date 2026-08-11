@@ -24,7 +24,13 @@ export default function Home() {
           Siehe .content-layer in globals.css. */}
       <div className="content-layer">
         <RevealWrapper>
-          <Hero />
+          {/* Gleiche Technik wie der Footer: clip-path begrenzt die
+              fixierte Foto-Ebene auf diese Box. Beim Footer legt das frei,
+              hier schneidet es weg — das Bild bleibt stehen und
+              verschwindet, sobald der Hero den Bildschirm verlaesst. */}
+          <div className="hero-backdrop">
+            <Hero />
+          </div>
           {/* Alles unterhalb des Hero bekommt einen deckenden Hintergrund und
               schiebt sich beim Scrollen ueber das fixierte Hintergrundfoto.
               Dadurch ist das Foto nur hinter dem Hero zu sehen und wird
