@@ -25,14 +25,21 @@ export default function Home() {
       <div className="content-layer">
         <RevealWrapper>
           <Hero />
-          <EventStrip />
-          <Leistungen />
-          <Cocktailbar />
-          <Ueber />
-          <Ablauf />
-          <Region />
-          <Testimonials />
-          <Kontakt />
+          {/* Alles unterhalb des Hero bekommt einen deckenden Hintergrund und
+              schiebt sich beim Scrollen ueber das fixierte Hintergrundfoto.
+              Dadurch ist das Foto nur hinter dem Hero zu sehen und wird
+              danach zugedeckt — derselbe Vorhang-Gedanke wie beim Footer,
+              nur andersherum. Siehe .below-hero in globals.css. */}
+          <div className="below-hero">
+            <EventStrip />
+            <Leistungen />
+            <Cocktailbar />
+            <Ueber />
+            <Ablauf />
+            <Region />
+            <Testimonials />
+            <Kontakt />
+          </div>
         </RevealWrapper>
       </div>
       <CinematicFooter />

@@ -1189,3 +1189,18 @@ body { animation: fadeIn 0.5s ease; }
     #bewertungen [title="Drag me"] { height: 380px; }
     #bewertungen [title="Drag me"] p { font-size: 0.82rem; line-height: 1.5; }
 }
+
+/* =========================================================================
+   Hintergrundfoto nur hinter dem Hero
+   .site-bg ist eine fixierte Ebene und war bisher hinter der ganzen Seite zu
+   sehen. Alles unterhalb des Hero bekommt jetzt einen deckenden Hintergrund
+   und schiebt sich beim Scrollen darueber — das Foto bleibt stehen und wird
+   zugedeckt, statt mitzuwandern. Derselbe Vorhang-Gedanke wie beim Footer,
+   nur andersherum: dort wird freigelegt, hier zugedeckt.
+   position: relative, damit der Hintergrund ueber der fixierten Foto-Ebene
+   liegt und nicht dahinter.
+   ========================================================================= */
+.below-hero {
+    position: relative;
+    background: var(--color-bg);
+}
