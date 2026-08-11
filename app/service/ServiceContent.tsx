@@ -2,7 +2,7 @@
 
 import Navbar from '@/components/Navbar'
 import Icon from '@/components/Icon'
-import Footer from '@/components/Footer'
+import { CinematicFooter } from '@/components/ui/motion-footer'
 import RevealWrapper from '@/components/RevealWrapper'
 import BookingCTA from '@/components/BookingCTA'
 import Kontakt from '@/components/Kontakt'
@@ -119,11 +119,13 @@ export default function ServiceContent() {
   return (
     <>
       <Navbar />
-      <RevealWrapper>
-        <main style={{ paddingTop: '100px', background: 'var(--color-bg)' }}>
+      <div className="content-layer">
+        <RevealWrapper>
+        <main style={{ paddingTop: '100px' }}>
 
           {/* Hero */}
-          <section style={{ padding: '5rem 2rem 4rem', background: 'var(--color-surface)' }}>
+          <div className="hero-backdrop">
+            <section style={{ padding: '5rem 2rem 4rem' }}>
             <div className="section-container" style={{ textAlign: 'center' }}>
               <p className="section-label reveal">Service & Portfolio</p>
               <h1 className="reveal" style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.2rem,5vw,4rem)', fontWeight: 400, lineHeight: 1.1, marginBottom: '1.5rem' }}>
@@ -137,6 +139,12 @@ export default function ServiceContent() {
               </div>
             </div>
           </section>
+          </div>
+
+          {/* Deckende Ebene: schiebt sich beim Scrollen ueber das
+              fixierte Hintergrundfoto, siehe .below-hero in globals.css. */}
+          <div className="below-hero">
+
 
           {/* Event-Typen */}
           <section style={{ padding: '5rem 2rem' }}>
@@ -275,9 +283,12 @@ export default function ServiceContent() {
             </div>
           </section>
 
+          </div>
+
         </main>
-      </RevealWrapper>
-      <Footer />
+        </RevealWrapper>
+      </div>
+      <CinematicFooter />
     </>
   )
 }
