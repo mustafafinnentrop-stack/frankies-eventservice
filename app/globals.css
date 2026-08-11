@@ -1174,3 +1174,18 @@ body { animation: fadeIn 0.5s ease; }
 
 /* Inhalte ueber Raster und Masken halten */
 .hiw-wrap > .reveal, .hiw { position: relative; z-index: 2; }
+
+/* =========================================================================
+   Bewertungs-Sektion
+   Die Vorlage der Karten ist auf kurzen Blindtext ausgelegt: Auf dem Handy
+   ist die Karte 300px hoch und die Sternereihe absolut am unteren Rand
+   verankert. Eine echte Google-Rezension ist laenger — dadurch lief die
+   letzte Textzeile in die Sterne (im Browser nachgemessen).
+   Korrigiert wird das von aussen ueber die Sektions-ID, damit die zugekaufte
+   Komponente unveraendert bleibt. Die ID-Spezifitaet schlaegt die
+   Utility-Klassen, die hier ungelayert geladen werden.
+   ========================================================================= */
+@media (max-width: 767px) {
+    #bewertungen [title="Drag me"] { height: 380px; }
+    #bewertungen [title="Drag me"] p { font-size: 0.82rem; line-height: 1.5; }
+}

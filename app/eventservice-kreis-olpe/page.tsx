@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import Testimonials from '@/components/Testimonials'
 import RevealWrapper from '@/components/RevealWrapper'
 import BookingCTA from '@/components/BookingCTA'
 import Icon from '@/components/Icon'
@@ -206,6 +207,9 @@ export default function EventserviceKreisOlpe() {
               </div>
             </div>
           </section>
+
+          <Testimonials />
+
 
           <section style={{ padding: '4rem 2rem' }}>
             <div className="section-container" style={{ textAlign: 'center' }}>

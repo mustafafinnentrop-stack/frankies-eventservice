@@ -7,6 +7,7 @@ import Ueber from '@/components/Ueber'
 import Ablauf from '@/components/Ablauf'
 import Region from '@/components/Region'
 import Kontakt from '@/components/Kontakt'
+import Testimonials from '@/components/Testimonials'
 import RevealWrapper from '@/components/RevealWrapper'
 import ClientEffects from '@/components/ClientEffects'
 import { CinematicFooter } from '@/components/ui/motion-footer'
@@ -30,6 +31,7 @@ export default function Home() {
           <Ueber />
           <Ablauf />
           <Region />
+          <Testimonials />
           <Kontakt />
         </RevealWrapper>
       </div>
