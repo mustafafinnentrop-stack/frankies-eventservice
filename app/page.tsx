@@ -7,6 +7,7 @@ import Ueber from '@/components/Ueber'
 import Ablauf from '@/components/Ablauf'
 import Region from '@/components/Region'
 import Kontakt from '@/components/Kontakt'
+import Testimonials from '@/components/Testimonials'
 import RevealWrapper from '@/components/RevealWrapper'
 import ClientEffects from '@/components/ClientEffects'
 import { CinematicFooter } from '@/components/ui/motion-footer'
@@ -24,13 +25,21 @@ export default function Home() {
       <div className="content-layer">
         <RevealWrapper>
           <Hero />
-          <EventStrip />
-          <Leistungen />
-          <Cocktailbar />
-          <Ueber />
-          <Ablauf />
-          <Region />
-          <Kontakt />
+          {/* Alles unterhalb des Hero bekommt einen deckenden Hintergrund und
+              schiebt sich beim Scrollen ueber das fixierte Hintergrundfoto.
+              Dadurch ist das Foto nur hinter dem Hero zu sehen und wird
+              danach zugedeckt — derselbe Vorhang-Gedanke wie beim Footer,
+              nur andersherum. Siehe .below-hero in globals.css. */}
+          <div className="below-hero">
+            <EventStrip />
+            <Leistungen />
+            <Cocktailbar />
+            <Ueber />
+            <Ablauf />
+            <Region />
+            <Testimonials />
+            <Kontakt />
+          </div>
         </RevealWrapper>
       </div>
       <CinematicFooter />

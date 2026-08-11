@@ -35,6 +35,16 @@
   --color-muted-foreground: #8A8578;
   --color-border: rgba(200, 164, 78, 0.18);
   --color-destructive: #C8A44E;
+
+  /* Laufender Lichtstreifen am Kartenrand (BorderBeam). Die Vorlage liefert
+     die Utility animate-border-beam, die Keyframes muss das Projekt stellen. */
+  --animate-border-beam: border-beam calc(var(--duration) * 1s) infinite linear;
+}
+
+@keyframes border-beam {
+  100% {
+    offset-distance: 100%;
+  }
 }
 
 :root {

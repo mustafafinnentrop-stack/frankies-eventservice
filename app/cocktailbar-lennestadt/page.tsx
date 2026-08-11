@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import Testimonials from '@/components/Testimonials'
 import RevealWrapper from '@/components/RevealWrapper'
 import BookingCTA from '@/components/BookingCTA'
 import Icon from '@/components/Icon'
@@ -279,6 +280,8 @@ export default function CocktailbarLennestadt() {
           </section>
 
           {/* Coverage */}
+          <Testimonials />
+
           <section className="section-block" style={{ textAlign: 'center' }}>
             <div className="section-container reveal">
               <p className="section-label">Einsatzgebiet</p>
