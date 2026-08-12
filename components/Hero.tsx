@@ -29,6 +29,11 @@ export default function Hero() {
       current.classList.remove('active')
       current.classList.add('exit')
       next.classList.add('active')
+      // Nur das sichtbare Wort gehoert zur Ueberschrift. Ohne das lesen
+      // Screenreader und Textauswerter alle zwoelf Woerter am Stueck vor —
+      // gemessen 183 statt 31 Zeichen.
+      current.setAttribute('aria-hidden', 'true')
+      next.setAttribute('aria-hidden', 'false')
 
       window.setTimeout(() => current.classList.remove('exit'), 600)
     }
@@ -67,7 +72,11 @@ export default function Hero() {
           <span className="rotating-wrapper">
             <span className="rotating-words" ref={containerRef}>
               {WORDS.map((word, i) => (
-                <span key={word} className={`rotating-word${i === 0 ? ' active' : ''}`}>
+                <span
+                  key={word}
+                  className={`rotating-word${i === 0 ? ' active' : ''}`}
+                  aria-hidden={i !== 0}
+                >
                   {word}
                 </span>
               ))}

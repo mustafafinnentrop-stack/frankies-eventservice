@@ -1234,3 +1234,13 @@ body { animation: fadeIn 0.5s ease; }
     background-repeat: no-repeat;
     pointer-events: none;
 }
+
+/* Bewertungskarten ohne Initialen-Kreis.
+   Fuer Carol-Ann Stoecker und Stefan Hoberg gibt es keine Fotos — ihre
+   Profilbilder liegen bei Google und duerfen nicht eingebunden werden. Ein
+   Kreis mit dem Anfangsbuchstaben ist das Erkennungszeichen erfundener
+   Bewertungen; bei echten Rezensionen schadet er nur. Der Name allein
+   reicht, nachpruefbar ist er ohnehin ueber den verlinkten Google-Eintrag. */
+#bewertungen [title="Drag me"] .relative > div:first-child > span:first-child {
+    display: none;
+}
