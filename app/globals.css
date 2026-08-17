@@ -1223,7 +1223,9 @@ body { animation: fadeIn 0.5s ease; }
 .hero-backdrop::before {
     content: '';
     position: fixed;
-    inset: 0;
+    /* Oben und unten ueber den Rand hinaus, damit die Parallax-Bewegung
+       keine Kante freilegt. Der clip-path des Wrappers schneidet ohnehin zu. */
+    inset: -140px 0;
     z-index: -1;
     background-color: var(--color-bg);
     background-image:
@@ -1233,6 +1235,27 @@ body { animation: fadeIn 0.5s ease; }
     background-position: center;
     background-repeat: no-repeat;
     pointer-events: none;
+    /* --parallax-y wird von HeroParallax ueber den Scrollweg getweent. */
+    transform: translate3d(0, var(--parallax-y, 0px), 0);
+    will-change: transform;
+}
+
+/* Hochkant-Ausschnitt fuers Handy.
+   Das Foto ist 2560x1440, also 16:9. Auf einem 390x844-Display schneidet
+   `cover` daraus einen Streifen von 26% der Breite — gemessen — und der
+   traf die Mitte, also Schulter und Unschaerfe statt Zapfhahn und Glas.
+   bg-hero-hoch.webp ist derselbe Moment, aber auf das Motiv zugeschnitten:
+   810x1440 aus dem Original ab x=440, skaliert auf 900x1600. */
+@media (max-width: 767px) {
+    .hero-backdrop::before {
+        /* Weniger Ueberstand als auf Desktop: Die Parallax-Bewegung betraegt
+           hier gemessen 75px, 90px reichen. Mehr wuerde das Bild nur weiter
+           hineinzoomen und das Glas hinter die Buttons schieben. */
+        inset: -90px 0;
+        background-image:
+            linear-gradient(rgba(12,12,12,0.72), rgba(12,12,12,0.72)),
+            url('/bg-hero-hoch.webp');
+    }
 }
 
 /* Bewertungskarten ohne Initialen-Kreis.

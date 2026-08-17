@@ -11,6 +11,7 @@ import Testimonials from '@/components/Testimonials'
 import RevealWrapper from '@/components/RevealWrapper'
 import ClientEffects from '@/components/ClientEffects'
 import { CinematicFooter } from '@/components/ui/motion-footer'
+import { HeroParallax } from '@/components/ui/parallax-scrolling'
 
 export default function Home() {
   return (
@@ -30,6 +31,7 @@ export default function Home() {
               verschwindet, sobald der Hero den Bildschirm verlaesst. */}
           <div className="hero-backdrop">
             <Hero />
+            <HeroParallax />
           </div>
           {/* Alles unterhalb des Hero bekommt einen deckenden Hintergrund und
               schiebt sich beim Scrollen ueber das fixierte Hintergrundfoto.
