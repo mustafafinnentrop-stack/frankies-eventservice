@@ -3,10 +3,9 @@
   Leistungen mit denselben Texten — unterschiedlich ist nur die Form.
   Sonst waere der Vergleich wertlos.
 
-  Zwei Leistungen haben kein Foto: Foodtruck und Kaffeestation. Beide
-  kommen aus Auftraegen, die noch anstehen (Westmark, Schloss Melschede),
-  es gibt schlicht noch keine Aufnahme davon. Die Entwuerfe behandeln das
-  jeweils als bewusste Abweichung, nicht als Luecke.
+  Alle sechs Leistungen haben ein Foto. Der Typ laesst `bild` weiterhin
+  offen, damit ein neuer Eintrag ohne Aufnahme die Liste nicht bricht —
+  die Zeile steht dann schlicht ohne Bild.
 */
 export type Leistung = {
   titel: string
@@ -52,9 +51,19 @@ export const LEISTUNGEN: Leistung[] = [
   {
     titel: 'Catering & Foodtruck',
     zeile: 'Essen und Getränke aus einer Hand.',
+    bild: '/foodtruck.webp',
+    // Der Wagen steht links im Bild, die Ausgabe mit den beiden Leuten
+    // rechts davon. In einem hochkanten Ausschnitt liegt sie sonst
+    // ausserhalb.
+    pos: '62% 50%',
+    alt: 'Foodtruck von Frankies Eventservice mit geöffneter Ausgabe und zwei Mitarbeitern',
   },
   {
     titel: 'Kaffeestation',
     zeile: 'Für den Nachmittag nach der Trauung.',
+    bild: '/kaffeestation.webp',
+    // Hochkantes Handyfoto, der Automat steht im oberen Teil.
+    pos: 'center 30%',
+    alt: 'Kaffeevollautomat der Kaffeestation von Frankies Eventservice',
   },
 ]
