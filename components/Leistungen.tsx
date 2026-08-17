@@ -1,70 +1,72 @@
-import Icon from './Icon'
+'use client'
+
+import { useState } from 'react'
+import Image from 'next/image'
+import { LEISTUNGEN } from './leistungen-daten'
 
 /*
-  Leistungen — die Bausteine, die tatsaechlich gebucht werden.
+  Leistungen als Editorial-Liste (ausgewaehlter Entwurf A).
 
-  Vorher standen hier vier Karten nach Anlass (Schuetzenfest, Hochzeit,
-  Cocktailbar, Firmenfest) mit Werbetext ohne Aussage. Die Anlaesse haben
-  eigene Unterseiten; hier gehoert hin, was konkret geliefert wird — und
-  zwar das, was bei den Veranstaltungen unter /#referenzen auch wirklich
-  geliefert wurde. Jeder Baustein hier hat dort mindestens eine Entsprechung.
+  Vorher standen hier sechs gleich grosse Kacheln mit je einem Strichsymbol
+  und zwei bis drei Saetzen. Genau diese Form ist der Grund, warum der
+  Abschnitt wie ein Baukasten wirkte.
+
+  Jetzt: sechs Zeilen ueber die volle Breite, getrennt durch eine duenne
+  Linie, der Name gross in der Anzeigeschrift, darunter ein einziger Satz.
+  Beim Ueberfahren einer Zeile faehrt rechts das passende Foto ein und die
+  Zeile rueckt ein Stueck nach rechts.
+
+  Auf dem Handy gibt es kein Ueberfahren. Dort steht das Foto als schmaler
+  Streifen direkt in der Zeile, die grosse Buehne entfaellt.
+
+  Die Ueberschrift steht hier linksbuendig, anders als in den uebrigen
+  Abschnitten. Das gehoert zur Form dieses Entwurfs — mittig gesetzt
+  verliert die Liste ihre Achse.
 */
-const BAUSTEINE = [
-  {
-    icon: 'counter',
-    titel: 'Thekenservice & Zapfanlage',
-    text: 'Theke, Zapftechnik und Personal für Schützen- und Dorffeste. Beim Schützenfest Berghausen waren dafür 18 Leute im Einsatz.',
-  },
-  {
-    icon: 'cocktail',
-    titel: 'Mobile Cocktailbar',
-    text: 'Bambustheke und frisch zubereitete Cocktails, aufgebaut wo Sie feiern — auf dem Campingplatz genauso wie auf der Firmenfeier.',
-  },
-  {
-    icon: 'box',
-    titel: 'Getränkecatering',
-    text: 'Wir planen die Menge, liefern, kühlen und schenken aus. Sie kaufen nichts ein und bleiben auf nichts sitzen.',
-  },
-  {
-    icon: 'van',
-    titel: 'Catering & Foodtruck',
-    text: 'Essen und Getränke aus einer Hand, wenn beides zusammengehört. Für die Westmark-Firmenfeier mit 1.200 geladenen Gästen ist beides bei uns gebucht.',
-  },
-  {
-    icon: 'team',
-    titel: 'Servicepersonal',
-    text: 'Eingespielte Kräfte für Ausschank, Empfang und Abräumen. Auch dann, wenn Sie Theke und Getränke selbst stellen.',
-  },
-  {
-    icon: 'snack',
-    titel: 'Kaffeestation',
-    text: 'Für den Nachmittag nach der Trauung oder den zweiten Teil des Abends. Als Nächstes bei der Hochzeit auf Schloss Melschede.',
-  },
-]
-
 export default function Leistungen() {
+  const [aktiv, setAktiv] = useState<number | null>(null)
+  const gezeigt = aktiv !== null ? LEISTUNGEN[aktiv] : null
+
   return (
     <section id="leistungen">
-      <div className="section-container">
-        <div className="reveal grid-text">
-          <p className="section-label" style={{ margin: '0 auto 1rem' }}>Unsere Leistungen</p>
-          <h2 className="section-title" style={{ margin: '0 auto 1.5rem' }}>Was wir mitbringen</h2>
-          <p className="section-text" style={{ margin: '0 auto 3rem' }}>
-            Sie buchen nicht ein festes Paket, sondern die Bausteine, die Sie brauchen.
-            Was davon sinnvoll ist, klären wir vorher am Telefon — und richten uns nach
-            Gästezahl, Dauer und Ort.
-          </p>
-        </div>
-        <div className="services-grid stagger-children reveal">
-          {BAUSTEINE.map((b) => (
-            <div key={b.titel} className="service-card reveal">
-              <div className="service-icon"><Icon name={b.icon} size={26} /></div>
-              <h3>{b.titel}</h3>
-              <p>{b.text}</p>
-            </div>
-          ))}
-        </div>
+      <div className="section-container leistungen-wrap reveal">
+        <p className="leistungen-label">Unsere Leistungen</p>
+        <h2 className="leistungen-titel">Was wir mitbringen</h2>
 
+        <div className="leistungen-buehne">
+          <ul className="leistungen-liste" onMouseLeave={() => setAktiv(null)}>
+            {LEISTUNGEN.map((l, i) => (
+              <li
+                key={l.titel}
+                className={`leistungen-zeile${aktiv === i ? ' ist-aktiv' : ''}`}
+                onMouseEnter={() => setAktiv(i)}
+              >
+                <span className="leistungen-nr">{String(i + 1).padStart(2, '0')}</span>
+                <span className="leistungen-text">
+                  <span className="leistungen-name">{l.titel}</span>
+                  <span className="leistungen-satz">{l.zeile}</span>
+                </span>
+                {l.bild && (
+                  <span className="leistungen-mini">
+                    <Image src={l.bild} alt={l.alt ?? ''} width={200} height={150}
+                           sizes="100px" quality={55}
+                           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: l.pos ?? 'center' }} />
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
+
+          {/* Die Foto-Buehne steht immer, damit beim Wechsel nichts springt —
+              nur das Bild darin tauscht und blendet auf. */}
+          <div className={`leistungen-foto${gezeigt?.bild ? ' hat-bild' : ''}`} aria-hidden="true">
+            {gezeigt?.bild && (
+              <Image key={gezeigt.bild} src={gezeigt.bild} alt="" width={720} height={900}
+                     sizes="420px" quality={62}
+                     style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: gezeigt.pos ?? 'center' }} />
+            )}
+          </div>
+        </div>
       </div>
     </section>
   )

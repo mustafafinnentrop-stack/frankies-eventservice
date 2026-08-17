@@ -1562,3 +1562,112 @@ html[data-cookie-consent='declined'] .cookie-banner {
     margin: 0 0 2.5rem;
     padding: 0;
 }
+
+/* =========================================================================
+   Leistungen — Editorial-Liste
+   Ersetzt die sechs gleich grossen Icon-Kacheln. Keine Kaesten mehr:
+   sechs Zeilen ueber die volle Breite, Trennlinie dazwischen, ein Satz je
+   Zeile. Das Foto rechts wechselt beim Ueberfahren.
+   Die Ueberschrift steht hier bewusst linksbuendig statt mittig wie in den
+   uebrigen Abschnitten — mittig gesetzt verliert die Liste ihre Achse.
+   ========================================================================= */
+.leistungen-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: 1rem;
+}
+.leistungen-titel {
+    font-family: var(--font-display);
+    font-size: clamp(2.6rem, 5vw, 4.5rem);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--color-text);
+    margin-bottom: 4rem;
+    hyphens: auto;
+    overflow-wrap: break-word;
+}
+.leistungen-buehne {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 4rem;
+    align-items: start;
+}
+.leistungen-liste {
+    list-style: none;
+    border-top: 1px solid rgba(200,164,78,0.18);
+}
+.leistungen-zeile {
+    display: flex;
+    align-items: baseline;
+    gap: 1.75rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(200,164,78,0.18);
+    transition: padding-left var(--dur-base) var(--ease-out);
+}
+.leistungen-zeile.ist-aktiv { padding-left: 1.5rem; }
+.leistungen-nr {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--color-gold);
+    flex-shrink: 0;
+    width: 2rem;
+}
+.leistungen-text { display: flex; flex-direction: column; gap: 0.4rem; }
+.leistungen-name {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 2.6vw, 2.3rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--color-text-muted);
+    transition: color var(--dur-base) var(--ease-out);
+}
+.leistungen-zeile.ist-aktiv .leistungen-name { color: var(--color-text); }
+.leistungen-satz {
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    max-width: 46ch;
+}
+/* Der Miniaturstreifen erscheint nur dort, wo es kein Ueberfahren gibt. */
+.leistungen-mini { display: none; }
+.leistungen-foto {
+    position: sticky;
+    top: 8rem;
+    aspect-ratio: 4 / 5;
+    border: 1px solid rgba(200,164,78,0.12);
+    background: var(--color-surface);
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity var(--dur-slow) var(--ease-out);
+}
+.leistungen-foto.hat-bild { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+    .leistungen-zeile, .leistungen-name, .leistungen-foto { transition: none; }
+}
+
+/* Handy: kein Ueberfahren, also keine Buehne. Das Foto steht als schmaler
+   Streifen in der Zeile selbst, damit trotzdem jede Leistung ein Bild hat. */
+@media (max-width: 900px) {
+    .leistungen-titel { margin-bottom: 2.5rem; }
+    .leistungen-buehne { grid-template-columns: 1fr; gap: 0; }
+    .leistungen-foto { display: none; }
+    .leistungen-zeile { align-items: center; gap: 1rem; padding: 1.4rem 0; }
+    .leistungen-zeile.ist-aktiv { padding-left: 0; }
+    .leistungen-name { color: var(--color-text); }
+    .leistungen-nr { display: none; }
+    .leistungen-text { flex: 1; }
+    .leistungen-mini {
+        display: block;
+        flex-shrink: 0;
+        width: 88px;
+        aspect-ratio: 4 / 3;
+        overflow: hidden;
+        border: 1px solid rgba(200,164,78,0.12);
+    }
+}

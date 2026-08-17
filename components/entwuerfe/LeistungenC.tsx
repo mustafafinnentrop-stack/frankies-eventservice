@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-import { LEISTUNGEN } from './leistungen-daten'
+import { LEISTUNGEN } from '../leistungen-daten'
 
 /*
   Entwurf C — Sticky-Split.
