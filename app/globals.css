@@ -1317,3 +1317,125 @@ body { animation: fadeIn 0.5s ease; }
 #bewertungen [title="Drag me"] .relative > div:first-child > span:first-child {
     display: none;
 }
+
+/* =========================================================================
+   Fakten im Hero
+   Drei Angaben zwischen Einleitung und Buttons. Bewusst klein und ruhig:
+   sie sollen die Ueberschrift nicht schlagen, sondern die Frage "kann der
+   das ueberhaupt" beantworten, bevor jemand weiterscrollt.
+   ========================================================================= */
+.hero-fakten {
+    list-style: none;
+    margin: 0 0 2.5rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    align-items: flex-start;
+    text-align: left;
+}
+.hero-fakten li {
+    position: relative;
+    padding-left: 1.75rem;
+    font-size: 0.92rem;
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--color-text-muted);
+}
+/* Haken als Text statt als Icon-Komponente: drei Listenpunkte sind kein
+   Grund, React-Komponenten in den Hero zu laden. */
+.hero-fakten li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.45em;
+    width: 0.7rem;
+    height: 0.38rem;
+    border-left: 1.5px solid var(--color-gold);
+    border-bottom: 1.5px solid var(--color-gold);
+    transform: rotate(-45deg);
+}
+
+/* =========================================================================
+   Referenzen
+   Gleiche Kartenoptik wie die Leistungen, damit die Seite nicht in immer
+   neue Stile zerfaellt. Unterschied ist die Zahlenzeile: die Zahl traegt
+   die Karte, deshalb steht sie in der Anzeigeschrift und in Gold.
+   ========================================================================= */
+.referenz-grid {
+    list-style: none;
+    margin: 3.5rem 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+.referenz-card {
+    background: rgba(22,22,22,0.80);
+    border: 1px solid rgba(200,164,78,0.12);
+    padding: 2.25rem 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: border-color var(--dur-base) var(--ease-out),
+                transform var(--dur-base) var(--ease-out);
+}
+.referenz-card:hover {
+    border-color: var(--edge-gold);
+    transform: translateY(-4px);
+}
+.referenz-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.3;
+    color: var(--color-text);
+    margin: 0;
+}
+.referenz-leistungen {
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    font-weight: 500;
+    margin: 0;
+}
+/* margin-top: auto schiebt die Zahlen an den unteren Rand. Dadurch stehen
+   sie ueber alle Karten einer Reihe auf einer Linie, auch wenn die Namen
+   unterschiedlich viele Zeilen brauchen. Karten ohne Zahl bleiben leer. */
+.referenz-zahlen {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.75rem;
+    margin: auto 0 0;
+    padding-top: 0.75rem;
+}
+.referenz-zahlen dt {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--color-gold);
+}
+.referenz-zahlen dd {
+    margin: 0.35rem 0 0;
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+}
+
+@media (max-width: 1024px) {
+    .referenz-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+    .referenz-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .referenz-card { padding: 1.75rem 1.5rem; }
+    /* Im Hero ist links ausgerichteter Text auf dem Handy schwerer zu lesen,
+       wenn alles andere zentriert steht. Die Liste bleibt linksbuendig, wird
+       aber als Block mittig gesetzt. */
+    .hero-fakten { align-self: center; }
+    .hero-fakten li { font-size: 0.86rem; }
+}

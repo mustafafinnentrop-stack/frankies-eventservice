@@ -1,54 +1,68 @@
 import Icon from './Icon'
+
+/*
+  Leistungen — die Bausteine, die tatsaechlich gebucht werden.
+
+  Vorher standen hier vier Karten nach Anlass (Schuetzenfest, Hochzeit,
+  Cocktailbar, Firmenfest) mit Werbetext ohne Aussage. Die Anlaesse haben
+  eigene Unterseiten; hier gehoert hin, was konkret geliefert wird — und
+  zwar das, was bei den Veranstaltungen unter /#referenzen auch wirklich
+  geliefert wurde. Jeder Baustein hier hat dort mindestens eine Entsprechung.
+*/
+const BAUSTEINE = [
+  {
+    icon: 'counter',
+    titel: 'Thekenservice & Zapfanlage',
+    text: 'Theke, Zapftechnik und Personal für Schützen- und Dorffeste. Beim Schützenfest Berghausen waren dafür 18 Leute im Einsatz.',
+  },
+  {
+    icon: 'cocktail',
+    titel: 'Mobile Cocktailbar',
+    text: 'Bambustheke und frisch zubereitete Cocktails, aufgebaut wo Sie feiern — auf dem Campingplatz genauso wie auf der Firmenfeier.',
+  },
+  {
+    icon: 'box',
+    titel: 'Getränkecatering',
+    text: 'Wir planen die Menge, liefern, kühlen und schenken aus. Sie kaufen nichts ein und bleiben auf nichts sitzen.',
+  },
+  {
+    icon: 'van',
+    titel: 'Catering & Foodtruck',
+    text: 'Essen und Getränke aus einer Hand, wenn beides zusammengehört — bei der Westmark-Firmenfeier für 1.200 geladene Gäste.',
+  },
+  {
+    icon: 'team',
+    titel: 'Servicepersonal',
+    text: 'Eingespielte Kräfte für Ausschank, Empfang und Abräumen. Auch dann, wenn Sie Theke und Getränke selbst stellen.',
+  },
+  {
+    icon: 'snack',
+    titel: 'Kaffeestation',
+    text: 'Für den Nachmittag nach der Trauung oder den zweiten Teil des Abends. Zuletzt bei der Hochzeit auf Schloss Melschede.',
+  },
+]
+
 export default function Leistungen() {
   return (
     <section id="leistungen">
       <div className="section-container">
         <div className="reveal grid-text">
           <p className="section-label" style={{ margin: '0 auto 1rem' }}>Unsere Leistungen</p>
-          <h2 className="section-title" style={{ margin: '0 auto 1.5rem' }}>Professioneller Service<br />für jeden Anlass</h2>
+          <h2 className="section-title" style={{ margin: '0 auto 1.5rem' }}>Was wir mitbringen</h2>
           <p className="section-text" style={{ margin: '0 auto 3rem' }}>
-            Von der Planung bis zur Durchführung: Wir übernehmen den kompletten Getränkeservice
-            für Ihre Veranstaltung. Mit jahrelanger Erfahrung, professionellem Personal und
-            hochwertigen Getränken sorgen wir dafür, dass Ihre Gäste begeistert sind.
+            Sie buchen nicht ein festes Paket, sondern die Bausteine, die Sie brauchen.
+            Was davon sinnvoll ist, klären wir vorher am Telefon — und richten uns nach
+            Gästezahl, Dauer und Ort.
           </p>
         </div>
         <div className="services-grid stagger-children reveal">
-          <div className="service-card reveal">
-            <div className="service-icon"><Icon name="beer" size={26} /></div>
-            <h3>Schützenfeste</h3>
-            <p>
-              Wir übernehmen den kompletten Thekenservice bei Ihrem Schützenfest.
-              Dabei sorgt unser eingespieltes Team für professionellen Zapfbetrieb
-              und einen reibungslosen Ablauf — von Freitag bis Montag.
-            </p>
-          </div>
-          <div className="service-card reveal">
-            <div className="service-icon"><Icon name="champagne" size={26} /></div>
-            <h3>Hochzeiten &amp; Feiern</h3>
-            <p>
-              Ihr besonderer Tag verdient besonderen Service. Deshalb kümmern wir uns
-              um den gesamten Ausschank, während Sie entspannt mit Ihren Gästen feiern.
-              So bleibt Ihnen mehr Zeit für die schönen Momente.
-            </p>
-          </div>
-          <div className="service-card reveal">
-            <div className="service-icon"><Icon name="cocktail" size={26} /></div>
-            <h3>Mobile Cocktailbar</h3>
-            <p>
-              Wir kommen direkt zu Ihnen — mit einer stylischen Bambustheke
-              und frisch zubereiteten Cocktails. Auf diese Weise wird
-              jede Feier zu einem unvergesslichen Erlebnis.
-            </p>
-          </div>
-          <div className="service-card reveal">
-            <div className="service-icon"><Icon name="tent" size={26} /></div>
-            <h3>Firmen- &amp; Vereinsfeste</h3>
-            <p>
-              Ob Betriebsfeier, Vereinsjubiläum oder Dorffest — bei uns bekommen
-              Sie erfahrenes Personal und professionellen Getränkeausschank.
-              Darüber hinaus passen wir uns flexibel an Ihre Wünsche an.
-            </p>
-          </div>
+          {BAUSTEINE.map((b) => (
+            <div key={b.titel} className="service-card reveal">
+              <div className="service-icon"><Icon name={b.icon} size={26} /></div>
+              <h3>{b.titel}</h3>
+              <p>{b.text}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

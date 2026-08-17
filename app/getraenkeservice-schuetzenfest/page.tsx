@@ -68,7 +68,7 @@ export default function GetraenkeserviceSchuetzenfest() {
                 Wir übernehmen den kompletten Thekenservice bei Ihrem Schützenfest — von Freitag bis Montag, professionell und zuverlässig. Im Kreis Olpe und dem gesamten Sauerland sind wir der richtige Ansprechpartner.
               </p>
               <div className="reveal">
-                <BookingCTA primary="Unverbindlich anfragen" secondary="Jetzt anrufen" calcomUrl="tel:+4915142840916" />
+                <BookingCTA primary="Angebot anfordern" secondary="Jetzt anrufen" calcomUrl="tel:+4915142840916" />
               </div>
             </div>
           </section>

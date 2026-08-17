@@ -121,7 +121,7 @@ export default function CocktailbarLennestadt() {
                 Unsere mobile Cocktailbar kommt mit der Bambustheke direkt zu Ihnen — egal ob Garten, Hof, Halle oder Festzelt.
               </p>
               <div className="reveal">
-                <BookingCTA primary="Unverbindlich anfragen" secondary="Jetzt anrufen" calcomUrl="tel:+4915142840916" />
+                <BookingCTA primary="Angebot anfordern" secondary="Jetzt anrufen" calcomUrl="tel:+4915142840916" />
               </div>
             </div>
           </section>
@@ -212,7 +212,7 @@ export default function CocktailbarLennestadt() {
           {/* Booking Banner */}
           <section style={{ padding: '4rem 2rem', background: 'linear-gradient(135deg, rgba(200,164,78,0.07) 0%, var(--color-bg) 100%)', borderTop: '1px solid rgba(200,164,78,0.12)', borderBottom: '1px solid rgba(200,164,78,0.12)' }}>
             <div className="section-container reveal">
-              <BookingCTA layout="banner" primary="Unverbindlich anfragen" />
+              <BookingCTA layout="banner" primary="Angebot anfordern" />
             </div>
           </section>
 
