@@ -1524,96 +1524,6 @@ html[data-cookie-consent='declined'] .cookie-banner {
     border-color: var(--color-gold);
 }
 
-/* =========================================================================
-   Preis-Block unter den Leistungen
-   ========================================================================= */
-.preis-block {
-    max-width: 760px;
-    margin: 4rem auto 0;
-    padding: 2.5rem;
-    border: 1px solid rgba(200,164,78,0.18);
-    background: rgba(22,22,22,0.55);
-}
-.preis-block h3 {
-    font-family: var(--font-display);
-    font-size: 1.6rem;
-    font-weight: 400;
-    color: var(--color-text);
-    margin: 0 0 1rem;
-}
-.preis-block p {
-    font-size: 0.95rem;
-    font-weight: 300;
-    line-height: 1.8;
-    color: var(--color-text-muted);
-    margin: 0;
-}
-.preis-faktoren {
-    list-style: none;
-    margin: 1.5rem 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.85rem;
-}
-.preis-faktoren li {
-    position: relative;
-    padding-left: 1.5rem;
-    font-size: 0.92rem;
-    font-weight: 300;
-    line-height: 1.6;
-    color: var(--color-text-muted);
-}
-.preis-faktoren li::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0.62em;
-    width: 6px; height: 1px;
-    background: var(--color-gold);
-}
-.preis-faktoren strong {
-    color: var(--color-text);
-    font-weight: 400;
-}
-.preis-schluss {
-    padding-top: 1.25rem;
-    border-top: 1px solid rgba(200,164,78,0.12);
-}
-
-/* =========================================================================
-   Hervorgehobene Referenz mit Foto
-   ========================================================================= */
-.referenz-featured {
-    display: grid;
-    grid-template-columns: 460px 1fr;
-    gap: 3rem;
-    align-items: center;
-    margin-top: 3.5rem;
-    padding: 2.5rem;
-    border: 1px solid rgba(200,164,78,0.18);
-    background: rgba(22,22,22,0.55);
-}
-.referenz-featured-bild {
-    aspect-ratio: 4 / 5;
-    overflow: hidden;
-    border: 1px solid rgba(200,164,78,0.12);
-}
-.referenz-featured-text h3 {
-    font-family: var(--font-display);
-    font-size: clamp(1.9rem, 3vw, 2.6rem);
-    font-weight: 400;
-    line-height: 1.2;
-    color: var(--color-text);
-    margin: 0.5rem 0 1.25rem;
-}
-.referenz-featured .referenz-zahlen {
-    margin: 0;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(200,164,78,0.12);
-    gap: 2.5rem;
-}
-.referenz-featured .referenz-zahlen dt { font-size: 2.75rem; }
-
 /* Kopfzeile der Karten: Name links, Status rechts daneben. */
 .referenz-kopf {
     display: flex;
@@ -1635,15 +1545,20 @@ html[data-cookie-consent='declined'] .cookie-banner {
     white-space: nowrap;
 }
 
-@media (max-width: 900px) {
-    .referenz-featured {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        padding: 1.75rem;
-    }
-    .referenz-featured-bild { max-width: 420px; margin: 0 auto; width: 100%; }
-}
 @media (max-width: 640px) {
-    .preis-block { padding: 1.75rem 1.5rem; margin-top: 3rem; }
     .cookie-schalter { left: 1rem; bottom: 1rem; }
+}
+
+/* Stichworte, wovon der Preis abhaengt. Sitzt in der Anfrage-Sektion direkt
+   ueber den Buttons — die Antwort auf "was kostet das" ist die Anfrage.
+   Nutzt die Chip-Optik von .region-tag, damit dafuer keine zweite
+   Formensprache auf der Seite entsteht. */
+.preis-chips {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    justify-content: center;
+    margin: 0 0 2.5rem;
+    padding: 0;
 }

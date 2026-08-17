@@ -10,8 +10,8 @@ export default function Ueber() {
           
           <div className="about-visual glow-frame" style={{ maxWidth: '600px', margin: '0 auto 3rem', aspectRatio: '4/5' }}>
             <Image
-              src="/schuetzenfest.webp"
-              alt="Mitarbeiterin von Frankies Eventservice zapft Bier an der Theke eines Schützenfests im Sauerland"
+              src="/team.webp"
+              alt="Das Team von Frankies Eventservice hinter der Theke"
               width={600}
               height={750}
               sizes="(max-width: 768px) 100vw, 600px" quality={60}

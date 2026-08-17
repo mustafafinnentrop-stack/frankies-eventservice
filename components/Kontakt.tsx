@@ -64,10 +64,22 @@ export default function Kontakt() {
       <div className="cta-content" style={{ textAlign: 'center', alignItems: 'center', display: 'flex', flexDirection: 'column' }}>
         <p className="section-label reveal" style={{ margin: '0 auto 1rem' }}>Jetzt anfragen</p>
         <h2 className="section-title reveal" style={{ margin: '0 auto 1rem' }}>Ihr nächstes Event<br />steht an?</h2>
-        <p className="section-text reveal" style={{ margin: '0 auto 2rem' }}>
-          Füllen Sie das Formular aus — wir melden uns innerhalb von 24 Stunden.
-          Oder buchen Sie direkt einen Beratungstermin.
+        <p className="section-text reveal" style={{ margin: '0 auto 1.5rem' }}>
+          Feste Preise gibt es bei uns nicht — ein Schützenfest über vier Tage und eine
+          Cocktailbar für einen Abend haben nichts miteinander zu tun. Nennen Sie uns
+          Datum, Ort und ungefähre Gästezahl, dann bekommen Sie innerhalb von 24 Stunden
+          ein Angebot.
         </p>
+
+        {/* Die Preisfrage steht hier statt in einem eigenen Kasten mitten auf der
+            Seite: die Antwort darauf ist die Anfrage, und die Buttons dafuer
+            stehen direkt darunter. Als Reihe kurzer Begriffe statt als
+            Aufzaehlung — es sind Stichworte, keine Saetze. */}
+        <ul className="preis-chips reveal">
+          {['Gästezahl', 'Dauer', 'Personal', 'Technik', 'Getränke', 'Anfahrt'].map((f) => (
+            <li key={f} className="region-tag">{f}</li>
+          ))}
+        </ul>
 
         <div className="reveal" style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '2.5rem' }}>
           <a href="tel:+4915142840916" className="btn-primary">Jetzt anrufen</a>
