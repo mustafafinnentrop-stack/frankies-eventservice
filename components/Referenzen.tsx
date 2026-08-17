@@ -1,18 +1,14 @@
-import Image from 'next/image'
-
 /*
   Referenzen — echte Veranstaltungen mit echten Zahlen.
 
   Alle Angaben stammen vom Betreiber. Nichts hier ist ausgedacht oder
-  gerundet: 100 Hektoliter, 18 bzw. 12 Leute im Einsatz, 1.200 geladene
-  Gaeste, 80 Gaeste.
+  gerundet.
 
   Wichtig ist das Feld `geplant`. Westmark und Schloss Melschede sind
   gebucht, aber noch nicht gelaufen. Sie hier ohne Kennzeichnung
   einzureihen hiesse zu behaupten, sie seien bereits durchgefuehrt — das
-  waere schlicht falsch und bei einer Werbeaussage auch angreifbar.
-  Deshalb tragen sie sichtbar "Steht an", und die Ueberschrift steht im
-  Praesens statt in der Vergangenheit.
+  waere falsch. Deshalb tragen sie sichtbar "Steht an", und die
+  Ueberschrift steht im Praesens statt in der Vergangenheit.
 */
 type Referenz = {
   ort: string
@@ -22,6 +18,14 @@ type Referenz = {
 }
 
 const REFERENZEN: Referenz[] = [
+  {
+    ort: 'Schützenfest Berghausen',
+    leistungen: ['Thekenservice'],
+    zahlen: [
+      { wert: '100', was: 'Hektoliter Bier' },
+      { wert: '18', was: 'Leute im Einsatz' },
+    ],
+  },
   {
     ort: 'Firmenfeier Westmark',
     leistungen: ['Mobile Cocktailbar', 'Foodtruck'],
@@ -63,42 +67,6 @@ export default function Referenzen() {
             Firmenfeier mit 1.200 geladenen Gästen. Eine Auswahl aus dem, was gelaufen
             ist und was noch ansteht:
           </p>
-        </div>
-
-        {/* Berghausen steht vorne und gross: es ist die groesste bereits
-            durchgefuehrte Veranstaltung, und dazu gibt es das Foto der
-            Mannschaft. Das Bild belegt die Zahl daneben — 18 Leute im
-            Einsatz sieht man, statt es nur zu lesen. */}
-        <div className="referenz-featured reveal">
-          <div className="referenz-featured-bild">
-            <Image
-              src="/team.webp"
-              alt="Das Team von Frankies Eventservice hinter der Theke beim Schützenfest Berghausen"
-              width={800}
-              height={1000}
-              sizes="(max-width: 900px) 100vw, 460px"
-              quality={62}
-              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-            />
-          </div>
-          <div className="referenz-featured-text">
-            <p className="referenz-leistungen">Thekenservice</p>
-            <h3>Schützenfest Berghausen</h3>
-            <p className="section-text" style={{ margin: '0 0 1.75rem', textAlign: 'left' }}>
-              Das größte Fest, das wir in dieser Saison übernommen haben. Theke,
-              Zapftechnik und Mannschaft über das ganze Wochenende.
-            </p>
-            <dl className="referenz-zahlen">
-              <div>
-                <dt>100</dt>
-                <dd>Hektoliter Bier</dd>
-              </div>
-              <div>
-                <dt>18</dt>
-                <dd>Leute im Einsatz</dd>
-              </div>
-            </dl>
-          </div>
         </div>
 
         <ul className="referenz-grid stagger-children reveal">

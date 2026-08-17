@@ -65,31 +65,6 @@ export default function Leistungen() {
           ))}
         </div>
 
-        {/* Was den Preis bestimmt.
-            Es gibt bewusst keine Preisliste — jede Veranstaltung ist anders.
-            Wer aber gar nichts ueber die Groessenordnung erfaehrt, fragt oft
-            lieber nicht an. Dieser Block nennt die Faktoren, ohne eine Zahl
-            zu nennen: die Frage "wovon haengt das ab" ist damit beantwortet,
-            und die naechste Handlung ist die Anfrage. */}
-        <div className="preis-block reveal">
-          <h3>Was kostet das?</h3>
-          <p>
-            Eine Preisliste hätte bei uns wenig Sinn — ein Schützenfest über vier Tage
-            und eine Cocktailbar für einen Abend haben nichts miteinander zu tun.
-            Der Preis hängt an fünf Dingen:
-          </p>
-          <ul className="preis-faktoren">
-            <li><strong>Gästezahl und Dauer</strong> — wie viel und wie lange ausgeschenkt wird</li>
-            <li><strong>Personal</strong> — wie viele Leute vor Ort gebraucht werden</li>
-            <li><strong>Technik</strong> — Theke, Zapfanlage, Kühlung, Gläser, Foodtruck</li>
-            <li><strong>Getränke</strong> — ob wir einkaufen oder Sie selbst stellen</li>
-            <li><strong>Anfahrt und Aufbau</strong> — Entfernung und wie lange der Aufbau dauert</li>
-          </ul>
-          <p className="preis-schluss">
-            Sagen Sie uns Datum, Ort und ungefähre Gästezahl — Sie bekommen innerhalb
-            von 24 Stunden ein Angebot, an dem Sie sich orientieren können.
-          </p>
-        </div>
       </div>
     </section>
   )
