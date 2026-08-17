@@ -1439,3 +1439,211 @@ body { animation: fadeIn 0.5s ease; }
     .hero-fakten { align-self: center; }
     .hero-fakten li { font-size: 0.86rem; }
 }
+
+/* =========================================================================
+   Cookie-Banner und Einstellungs-Schalter
+   Der Banner steht im ausgelieferten HTML und wird hier versteckt, sobald
+   am <html> eine Entscheidung hinterlegt ist. Das Attribut setzt ein
+   Script im Head, also vor dem ersten Bild — kein Aufblitzen fuer
+   Wiederkehrende, und der Banner ist nicht mehr das zuletzt gezeichnete
+   grosse Element (gemessen vorher 3,3s LCP).
+   Ohne JavaScript bleibt er sichtbar. Das ist richtig herum: ohne
+   JavaScript laedt auch kein Analytics.
+   ========================================================================= */
+.cookie-banner {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 9998;
+    background: var(--color-surface);
+    border-top: 1px solid rgba(200,164,78,0.25);
+    padding: 1.25rem 2rem;
+}
+html[data-cookie-consent='accepted'] .cookie-banner,
+html[data-cookie-consent='declined'] .cookie-banner {
+    display: none;
+}
+.cookie-banner-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.cookie-banner p {
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+    font-weight: 300;
+    line-height: 1.6;
+    max-width: 680px;
+    margin: 0;
+}
+.cookie-banner a {
+    color: var(--color-gold);
+    text-decoration: underline;
+}
+.cookie-banner-aktionen {
+    display: flex;
+    gap: 0.75rem;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+}
+.cookie-banner-aktionen .btn-primary,
+.cookie-banner-aktionen .btn-secondary {
+    font-size: 0.78rem;
+    padding: 0.65rem 1.1rem;
+    white-space: nowrap;
+}
+
+/* Der Schalter erscheint erst, wenn eine Entscheidung vorliegt — vorher
+   steht der Banner ohnehin an derselben Stelle. Unten links, damit er
+   dem "nach oben"-Pfeil des Footers rechts nicht ins Gehege kommt. */
+.cookie-schalter {
+    position: fixed;
+    left: 1.25rem;
+    bottom: 1.25rem;
+    z-index: 9990;
+    width: 40px; height: 40px;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid rgba(200,164,78,0.25);
+    border-radius: 50%;
+    background: rgba(22,22,22,0.85);
+    backdrop-filter: blur(8px);
+    color: var(--color-text-muted);
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity var(--dur-base) var(--ease-out),
+                color var(--dur-base) var(--ease-out),
+                border-color var(--dur-base) var(--ease-out);
+}
+.cookie-schalter:hover,
+.cookie-schalter:focus-visible {
+    opacity: 1;
+    color: var(--color-gold);
+    border-color: var(--color-gold);
+}
+
+/* =========================================================================
+   Preis-Block unter den Leistungen
+   ========================================================================= */
+.preis-block {
+    max-width: 760px;
+    margin: 4rem auto 0;
+    padding: 2.5rem;
+    border: 1px solid rgba(200,164,78,0.18);
+    background: rgba(22,22,22,0.55);
+}
+.preis-block h3 {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--color-text);
+    margin: 0 0 1rem;
+}
+.preis-block p {
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--color-text-muted);
+    margin: 0;
+}
+.preis-faktoren {
+    list-style: none;
+    margin: 1.5rem 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+.preis-faktoren li {
+    position: relative;
+    padding-left: 1.5rem;
+    font-size: 0.92rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+}
+.preis-faktoren li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0.62em;
+    width: 6px; height: 1px;
+    background: var(--color-gold);
+}
+.preis-faktoren strong {
+    color: var(--color-text);
+    font-weight: 400;
+}
+.preis-schluss {
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(200,164,78,0.12);
+}
+
+/* =========================================================================
+   Hervorgehobene Referenz mit Foto
+   ========================================================================= */
+.referenz-featured {
+    display: grid;
+    grid-template-columns: 460px 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-top: 3.5rem;
+    padding: 2.5rem;
+    border: 1px solid rgba(200,164,78,0.18);
+    background: rgba(22,22,22,0.55);
+}
+.referenz-featured-bild {
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border: 1px solid rgba(200,164,78,0.12);
+}
+.referenz-featured-text h3 {
+    font-family: var(--font-display);
+    font-size: clamp(1.9rem, 3vw, 2.6rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--color-text);
+    margin: 0.5rem 0 1.25rem;
+}
+.referenz-featured .referenz-zahlen {
+    margin: 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(200,164,78,0.12);
+    gap: 2.5rem;
+}
+.referenz-featured .referenz-zahlen dt { font-size: 2.75rem; }
+
+/* Kopfzeile der Karten: Name links, Status rechts daneben. */
+.referenz-kopf {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+/* "Steht an" — gebucht, aber noch nicht durchgefuehrt. Bewusst zurueck-
+   haltend gesetzt: es ist eine Einordnung, keine Auszeichnung. */
+.referenz-status {
+    flex-shrink: 0;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    border: 1px solid rgba(200,164,78,0.25);
+    padding: 0.25rem 0.6rem;
+    white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+    .referenz-featured {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 1.75rem;
+    }
+    .referenz-featured-bild { max-width: 420px; margin: 0 auto; width: 100%; }
+}
+@media (max-width: 640px) {
+    .preis-block { padding: 1.75rem 1.5rem; margin-top: 3rem; }
+    .cookie-schalter { left: 1rem; bottom: 1rem; }
+}

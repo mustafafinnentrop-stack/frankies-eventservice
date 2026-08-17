@@ -96,7 +96,7 @@ export default function Hero() {
             Alle drei sind vom Betreiber und stimmen; nichts hier aufrunden. */}
         <ul className="hero-fakten">
           <li>Rund 20 Veranstaltungen in dieser Saison</li>
-          <li>Von 80 bis 1.200 Gästen, mit bis zu 18 Leuten im Einsatz</li>
+          <li>Bis zu 18 Leute im Einsatz, 100 Hektoliter Bier auf einem Fest</li>
           <li>Antwort innerhalb von 24 Stunden</li>
         </ul>
         <div className="hero-actions">
