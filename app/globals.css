@@ -1220,41 +1220,91 @@ body { animation: fadeIn 0.5s ease; }
     position: relative;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
-.hero-backdrop::before {
-    content: '';
-    position: fixed;
-    /* Oben und unten ueber den Rand hinaus, damit die Parallax-Bewegung
-       keine Kante freilegt. Der clip-path des Wrappers schneidet ohnehin zu. */
-    inset: -140px 0;
-    z-index: -1;
-    background-color: var(--color-bg);
-    background-image:
-        linear-gradient(rgba(12,12,12,0.72), rgba(12,12,12,0.72)),
-        url('/bg-hero.webp');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    pointer-events: none;
-    /* --parallax-y wird von HeroParallax ueber den Scrollweg getweent. */
-    transform: translate3d(0, var(--parallax-y, 0px), 0);
-    will-change: transform;
+/* Die Ebenen der Parallax-Vorlage.
+   Die Wrapper duerfen weder transform noch filter bekommen: beides macht ein
+   Element zum Bezugsrahmen fuer position: fixed darin, und dann waeren die
+   Foto-Ebenen nicht mehr fixiert, sondern wuerden mitscrollen. Bewegt wird
+   deshalb jede Ebene selbst, nie ihr Wrapper. */
+.parallax,
+.parallax__layers {
+    position: relative;
 }
 
-/* Hochkant-Ausschnitt fuers Handy.
-   Das Foto ist 2560x1440, also 16:9. Auf einem 390x844-Display schneidet
-   `cover` daraus einen Streifen von 26% der Breite — gemessen — und der
-   traf die Mitte, also Schulter und Unschaerfe statt Zapfhahn und Glas.
-   bg-hero-hoch.webp ist derselbe Moment, aber auf das Motiv zugeschnitten:
-   810x1440 aus dem Original ab x=440, skaliert auf 900x1600. */
+.hero-layer {
+    position: fixed;
+    /* Ueberstand oben und unten, damit die Parallax-Bewegung keine Kante
+       freilegt. Der clip-path des Wrappers schneidet ihn wieder zu.
+       22vh ist der Wert, auf den yPercent 14 in parallax-scrolling.tsx
+       gerechnet ist — beide gehoeren zusammen.
+       Seitlich kein Ueberstand: sonst wuerde `contain` auf dem Handy das
+       Foto auf die breitere Ebene einpassen und der clip-path danach die
+       Raender abschneiden — dann waere es doch wieder nicht vollstaendig. */
+    inset: -22vh 0;
+    z-index: -1;
+    background-repeat: no-repeat;
+    background-position: center;
+    pointer-events: none;
+    will-change: transform;
+}
+/* Unscharfe Fuellung: dasselbe Foto als 48x27-Pixel-Datei (486 Byte). Der
+   Browser rechnet es beim Hochskalieren weich — das ergibt die Unschaerfe
+   ohne filter: blur(), das auf dem Handy jedes Bild neu rastern muesste.
+   Auf dem Desktop deckt das Foto ohnehin die ganze Flaeche, dort ist die
+   Fuellung nicht zu sehen und wird gar nicht erst geladen. */
+.hero-layer--unscharf {
+    display: none;
+    /* Seitlich ueber den Rand hinaus, damit auch bei der Parallax-Bewegung
+       nirgends eine Kante der Fuellung sichtbar wird. */
+    inset: -30vh -10vw;
+    background-image: url('/bg-hero-unscharf.webp');
+    background-size: cover;
+}
+.hero-layer--foto {
+    background-color: var(--color-bg);
+    background-image: url('/bg-hero.webp');
+    background-size: cover;
+}
+/* Die Abdunklung liegt als eigene Ebene ueber dem Foto statt als Verlauf im
+   background-image. Nur so deckt sie auch die Flaeche neben dem Foto ab,
+   wenn dieses auf dem Handy nicht formatfuellend liegt. */
+.hero-layer--dunkel {
+    background-color: rgba(12, 12, 12, 0.72);
+}
+
+/* Auf dem Handy das ganze Foto zeigen.
+   Das Foto ist 2560x1440, also 16:9, das Display steht hochkant. Mit `cover`
+   schneidet der Browser zwangslaeufig seitlich ab — gemessen blieben 26% der
+   Breite uebrig, und uebrig blieb der Zapfhahn in Grossaufnahme. Ein engerer
+   Zuschnitt macht es nur schlimmer. `contain` zeigt das vollstaendige Bild.
+   Mehr als die volle Bildschirmbreite geht bei 16:9 hochkant nicht, das Foto
+   ist dann rund 220px hoch; der Rest darueber und darunter bekommt statt
+   Schwarz dieselbe Aufnahme unscharf als Fuellung. */
 @media (max-width: 767px) {
-    .hero-backdrop::before {
-        /* Weniger Ueberstand als auf Desktop: Die Parallax-Bewegung betraegt
-           hier gemessen 75px, 90px reichen. Mehr wuerde das Bild nur weiter
-           hineinzoomen und das Glas hinter die Buttons schieben. */
-        inset: -90px 0;
-        background-image:
-            linear-gradient(rgba(12,12,12,0.72), rgba(12,12,12,0.72)),
-            url('/bg-hero-hoch.webp');
+    .hero-layer--unscharf {
+        display: block;
+    }
+    .hero-layer--foto {
+        background-color: transparent;
+        background-size: contain;
+        /* Kleinere Datei fuers Handy. `contain` stellt das Foto hier 390x219
+           dar; die 2560px-Fassung ist dafuer sechseinhalbfach zu gross und
+           war gemessen das langsamste Element der Seite. */
+        background-image: url('/bg-hero-mobil.webp');
+        /* Weicher Uebergang zur unscharfen Fuellung statt einer harten Kante.
+           Die Maske sitzt exakt auf den Bildraendern: `contain` passt das Foto
+           auf die Ebenenbreite ein, es ist also 100vw breit und bei 16:9
+           56.25vw hoch, mittig in der Ebene. Die Raender liegen damit bei
+           50% +/- 28.125vw — unabhaengig von der Bildschirmgroesse. */
+        -webkit-mask-image: linear-gradient(to bottom,
+            transparent calc(50% - 28.125vw),
+            #000 calc(50% - 28.125vw + 18px),
+            #000 calc(50% + 28.125vw - 18px),
+            transparent calc(50% + 28.125vw));
+        mask-image: linear-gradient(to bottom,
+            transparent calc(50% - 28.125vw),
+            #000 calc(50% - 28.125vw + 18px),
+            #000 calc(50% + 28.125vw - 18px),
+            transparent calc(50% + 28.125vw));
     }
 }
 

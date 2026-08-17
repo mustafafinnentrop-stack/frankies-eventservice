@@ -1,69 +1,111 @@
 'use client'
 
-import { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
+
+// Das Stylesheet, das Lenis selbst mitliefert. Es schaltet unter anderem
+// scroll-behavior: smooth ab, solange Lenis laeuft — sonst wuerden sich das
+// weiche Scrollen von Lenis und das des Browsers gegenseitig stoeren.
+import 'lenis/dist/lenis.css'
 
 /*
-  Parallax fuer die Hero-Ebene.
+  Parallax fuer den Hero — Technik und Ablauf aus der Vorlage (Osmo).
 
-  Was von der Vorlage uebernommen ist: die Technik. GSAP ScrollTrigger mit
-  scrub, das eine Ebene ueber den Scrollweg des Triggers verschiebt.
+  Uebernommen ist der komplette Mechanismus: eine GSAP-Timeline mit
+  ScrollTrigger, deren Trigger das Element [data-parallax-layers] ist,
+  start "0% 0%", end "100% 0%", scrub 0, und eine Layer-Tabelle, die pro
+  data-parallax-layer ein yPercent setzt. Alle Tweens laufen ab dem zweiten
+  mit "<" gleichzeitig. Das ist Zeile fuer Zeile die Vorlage.
 
-  Was nicht uebernommen ist, und warum:
-  - Das Markup der Vorlage ist eine Demo-Seite mit fest verdrahteten
-    Berg-Grafiken von einem fremden CDN, der Ueberschrift "Parallax" und
-    einem Fremdlogo. Als Bausteine fuer diese Seite unbrauchbar.
-  - Die Vorlage bringt fuer keine ihrer Klassen CSS mit. Ohne Layout waeren
-    es vier untereinander gestapelte Bilder.
-  - Die Vorlage startet zusaetzlich eine eigene Lenis-Instanz. Lenis
-    veraendert das Scrollverhalten der gesamten Website, nicht nur des Hero.
-    Das ist eine andere Entscheidung als "Parallax im Hero" und deshalb hier
-    bewusst nicht enthalten.
-  - Sie importiert aus "@studio-freight/lenis" — dem alten Namen des bereits
-    installierten Pakets "lenis". Neu zu installieren haette dieselbe
-    Bibliothek doppelt ins Bundle gelegt.
+  Drei Dinge weichen ab, jeweils mit Grund:
 
-  Bewegt wird die Foto-Ebene ueber die CSS-Variable --parallax-y, die
-  .hero-backdrop::before in seinem transform verwendet. Damit bleibt das
-  Foto eine reine CSS-Ebene und braucht kein zusaetzliches DOM-Element.
+  1) Layer-Tabelle. Die Vorlage hat vier Ebenen (70/55/40/10), das sind vier
+     freigestellte Berg-Grafiken. Dieser Hero hat zwei Ebenen: das Foto und
+     den Textblock. Es sind also die Werte "1" und "3" der Tabelle belegt,
+     "2" und "4" bleiben leer und laufen ins Leere — deshalb sind sie hier
+     nicht aufgefuehrt.
+
+  2) Der Wert fuer die Foto-Ebene. Die Vorlage faehrt die hinterste Ebene mit
+     yPercent 70. Das geht hier nicht, und zwar rechnerisch nicht: Das Foto
+     ist eine fixierte, formatfuellende Ebene — das war die Vorgabe, damit es
+     wie beim Footer stehen bleibt und verschwindet. Eine solche Ebene der
+     Hoehe H = V + 2*ueberstand darf hoechstens um den Ueberstand wandern,
+     sonst laeuft eine Kante ins Bild. Aus (V + 2*u) * P/100 <= u folgt
+     u >= V*P/(100 - 2P), und das hat ab P = 50 keine Loesung mehr. Bei
+     P = 70 gibt es also keinen Ueberstand, der reicht. Mit u = 22vh ist
+     P = 14 der groesste Wert, der sauber bleibt.
+
+  3) Lenis. Die Vorlage startet zusaetzlich eine Lenis-Instanz fuer weiches
+     Scrollen. Das ist unten drin, das Paket liegt als "lenis" im Projekt —
+     "@studio-freight/lenis" ist derselbe Code unter dem alten Namen, ein
+     zweites Mal installiert laege die Bibliothek doppelt im Bundle.
+
+  gsap und ScrollTrigger werden nachgeladen statt statisch importiert.
+  Statisch landen sie im ersten Client-Bundle und kosteten gemessen rund
+  1000ms auf dem Handy, obwohl der Effekt erst beim Scrollen gebraucht wird.
+  Am Verhalten aendert das nichts.
 */
-export function HeroParallax() {
+export function HeroParallax({ children }: { children: React.ReactNode }) {
+  const parallaxRef = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
-    const ziel = document.querySelector<HTMLElement>('.hero-backdrop')
-    if (!ziel) return
-
-    // Wer weniger Bewegung eingestellt hat, bekommt keine.
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-
     let aufraeumen: (() => void) | undefined
     let abgebrochen = false
 
-    // gsap und ScrollTrigger erst nach dem ersten Seitenaufbau holen. Statisch
-    // importiert kosteten sie gemessen rund 1000ms Ladezeit auf dem Handy,
-    // obwohl der Effekt erst beim Scrollen gebraucht wird.
+    // Wer im Betriebssystem weniger Bewegung eingestellt hat, bekommt keine.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
     ;(async () => {
-      const [{ default: gsap }, { ScrollTrigger }] = await Promise.all([
+      const [{ default: gsap }, { ScrollTrigger }, { default: Lenis }] = await Promise.all([
         import('gsap'),
         import('gsap/ScrollTrigger'),
+        import('lenis'),
       ])
       if (abgebrochen) return
 
       gsap.registerPlugin(ScrollTrigger)
 
-      const tween = gsap.to(ziel, {
-        '--parallax-y': '120px',
-        ease: 'none',
-        scrollTrigger: {
-          trigger: ziel,
-          start: '0% 0%',
-          end: '100% 0%',
-          scrub: 0,
-        },
+      const triggerElement = parallaxRef.current?.querySelector('[data-parallax-layers]')
+
+      if (triggerElement) {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: triggerElement,
+            start: '0% 0%',
+            end: '100% 0%',
+            scrub: 0,
+          },
+        })
+
+        const layers = [
+          { layer: '1', yPercent: 14 },
+          { layer: '3', yPercent: 40 },
+        ]
+
+        layers.forEach((layerObj, idx) => {
+          tl.to(
+            triggerElement.querySelectorAll(`[data-parallax-layer="${layerObj.layer}"]`),
+            {
+              yPercent: layerObj.yPercent,
+              ease: 'none',
+            },
+            idx === 0 ? undefined : '<'
+          )
+        })
+      }
+
+      const lenis = new Lenis()
+      lenis.on('scroll', ScrollTrigger.update)
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000)
       })
+      gsap.ticker.lagSmoothing(0)
 
       aufraeumen = () => {
-        tween.scrollTrigger?.kill()
-        tween.kill()
-        gsap.set(ziel, { '--parallax-y': '0px' })
+        ScrollTrigger.getAll().forEach((st) => st.kill())
+        // Die Vorlage ruft das ohne Pruefung auf; querySelector kann aber
+        // null liefern, und dafuer hat killTweensOf keinen Typ.
+        if (triggerElement) gsap.killTweensOf(triggerElement)
+        lenis.destroy()
       }
     })()
 
@@ -73,5 +115,9 @@ export function HeroParallax() {
     }
   }, [])
 
-  return null
+  return (
+    <div className="parallax" ref={parallaxRef}>
+      {children}
+    </div>
+  )
 }
