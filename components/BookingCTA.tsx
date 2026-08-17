@@ -13,7 +13,7 @@ interface Props {
 
 const CALCOM_URL = process.env.NEXT_PUBLIC_CALCOM_URL || 'https://cal.com/frankies.digital/15min'
 
-export default function BookingCTA({ primary = 'Unverbindlich anfragen', secondary, calcomUrl, layout = 'row', pkg }: Props) {
+export default function BookingCTA({ primary = 'Angebot anfordern', secondary, calcomUrl, layout = 'row', pkg }: Props) {
   const [open, setOpen] = useState(false)
   const url = calcomUrl || CALCOM_URL
 

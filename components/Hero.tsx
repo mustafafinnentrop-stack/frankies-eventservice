@@ -90,8 +90,17 @@ export default function Hero() {
           Getränke- und Thekenservice. Außerdem bringen wir unsere mobile Cocktailbar
           mit Bambustheke direkt zu Ihnen.
         </p>
+        {/* Drei Angaben, die vorher nirgends auf der Seite standen. Bis hierhin
+            enthielt die gesamte Website ausser der Telefonnummer keine einzige
+            Zahl — das ist der Hauptgrund, warum sie austauschbar wirkte.
+            Alle drei sind vom Betreiber und stimmen; nichts hier aufrunden. */}
+        <ul className="hero-fakten">
+          <li>Rund 20 Veranstaltungen in dieser Saison</li>
+          <li>Von 80 bis 1.200 Gästen, mit bis zu 18 Leuten im Einsatz</li>
+          <li>Antwort innerhalb von 24 Stunden</li>
+        </ul>
         <div className="hero-actions">
-          <button onClick={() => setBookingOpen(true)} className="btn-primary">Unverbindlich anfragen</button>
+          <button onClick={() => setBookingOpen(true)} className="btn-primary">Angebot anfordern</button>
           <a href="tel:+4915142840916" className="btn-secondary">Jetzt anrufen</a>
         </div>
       </div>

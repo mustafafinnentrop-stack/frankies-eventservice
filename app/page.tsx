@@ -6,6 +6,7 @@ import Cocktailbar from '@/components/Cocktailbar'
 import Ueber from '@/components/Ueber'
 import Ablauf from '@/components/Ablauf'
 import Region from '@/components/Region'
+import Referenzen from '@/components/Referenzen'
 import Kontakt from '@/components/Kontakt'
 import Testimonials from '@/components/Testimonials'
 import RevealWrapper from '@/components/RevealWrapper'
@@ -58,6 +59,7 @@ export default function Home() {
             <Ueber />
             <Ablauf />
             <Region />
+            <Referenzen />
             <Testimonials />
             <Kontakt />
           </div>

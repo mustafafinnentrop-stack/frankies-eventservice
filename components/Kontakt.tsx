@@ -138,7 +138,7 @@ export default function Kontakt() {
             )}
 
             <button type="button" className="form-submit" onClick={handleSubmit} disabled={status === 'sending'}>
-              {status === 'sending' ? 'Wird gesendet...' : 'Unverbindlich anfragen'}
+              {status === 'sending' ? 'Wird gesendet...' : 'Angebot anfordern'}
             </button>
             <p className="form-hint">* Pflichtfelder. Ihre Daten werden nur zur Bearbeitung Ihrer Anfrage verwendet.</p>
           </div>

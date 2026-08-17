@@ -135,7 +135,7 @@ export default function ServiceContent() {
                 Von professionellem Servicepersonal über mobile Cocktailbars bis hin zu Hüpfburgen, Fotoboxen und Profi-Technik — Frankies Eventservice ist Ihr zuverlässiger Partner für unvergessliche Veranstaltungen im Sauerland und Kreis Olpe.
               </p>
               <div className="reveal">
-                <BookingCTA primary="Unverbindlich anfragen" secondary="Termin buchen" />
+                <BookingCTA primary="Angebot anfordern" secondary="Termin buchen" />
               </div>
             </div>
           </section>

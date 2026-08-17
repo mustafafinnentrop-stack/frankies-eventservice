@@ -39,6 +39,7 @@ export default function Navbar() {
       links: [
         { label: 'Cocktailbar', ariaLabel: 'Cocktailbar Section', onClick: () => scrollTo('cocktailbar') },
         { label: 'Über uns', ariaLabel: 'Über uns Section', onClick: () => scrollTo('ueber') },
+        { label: 'Referenzen', ariaLabel: 'Referenzen Section', onClick: () => scrollTo('referenzen') },
         { label: 'Ablauf', ariaLabel: 'Ablauf Section', onClick: () => scrollTo('ablauf') },
         { label: 'Region', ariaLabel: 'Region Section', onClick: () => scrollTo('region') },
       ],
