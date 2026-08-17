@@ -106,6 +106,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="de" className={`${dmSerifDisplay.variable} ${outfit.variable}`}>
       <head>
+        {/* Das Hero-Foto steckt in einer CSS-Regel, der Browser findet es
+            deshalb erst, wenn das Stylesheet geladen und ausgewertet ist.
+            Gemessen war es damit das LCP-Element bei 3452ms. Mit preload
+            startet der Download sofort mit dem HTML.
+            Zwei Dateien, weil das Handy nur einen Bruchteil der Aufloesung
+            braucht: 800x450 (26 KB) statt 2560x1440 (98 KB). Die media-Regeln
+            sind dieselben wie im CSS, es laedt also immer nur eine davon. */}
+        <link rel="preload" as="image" href="/bg-hero-mobil.webp" media="(max-width: 767px)" fetchPriority="high" />
+        <link rel="preload" as="image" href="/bg-hero.webp" media="(min-width: 768px)" fetchPriority="high" />
         <link rel="preconnect" href="https://frankies-eventservice.de" />
         <link rel="dns-prefetch" href="https://frankies-eventservice.de" />
         <script

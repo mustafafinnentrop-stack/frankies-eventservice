@@ -30,8 +30,21 @@ export default function Home() {
               hier schneidet es weg — das Bild bleibt stehen und
               verschwindet, sobald der Hero den Bildschirm verlaesst. */}
           <div className="hero-backdrop">
-            <Hero />
-            <HeroParallax />
+            {/* Aufbau wie in der Parallax-Vorlage: ein Wrapper, darin der
+                Trigger [data-parallax-layers], darin die Ebenen mit
+                data-parallax-layer. Ebene 1 ist das Foto (drei Schichten:
+                unscharfe Fuellung, Foto, Abdunklung — sie bewegen sich
+                gemeinsam), Ebene 3 ist der Textblock. */}
+            <HeroParallax>
+              <div className="parallax__layers" data-parallax-layers>
+                <div className="hero-layer hero-layer--unscharf" data-parallax-layer="1" aria-hidden="true" />
+                <div className="hero-layer hero-layer--foto" data-parallax-layer="1" aria-hidden="true" />
+                <div className="hero-layer hero-layer--dunkel" data-parallax-layer="1" aria-hidden="true" />
+                <div data-parallax-layer="3">
+                  <Hero />
+                </div>
+              </div>
+            </HeroParallax>
           </div>
           {/* Alles unterhalb des Hero bekommt einen deckenden Hintergrund und
               schiebt sich beim Scrollen ueber das fixierte Hintergrundfoto.
