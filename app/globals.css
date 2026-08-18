@@ -38,10 +38,21 @@ body {
     line-height: 1.6;
     /* Deutsche Komposita sind lang. Ohne Trennung bleiben Woerter wie
        "Veranstaltungsservice" auf schmalen Displays stehen und ziehen die
-       Seitenbreite auf. lang="de" am <html> liefert die Trennstellen. */
+       Seitenbreite auf. lang="de" am <html> liefert die Trennstellen.
+       Die Grenzen darunter verhindern, dass auch kurze Woerter zerlegt
+       werden — "mieten" stand als "mie-ten" in einer Ueberschrift. Erst ab
+       zwoelf Buchstaben wird getrennt, und nie naeher als sechs am Rand. */
     hyphens: auto;
+    hyphenate-limit-chars: 12 6 6;
+    -webkit-hyphenate-limit-before: 6;
+    -webkit-hyphenate-limit-after: 6;
     overflow-wrap: break-word;
 }
+
+/* Ueberschriften brechen ausgewogen um: der Browser verteilt die Woerter
+   so auf die Zeilen, dass keine fast leere letzte Zeile entsteht. Der
+   Hero bleibt aussen vor, dort sitzen bewusste Zeilenumbrueche. */
+.section-title, main h1, main h2 { text-wrap: balance; }
 
 /* Hintergrundfoto als eigene fixierte Ebene statt als body-Background.
    Auf dem body musste die Größe je Gerät getrickst werden, weil sich `cover`
@@ -1610,11 +1621,27 @@ html[data-cookie-consent='declined'] .cookie-banner {
 .ent-hero-titel { color: var(--color-text); font-family: var(--font-display); }
 .ent-hero-text { color: var(--color-gold); }
 
-/* Handy: dieselbe Darstellung, nur die kleinere Bilddatei. */
+/* Handy: Das Foto ist 16:9, das Display hochkant. cover zeigt davon nur
+   einen schmalen Streifen (gemessen 26% der Breite — den Zapfhahn),
+   contain erzeugt schwarze Balken. Beides war nicht gewollt. Deshalb
+   liegt das Foto hier als eigenes Band in voller Breite und in seinem
+   eigenen Seitenverhaeltnis — vollstaendig sichtbar, unbeschnitten, ohne
+   Balken, ohne Abdunklung. Der Text steht darunter auf der Grundfarbe. */
 @media (max-width: 767px) {
     .hero {
-        background-image:
-            linear-gradient(rgba(12,12,12,0.58), rgba(12,12,12,0.58)),
-            url('/bg-hero-mobil.webp');
+        background-image: none;
+        flex-direction: column;
+        justify-content: flex-start;
     }
+    .hero::before {
+        content: '';
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        flex-shrink: 0;
+        background-image: url('/bg-hero-mobil.webp');
+        background-size: cover;
+        background-position: center;
+    }
+    .hero-content { padding-top: 2rem; }
 }
