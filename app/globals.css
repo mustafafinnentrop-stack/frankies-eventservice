@@ -1772,7 +1772,21 @@ html[data-cookie-consent='declined'] .cookie-banner {
    Mit 220dvh blieben so 810px totes Scrollen — fast ein ganzer Bildschirm,
    auf dem sich nichts tut. Deshalb hier deutlich kuerzer.
    ========================================================================= */
-.scroll-expand-track { height: 200dvh; }
+/* Desktop: 150dvh statt 200dvh. Die Differenz zur Buehnenhoehe ist die
+   Strecke, auf der die Buehne klebt und das Medium waechst — bei 200dvh
+   waren das 900px, und am Ende davon steht eine fast schwarze Zone
+   (Hintergrund per Vorlage ausgeblendet, Titel herausgefahren, nur das
+   Medium). Gemessene Bildhelligkeit dort: 13 von 255. 450px reichen fuer
+   die Animation und halbieren die dunkle Strecke. */
+.scroll-expand-track { height: 150dvh; }
+/* Handy: kein Aufzieh-Effekt. Die Strecke ist genau eine Bildschirmhoehe —
+   damit ist der Fortschritt sofort 1, das Video steht von Anfang an in
+   voller Groesse und die Seite scrollt nativ, ohne dass irgendein Skript
+   dazwischenhaengt. Der Effekt haette auf dem Handy ohnehin nur 71px
+   Wachstum gezeigt (300px Start, 371px Deckel bei 95vw); dieser Rest hat
+   sich auf dem iPhone als Sekunden angefuehlt, in denen sich die Seite
+   nicht scrollen laesst. Auf dem Desktop bleibt der Effekt — dort waechst
+   das Medium wirklich, von 300 auf 1368px. */
 @media (max-width: 767px) {
-    .scroll-expand-track { height: 130dvh; }
+    .scroll-expand-track { height: 100dvh; }
 }
