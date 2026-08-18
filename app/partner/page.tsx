@@ -40,26 +40,26 @@ const VORTEILE = [
   },
   {
     titel: 'Kein Aufwand für Sie',
-    text: 'Sie stellen nur den Kontakt her. Angebot, Planung und Durchführung übernehmen wir — Sie hören von uns, sobald die Provision fällig ist.',
+    text: 'Sie stellen nur den Kontakt her. Angebot, Planung und Durchführung übernehmen wir — ob Thekenservice oder komplette Cocktailbar. Sie hören von uns, sobald die Provision fällig ist.',
   },
 ]
 
 const TYPEN = [
   {
     name: 'Eventlocations & Gastronomie',
-    zeilen: ['Ihre Gäste fragen nach Getränkeservice oder Cocktailbar', 'Wir bringen Theke, Technik und Personal mit', 'Ihre Location bleibt der Gastgeber'],
+    zeilen: ['Ihre Gäste fragen nach Getränkeservice oder Cocktailbar', 'Wir bringen Theke, Zapfanlage oder die Bambustheke mit', 'Ihre Location bleibt der Gastgeber'],
   },
   {
     name: 'Vereine & Festausschüsse',
-    zeilen: ['Sie kennen die Feste in der Umgebung', 'Thekenservice und Zapfanlage für Schützen- und Dorffeste', 'Empfehlung an den nächsten Festausschuss genügt'],
+    zeilen: ['Sie kennen die Feste in der Umgebung', 'Thekenservice und Zapfanlage für Schützen- und Dorffeste', 'Für den Abend danach die mobile Cocktailbar'],
   },
   {
     name: 'Eventdienstleister',
-    zeilen: ['DJ, Fotograf, Verleih, Hochzeitsplanung', 'Ihre Kunden brauchen oft auch Getränke und Theke', 'Wir empfehlen Sie im Gegenzug weiter'],
+    zeilen: ['DJ, Fotograf, Verleih, Hochzeitsplanung', 'Ihre Kunden brauchen oft auch Getränke, Theke oder Cocktailbar', 'Wir empfehlen Sie im Gegenzug weiter'],
   },
   {
     name: 'Private Empfehlungen',
-    zeilen: ['Auch ohne Firma oder Verein', 'Sie kennen jemanden, der feiert — mehr braucht es nicht', 'Provision gilt genauso'],
+    zeilen: ['Auch ohne Firma oder Verein', 'Hochzeit, Geburtstag, JGA oder Firmenfeier', 'Cocktailbar oder Thekenservice — Provision gilt für beides'],
   },
 ]
 
@@ -67,6 +67,10 @@ const FAQ = [
   {
     q: 'Wie hoch ist die Provision genau?',
     a: 'Bis zu 10% des Auftragswerts. Die genaue Höhe hängt an Art und Umfang des vermittelten Auftrags — ein Schützenfest über vier Tage ist etwas anderes als eine Cocktailbar für einen Abend. Wir legen die Höhe vor der Vermittlung gemeinsam fest, nicht danach.',
+  },
+  {
+    q: 'Gilt die Provision auch für die mobile Cocktailbar?',
+    a: 'Ja — für jede Leistung, die daraus wird. Die mobile Cocktailbar mit Bambustheke ist sogar das, was am häufigsten vermittelt wird: Hochzeiten, Geburtstage, JGA und Firmenfeiern. Genauso für Thekenservice, Getränkecatering, Servicepersonal und Kaffeestation.',
   },
   {
     q: 'Wann wird die Provision ausgezahlt?',
@@ -110,8 +114,9 @@ export default function PartnerPage() {
               </h1>
               <p className="reveal" style={{ fontSize: '1.05rem', fontWeight: 300, color: 'var(--color-text-muted)', maxWidth: '640px', margin: '0 auto', lineHeight: 1.8 }}>
                 Sie kennen jemanden, der ein Fest plant? Stellen Sie den Kontakt her.
-                Wir übernehmen Theke, Getränke und Personal — und Sie erhalten bis zu
-                10% Provision für den vermittelten Auftrag.
+                Wir übernehmen Thekenservice, Getränke und Personal — oder bringen die
+                mobile Cocktailbar mit Bambustheke. Sie erhalten bis zu 10% Provision
+                für den vermittelten Auftrag.
               </p>
             </div>
           </section>
