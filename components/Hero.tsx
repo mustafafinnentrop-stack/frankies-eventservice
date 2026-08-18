@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import GradualBlur from './GradualBlur'
 import BookingModal from './BookingModal'
 
 const WORDS = [
@@ -90,14 +89,14 @@ export default function Hero() {
           Getränke- und Thekenservice. Außerdem bringen wir unsere mobile Cocktailbar
           mit Bambustheke direkt zu Ihnen.
         </p>
-        {/* Drei Angaben, die vorher nirgends auf der Seite standen. Bis hierhin
-            enthielt die gesamte Website ausser der Telefonnummer keine einzige
-            Zahl — das ist der Hauptgrund, warum sie austauschbar wirkte.
-            Alle drei sind vom Betreiber und stimmen; nichts hier aufrunden. */}
+        {/* Drei Zeilen mit einer festen Reihenfolge, nicht drei beliebige
+            Fakten: 1. kann der das (Beleg), 2. was bekomme ich (Umfang),
+            3. wie geht es weiter (Huerde weg). Vorher standen hier drei
+            Zahlen ohne diesen Bezug. */}
         <ul className="hero-fakten">
-          <li>Rund 20 Veranstaltungen in dieser Saison</li>
-          <li>Bis zu 18 Leute im Einsatz, 100 Hektoliter Bier auf einem Fest</li>
-          <li>Antwort innerhalb von 24 Stunden</li>
+          <li>Rund 20 Veranstaltungen in dieser Saison, mit bis zu 18 Leuten im Einsatz</li>
+          <li>Theke, Zapfanlage und Personal — oder die komplette Cocktailbar</li>
+          <li>Angebot innerhalb von 24 Stunden, unverbindlich</li>
         </ul>
         <div className="hero-actions">
           <button onClick={() => setBookingOpen(true)} className="btn-primary">Angebot anfordern</button>
@@ -108,17 +107,13 @@ export default function Hero() {
         <div className="line" />
         Mehr erfahren
       </div>
-      <GradualBlur
-        position="bottom"
-        target="parent"
-        height="10rem"
-        strength={3}
-        divCount={8}
-        curve="bezier"
-        exponential={true}
-        opacity={1}
-        zIndex={1}
-      />
+      {/* Weicher Abschluss nach unten. Vorher stand hier GradualBlur: acht
+          uebereinandergelegte Ebenen mit backdrop-filter bis blur(48px).
+          Das sind acht Offscreen-Durchgaenge pro Bild, die auf iOS Safari
+          beim Scrollen ruckeln — und die Unschaerfe am unteren Bildrand.
+          Ein Verlauf sieht ueber einem Foto praktisch gleich aus und
+          kostet nichts. */}
+      <div className="hero-fade" aria-hidden="true" />
     </header>
   )
 }
