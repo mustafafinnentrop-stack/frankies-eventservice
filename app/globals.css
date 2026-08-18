@@ -1246,19 +1246,6 @@ body { animation: fadeIn 0.5s ease; }
     pointer-events: none;
     will-change: transform;
 }
-/* Unscharfe Fuellung: dasselbe Foto als 48x27-Pixel-Datei (486 Byte). Der
-   Browser rechnet es beim Hochskalieren weich — das ergibt die Unschaerfe
-   ohne filter: blur(), das auf dem Handy jedes Bild neu rastern muesste.
-   Auf dem Desktop deckt das Foto ohnehin die ganze Flaeche, dort ist die
-   Fuellung nicht zu sehen und wird gar nicht erst geladen. */
-.hero-layer--unscharf {
-    display: none;
-    /* Seitlich ueber den Rand hinaus, damit auch bei der Parallax-Bewegung
-       nirgends eine Kante der Fuellung sichtbar wird. */
-    inset: -30vh -10vw;
-    background-image: url('/bg-hero-unscharf.webp');
-    background-size: cover;
-}
 .hero-layer--foto {
     background-color: var(--color-bg);
     background-image: url('/bg-hero.webp');
@@ -1280,9 +1267,10 @@ body { animation: fadeIn 0.5s ease; }
    ist dann rund 220px hoch; der Rest darueber und darunter bekommt statt
    Schwarz dieselbe Aufnahme unscharf als Fuellung. */
 @media (max-width: 767px) {
-    .hero-layer--unscharf {
-        display: block;
-    }
+    /* Weniger flaechige Abdunklung als auf dem Desktop: den Kontrast fuer
+       den Text macht .hero-content::before gezielt dahinter, nicht der
+       Schleier ueber dem ganzen Bild. */
+    .hero-layer--dunkel { background-color: rgba(12, 12, 12, 0.42); }
     .hero-layer--foto {
         background-color: transparent;
         background-size: contain;
@@ -1290,20 +1278,22 @@ body { animation: fadeIn 0.5s ease; }
            dar; die 2560px-Fassung ist dafuer sechseinhalbfach zu gross und
            war gemessen das langsamste Element der Seite. */
         background-image: url('/bg-hero-mobil.webp');
-        /* Weicher Uebergang zur unscharfen Fuellung statt einer harten Kante.
+        /* Weicher Uebergang in den dunklen Hintergrund statt einer harten
+           Kante. Frueher lag hier eine unscharf hochskalierte Fassung des
+           Fotos als Fuellung — die war als Unschaerfe zu sehen und ist raus.
            Die Maske sitzt exakt auf den Bildraendern: `contain` passt das Foto
            auf die Ebenenbreite ein, es ist also 100vw breit und bei 16:9
            56.25vw hoch, mittig in der Ebene. Die Raender liegen damit bei
            50% +/- 28.125vw — unabhaengig von der Bildschirmgroesse. */
         -webkit-mask-image: linear-gradient(to bottom,
             transparent calc(50% - 28.125vw),
-            #000 calc(50% - 28.125vw + 18px),
-            #000 calc(50% + 28.125vw - 18px),
+            #000 calc(50% - 28.125vw + 64px),
+            #000 calc(50% + 28.125vw - 64px),
             transparent calc(50% + 28.125vw));
         mask-image: linear-gradient(to bottom,
             transparent calc(50% - 28.125vw),
-            #000 calc(50% - 28.125vw + 18px),
-            #000 calc(50% + 28.125vw - 18px),
+            #000 calc(50% - 28.125vw + 64px),
+            #000 calc(50% + 28.125vw - 64px),
             transparent calc(50% + 28.125vw));
     }
 }
@@ -1671,3 +1661,51 @@ html[data-cookie-consent='declined'] .cookie-banner {
         border: 1px solid rgba(200,164,78,0.12);
     }
 }
+
+/* =========================================================================
+   Hero: Lesbarkeit und Abschluss nach unten
+   Vorher lag ueber dem unteren Hero-Rand die Komponente GradualBlur mit acht
+   uebereinandergelegten backdrop-filter-Ebenen bis blur(48px). Gemessen
+   waren das acht der 24 backdrop-filter auf der Startseite, alle gleich
+   beim Seitenaufruf sichtbar. Jede davon zwingt den Browser zu einem
+   eigenen Offscreen-Durchgang pro Bild — auf iOS Safari der Grund fuers
+   Ruckeln beim Scrollen, und die Unschaerfe am unteren Bildrand.
+   Ein Verlauf sieht ueber einem Foto praktisch gleich aus und kostet nichts.
+   ========================================================================= */
+.hero-fade {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 10rem;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(to bottom,
+        rgba(12,12,12,0) 0%,
+        rgba(12,12,12,0.55) 55%,
+        rgba(12,12,12,0.92) 100%);
+}
+
+/* Dunkler Schleier direkt hinter dem Textblock, nicht ueber dem ganzen Foto.
+   So bleibt das Bild an den Raendern hell und der Text trotzdem lesbar.
+   .hero-content hat z-index 2 und damit einen eigenen Stapelkontext — das
+   ::before darin liegt unter dem Text, aber ueber den Foto-Ebenen. */
+.hero-content::before {
+    content: '';
+    position: absolute;
+    inset: -2rem -1rem;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(ellipse 85% 62% at 50% 48%,
+        rgba(12,12,12,0.82) 0%,
+        rgba(12,12,12,0.58) 52%,
+        rgba(12,12,12,0) 78%);
+}
+
+/* Der Fliesstext stand in --color-text-muted (#8A8578). Auf einer ruhigen
+   Flaeche reicht das, ueber einem Foto nicht. */
+.hero-sub { color: rgba(240, 236, 227, 0.86); }
+.hero-fakten li { color: rgba(240, 236, 227, 0.80); }
+
+/* Die Referenzkarten liegen auf einem deckenden Hintergrund — dort ist
+   backdrop-filter nicht zu sehen, kostet aber sechsmal einen eigenen
+   Durchgang. */
+.referenz-card { backdrop-filter: none; -webkit-backdrop-filter: none; }

@@ -33,12 +33,10 @@ export default function Home() {
           <div className="hero-backdrop">
             {/* Aufbau wie in der Parallax-Vorlage: ein Wrapper, darin der
                 Trigger [data-parallax-layers], darin die Ebenen mit
-                data-parallax-layer. Ebene 1 ist das Foto (drei Schichten:
-                unscharfe Fuellung, Foto, Abdunklung — sie bewegen sich
-                gemeinsam), Ebene 3 ist der Textblock. */}
+                data-parallax-layer. Ebene 1 ist das Foto (zwei Schichten:
+                Foto und Abdunklung — sie bewegen sich gemeinsam), Ebene 3 ist der Textblock. */}
             <HeroParallax>
               <div className="parallax__layers" data-parallax-layers>
-                <div className="hero-layer hero-layer--unscharf" data-parallax-layer="1" aria-hidden="true" />
                 <div className="hero-layer hero-layer--foto" data-parallax-layer="1" aria-hidden="true" />
                 <div className="hero-layer hero-layer--dunkel" data-parallax-layer="1" aria-hidden="true" />
                 <div data-parallax-layer="3">
