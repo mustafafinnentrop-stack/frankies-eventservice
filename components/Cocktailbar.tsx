@@ -2,15 +2,9 @@
 
 import Image from 'next/image'
 import BookingCTA from './BookingCTA'
-import Icon from './Icon'
+import { ORTE } from './cocktailbar-daten'
 import { ContainerScroll, ContainerStagger, ContainerAnimated, ContainerInset } from './ScrollReveal'
 
-const features = [
-  { icon: 'van', title: 'Voll mobil', text: 'Wir kommen zu Ihrer Location' },
-  { icon: 'bamboo', title: 'Bambustheke', text: 'Stilvolle Theke mit Urlaubsflair' },
-  { icon: 'cocktail', title: 'Frische Cocktails', text: 'Klassiker & individuelle Kreationen' },
-  { icon: 'pin', title: 'Überall einsetzbar', text: 'Garten, Wiese, Hof, Halle' },
-]
 
 export default function Cocktailbar() {
   return (
@@ -64,25 +58,28 @@ export default function Cocktailbar() {
         </ContainerInset>
       </ContainerScroll>
 
+      {/* Entwurf A — Orte statt Behauptungen. Vorher standen hier vier
+          Icon-Kaesten ("Voll mobil — Wir kommen zu Ihrer Location",
+          "Ueberall einsetzbar — Garten, Wiese, Hof, Halle"): Behauptungen
+          ohne Beleg. Jetzt drei Fotos derselben Theke an drei benannten
+          Orten. Wer das sieht, braucht kein Icon, das ihm "mobil" sagt. */}
       <div className="section-container">
-        <h3 className="cb-sub">Was Sie erwartet</h3>
-        <p className="section-text">
-          Neben frisch zubereiteten Cocktails erwartet Sie ein professioneller
-          Barkeeper-Service. Das einzigartige Ambiente unserer Bambustheke sorgt dafür,
-          dass Ihre Gäste begeistert sind.
+        <p className="cb-orte-intro reveal">
+          Dieselbe Theke — überall aufgebaut, wo gefeiert wird.
         </p>
-
-        <div className="cocktail-features stagger-children reveal" style={{ justifyContent: 'center', marginTop: '3rem' }}>
-          {features.map(f => (
-            <div className="cocktail-feature" key={f.title} style={{ textAlign: 'left' }}>
-              <span className="cocktail-feature-icon"><Icon name={f.icon} /></span>
-              <div>
-                <strong>{f.title}</strong>
-                <span>{f.text}</span>
+        <ul className="cb-orte stagger-children reveal">
+          {ORTE.map((o) => (
+            <li key={o.ort} className="reveal">
+              <div className="cb-ort-bild">
+                <Image src={o.bild} alt={o.alt} width={800} height={1000}
+                       sizes="(max-width: 900px) 90vw, 400px" quality={62}
+                       style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: o.pos }} />
               </div>
-            </div>
+              <h3>{o.ort}</h3>
+              <p>{o.zusatz}</p>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   )

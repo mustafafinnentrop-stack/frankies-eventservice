@@ -1790,3 +1790,49 @@ html[data-cookie-consent='declined'] .cookie-banner {
 @media (max-width: 767px) {
     .scroll-expand-track { height: 100dvh; }
 }
+
+/* =========================================================================
+   Cocktailbar — Orte statt Behauptungen (gewaehlter Entwurf A)
+   Drei Fotos derselben Theke an drei benannten Orten, unterhalb des
+   Scroll-Fotos. Ersetzt die vier Icon-Kaesten mit Werbetext.
+   ========================================================================= */
+.cb-orte-intro {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2.4rem);
+    font-weight: 400;
+    line-height: 1.25;
+    color: var(--color-text);
+    max-width: 28ch;
+    margin: 4rem 0 3rem;
+}
+.cb-orte {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+.cb-ort-bild {
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border: 1px solid rgba(200,164,78,0.12);
+    margin-bottom: 1.25rem;
+}
+.cb-orte h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 1.25;
+    color: var(--color-text);
+    margin-bottom: 0.35rem;
+}
+.cb-orte p {
+    font-size: 0.86rem;
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--color-text-muted);
+}
+@media (max-width: 900px) {
+    .cb-orte-intro { margin-top: 3rem; }
+    .cb-orte { grid-template-columns: 1fr; gap: 2.5rem; }
+    .cb-ort-bild { aspect-ratio: 3 / 2; }
+}
