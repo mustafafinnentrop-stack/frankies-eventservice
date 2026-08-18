@@ -1279,7 +1279,8 @@ body { animation: fadeIn 0.5s ease; }
            war gemessen das langsamste Element der Seite. */
         background-image: url('/bg-hero-mobil.webp');
         /* Weicher Uebergang in den dunklen Hintergrund statt einer harten
-           Kante. Frueher lag hier eine unscharf hochskalierte Fassung des
+           Kante. 24px je Seite: das Band ist bei 390px Breite nur 219px hoch,
+           mit 64px waeren 58% davon weggeblendet gewesen. Frueher lag hier eine unscharf hochskalierte Fassung des
            Fotos als Fuellung — die war als Unschaerfe zu sehen und ist raus.
            Die Maske sitzt exakt auf den Bildraendern: `contain` passt das Foto
            auf die Ebenenbreite ein, es ist also 100vw breit und bei 16:9
@@ -1287,13 +1288,13 @@ body { animation: fadeIn 0.5s ease; }
            50% +/- 28.125vw — unabhaengig von der Bildschirmgroesse. */
         -webkit-mask-image: linear-gradient(to bottom,
             transparent calc(50% - 28.125vw),
-            #000 calc(50% - 28.125vw + 64px),
-            #000 calc(50% + 28.125vw - 64px),
+            #000 calc(50% - 28.125vw + 24px),
+            #000 calc(50% + 28.125vw - 24px),
             transparent calc(50% + 28.125vw));
         mask-image: linear-gradient(to bottom,
             transparent calc(50% - 28.125vw),
-            #000 calc(50% - 28.125vw + 64px),
-            #000 calc(50% + 28.125vw - 64px),
+            #000 calc(50% - 28.125vw + 24px),
+            #000 calc(50% + 28.125vw - 24px),
             transparent calc(50% + 28.125vw));
     }
 }
@@ -1694,10 +1695,10 @@ html[data-cookie-consent='declined'] .cookie-banner {
     inset: -2rem -1rem;
     z-index: -1;
     pointer-events: none;
-    background: radial-gradient(ellipse 85% 62% at 50% 48%,
-        rgba(12,12,12,0.82) 0%,
-        rgba(12,12,12,0.58) 52%,
-        rgba(12,12,12,0) 78%);
+    background: radial-gradient(ellipse 78% 55% at 50% 46%,
+        rgba(12,12,12,0.62) 0%,
+        rgba(12,12,12,0.40) 55%,
+        rgba(12,12,12,0) 80%);
 }
 
 /* Der Fliesstext stand in --color-text-muted (#8A8578). Auf einer ruhigen
@@ -1709,3 +1710,9 @@ html[data-cookie-consent='declined'] .cookie-banner {
    backdrop-filter nicht zu sehen, kostet aber sechsmal einen eigenen
    Durchgang. */
 .referenz-card { backdrop-filter: none; -webkit-backdrop-filter: none; }
+
+/* Farben fuer den Scroll-Expansion-Hero.
+   Die Vorlage setzt dort text-blue-200. Uebernommen ist die Vorlage
+   ansonsten unveraendert; nur die Farben gehen aufs Branding. */
+.ent-hero-titel { color: var(--color-text); font-family: var(--font-display); }
+.ent-hero-text { color: var(--color-gold); }
