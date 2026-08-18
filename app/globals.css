@@ -1762,3 +1762,17 @@ html[data-cookie-consent='declined'] .cookie-banner {
     color: var(--color-text-muted);
     max-width: 62ch;
 }
+
+/* =========================================================================
+   Scroll-Strecke des Scroll-Expansion-Hero
+   Auf dem Desktop waechst das Medium ueber die ganze Strecke von 300 auf
+   1368px — dort darf sie lang sein. Auf dem Handy stoesst es wegen
+   maxWidth: 95vw schon bei 11% der Strecke an die Bildschirmbreite
+   (gemessen: 300px -> 371px), danach aendert sich nur noch die Hoehe.
+   Mit 220dvh blieben so 810px totes Scrollen — fast ein ganzer Bildschirm,
+   auf dem sich nichts tut. Deshalb hier deutlich kuerzer.
+   ========================================================================= */
+.scroll-expand-track { height: 200dvh; }
+@media (max-width: 767px) {
+    .scroll-expand-track { height: 130dvh; }
+}

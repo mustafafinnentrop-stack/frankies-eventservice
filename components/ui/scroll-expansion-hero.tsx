@@ -102,9 +102,11 @@ const ScrollExpandMedia = ({
 
   return (
     <div className='transition-colors duration-700 ease-in-out overflow-x-hidden'>
-      {/* Die Scroll-Strecke: 220dvh hoch, die Buehne klebt oben. Waehrend
-          der Besucher die Strecke durchscrollt, zieht das Medium auf. */}
-      <div ref={trackRef} className='relative' style={{ height: '220dvh' }}>
+      {/* Die Scroll-Strecke, die Buehne klebt darin. Ihre Hoehe steht in
+          globals.css und ist auf dem Handy deutlich kuerzer: dort stoesst
+          das Medium wegen maxWidth 95vw schon bei 11% der Strecke an die
+          Bildschirmbreite, der Rest waere totes Scrollen. */}
+      <div ref={trackRef} className='relative scroll-expand-track'>
         <section
           className='sticky top-0 flex flex-col items-center justify-start overflow-hidden'
           style={{ height: '100dvh' }}
