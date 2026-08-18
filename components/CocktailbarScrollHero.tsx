@@ -51,6 +51,12 @@ export default function CocktailbarScrollHero() {
       scrollToExpand="Scrollen zum Öffnen"
     >
       <div className="section-container" style={{ maxWidth: '760px', textAlign: 'center' }}>
+        {/* Die h1 der Seite. Die Titel der Vorlage sind h2 und fahren beim
+            Aufziehen aus dem Bild — auf dem Handy sind sie von Anfang an
+            draussen. Ohne diese Zeile hatte die Seite keine h1 mehr. */}
+        <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem,4.4vw,3.4rem)', fontWeight: 400, lineHeight: 1.15, color: 'var(--color-text)', marginBottom: '1.25rem' }}>
+          Mobile Cocktailbar<br />in Lennestadt mieten
+        </h1>
         <p style={{ fontSize: '1.05rem', fontWeight: 300, color: 'var(--color-text-muted)', lineHeight: 1.8, marginBottom: '2.5rem' }}>
           Unsere mobile Cocktailbar kommt mit der Bambustheke direkt zu Ihnen —
           egal ob Garten, Hof, Halle oder Festzelt.
