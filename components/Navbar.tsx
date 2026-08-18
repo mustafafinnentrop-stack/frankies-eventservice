@@ -50,6 +50,7 @@ export default function Navbar() {
       textColor: '#F0ECE3',
       links: [
         { label: 'Termin buchen', href: CALCOM_URL, ariaLabel: 'Termin buchen' },
+        { label: 'Partner werden', href: '/partner', ariaLabel: 'Partner werden' },
         { label: 'Anrufen', href: 'tel:+4915142840916', ariaLabel: 'Anrufen' },
         { label: 'info@frankies-eventservice.de', href: 'mailto:info@frankies-eventservice.de', ariaLabel: 'E-Mail schreiben' },
         { label: 'Hachener Str. 7, Lennestadt', ariaLabel: 'Adresse' },
