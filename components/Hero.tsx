@@ -107,13 +107,6 @@ export default function Hero() {
         <div className="line" />
         Mehr erfahren
       </div>
-      {/* Weicher Abschluss nach unten. Vorher stand hier GradualBlur: acht
-          uebereinandergelegte Ebenen mit backdrop-filter bis blur(48px).
-          Das sind acht Offscreen-Durchgaenge pro Bild, die auf iOS Safari
-          beim Scrollen ruckeln — und die Unschaerfe am unteren Bildrand.
-          Ein Verlauf sieht ueber einem Foto praktisch gleich aus und
-          kostet nichts. */}
-      <div className="hero-fade" aria-hidden="true" />
     </header>
   )
 }

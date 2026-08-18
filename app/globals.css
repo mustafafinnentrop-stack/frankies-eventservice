@@ -194,7 +194,17 @@ body::after {
 .hero {
     min-height: 100vh; display: flex; align-items: center;
     justify-content: center; position: relative; overflow: hidden;
-    background: transparent;
+    /* Das Foto liegt direkt hier, formatfuellend. Keine Maske, keine
+       unscharfe Fuellung, keine Balken oben oder unten, keine fixierte
+       Ebene. Der Verlauf darueber ist eine gleichmaessige Abdunklung,
+       damit der Text lesbar bleibt — und sonst nichts. */
+    background-color: var(--color-bg);
+    background-image:
+        linear-gradient(rgba(12,12,12,0.58), rgba(12,12,12,0.58)),
+        url('/bg-hero.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     /* Die fixierte Navbar sitzt bei top:1.5em und ist 60px hoch, endet also
        bei rund 84px. Ohne diesen Freiraum zentriert der Hero seinen Inhalt
        ueber die volle Hoehe — bei kurzem Fenster rutscht das Badge dann
@@ -1220,85 +1230,6 @@ body { animation: fadeIn 0.5s ease; }
     position: relative;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
-/* Die Ebenen der Parallax-Vorlage.
-   Die Wrapper duerfen weder transform noch filter bekommen: beides macht ein
-   Element zum Bezugsrahmen fuer position: fixed darin, und dann waeren die
-   Foto-Ebenen nicht mehr fixiert, sondern wuerden mitscrollen. Bewegt wird
-   deshalb jede Ebene selbst, nie ihr Wrapper. */
-.parallax,
-.parallax__layers {
-    position: relative;
-}
-
-.hero-layer {
-    position: fixed;
-    /* Ueberstand oben und unten, damit die Parallax-Bewegung keine Kante
-       freilegt. Der clip-path des Wrappers schneidet ihn wieder zu.
-       22vh ist der Wert, auf den yPercent 14 in parallax-scrolling.tsx
-       gerechnet ist — beide gehoeren zusammen.
-       Seitlich kein Ueberstand: sonst wuerde `contain` auf dem Handy das
-       Foto auf die breitere Ebene einpassen und der clip-path danach die
-       Raender abschneiden — dann waere es doch wieder nicht vollstaendig. */
-    inset: -22vh 0;
-    z-index: -1;
-    background-repeat: no-repeat;
-    background-position: center;
-    pointer-events: none;
-    will-change: transform;
-}
-.hero-layer--foto {
-    background-color: var(--color-bg);
-    background-image: url('/bg-hero.webp');
-    background-size: cover;
-}
-/* Die Abdunklung liegt als eigene Ebene ueber dem Foto statt als Verlauf im
-   background-image. Nur so deckt sie auch die Flaeche neben dem Foto ab,
-   wenn dieses auf dem Handy nicht formatfuellend liegt. */
-.hero-layer--dunkel {
-    background-color: rgba(12, 12, 12, 0.72);
-}
-
-/* Auf dem Handy das ganze Foto zeigen.
-   Das Foto ist 2560x1440, also 16:9, das Display steht hochkant. Mit `cover`
-   schneidet der Browser zwangslaeufig seitlich ab — gemessen blieben 26% der
-   Breite uebrig, und uebrig blieb der Zapfhahn in Grossaufnahme. Ein engerer
-   Zuschnitt macht es nur schlimmer. `contain` zeigt das vollstaendige Bild.
-   Mehr als die volle Bildschirmbreite geht bei 16:9 hochkant nicht, das Foto
-   ist dann rund 220px hoch; der Rest darueber und darunter bekommt statt
-   Schwarz dieselbe Aufnahme unscharf als Fuellung. */
-@media (max-width: 767px) {
-    /* Weniger flaechige Abdunklung als auf dem Desktop: den Kontrast fuer
-       den Text macht .hero-content::before gezielt dahinter, nicht der
-       Schleier ueber dem ganzen Bild. */
-    .hero-layer--dunkel { background-color: rgba(12, 12, 12, 0.42); }
-    .hero-layer--foto {
-        background-color: transparent;
-        background-size: contain;
-        /* Kleinere Datei fuers Handy. `contain` stellt das Foto hier 390x219
-           dar; die 2560px-Fassung ist dafuer sechseinhalbfach zu gross und
-           war gemessen das langsamste Element der Seite. */
-        background-image: url('/bg-hero-mobil.webp');
-        /* Weicher Uebergang in den dunklen Hintergrund statt einer harten
-           Kante. 24px je Seite: das Band ist bei 390px Breite nur 219px hoch,
-           mit 64px waeren 58% davon weggeblendet gewesen. Frueher lag hier eine unscharf hochskalierte Fassung des
-           Fotos als Fuellung — die war als Unschaerfe zu sehen und ist raus.
-           Die Maske sitzt exakt auf den Bildraendern: `contain` passt das Foto
-           auf die Ebenenbreite ein, es ist also 100vw breit und bei 16:9
-           56.25vw hoch, mittig in der Ebene. Die Raender liegen damit bei
-           50% +/- 28.125vw — unabhaengig von der Bildschirmgroesse. */
-        -webkit-mask-image: linear-gradient(to bottom,
-            transparent calc(50% - 28.125vw),
-            #000 calc(50% - 28.125vw + 24px),
-            #000 calc(50% + 28.125vw - 24px),
-            transparent calc(50% + 28.125vw));
-        mask-image: linear-gradient(to bottom,
-            transparent calc(50% - 28.125vw),
-            #000 calc(50% - 28.125vw + 24px),
-            #000 calc(50% + 28.125vw - 24px),
-            transparent calc(50% + 28.125vw));
-    }
-}
-
 /* Bewertungskarten ohne Initialen-Kreis.
    Fuer Carol-Ann Stoecker und Stefan Hoberg gibt es keine Fotos — ihre
    Profilbilder liegen bei Google und duerfen nicht eingebunden werden. Ein
@@ -1663,44 +1594,6 @@ html[data-cookie-consent='declined'] .cookie-banner {
     }
 }
 
-/* =========================================================================
-   Hero: Lesbarkeit und Abschluss nach unten
-   Vorher lag ueber dem unteren Hero-Rand die Komponente GradualBlur mit acht
-   uebereinandergelegten backdrop-filter-Ebenen bis blur(48px). Gemessen
-   waren das acht der 24 backdrop-filter auf der Startseite, alle gleich
-   beim Seitenaufruf sichtbar. Jede davon zwingt den Browser zu einem
-   eigenen Offscreen-Durchgang pro Bild — auf iOS Safari der Grund fuers
-   Ruckeln beim Scrollen, und die Unschaerfe am unteren Bildrand.
-   Ein Verlauf sieht ueber einem Foto praktisch gleich aus und kostet nichts.
-   ========================================================================= */
-.hero-fade {
-    position: absolute;
-    left: 0; right: 0; bottom: 0;
-    height: 10rem;
-    z-index: 1;
-    pointer-events: none;
-    background: linear-gradient(to bottom,
-        rgba(12,12,12,0) 0%,
-        rgba(12,12,12,0.55) 55%,
-        rgba(12,12,12,0.92) 100%);
-}
-
-/* Dunkler Schleier direkt hinter dem Textblock, nicht ueber dem ganzen Foto.
-   So bleibt das Bild an den Raendern hell und der Text trotzdem lesbar.
-   .hero-content hat z-index 2 und damit einen eigenen Stapelkontext — das
-   ::before darin liegt unter dem Text, aber ueber den Foto-Ebenen. */
-.hero-content::before {
-    content: '';
-    position: absolute;
-    inset: -2rem -1rem;
-    z-index: -1;
-    pointer-events: none;
-    background: radial-gradient(ellipse 78% 55% at 50% 46%,
-        rgba(12,12,12,0.62) 0%,
-        rgba(12,12,12,0.40) 55%,
-        rgba(12,12,12,0) 80%);
-}
-
 /* Der Fliesstext stand in --color-text-muted (#8A8578). Auf einer ruhigen
    Flaeche reicht das, ueber einem Foto nicht. */
 .hero-sub { color: rgba(240, 236, 227, 0.86); }
@@ -1716,3 +1609,12 @@ html[data-cookie-consent='declined'] .cookie-banner {
    ansonsten unveraendert; nur die Farben gehen aufs Branding. */
 .ent-hero-titel { color: var(--color-text); font-family: var(--font-display); }
 .ent-hero-text { color: var(--color-gold); }
+
+/* Handy: dieselbe Darstellung, nur die kleinere Bilddatei. */
+@media (max-width: 767px) {
+    .hero {
+        background-image:
+            linear-gradient(rgba(12,12,12,0.58), rgba(12,12,12,0.58)),
+            url('/bg-hero-mobil.webp');
+    }
+}
