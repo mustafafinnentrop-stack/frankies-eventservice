@@ -8,12 +8,10 @@ import BookingCTA from '@/components/BookingCTA'
   scroll-expansion-hero. Die Vorlage selbst liegt unveraendert unter
   components/ui/; hier stehen nur die Inhalte.
 
-  Solange kein Video vorliegt, laeuft die Bildfassung der Vorlage
-  (mediaType="image"). Sobald das Video da ist, wird daraus:
-      mediaType="video"
-      mediaSrc="/cocktailbar.mp4"
-      posterSrc="/theke-vor-ort.webp"
-  Mehr ist nicht zu aendern, die Vorlage kann beides.
+  Das Video ist die vom Betreiber hochgeladene Aufnahme, fuer das Web
+  umgerechnet: 2160x3840 und 19 MB im Original, jetzt 1080x1920 und
+  2,3 MB (H.264, CRF 28, ohne Tonspur, faststart). Das Standbild ist ein
+  Einzelbild aus Sekunde 4 und wird angezeigt, bis das Video laeuft.
 
   Wichtig: Die Vorlage faengt wheel und touchmove ab und haelt die Seite
   bei scrollY 0 fest, bis das Medium aufgezogen ist. Das vertraegt sich
@@ -23,8 +21,9 @@ import BookingCTA from '@/components/BookingCTA'
 export default function CocktailbarScrollHero() {
   return (
     <ScrollExpandMedia
-      mediaType="image"
-      mediaSrc="/theke-vor-ort.webp"
+      mediaType="video"
+      mediaSrc="/cocktailbar-web.mp4"
+      posterSrc="/cocktailbar-poster.webp"
       bgImageSrc="/bambustheke.webp"
       title="Mobile Cocktailbar"
       date="Lennestadt & Kreis Olpe"
