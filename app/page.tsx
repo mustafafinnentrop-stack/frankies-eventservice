@@ -12,7 +12,6 @@ import Testimonials from '@/components/Testimonials'
 import RevealWrapper from '@/components/RevealWrapper'
 import ClientEffects from '@/components/ClientEffects'
 import { CinematicFooter } from '@/components/ui/motion-footer'
-import { HeroParallax } from '@/components/ui/parallax-scrolling'
 
 export default function Home() {
   return (
@@ -26,25 +25,14 @@ export default function Home() {
           Siehe .content-layer in globals.css. */}
       <div className="content-layer">
         <RevealWrapper>
-          {/* Gleiche Technik wie der Footer: clip-path begrenzt die
-              fixierte Foto-Ebene auf diese Box. Beim Footer legt das frei,
-              hier schneidet es weg — das Bild bleibt stehen und
-              verschwindet, sobald der Hero den Bildschirm verlaesst. */}
-          <div className="hero-backdrop">
-            {/* Aufbau wie in der Parallax-Vorlage: ein Wrapper, darin der
-                Trigger [data-parallax-layers], darin die Ebenen mit
-                data-parallax-layer. Ebene 1 ist das Foto (zwei Schichten:
-                Foto und Abdunklung — sie bewegen sich gemeinsam), Ebene 3 ist der Textblock. */}
-            <HeroParallax>
-              <div className="parallax__layers" data-parallax-layers>
-                <div className="hero-layer hero-layer--foto" data-parallax-layer="1" aria-hidden="true" />
-                <div className="hero-layer hero-layer--dunkel" data-parallax-layer="1" aria-hidden="true" />
-                <div data-parallax-layer="3">
-                  <Hero />
-                </div>
-              </div>
-            </HeroParallax>
-          </div>
+          {/* Der Hero traegt sein Foto selbst als Hintergrund. Vorher lagen
+              hier zwei fixierte, formatfuellende Ebenen in einem
+              clip-path-Wrapper, die GSAP pro Bild verschoben hat. Gemessen
+              gingen 4,4 von 5,9 Sekunden Scrollzeit in (program), also ins
+              Malen und Kompositieren — genau das verursacht ein fixiertes
+              Vollbild, das sich jedes Bild bewegt. */}
+          <Hero />
+
           {/* Alles unterhalb des Hero bekommt einen deckenden Hintergrund und
               schiebt sich beim Scrollen ueber das fixierte Hintergrundfoto.
               Dadurch ist das Foto nur hinter dem Hero zu sehen und wird
