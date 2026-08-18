@@ -17,7 +17,11 @@ export const metadata: Metadata = {
 
 export default function EntwurfLeistungen() {
   return (
-    <main style={{ background: 'var(--color-bg)', minHeight: '100vh' }}>
+    /* .content-layer hebt den Inhalt ueber body::before — das ist ein
+       fixierter Schleier mit 72% Schwarz, der auf den echten Seiten das
+       Hintergrundfoto abdunkelt. Ohne ihn liegt der Entwurf darunter und
+       wird um 72% abgedunkelt dargestellt. */
+    <main className="content-layer" style={{ background: 'var(--color-bg)', minHeight: '100vh' }}>
       <p className="ent-marke">Entwurf A — Editorial-Liste</p>
       <LeistungenA />
 
