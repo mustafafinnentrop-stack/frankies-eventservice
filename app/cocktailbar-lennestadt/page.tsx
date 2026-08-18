@@ -5,6 +5,7 @@ import { CinematicFooter } from '@/components/ui/motion-footer'
 import Testimonials from '@/components/Testimonials'
 import RevealWrapper from '@/components/RevealWrapper'
 import BookingCTA from '@/components/BookingCTA'
+import CocktailbarScrollHero from '@/components/CocktailbarScrollHero'
 import Icon from '@/components/Icon'
 
 const PAGE_URL = 'https://frankies-eventservice.de/cocktailbar-lennestadt'
@@ -107,25 +108,12 @@ export default function CocktailbarLennestadt() {
       <Navbar />
       <div className="content-layer">
         <RevealWrapper>
-        <main style={{ paddingTop: '100px' }}>
+        {/* Hero aus der Vorlage scroll-expansion-hero: das Medium zieht
+            beim Scrollen auf. Steht ausserhalb von <main>, weil es die
+            volle Bildschirmhoehe braucht. */}
+        <CocktailbarScrollHero />
 
-          {/* Hero */}
-          <div className="hero-backdrop">
-            <section style={{ padding: '5rem 2rem 4rem' }}>
-            <div className="section-container" style={{ textAlign: 'center' }}>
-              <p className="section-label reveal">Lennestadt &amp; Kreis Olpe</p>
-              <h1 className="reveal" style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.2rem,5vw,4rem)', fontWeight: 400, lineHeight: 1.1, marginBottom: '1.5rem' }}>
-                Mobile Cocktailbar<br />in Lennestadt mieten
-              </h1>
-              <p className="reveal" style={{ fontSize: '1.05rem', fontWeight: 300, color: 'var(--color-text-muted)', maxWidth: '620px', margin: '0 auto 2.5rem', lineHeight: 1.8 }}>
-                Unsere mobile Cocktailbar kommt mit der Bambustheke direkt zu Ihnen — egal ob Garten, Hof, Halle oder Festzelt.
-              </p>
-              <div className="reveal">
-                <BookingCTA primary="Angebot anfordern" secondary="Jetzt anrufen" calcomUrl="tel:+4915142840916" />
-              </div>
-            </div>
-          </section>
-          </div>
+        <main>
 
           {/* Deckende Ebene: schiebt sich beim Scrollen ueber das
               fixierte Hintergrundfoto, siehe .below-hero in globals.css. */}
