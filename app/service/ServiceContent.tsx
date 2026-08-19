@@ -151,7 +151,7 @@ export default function ServiceContent() {
             <div className="section-container">
               <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
                 <p className="section-label">Für jeden Anlass</p>
-                <h2 className="section-title" style={{ margin: '0 auto 1rem' }}>Wir sind dabei — bei jedem Event</h2>
+                <h2 className="section-title" style={{ margin: '0 auto 1rem' }}>Wir sind dabei — rund 20 Veranstaltungen allein in dieser Saison</h2>
                 <p className="section-text" style={{ margin: '0 auto' }}>
                   Egal ob kleines Gartenfest oder großes Schützenfest — wir passen uns flexibel an Ihre Veranstaltung an.
                 </p>

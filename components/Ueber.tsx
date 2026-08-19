@@ -23,8 +23,9 @@ export default function Ueber() {
             Frankies Eventservice steht für zuverlässigen und professionellen
             Getränkeservice bei Veranstaltungen in der Region. Dabei wissen wir
             genau, wie ein Schützenfest abläuft und was eine gelungene
-            Hochzeitsfeier ausmacht. Deshalb können Sie sich darauf verlassen,
-            dass bei uns jeder Handgriff sitzt.
+            Hochzeitsfeier ausmacht. Woher wir das wissen: rund 20 Veranstaltungen
+            allein in dieser Saison — vom Schützenfest Marmecke bis zur
+            Firmenfeier bei Schneider Haustechnik.
           </p>
           
           <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 400, marginTop: '2rem', marginBottom: '0.75rem' }}>

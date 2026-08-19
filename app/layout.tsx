@@ -86,6 +86,19 @@ const schema = {
     latitude: 51.1201,
     longitude: 8.0663,
   },
+  /* Verknuepft den Eintrag mit den Profilen, auf denen die echten
+     Bewertungen liegen. Bewusst KEIN review/aggregateRating-Markup:
+     Google wertet Bewertungen auf der eigenen Seite ueber das eigene
+     Geschaeft als self-serving und ignoriert sie fuer Sterne — und
+     Product-Markup fuer einen Dienstleister riskiert eine Abstrafung,
+     die auch die FAQ-Rich-Results der Partnerseite mitreisst. Die
+     Sterne kommen aus dem Google-Unternehmensprofil, nicht aus der
+     Seite. */
+  sameAs: [
+    'https://www.google.com/search?q=Frankies-Eventservice&kgmid=/g/11z1_pnp_3',
+    'https://www.facebook.com/share/17zxCGQ62q/',
+    'https://www.instagram.com/frankies_eventservice',
+  ],
   areaServed: [
     'Lennestadt', 'Olpe', 'Attendorn', 'Finnentrop',
     'Kirchhundem', 'Schmallenberg', 'Sauerland',
