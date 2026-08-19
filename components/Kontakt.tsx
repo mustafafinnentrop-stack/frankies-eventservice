@@ -1,7 +1,17 @@
 'use client'
 
 import { useState } from 'react'
+import dynamic from 'next/dynamic'
 import Icon from './Icon'
+
+/*
+  Bewusst nachgeladen statt fest importiert. Fest importiert haengt der
+  Lottie-Motor am Bundle der Startseite: gemessen 288 kB statt 237 kB First
+  Load JS, und das fuer eine Animation, die erst nach dem Absenden ueberhaupt
+  gezeigt wird. So holt der Browser den Brocken genau dann, wenn der
+  Erfolgskasten das erste Mal gerendert wird.
+*/
+const LottieBox = dynamic(() => import('./LottieBox'), { ssr: false })
 
 interface FormData {
   fname: string; lname: string; email: string; phone: string
@@ -63,7 +73,7 @@ export default function Kontakt() {
     <section className="cta-section" id="kontakt">
       <div className="cta-content" style={{ textAlign: 'center', alignItems: 'center', display: 'flex', flexDirection: 'column' }}>
         <p className="section-label reveal" style={{ margin: '0 auto 1rem' }}>Jetzt anfragen</p>
-        <h2 className="section-title reveal" style={{ margin: '0 auto 1rem' }}>Ihr nächstes Event<br />steht an?</h2>
+        <h2 className="section-title reveal" style={{ margin: '0 auto 1rem' }}>Lassen Sie uns<br />anstoßen.</h2>
         <p className="section-text reveal" style={{ margin: '0 auto 1.5rem' }}>
           Feste Preise gibt es bei uns nicht — ein Schützenfest über vier Tage und eine
           Cocktailbar für einen Abend haben nichts miteinander zu tun. Nennen Sie uns
@@ -158,6 +168,12 @@ export default function Kontakt() {
 
         {status === 'done' && (
           <div className="form-success" style={{ display: 'block' }}>
+            {/* Laedt erst hier, also nach dem Absenden. Wer das Formular nie
+                abschickt, holt die Datei nie — die Startseite kostet sie
+                nichts. */}
+            <div className="erfolg-bild">
+              <LottieBox name="anstossen" groesse={150} />
+            </div>
             <h3>Vielen Dank!</h3>
             <p>Ihre Anfrage ist eingegangen. Wir melden uns innerhalb von 24 Stunden.</p>
             <a href={calUrl} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ display: 'inline-block', marginTop: '1.5rem' }}>

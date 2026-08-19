@@ -198,16 +198,19 @@ function glas() {
 
 function anstossen() {
   const OP = 110
-  const glasKontur = [[-26, -76], [-17, 0], [17, 0], [26, -76]]
+  // Groesser als zunaechst gezeichnet: mit Hoehe 76 fuellte das Paar nur 38 %
+  // der Bildhoehe und sass in der unteren Haelfte, darueber stand nichts.
+  // Mit 92 reicht es von 58 bis 150, die Mitte liegt bei 104 statt 112.
+  const glasKontur = [[-30, -92], [-20, 0], [20, 0], [30, -92]]
   // Die Fuellung bleibt hinter der Innenkante der Kontur. Die Wand laeuft von
-  // halber Breite 26 auf Randhoehe -76 zu 17 am Boden, die 7 breite Kontur
-  // nimmt davon nach innen 3,5 weg — bei -56 bleiben 20, bei -6 bleiben 14.
-  const glasInhalt = [[-20, -56], [-13, -6], [13, -6], [20, -56]]
+  // halber Breite 30 auf Randhoehe -92 zu 20 am Boden, die 8 breite Kontur
+  // nimmt davon nach innen 4 weg — bei -70 bleiben 23,6, bei -7 bleiben 16,8.
+  const glasInhalt = [[-23, -70], [-16, -7], [16, -7], [23, -70]]
 
   const einGlas = (nm, ind, x, richtung) =>
     ebene(nm, ind, [
       gruppe([pfad(glasInhalt, true), flaeche(GOLD)], 'Inhalt'),
-      gruppe([pfad(glasKontur), kontur(CREME, 7)], 'Kontur'),
+      gruppe([pfad(glasKontur), kontur(CREME, 8)], 'Kontur'),
     ], {
       ks: {
         // Drehpunkt ist der Glasboden, nicht die Ebenenmitte — sonst kippt
@@ -215,11 +218,14 @@ function anstossen() {
         p: fest([x, 150, 0]),
         o: bewegt([{ t: 0, s: [0] }, { t: 10, s: [100] }]),
         // Der Anschlag bei 8 Grad ist gerechnet, nicht geschaetzt: bei einem
-        // Abstand der Fusspunkte von 72 und einer halben Glasbreite von 26
-        // auf Randhoehe 76 gilt 26*cos(r) + 76*sin(r) = 36, wenn sich die
-        // Raender genau beruehren sollen. Das loest r = 7,7 Grad.
+        // Abstand der Fusspunkte von 84 und einer halben Glasbreite von 30
+        // auf Randhoehe 92 gilt 30*cos(8) + 92*sin(8) = 42,5, also genau die
+        // halbe Strecke — die Raender beruehren sich.
+        //
+        // Der Startwinkel ist nach oben begrenzt: bei -18 Grad rutschte die
+        // obere Aussenecke auf x = 0,5 und damit an den Bildrand.
         r: bewegt([
-          { t: 0, s: [-18 * richtung] },
+          { t: 0, s: [-14 * richtung] },
           { t: 34, s: [8 * richtung] },
           { t: 46, s: [3 * richtung] },
           { t: 60, s: [5.5 * richtung] },
@@ -234,8 +240,8 @@ function anstossen() {
   const winkel = [-90, -142, -38, -166, -14]
   const funken = ebene('Funken', 3, winkel.map((grad, i) => {
     const rad = (grad * Math.PI) / 180
-    const p1 = [Number((Math.cos(rad) * 13).toFixed(2)), Number((Math.sin(rad) * 13).toFixed(2))]
-    const p2 = [Number((Math.cos(rad) * 36).toFixed(2)), Number((Math.sin(rad) * 36).toFixed(2))]
+    const p1 = [Number((Math.cos(rad) * 15).toFixed(2)), Number((Math.sin(rad) * 15).toFixed(2))]
+    const p2 = [Number((Math.cos(rad) * 41).toFixed(2)), Number((Math.sin(rad) * 41).toFixed(2))]
     const los = 32 + i * 3
     return gruppe([
       pfad([p1, p2]),
@@ -246,17 +252,17 @@ function anstossen() {
         bewegt([{ t: los + 16, s: [0] }, { t: los + 30, s: [100] }]),
         bewegt([{ t: los, s: [0] }, { t: los + 16, s: [100] }]),
       ),
-      kontur(GOLD, 4),
+      kontur(GOLD, 5),
     ], `Funke ${i + 1}`)
   }), {
     ks: {
-      p: fest([BREIT / 2, 74, 0]),
+      p: fest([BREIT / 2, 59, 0]),
       o: bewegt([{ t: 30, s: [100] }, { t: 62, s: [100] }, { t: 72, s: [0] }]),
     },
     ip: 30, op: OP,
   })
 
-  return datei('Anstossen', OP, [einGlas('Glas links', 1, 64, 1), einGlas('Glas rechts', 2, 136, -1), funken])
+  return datei('Anstossen', OP, [einGlas('Glas links', 1, 58, 1), einGlas('Glas rechts', 2, 142, -1), funken])
 }
 
 /* ---------- schreiben ---------- */
