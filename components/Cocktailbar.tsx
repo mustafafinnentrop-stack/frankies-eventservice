@@ -22,10 +22,17 @@ export default function Cocktailbar() {
           </ContainerAnimated>
 
           <ContainerAnimated animation="blur">
+            {/* Nur belegte Orte. Der Satz nannte vorher Garten-Geburtstag,
+                Hochzeit unter freiem Himmel und Firmen-Sommerfest und
+                versprach "jede Location" — kein einziges dieser Beispiele
+                hat eine abgeschlossene Referenz, und die einzige Hochzeit
+                in den Referenzen hat die Cocktailbar gar nicht gebucht.
+                Was hier steht, muss scripts/belege-pruefen.mjs bestehen. */}
             <p className="section-text" style={{ marginTop: '1.5rem' }}>
               Wir kommen mit unserer mobilen Cocktailbar und einer echten Bambustheke
-              direkt zu Ihnen. Egal ob Geburtstag im Garten, Hochzeitsfeier unter freiem
-              Himmel oder Firmen-Sommerfest — wir verwandeln jede Location in eine Bar.
+              direkt zu Ihnen — draußen auf der Wiese wie am Campingplatz Kalberschnacke,
+              unter dem Pavillon oder auf der Firmenfeier. Wo die Theke schon stand,
+              sehen Sie direkt darunter.
             </p>
           </ContainerAnimated>
 
