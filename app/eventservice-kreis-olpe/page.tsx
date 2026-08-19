@@ -21,13 +21,13 @@ export const metadata: Metadata = {
     url: PAGE_URL,
     siteName: 'Frankies Eventservice',
     title: 'Eventservice Kreis Olpe | Getränke- & Veranstaltungsservice – Frankies Eventservice',
-    description: 'Ihr Eventservice im Kreis Olpe und Sauerland. Professioneller Getränke- und Thekenservice für alle Veranstaltungen jeder Art.',
+    description: 'Ihr Eventservice im Kreis Olpe und Sauerland. Professioneller Getränke- und Thekenservice — vom Schützenfest bis zur Firmenfeier.',
     images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: 'Eventservice im Kreis Olpe – Frankies Eventservice' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Eventservice Kreis Olpe | Getränke- & Veranstaltungsservice – Frankies Eventservice',
-    description: 'Ihr Eventservice im Kreis Olpe und Sauerland. Professioneller Getränke- und Thekenservice für alle Veranstaltungen jeder Art.',
+    description: 'Ihr Eventservice im Kreis Olpe und Sauerland. Professioneller Getränke- und Thekenservice — vom Schützenfest bis zur Firmenfeier.',
     images: [OG_IMAGE],
   },
 }
@@ -84,9 +84,9 @@ export default function EventserviceKreisOlpe() {
               <div className="cocktail-grid">
                 <div className="reveal grid-text">
                   <p className="section-label">Ihre Veranstaltung</p>
-                  <h2 className="section-title">Veranstaltungsservice<br />für alle Anlässe</h2>
+                  <h2 className="section-title">Veranstaltungsservice<br />im Kreis Olpe</h2>
                   <p className="section-text">
-                    Egal ob Schützenfest, Hochzeit, Vereinsjubiläum, Firmenfeier oder Dorffest — wir bieten Ihnen einen zuverlässigen und professionellen Getränkeservice für Veranstaltungen jeder Art und jeder Größe im Kreis Olpe.
+                    Egal ob Schützenfest, Hochzeit, Vereinsjubiläum, Firmenfeier oder Dorffest — wir bieten Ihnen einen zuverlässigen und professionellen Getränkeservice im Kreis Olpe. Wie groß das werden darf, zeigen unsere Referenzen: vom Schützenfest Marmecke mit 12 Leuten im Einsatz bis Berghausen mit 100 Hektolitern Bier.
                   </p>
                   <p className="section-text" style={{ marginTop: '1rem' }}>
                     Mit Sitz in Lennestadt sind wir schnell vor Ort — in Olpe, Attendorn, Finnentrop, Kirchhundem, Wenden, Drolshagen und allen weiteren Gemeinden des Kreises. Wir kennen die Region und ihre Veranstaltungskultur.
@@ -96,7 +96,7 @@ export default function EventserviceKreisOlpe() {
                       <span className="cocktail-feature-icon"><Icon name="target" /></span>
                       <div>
                         <strong>Flexibel</strong>
-                        <span>Jede Größe, jeder Anlass</span>
+                        <span>12 bis 18 Leute im Einsatz — je nach Fest</span>
                       </div>
                     </div>
                     <div className="cocktail-feature">
