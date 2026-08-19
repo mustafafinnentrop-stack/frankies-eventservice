@@ -54,6 +54,7 @@ const ScrollExpandMedia = ({
   const [scrollProgress, setScrollProgress] = useState<number>(0);
   const [showContent, setShowContent] = useState<boolean>(false);
   const [isMobileState, setIsMobileState] = useState<boolean>(false);
+  const [viewport, setViewport] = useState<{ w: number; h: number }>({ w: 0, h: 0 });
 
   const trackRef = useRef<HTMLDivElement | null>(null);
 
@@ -85,6 +86,7 @@ const ScrollExpandMedia = ({
   useEffect(() => {
     const checkIfMobile = (): void => {
       setIsMobileState(window.innerWidth < 768);
+      setViewport({ w: window.innerWidth, h: window.innerHeight });
     };
 
     checkIfMobile();
@@ -93,8 +95,27 @@ const ScrollExpandMedia = ({
     return () => window.removeEventListener('resize', checkIfMobile);
   }, []);
 
-  const mediaWidth = 300 + scrollProgress * (isMobileState ? 650 : 1250);
-  const mediaHeight = 400 + scrollProgress * (isMobileState ? 200 : 400);
+  /* Abweichung von der Vorlage: Auf dem Desktop haelt der Kasten das
+     Seitenverhaeltnis des Videos (16:9). Die Vorlage startet mit einem
+     3:4-Kasten (300x400) — das Querformat-Video zeigte darin per
+     object-cover nur einen 42%-Streifen aus der Bildmitte und wirkte
+     dadurch nicht mittig. Breitenverlauf und Deckel (95vw / 85vh) sind
+     unveraendert die der Vorlage; nur die Hoehe folgt jetzt der Breite.
+     Auf dem Handy bleiben die Formeln der Vorlage — dort ist das Video
+     hochkant und der Kasten passt. */
+  let mediaWidth = 300 + scrollProgress * (isMobileState ? 650 : 1250);
+  let mediaHeight = 400 + scrollProgress * (isMobileState ? 200 : 400);
+  if (!isMobileState && viewport.w > 0) {
+    let w = Math.min(mediaWidth, viewport.w * 0.95);
+    let h = (w * 9) / 16;
+    const maxH = viewport.h * 0.85;
+    if (h > maxH) {
+      h = maxH;
+      w = (h * 16) / 9;
+    }
+    mediaWidth = w;
+    mediaHeight = h;
+  }
   const textTranslateX = scrollProgress * (isMobileState ? 180 : 150);
 
   const firstWord = title ? title.split(' ')[0] : '';
