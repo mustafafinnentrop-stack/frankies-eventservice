@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import dynamic from 'next/dynamic'
 import Icon from './Icon'
+import { FLATS, euro } from './preise-daten'
 
 /*
   Bewusst nachgeladen statt fest importiert. Fest importiert haengt der
@@ -75,10 +76,11 @@ export default function Kontakt() {
         <p className="section-label reveal" style={{ margin: '0 auto 1rem' }}>Jetzt anfragen</p>
         <h2 className="section-title reveal" style={{ margin: '0 auto 1rem' }}>Lassen Sie uns<br />anstoßen.</h2>
         <p className="section-text reveal" style={{ margin: '0 auto 1.5rem' }}>
-          Feste Preise gibt es bei uns nicht — ein Schützenfest über vier Tage und eine
-          Cocktailbar für einen Abend haben nichts miteinander zu tun. Nennen Sie uns
-          Datum, Ort und ungefähre Gästezahl, dann bekommen Sie innerhalb von 24 Stunden
-          ein Angebot.
+          Für die mobile Cocktailbar gibt es feste Pauschalen — ab {euro(FLATS[0].preis)} für{' '}
+          {FLATS[0].anzahl} Cocktails, alles inklusive. Beim Thekenservice, Getränkecatering und Personal rechnen wir
+          individuell: ein Schützenfest über vier Tage und ein Abend mit Servicekräften
+          haben nichts miteinander zu tun. Nennen Sie uns Datum, Ort und ungefähre
+          Gästezahl, dann bekommen Sie innerhalb von 24 Stunden ein Angebot.
         </p>
 
         {/* Die Preisfrage steht hier statt in einem eigenen Kasten mitten auf der

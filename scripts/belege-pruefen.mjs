@@ -29,6 +29,7 @@
   ab statt still zu bestehen.
 */
 import { readFileSync } from 'node:fs'
+import { execSync } from 'node:child_process'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -162,7 +163,38 @@ for (const st of PRUEFSTELLEN) {
   }
 }
 
+/* ---------- Preise: nur an einer Stelle ---------- */
+
+/*
+  Vorher lagen die Cocktail-Pakete doppelt im Code — auf der
+  Cocktailbar-Seite und im Buchungsfenster, mit unterschiedlichen
+  Stundenzahlen. Genau so entstehen Preise, die sich widersprechen.
+  Ab jetzt faellt jeder Europreis auf, der ausserhalb von
+  components/preise-daten.ts im Code steht.
+*/
+console.log('\n=== Preise stehen nur in preise-daten.ts ===')
+const AUSNAHMEN = [
+  'components/preise-daten.ts',   // die Quelle selbst
+  'app/agb/page.tsx',             // Prozentsaetze der Stornostaffel
+  'components/LegalOverlay.tsx',  // dieselben Rechtstexte
+]
+const preisMuster = /(\d[\d.]*\s?(?:€|EUR)|(?:€|EUR)\s?\d)/g
+const dateien = execSync(
+  "find app components -name '*.tsx' -o -name '*.ts'", { encoding: 'utf8' }
+).trim().split('\n')
+
+for (const datei of dateien) {
+  const rel = datei.replace(/^\.\//, '')
+  if (AUSNAHMEN.includes(rel)) continue
+  const quelle = ohneKommentare(lesen(rel))
+  const treffer = [...new Set(quelle.match(preisMuster) ?? [])]
+  if (!treffer.length) continue
+  fehler++
+  console.log(`  FEHLT  [${rel}] fest eingetragener Preis: ${treffer.join(', ')} — gehoert nach preise-daten.ts`)
+}
+if (!fehler) console.log('  OK     kein Europreis ausserhalb der Datenbasis')
+
 console.log(fehler
-  ? `\nDURCHGEFALLEN: ${fehler} unbelegte Aussage(n)`
-  : '\nBESTANDEN: alles Genannte ist belegt')
+  ? `\nDURCHGEFALLEN: ${fehler} Beanstandung(en)`
+  : '\nBESTANDEN: alles Genannte ist belegt, Preise stehen an einer Stelle')
 process.exit(fehler ? 1 : 0)
