@@ -10,14 +10,16 @@
   waere falsch. Deshalb tragen sie sichtbar "Steht an", und die
   Ueberschrift steht im Praesens statt in der Vergangenheit.
 */
-type Referenz = {
+export type Referenz = {
   ort: string
   leistungen: string[]
   zahlen?: { wert: string; was: string }[]
   geplant?: true
 }
 
-const REFERENZEN: Referenz[] = [
+// Exportiert, damit Entwuerfe dieselben Zahlen benutzen statt eigene zu
+// tippen. scripts/belege-pruefen.mjs findet den Block weiterhin.
+export const REFERENZEN: Referenz[] = [
   {
     ort: 'Schützenfest Berghausen',
     leistungen: ['Thekenservice'],
