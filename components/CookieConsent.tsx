@@ -8,25 +8,30 @@ const GA_ID = 'G-MCG3V1FK4Y'
 /*
   Cookie-Einwilligung.
 
-  Zwei Dinge sind hier anders als vorher.
+  Der Banner steht im ausgelieferten HTML und wird per CSS versteckt, statt
+  erst nach der Hydration gerendert zu werden — sonst ist er das groesste
+  zuletzt gezeichnete Element und damit der LCP-Wert, den Google bewertet
+  (gemessen: erschien vorher erst nach rund 3,3 Sekunden). Gesteuert ueber
+  ein Attribut am <html>-Element, das das beforeInteractive-Script setzt.
 
-  1) Der Banner steht jetzt im ausgelieferten HTML und wird per CSS
-     versteckt, statt erst nach der Hydration gerendert zu werden.
-     Vorher erschien er gemessen erst nach rund 3,3 Sekunden und war
-     damit in der Haelfte der Messungen das groesste zuletzt gezeichnete
-     Element der Seite — also der LCP-Wert, den Google bewertet. Jetzt
-     zeichnet er mit dem ersten Bild.
+  Was die Seite tatsaechlich speichert — und nur das steht auch im Banner:
 
-     Gesteuert wird das ueber ein Attribut am <html>-Element, das das
-     beforeInteractive-Script unten setzt. Das laeuft im Head, also vor
-     dem ersten Bild — wer schon zugestimmt hat, sieht den Banner nie
-     aufblitzen. Ohne JavaScript bleibt der Banner sichtbar; das ist die
-     richtige Richtung, denn ohne JavaScript laedt auch kein Analytics.
+    Ohne Zustimmung:  gar kein Cookie. Nur die Auswahl selbst liegt im
+                      localStorage ('cookie-consent'), das ist die
+                      technisch notwendige Speicherung.
+    Mit Zustimmung:   _ga und _ga_<ID> von Google Analytics (2 Jahre).
+    Immer:            Vercel Analytics laeuft ohne Cookies und ohne
+                      seitenuebergreifende Kennung.
 
-  2) Die Einwilligung laesst sich jederzeit wieder aendern — ueber den
-     kleinen Schalter unten links. Ein Widerruf muss so einfach sein wie
-     die Zustimmung; vorher gab es dafuer keinen Weg ausser Cookies im
-     Browser zu loeschen.
+  Drei Regeln, alle hier im Code nachpruefbar:
+
+  1. gtag.js laedt erst NACH der Zustimmung (analyticsAktiv). Vorher ging
+     das Script immer raus und schickte auch bei Ablehnung cookielose
+     Pings an Google — Datenuebertragung ohne Einwilligung.
+  2. Bei Ablehnung werden vorhandene _ga-Cookies geloescht.
+  3. War Analytics in dieser Sitzung schon geladen (Widerruf nach
+     Zustimmung), laedt die Seite neu — nur so ist das bereits laufende
+     gtag wirklich weg.
 */
 
 type Zustand = 'accepted' | 'declined' | 'none'
@@ -35,34 +40,60 @@ function setzeZustand(z: Zustand) {
   document.documentElement.dataset.cookieConsent = z
 }
 
-export default function CookieConsent() {
-  // Nur fuer den Schalter: der soll erst erscheinen, wenn eine
-  // Entscheidung vorliegt. Vor der Hydration wissen wir die nicht, und
-  // der Banner steht dann ohnehin im Weg.
-  const [entschieden, setEntschieden] = useState(false)
-
-  useEffect(() => {
-    setEntschieden(localStorage.getItem('cookie-consent') !== null)
-  }, [])
-
-  const updateConsent = (granted: boolean) => {
-    const w = window as unknown as { gtag?: (...args: unknown[]) => void }
-    if (typeof w.gtag === 'function') {
-      w.gtag('consent', 'update', {
-        ad_storage: granted ? 'granted' : 'denied',
-        ad_user_data: granted ? 'granted' : 'denied',
-        ad_personalization: granted ? 'granted' : 'denied',
-        analytics_storage: granted ? 'granted' : 'denied',
-      })
+function loescheAnalyticsCookies() {
+  const namen = document.cookie.split(';').map((c) => c.trim().split('=')[0])
+  const basis = location.hostname.replace(/^www\./, '')
+  for (const name of namen) {
+    if (name !== '_ga' && !name.startsWith('_ga_') && name !== '_gid' && name !== '_gat') continue
+    // Google setzt die Cookies auf die Basisdomain; die Varianten decken
+    // localhost und Vorschau-Domains mit ab.
+    for (const domain of ['', `; domain=${location.hostname}`, `; domain=.${basis}`]) {
+      document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/${domain}`
     }
   }
+}
+
+const COOKIE_LISTE = [
+  { name: 'cookie-consent', art: 'Notwendig', dauer: 'bis zum Widerruf', zweck: 'Speichert Ihre Auswahl in diesem Banner (localStorage, kein Cookie im engeren Sinn). Ohne sie müssten wir bei jedem Besuch neu fragen.' },
+  { name: '_ga', art: 'Statistik — nur nach Zustimmung', dauer: '2 Jahre', zweck: 'Google Analytics: unterscheidet Besucher, anonymisierte IP.' },
+  { name: `_ga_${GA_ID.replace('G-', '')}`, art: 'Statistik — nur nach Zustimmung', dauer: '2 Jahre', zweck: 'Google Analytics: hält den Sitzungszustand.' },
+]
+
+export default function CookieConsent() {
+  // Der Schalter unten links erscheint erst, wenn eine Entscheidung
+  // vorliegt; Analytics laedt erst, wenn sie "accepted" lautet.
+  const [entschieden, setEntschieden] = useState(false)
+  const [analyticsAktiv, setAnalyticsAktiv] = useState(false)
+
+  useEffect(() => {
+    const stored = localStorage.getItem('cookie-consent')
+    setEntschieden(stored !== null)
+    if (stored === 'accepted') setAnalyticsAktiv(true)
+  }, [])
 
   const entscheide = (granted: boolean) => {
-    const wert = granted ? 'accepted' : 'declined'
-    localStorage.setItem('cookie-consent', wert)
-    setzeZustand(wert)
+    localStorage.setItem('cookie-consent', granted ? 'accepted' : 'declined')
+    setzeZustand(granted ? 'accepted' : 'declined')
     setEntschieden(true)
-    updateConsent(granted)
+
+    if (granted) {
+      const w = window as unknown as { gtag?: (...args: unknown[]) => void }
+      w.gtag?.('consent', 'update', {
+        ad_storage: 'granted', ad_user_data: 'granted',
+        ad_personalization: 'granted', analytics_storage: 'granted',
+      })
+      setAnalyticsAktiv(true)
+      return
+    }
+
+    loescheAnalyticsCookies()
+    if (analyticsAktiv) {
+      // gtag laeuft bereits in dieser Seite. Neu laden ist der einzige
+      // Weg, der es sicher beendet — erst nach dem Loeschen der Cookies,
+      // und der localStorage-Eintrag sorgt dafuer, dass es nach dem
+      // Neuladen nicht wieder startet.
+      location.reload()
+    }
   }
 
   const erneutFragen = () => {
@@ -72,6 +103,9 @@ export default function CookieConsent() {
 
   return (
     <>
+      {/* Laeuft im Head, vor dem ersten Bild: blendet den Banner fuer
+          Wiederkehrer aus und setzt den Consent-Mode-Standard, bevor
+          gtag.js (falls zugestimmt) laedt. Laedt selbst nichts von aussen. */}
       <Script id="ga-consent-default" strategy="beforeInteractive">{`
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
@@ -81,33 +115,46 @@ export default function CookieConsent() {
         try { stored = localStorage.getItem('cookie-consent'); } catch (e) {}
         var granted = stored === 'accepted';
 
-        // Blendet den Banner aus, bevor das erste Bild gezeichnet wird.
         document.documentElement.dataset.cookieConsent = stored || 'none';
 
         gtag('consent', 'default', {
           ad_storage: granted ? 'granted' : 'denied',
           ad_user_data: granted ? 'granted' : 'denied',
           ad_personalization: granted ? 'granted' : 'denied',
-          analytics_storage: granted ? 'granted' : 'denied',
-          wait_for_update: 500
+          analytics_storage: granted ? 'granted' : 'denied'
         });
       `}</Script>
-      <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-        strategy="afterInteractive"
-      />
-      <Script id="ga-config" strategy="afterInteractive">{`
-        gtag('js', new Date());
-        gtag('config', '${GA_ID}', { anonymize_ip: true });
-      `}</Script>
+
+      {analyticsAktiv && (
+        <>
+          <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
+          <Script id="ga-config" strategy="afterInteractive">{`
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}', { anonymize_ip: true });
+          `}</Script>
+        </>
+      )}
 
       <div className="cookie-banner" role="dialog" aria-label="Cookie-Einstellungen">
         <div className="cookie-banner-inner">
           <p>
-            Wir nutzen Cookies und Google Analytics, um die Nutzung unserer Website zu analysieren
-            und unser Angebot zu verbessern. Technisch notwendige Cookies sind immer aktiv.{' '}
+            Ohne Ihre Zustimmung setzt diese Seite keine Cookies — gespeichert wird nur
+            Ihre Auswahl selbst. Stimmen Sie zu, misst Google Analytics die Nutzung der
+            Seite (zwei Cookies, anonymisierte IP). Unsere eigene Reichweitenmessung
+            (Vercel) kommt ohne Cookies aus.{' '}
             <a href="/datenschutz">Datenschutzerklärung</a>
           </p>
+          <details className="cookie-details">
+            <summary>Welche Cookies genau?</summary>
+            <ul>
+              {COOKIE_LISTE.map((c) => (
+                <li key={c.name}>
+                  <strong>{c.name}</strong> · {c.art} · {c.dauer}
+                  <span>{c.zweck}</span>
+                </li>
+              ))}
+            </ul>
+          </details>
           <div className="cookie-banner-aktionen">
             <button onClick={() => entscheide(false)} className="btn-secondary">
               Nur notwendige
