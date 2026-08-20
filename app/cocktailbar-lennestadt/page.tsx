@@ -192,6 +192,8 @@ export default function CocktailbarLennestadt() {
                 ))}
               </div>
               <p className="reveal" style={{ textAlign: 'center', color: 'var(--color-text-muted)', fontSize: '0.85rem', marginTop: '2rem', fontWeight: 300 }}>
+                Alle Flats laufen komplett autark — die Bar braucht weder Strom- noch
+                Wasseranschluss. Erst bei größeren Events ist beides sinnvoll.
                 Jedes Event ist anders — wir kalkulieren Ihr Angebot individuell. Erstgespräch kostenlos.
               </p>
             </div>

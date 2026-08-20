@@ -813,8 +813,14 @@ footer { padding: 3rem 2rem; border-top: 1px solid rgba(200,164,78,0.08); backgr
     box-shadow: 0 8px 20px rgba(200,164,78,0.15);
 }
 
-/* Section label animated underline */
-.section-label { position: relative; display: inline-block; padding-bottom: 4px; }
+/* Section label animated underline.
+   display:table statt inline-block: beide schrumpfen auf Textbreite (die
+   Unterstreichung soll nur unter dem Text liegen), aber nur table laesst
+   sich mit margin:auto zentrieren. inline-block haengt an der
+   Textausrichtung des Elternelements — auf der Partnerseite standen
+   dadurch zwei Kicker links (gemessen -90px und -157px aus der Mitte),
+   waehrend die Ueberschriften darunter zentriert blieben. */
+.section-label { position: relative; display: table; padding-bottom: 4px; }
 .section-label::after {
     content: ''; position: absolute; bottom: 0; left: 0;
     height: 1px; background: var(--color-gold);
@@ -1897,3 +1903,35 @@ html[data-cookie-consent='declined'] .cookie-banner {
     .nf-seite { padding: 8rem 1.25rem 4.5rem; }
     .nf-knoepfe { margin-bottom: 2.75rem; }
 }
+
+/* Autark-Zeile unter der Cocktailbar-Einleitung: etwas kleiner und leiser,
+   sie ist die Fussnote zum Versprechen, nicht das Versprechen. */
+.cb-autark { font-size: 0.9rem; margin-top: 1rem; opacity: 0.85; }
+
+/* Aufklappbare Cookie-Liste im Banner */
+.cookie-details { margin: 0.75rem 0 0; }
+.cookie-details summary {
+    cursor: pointer;
+    font-size: 0.78rem;
+    color: var(--color-gold);
+    letter-spacing: 0.04em;
+    list-style: none;
+}
+.cookie-details summary::-webkit-details-marker { display: none; }
+.cookie-details summary::after { content: ' +'; }
+.cookie-details[open] summary::after { content: ' −'; }
+.cookie-details ul {
+    list-style: none;
+    margin: 0.75rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+.cookie-details li {
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: var(--color-text-muted);
+}
+.cookie-details li strong { color: var(--color-text); font-weight: 500; }
+.cookie-details li span { display: block; }

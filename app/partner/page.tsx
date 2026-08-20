@@ -190,7 +190,7 @@ export default function PartnerPage() {
           <section className="section-block">
             <div className="section-container" style={{ maxWidth: '760px' }}>
               <p className="section-label">FAQ</p>
-              <h2 className="section-title" style={{ margin: '0 auto 3rem' }}>Häufige Fragen<br />zum Partnerprogramm</h2>
+              <h2 className="section-title" style={{ margin: '0 auto 3rem' }}>Häufige Fragen</h2>
               <div className="partner-faq">
                 {FAQ.map(f => (
                   <details key={f.q}>

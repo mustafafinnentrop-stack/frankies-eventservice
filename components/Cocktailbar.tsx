@@ -36,6 +36,18 @@ export default function Cocktailbar() {
             </p>
           </ContainerAnimated>
 
+          <ContainerAnimated animation="blur">
+            {/* Vom Betreiber bestaetigt (19.08.2026): Die Bar laeuft fuer die
+                normalen Flats vollstaendig autark; erst bei groesseren Events
+                sind Strom- und Wasseranschluss sinnvoll. Das ist die eine
+                ehrliche Einschraenkung, die zum Versprechen gehoert. */}
+            <p className="section-text cb-autark">
+              Die Bar läuft dabei komplett autark — für die normalen Flats brauchen
+              wir weder Strom- noch Wasseranschluss. Erst bei größeren Events ist
+              beides sinnvoll.
+            </p>
+          </ContainerAnimated>
+
           <ContainerAnimated animation="blur" style={{ marginTop: '2rem' }}>
             <BookingCTA primary="Cocktailbar anfragen" pkg="Flat 50" />
           </ContainerAnimated>
