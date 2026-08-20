@@ -37,6 +37,10 @@ export const metadata: Metadata = {
 const faq = [
   { q: 'Wie weit im Voraus sollte ich buchen?', a: 'Für Hochzeiten und größere Events empfehlen wir 3–6 Monate im Voraus. Für Geburtstage oder kleinere Feiern reichen oft 4–6 Wochen. Bei kurzfristigen Anfragen einfach anrufen.' },
     {
+    q: 'Wie viel Platz braucht die Bar?',
+    a: 'Mit Pavillon 3 × 3 Meter, ohne Pavillon 2 × 2 Meter. Mehr nicht — die Bar läuft komplett autark und braucht für die normalen Flats weder Strom- noch Wasseranschluss. Erst bei größeren Veranstaltungen ist beides sinnvoll.',
+  },
+  {
     q: 'Was kostet die mobile Cocktailbar?',
     // Aus FLATS erzeugt, damit die Antwort nicht von den Paketkarten
     // abweichen kann. Die Zahlen stehen nur in preise-daten.ts.
@@ -158,7 +162,8 @@ export default function CocktailbarLennestadt() {
               <p className="reveal" style={{ textAlign: 'center', color: 'var(--color-text-muted)', fontSize: '0.85rem', marginTop: '2rem', fontWeight: 300 }}>
                 Alle Preise sind Pauschalen {STEUER_HINWEIS}, inklusive Anfahrt im Kreis Olpe. Die Bar läuft
                 komplett autark — weder Strom- noch Wasseranschluss nötig; erst bei größeren
-                Events ist beides sinnvoll. Mehr als 200 Cocktails, mehrere Tage oder eine
+                Events ist beides sinnvoll. Platzbedarf: 3 × 3 Meter mit Pavillon,
+                2 × 2 Meter ohne. Mehr als 200 Cocktails, mehrere Tage oder eine
                 Sonderwunsch-Karte? Dann rechnen wir Ihnen das persönlich aus.
               </p>
             </div>
