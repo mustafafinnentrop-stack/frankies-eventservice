@@ -75,16 +75,17 @@ export const euroGenau = (n: number) =>
   n.toLocaleString('de-DE', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2, maximumFractionDigits: 2 })
 
 /*
-  ACHTUNG, eine Annahme: Die Pauschalen sind hier als Endpreise fuer
-  Privatkunden ausgewiesen, also inklusive Mehrwertsteuer. Das verlangt
-  die Preisangabenverordnung, sobald Verbraucher angesprochen werden —
-  und die Cocktailbar richtet sich an Geburtstage, Hochzeiten und JGA.
+  Vom Betreiber bestaetigt (20.08.2026): Die Betraege in FLATS sind
+  Bruttopreise, also Endpreise inklusive Mehrwertsteuer. 425 € sind die
+  425 €, die der Kunde zahlt.
 
-  Die AGB sagen dagegen "Nettopreise zzgl. MwSt., sofern nicht anders
-  ausgewiesen". Genau dieser Zusatz deckt die Anzeige hier ab.
+  Das ist auch die Vorgabe der Preisangabenverordnung, sobald Verbraucher
+  angesprochen werden — und die Cocktailbar richtet sich an Geburtstage,
+  Hochzeiten und JGA. Die AGB nennen "Nettopreise zzgl. MwSt., sofern
+  nicht anders ausgewiesen"; dieser Zusatz deckt die Anzeige hier ab.
 
-  Sind die 425 € netto gemeint, gehoeren in FLATS die Bruttowerte
-  (425 -> 505,75) — nicht dieser Hinweis geaendert.
+  Wer spaeter Preise aendert: Die Werte in FLATS bleiben brutto. Ein
+  Nettobetrag gehoert vorher umgerechnet, nicht dieser Hinweis angepasst.
 */
 export const STEUER_HINWEIS = 'inkl. MwSt.'
 
