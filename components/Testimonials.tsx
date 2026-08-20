@@ -6,7 +6,7 @@ import { AnimatedReviewCards } from '@/components/ui/animated-review-card'
    Kein Avatar-Bild: Die Profilbilder liegen bei Google und duerfen nicht
    von dort eingebunden werden. Die Komponente zeigt dann den Anfangs-
    buchstaben, das ist ihr eingebauter Rueckfall. */
-const BEWERTUNGEN = [
+export const BEWERTUNGEN = [
   {
     id: 'carol-ann-stoecker',
     name: 'Carol-Ann Stöcker',
@@ -29,7 +29,7 @@ const BEWERTUNGEN = [
   },
 ]
 
-const GOOGLE_PROFIL =
+export const GOOGLE_PROFIL =
   'https://www.google.com/search?q=Frankies-Eventservice&kgmid=/g/11z1_pnp_3'
 
 export default function Testimonials() {
