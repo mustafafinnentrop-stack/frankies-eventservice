@@ -45,7 +45,8 @@ export default function Cocktailbar() {
             <p className="section-text cb-autark">
               Die Bar läuft dabei komplett autark — für die normalen Flats brauchen
               wir weder Strom- noch Wasseranschluss. Erst bei größeren Events ist
-              beides sinnvoll.
+              beides sinnvoll. An Platz brauchen wir 3 × 3 Meter mit Pavillon,
+              2 × 2 Meter ohne.
             </p>
           </ContainerAnimated>
 
