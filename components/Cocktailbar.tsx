@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import BookingCTA from './BookingCTA'
 import { ORTE } from './cocktailbar-daten'
+import { STANDARD_FLAT, flatName } from './preise-daten'
 import { ContainerScroll, ContainerStagger, ContainerAnimated, ContainerInset } from './ScrollReveal'
 
 
@@ -49,7 +50,7 @@ export default function Cocktailbar() {
           </ContainerAnimated>
 
           <ContainerAnimated animation="blur" style={{ marginTop: '2rem' }}>
-            <BookingCTA primary="Cocktailbar anfragen" pkg="Flat 50" />
+            <BookingCTA primary="Cocktailbar anfragen" pkg={flatName(STANDARD_FLAT)} />
           </ContainerAnimated>
         </ContainerStagger>
 

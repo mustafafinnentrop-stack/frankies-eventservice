@@ -5,6 +5,7 @@ import { CinematicFooter } from '@/components/ui/motion-footer'
 import Testimonials from '@/components/Testimonials'
 import RevealWrapper from '@/components/RevealWrapper'
 import BookingCTA from '@/components/BookingCTA'
+import { FLATS, IMMER_DABEI, flatName, proCocktail, euro, euroGenau, STEUER_HINWEIS } from '@/components/preise-daten'
 import CocktailbarScrollHero from '@/components/CocktailbarScrollHero'
 import Icon from '@/components/Icon'
 
@@ -35,44 +36,18 @@ export const metadata: Metadata = {
 
 const faq = [
   { q: 'Wie weit im Voraus sollte ich buchen?', a: 'Für Hochzeiten und größere Events empfehlen wir 3–6 Monate im Voraus. Für Geburtstage oder kleinere Feiern reichen oft 4–6 Wochen. Bei kurzfristigen Anfragen einfach anrufen.' },
-  { q: 'Was kostet die mobile Cocktailbar?', a: 'Der Preis richtet sich nach Veranstaltungsdauer, Gästeanzahl und Wunschleistungen. Wir erstellen ein individuelles Angebot — das Erstgespräch ist kostenlos.' },
+    {
+    q: 'Was kostet die mobile Cocktailbar?',
+    // Aus FLATS erzeugt, damit die Antwort nicht von den Paketkarten
+    // abweichen kann. Die Zahlen stehen nur in preise-daten.ts.
+    a: `${FLATS.map((f) => `${f.anzahl} Cocktails mit ${f.stunden} Stunden Ausschank: ${euro(f.preis)}`).join('; ')}. Jeweils ${STEUER_HINWEIS} und inklusive aller Zutaten, Bambustheke, Gläser, Barkeeper sowie Auf- und Abbau. Für mehr als ${FLATS[FLATS.length - 1].anzahl} Cocktails oder mehrtägige Veranstaltungen rechnen wir individuell.`,
+  },
   { q: 'Welche Cocktails gibt es?', a: 'Klassiker wie Mojito, Aperol Spritz, Hugo und Caipirinha plus individuelle Kreationen. Alkoholfreie Alternativen sind selbstverständlich verfügbar.' },
   { q: 'Wie viel Platz braucht die Bambustheke?', a: 'Ca. 3×2 Meter plus Zufahrt für die Anlieferung. Wir klären das bei der Voranfrage — wir passen uns an Ihre Location an.' },
   { q: 'Bringt ihr auch Gläser und Zutaten mit?', a: 'Ja — Gläser, Shaker, Zutaten und alle nötigen Utensilien sind dabei. Sie müssen sich um nichts kümmern.' },
   { q: 'Kommt ihr auch bei Außen-Events?', a: 'Ja. Garten, Wiese, Hof, Festzelt — wir sind vollständig mobil. Bei extremem Wetter besprechen wir das vorab.' },
 ]
 
-const packages = [
-  {
-    badge: 'Einstieg',
-    name: 'Flat 30',
-    highlights: ['30 Cocktails (Mindestabnahme)', '1,5 Stunden Barservice', 'Barkeeper & Equipment inklusive', 'Auf- und Abbau inklusive'],
-    ideal: 'Gartenparty, Geburtstag, kleine Feier',
-    pkg: 'Flat 30',
-  },
-  {
-    badge: 'Beliebt',
-    name: 'Flat 50',
-    highlights: ['50 Cocktails (Mindestabnahme)', '2,5 Stunden Barservice', 'Bambustheke vor Ort aufgebaut', 'Barkeeper & Equipment inklusive', 'Auf- und Abbau inklusive'],
-    ideal: 'JGA, Late-Night-Bar bei Hochzeiten, Firmenfeier',
-    pkg: 'Flat 50',
-    featured: true,
-  },
-  {
-    badge: 'Großes Event',
-    name: 'Flat 100',
-    highlights: ['100 Cocktails (Mindestabnahme)', '3,5 Stunden Barservice', 'Bambustheke inkl. Aufbau', '2 Barkeeper', 'Auf- und Abbau inklusive'],
-    ideal: 'Hochzeit, Schützenfest, Firmen-Sommerfest',
-    pkg: 'Flat 100',
-  },
-  {
-    badge: 'Maßgeschneidert',
-    name: 'Individuell',
-    highlights: ['Über 100 Cocktails', 'Dauer nach Absprache', 'Für besondere Anforderungen', 'Persönliche Beratung'],
-    ideal: 'Mehrtägige Events, Schützenfeste, große Vereinsfeste',
-    pkg: 'Individuell',
-  },
-]
 
 const serviceSchema = {
   '@context': 'https://schema.org',
@@ -153,48 +128,38 @@ export default function CocktailbarLennestadt() {
                 <p className="section-label">Unsere Pakete</p>
                 <h2 className="section-title" style={{ margin: '0 auto 1rem' }}>Das passende Paket für Ihre Feier</h2>
                 <p className="section-text" style={{ margin: '0 auto' }}>
-                  Wählen Sie das Paket, das zu Ihrer Veranstaltung passt — oder wir erstellen Ihnen ein individuelles Angebot.
+                  Feste Pauschalen, keine Überraschung am Ende. Alle Zutaten, Theke, Gläser,
+                  Barkeeper sowie Auf- und Abbau sind enthalten. Je größer das Paket, desto
+                  günstiger der einzelne Cocktail.
                 </p>
               </div>
               <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(240px, 100%), 1fr))', gap: '1.5rem', justifyContent: 'center' }}>
-                {packages.map(p => (
-                  <div
-                    key={p.name}
-                    style={{
-                      background: p.featured ? 'linear-gradient(145deg, rgba(200,164,78,0.08), var(--color-surface-2))' : 'var(--color-surface-2)',
-                      border: p.featured ? '1px solid rgba(200,164,78,0.45)' : '1px solid rgba(200,164,78,0.12)',
-                      padding: '2rem',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      position: 'relative',
-                    }}
-                  >
-                    {p.featured && (
-                      <span style={{ position: 'absolute', top: '-1px', right: '1.5rem', background: 'var(--color-gold)', color: 'var(--color-bg)', fontSize: '0.75rem', letterSpacing: '0.15em', textTransform: 'uppercase', padding: '0.25rem 0.75rem' }}>
-                        Empfohlen
-                      </span>
-                    )}
-                    <p style={{ fontSize: '0.75rem', letterSpacing: '0.25em', color: 'var(--color-gold)', textTransform: 'uppercase', marginBottom: '0.5rem' }}>{p.badge}</p>
-                    <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.8rem', fontWeight: 400, marginBottom: '1.25rem' }}>{p.name}</h3>
-                    <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.25rem', flex: 1, textAlign: 'left' }}>
-                      {p.highlights.map(h => (
-                        <li key={h} style={{ display: 'flex', gap: '0.6rem', alignItems: 'flex-start', fontSize: '0.88rem', color: 'var(--color-text-muted)', fontWeight: 300, lineHeight: 1.6, marginBottom: '0.4rem' }}>
-                          <span style={{ color: 'var(--color-gold)', flexShrink: 0, marginTop: '0.15rem', display: 'inline-flex' }}><Icon name="check" size={16} /></span>
-                          {h}
+                {FLATS.map(f => (
+                  <div key={f.anzahl} className={`flat-karte${f.beliebt ? ' beliebt' : ''}`}>
+                    {f.beliebt && <span className="flat-marke">Am häufigsten gebucht</span>}
+                    <p className="flat-anzahl">{f.anzahl} Cocktails</p>
+                    <p className="flat-preis">{euro(f.preis)}</p>
+                    {/* Der Preis je Cocktail wird gerechnet, nicht gepflegt.
+                        Er macht die Staffelung sichtbar: 8,50 € beim
+                        kleinsten, 7,00 € beim groessten Paket. */}
+                    <p className="flat-je">{euroGenau(proCocktail(f))} pro Cocktail · {f.stunden} Stunden Ausschank</p>
+                    <ul className="flat-liste">
+                      {IMMER_DABEI.map(h => (
+                        <li key={h}>
+                          <span><Icon name="check" size={15} /></span>{h}
                         </li>
                       ))}
                     </ul>
-                    <p style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', fontStyle: 'italic', marginBottom: '1.5rem' }}>
-                      Ideal für: {p.ideal}
-                    </p>
-                    <BookingCTA primary={`${p.name} anfragen`} pkg={p.pkg} />
+                    <p className="flat-fuer">Ideal für: {f.fuer}</p>
+                    <BookingCTA primary={`${flatName(f)} anfragen`} pkg={flatName(f)} />
                   </div>
                 ))}
               </div>
               <p className="reveal" style={{ textAlign: 'center', color: 'var(--color-text-muted)', fontSize: '0.85rem', marginTop: '2rem', fontWeight: 300 }}>
-                Alle Flats laufen komplett autark — die Bar braucht weder Strom- noch
-                Wasseranschluss. Erst bei größeren Events ist beides sinnvoll.
-                Jedes Event ist anders — wir kalkulieren Ihr Angebot individuell. Erstgespräch kostenlos.
+                Alle Preise sind Pauschalen {STEUER_HINWEIS}, inklusive Anfahrt im Kreis Olpe. Die Bar läuft
+                komplett autark — weder Strom- noch Wasseranschluss nötig; erst bei größeren
+                Events ist beides sinnvoll. Mehr als 200 Cocktails, mehrere Tage oder eine
+                Sonderwunsch-Karte? Dann rechnen wir Ihnen das persönlich aus.
               </p>
             </div>
           </section>

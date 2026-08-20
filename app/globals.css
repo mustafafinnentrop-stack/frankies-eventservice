@@ -2053,3 +2053,81 @@ html[data-cookie-consent='set'] .cookie-banner { display: none; }
 }
 .cookie-details li strong { color: var(--color-text); font-weight: 500; }
 .cookie-details li span { display: block; }
+
+/* PREISKARTEN der Cocktail-Flats */
+.flat-karte {
+    background: var(--color-surface-2);
+    border: 1px solid rgba(200,164,78,0.12);
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    text-align: center;
+}
+.flat-karte.beliebt {
+    background: linear-gradient(145deg, rgba(200,164,78,0.08), var(--color-surface-2));
+    border-color: rgba(200,164,78,0.45);
+}
+.flat-marke {
+    position: absolute;
+    top: -1px; left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-gold);
+    color: var(--color-bg);
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.75rem;
+    white-space: nowrap;
+}
+.flat-anzahl {
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: 0.5rem;
+}
+.flat-preis {
+    font-family: var(--font-display);
+    font-size: 2.6rem;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--color-text);
+}
+.flat-je {
+    font-size: 0.78rem;
+    font-weight: 300;
+    color: var(--color-text-muted);
+    margin: 0.5rem 0 1.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(200,164,78,0.14);
+}
+.flat-liste {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.25rem;
+    flex: 1;
+    text-align: left;
+}
+.flat-liste li {
+    display: flex;
+    gap: 0.55rem;
+    align-items: flex-start;
+    font-size: 0.85rem;
+    font-weight: 300;
+    line-height: 1.55;
+    color: var(--color-text-muted);
+    margin-bottom: 0.4rem;
+}
+.flat-liste li span {
+    color: var(--color-gold);
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+    display: inline-flex;
+}
+.flat-fuer {
+    font-size: 0.75rem;
+    font-style: italic;
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+}

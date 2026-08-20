@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { DM_Serif_Display, Outfit } from 'next/font/google'
+import { FLATS, flatName } from '@/components/preise-daten'
 import './globals.css'
 import './tailwind.css'
 import { Analytics } from '@vercel/analytics/next'
@@ -108,7 +109,18 @@ const schema = {
     name: 'Eventservice Leistungen',
     itemListElement: [
       { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Getränkeservice & Thekenservice' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Mobile Cocktailbar' } },
+      /* Die Cocktail-Flats tragen echte Preise, seit es welche gibt.
+         Erzeugt aus components/preise-daten.ts, damit Schema und Seite
+         nicht auseinanderlaufen koennen. */
+      ...FLATS.map((f) => ({
+        '@type': 'Offer',
+        name: `Mobile Cocktailbar — ${flatName(f)}`,
+        description: `${f.anzahl} Cocktails, ${f.stunden} Stunden Ausschank, inklusive Zutaten, Bambustheke, Gläser, Barkeeper sowie Auf- und Abbau.`,
+        price: String(f.preis),
+        priceCurrency: 'EUR',
+        availability: 'https://schema.org/InStock',
+        itemOffered: { '@type': 'Service', name: 'Mobile Cocktailbar' },
+      })),
       { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Barservice für Schützenfeste' } },
       { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Hochzeitsbar & Cocktailbar' } },
     ],

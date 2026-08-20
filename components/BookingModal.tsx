@@ -3,14 +3,18 @@
 import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import Icon from './Icon'
+import { FLATS, flatName, euro } from './preise-daten'
 
 const EVENT_TYPES = ['Hochzeit', 'Schützenfest', 'Geburtstag', 'Firmenfeier', 'JGA', 'Vereinsfest', 'Dorffest', 'Sonstiges']
 const GUEST_COUNTS = ['bis 50', '50–100', '100–200', '200–300', '300+']
+/* Kommt aus components/preise-daten.ts. Vorher stand die Liste hier ein
+   zweites Mal — mit anderen Stundenzahlen als auf der Cocktailbar-Seite. */
 const PACKAGES = [
-  { key: 'Flat 30', sub: '30 Cocktails · 1,5 Std' },
-  { key: 'Flat 50', sub: '50 Cocktails · 2,5 Std' },
-  { key: 'Flat 100', sub: '100 Cocktails · 3,5 Std' },
-  { key: 'Individuell', sub: 'Ab 100 Cocktails · nach Absprache' },
+  ...FLATS.map((f) => ({
+    key: flatName(f),
+    sub: `${f.anzahl} Cocktails · ${f.stunden} Std · ${euro(f.preis)}`,
+  })),
+  { key: 'Individuell', sub: 'Mehr als 200 Cocktails · nach Absprache' },
 ]
 
 const CALCOM_URL = process.env.NEXT_PUBLIC_CALCOM_URL || 'https://cal.com/frankies.digital/15min'
