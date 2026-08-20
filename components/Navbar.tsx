@@ -49,7 +49,7 @@ export default function Navbar() {
       bgColor: '#2A2318',
       textColor: '#F0ECE3',
       links: [
-        { label: 'Termin buchen', href: CALCOM_URL, ariaLabel: 'Termin buchen' },
+        { label: 'Kostenloses Erstgespräch', href: CALCOM_URL, ariaLabel: 'Kostenloses Erstgespräch' },
         { label: 'Partner werden', href: '/partner', ariaLabel: 'Partner werden' },
         { label: 'Anrufen', href: 'tel:+4915142840916', ariaLabel: 'Anrufen' },
         { label: 'info@frankies-eventservice.de', href: 'mailto:info@frankies-eventservice.de', ariaLabel: 'E-Mail schreiben' },
@@ -81,7 +81,7 @@ export default function Navbar() {
       ctaLabel="Anrufen"
       ctaHref={isHome ? '#kontakt' : 'tel:+4915142840916'}
       onCtaClick={handleCtaClick}
-      secondaryCtaLabel="Termin buchen"
+      secondaryCtaLabel="Erstgespräch"
       secondaryCtaHref={CALCOM_URL}
       ease="power3.out"
     />

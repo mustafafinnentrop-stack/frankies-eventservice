@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import dynamic from 'next/dynamic'
 import Icon from './Icon'
-import { FLATS, euro } from './preise-daten'
 
 /*
   Bewusst nachgeladen statt fest importiert. Fest importiert haengt der
@@ -76,17 +75,14 @@ export default function Kontakt() {
         <p className="section-label reveal" style={{ margin: '0 auto 1rem' }}>Jetzt anfragen</p>
         <h2 className="section-title reveal" style={{ margin: '0 auto 1rem' }}>Lassen Sie uns<br />anstoßen.</h2>
         <p className="section-text reveal" style={{ margin: '0 auto 1.5rem' }}>
-          Für die mobile Cocktailbar gibt es feste Pauschalen — ab {euro(FLATS[0].preis)} für{' '}
-          {FLATS[0].anzahl} Cocktails, alles inklusive. Beim Thekenservice, Getränkecatering und Personal rechnen wir
-          individuell: ein Schützenfest über vier Tage und ein Abend mit Servicekräften
-          haben nichts miteinander zu tun. Nennen Sie uns Datum, Ort und ungefähre
-          Gästezahl, dann bekommen Sie innerhalb von 24 Stunden ein Angebot.
+          Datum, Ort, ungefähre Gästezahl — mehr brauchen wir nicht.
+          Ihr Angebot kommt innerhalb von 24 Stunden.
         </p>
 
-        {/* Die Preisfrage steht hier statt in einem eigenen Kasten mitten auf der
-            Seite: die Antwort darauf ist die Anfrage, und die Buttons dafuer
-            stehen direkt darunter. Als Reihe kurzer Begriffe statt als
-            Aufzaehlung — es sind Stichworte, keine Saetze. */}
+        {/* Die sechs Stichworte hingen vorher an einem langen Absatz ueber
+            die Preisbildung. Der ist raus — an dieser Stelle soll jemand
+            handeln, nicht lesen. Die kurze Zeile darueber haelt den Bezug. */}
+        <p className="preis-chips-label reveal">Was in ein Angebot einfließt</p>
         <ul className="preis-chips reveal">
           {['Gästezahl', 'Dauer', 'Personal', 'Technik', 'Getränke', 'Anfahrt'].map((f) => (
             <li key={f} className="region-tag">{f}</li>
@@ -96,7 +92,7 @@ export default function Kontakt() {
         <div className="reveal" style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '2.5rem' }}>
           <a href="tel:+4915142840916" className="btn-primary">Jetzt anrufen</a>
           <a href={CALCOM_URL} target="_blank" rel="noopener noreferrer" className="btn-secondary">
-            Termin buchen
+            Kostenloses Erstgespräch
           </a>
         </div>
 
@@ -179,7 +175,7 @@ export default function Kontakt() {
             <h3>Vielen Dank!</h3>
             <p>Ihre Anfrage ist eingegangen. Wir melden uns innerhalb von 24 Stunden.</p>
             <a href={calUrl} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ display: 'inline-block', marginTop: '1.5rem' }}>
-              Direkt Termin buchen
+              Kostenloses Erstgespräch vereinbaren
             </a>
           </div>
         )}
