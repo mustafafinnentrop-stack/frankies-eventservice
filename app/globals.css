@@ -2131,3 +2131,12 @@ html[data-cookie-consent='set'] .cookie-banner { display: none; }
     color: var(--color-text-muted);
     margin-bottom: 1.5rem;
 }
+
+/* Kleine Ueberschrift ueber den Preis-Stichworten im Kontaktbereich */
+.preis-chips-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-bottom: 0.85rem;
+}

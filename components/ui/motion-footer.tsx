@@ -325,10 +325,10 @@ export function CinematicFooter() {
           </div>
 
           {/* 2. Main Center Content */}
-          <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 mt-20 w-full max-w-5xl mx-auto">
+          <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 mt-8 md:mt-20 w-full max-w-5xl mx-auto">
             <h2
               ref={headingRef}
-              className="text-5xl md:text-8xl footer-text-glow tracking-tighter mb-12 text-center"
+              className="text-4xl md:text-8xl footer-text-glow tracking-tighter mb-6 md:mb-12 text-center"
               style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
             >
               Ihr Event steht an?
@@ -337,15 +337,15 @@ export function CinematicFooter() {
             {/* Interactive Magnetic Pills Layout */}
             <div ref={linksRef} className="flex flex-col items-center gap-6 w-full">
               {/* Primary Contact Links */}
-              <div className="flex flex-wrap justify-center gap-4 w-full">
-                <MagneticButton as="a" href="tel:+4915142840916" className="footer-glass-pill px-10 py-5 rounded-full text-foreground font-bold text-sm md:text-base flex items-center gap-3 group">
+              <div className="grid grid-cols-1 sm:flex sm:flex-wrap justify-center gap-3 md:gap-4 w-full max-w-md sm:max-w-none mx-auto">
+                <MagneticButton as="a" href="tel:+4915142840916" className="footer-glass-pill px-8 py-4 md:px-10 md:py-5 rounded-full text-foreground font-bold text-sm md:text-base flex items-center justify-center gap-3 group">
                   <svg className="w-6 h-6 text-muted-foreground group-hover:text-foreground transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M6 3h3l2 5-2.5 1.5a12 12 0 0 0 6 6L16 13l5 2v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4 5.2 2 2 0 0 1 6 3Z" />
                   </svg>
                   Jetzt anrufen
                 </MagneticButton>
 
-                <MagneticButton as="a" href="mailto:info@frankies-eventservice.de" className="footer-glass-pill px-10 py-5 rounded-full text-foreground font-bold text-sm md:text-base flex items-center gap-3 group">
+                <MagneticButton as="a" href="mailto:info@frankies-eventservice.de" className="footer-glass-pill px-8 py-4 md:px-10 md:py-5 rounded-full text-foreground font-bold text-sm md:text-base flex items-center justify-center gap-3 group">
                   <svg className="w-6 h-6 text-muted-foreground group-hover:text-foreground transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                     <rect x="3" y="5" width="18" height="14" rx="2" />
                     <path d="m3.5 6.5 8.5 6 8.5-6" />
@@ -355,24 +355,24 @@ export function CinematicFooter() {
               </div>
 
               {/* Secondary Text Links */}
-              <div className="flex flex-wrap justify-center gap-3 md:gap-6 w-full mt-2">
-                <MagneticButton as="a" href="/service" className="footer-glass-pill px-6 py-3 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground">
+              <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-3 md:gap-4 w-full max-w-md sm:max-w-none mx-auto">
+                <MagneticButton as="a" href="/service" className="footer-glass-pill px-4 py-3 md:px-6 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground text-center justify-center">
                   Service-Pakete
                 </MagneticButton>
-                <MagneticButton as="a" href="/cocktailbar-lennestadt" className="footer-glass-pill px-6 py-3 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground">
+                <MagneticButton as="a" href="/cocktailbar-lennestadt" className="footer-glass-pill px-4 py-3 md:px-6 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground text-center justify-center">
                   Mobile Cocktailbar
                 </MagneticButton>
                 {/* Der Blog liegt auf einer eigenen Subdomain. Ohne Link von hier
                     kennt ihn weder ein Besucher noch eine Suchmaschine, die von
                     der Hauptdomain kommt. Bewusst ohne rel="nofollow" — das
                     Signal soll fliessen. */}
-                <MagneticButton as="a" href="https://blog.frankies-eventservice.de/blog" className="footer-glass-pill px-6 py-3 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground">
+                <MagneticButton as="a" href="https://blog.frankies-eventservice.de/blog" className="footer-glass-pill px-4 py-3 md:px-6 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground text-center justify-center">
                   Blog
                 </MagneticButton>
-                <MagneticButton as="a" href="/partner" className="footer-glass-pill px-6 py-3 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground">
+                <MagneticButton as="a" href="/partner" className="footer-glass-pill px-4 py-3 md:px-6 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground text-center justify-center">
                   Partner werden
                 </MagneticButton>
-                <MagneticButton as="a" href="/agb" className="footer-glass-pill px-6 py-3 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground">
+                <MagneticButton as="a" href="/agb" className="footer-glass-pill px-4 py-3 md:px-6 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground text-center justify-center">
                   AGB
                 </MagneticButton>
               </div>
@@ -380,15 +380,16 @@ export function CinematicFooter() {
           </div>
 
           {/* 3. Bottom Bar / Credits */}
-          <div className="relative z-20 w-full pb-8 px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="relative z-20 w-full pt-4 pb-5 md:pt-8 md:pb-8 px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-6">
 
             {/* Copyright */}
-            <div className="text-muted-foreground text-[10px] md:text-xs font-semibold tracking-widest uppercase order-2 md:order-1">
-              © 2026 Frankies Eventservice · Hachener Str. 7 · 57368 Lennestadt
+            <div className="text-muted-foreground text-[10px] md:text-xs font-semibold tracking-widest uppercase order-3 md:order-1 text-center">
+              © 2026 Frankies Eventservice
+              <span className="hidden md:inline"> · Hachener Str. 7 · 57368 Lennestadt</span>
             </div>
 
             {/* Legal links — Impressum und Datenschutz sind in Deutschland Pflicht */}
-            <div className="footer-glass-pill px-6 py-3 rounded-full flex items-center gap-4 order-1 md:order-2 border-border/50">
+            <div className="footer-glass-pill px-5 py-2.5 md:px-6 md:py-3 rounded-full flex items-center gap-4 order-1 md:order-2 border-border/50">
               <a href="/impressum" className="text-muted-foreground text-[10px] md:text-xs font-bold uppercase tracking-widest hover:text-foreground transition-colors">Impressum</a>
               <span className="text-muted-foreground/40">·</span>
               <a href="/datenschutz" className="text-muted-foreground text-[10px] md:text-xs font-bold uppercase tracking-widest hover:text-foreground transition-colors">Datenschutz</a>
@@ -399,7 +400,7 @@ export function CinematicFooter() {
               as="button"
               onClick={scrollToTop}
               aria-label="Nach oben"
-              className="w-12 h-12 rounded-full footer-glass-pill flex items-center justify-center text-muted-foreground hover:text-foreground group order-3"
+              className="w-10 h-10 md:w-12 md:h-12 rounded-full footer-glass-pill flex items-center justify-center text-muted-foreground hover:text-foreground group order-2 md:order-3"
             >
               <svg className="w-5 h-5 transform group-hover:-translate-y-1.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
