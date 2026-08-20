@@ -4,128 +4,204 @@ import { useState, useEffect } from 'react'
 import Script from 'next/script'
 
 const GA_ID = 'G-MCG3V1FK4Y'
+const SPEICHER = 'cookie-consent'
 
 /*
-  Cookie-Einwilligung.
+  Cookie-Einwilligung mit Auswahl pro Kategorie.
 
-  Der Banner steht im ausgelieferten HTML und wird per CSS versteckt, statt
-  erst nach der Hydration gerendert zu werden — sonst ist er das groesste
-  zuletzt gezeichnete Element und damit der LCP-Wert, den Google bewertet
-  (gemessen: erschien vorher erst nach rund 3,3 Sekunden). Gesteuert ueber
-  ein Attribut am <html>-Element, das das beforeInteractive-Script setzt.
+  Vorher war das eine Ja/Nein-Entscheidung. Das ist zu grob: wer die
+  Reichweitenmessung erlauben, aber keine Werbesignale senden will, hatte
+  keine Wahl. Jetzt gibt es je Kategorie einen Schalter und einen Knopf
+  "Auswahl speichern" — dazu weiterhin "Alle akzeptieren" und "Nur
+  notwendige" gleich gross nebeneinander, damit Zustimmen und Ablehnen
+  denselben Aufwand kosten.
 
-  Was die Seite tatsaechlich speichert — und nur das steht auch im Banner:
+  WAS DIE SEITE TATSAECHLICH LAEDT (im Code nachgezaehlt, nicht geraten):
 
-    Ohne Zustimmung:  gar kein Cookie. Nur die Auswahl selbst liegt im
-                      localStorage ('cookie-consent'), das ist die
-                      technisch notwendige Speicherung.
-    Mit Zustimmung:   _ga und _ga_<ID> von Google Analytics (2 Jahre).
-    Immer:            Vercel Analytics laeuft ohne Cookies und ohne
-                      seitenuebergreifende Kennung.
+    - Google Analytics 4 (GA_ID) — der einzige echte Drittanbieter.
+    - Vercel Analytics — laeuft ohne Cookies und ohne wiedererkennbare
+      Kennung, braucht daher keine Einwilligung.
+    - Schriften: next/font/google liefert sie beim Bauen mit aus, es geht
+      keine Anfrage an Google.
+    - Cal.com und der Blog sind reine Links, keine Einbettung.
+    - Web3Forms bekommt nur beim Absenden des Formulars Daten — vom
+      Nutzer ausgeloest, deshalb technisch notwendig.
+    - Der YouTube-Zweig in scroll-expansion-hero.tsx ist toter Code: die
+      Videos liegen als MP4 in public/.
 
-  Drei Regeln, alle hier im Code nachpruefbar:
-
-  1. gtag.js laedt erst NACH der Zustimmung (analyticsAktiv). Vorher ging
-     das Script immer raus und schickte auch bei Ablehnung cookielose
-     Pings an Google — Datenuebertragung ohne Einwilligung.
-  2. Bei Ablehnung werden vorhandene _ga-Cookies geloescht.
-  3. War Analytics in dieser Sitzung schon geladen (Widerruf nach
-     Zustimmung), laedt die Seite neu — nur so ist das bereits laufende
-     gtag wirklich weg.
+  Daraus folgen genau drei Kategorien, und keine erfundene vierte.
 */
 
-type Zustand = 'accepted' | 'declined' | 'none'
+type Auswahl = { statistik: boolean; marketing: boolean }
+const KEINE: Auswahl = { statistik: false, marketing: false }
+const ALLE: Auswahl = { statistik: true, marketing: true }
 
-function setzeZustand(z: Zustand) {
-  document.documentElement.dataset.cookieConsent = z
+type Kategorie = {
+  id: 'notwendig' | 'statistik' | 'marketing'
+  titel: string
+  zweck: string
+  eintraege: { name: string; dauer: string; was: string }[]
 }
 
-function loescheAnalyticsCookies() {
-  const namen = document.cookie.split(';').map((c) => c.trim().split('=')[0])
-  const basis = location.hostname.replace(/^www\./, '')
-  for (const name of namen) {
-    if (name !== '_ga' && !name.startsWith('_ga_') && name !== '_gid' && name !== '_gat') continue
-    // Google setzt die Cookies auf die Basisdomain; die Varianten decken
-    // localhost und Vorschau-Domains mit ab.
-    for (const domain of ['', `; domain=${location.hostname}`, `; domain=.${basis}`]) {
-      document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/${domain}`
-    }
-  }
-}
-
-const COOKIE_LISTE = [
-  { name: 'cookie-consent', art: 'Notwendig', dauer: 'bis zum Widerruf', zweck: 'Speichert Ihre Auswahl in diesem Banner (localStorage, kein Cookie im engeren Sinn). Ohne sie müssten wir bei jedem Besuch neu fragen.' },
-  { name: '_ga', art: 'Statistik — nur nach Zustimmung', dauer: '2 Jahre', zweck: 'Google Analytics: unterscheidet Besucher, anonymisierte IP.' },
-  { name: `_ga_${GA_ID.replace('G-', '')}`, art: 'Statistik — nur nach Zustimmung', dauer: '2 Jahre', zweck: 'Google Analytics: hält den Sitzungszustand.' },
+const KATEGORIEN: Kategorie[] = [
+  {
+    id: 'notwendig',
+    titel: 'Technisch notwendig',
+    zweck: 'Damit die Seite funktioniert und Ihre Entscheidung hier erhalten bleibt. Lässt sich nicht abschalten — ohne diese Speicherung müssten wir Sie bei jedem Besuch neu fragen.',
+    eintraege: [
+      { name: 'cookie-consent', dauer: 'bis zum Widerruf', was: 'Ihre Auswahl in diesem Fenster. Liegt im localStorage Ihres Browsers, wird nicht an uns übertragen.' },
+      { name: 'Formularversand', dauer: 'kein Cookie', was: 'Beim Absenden des Anfrageformulars gehen Ihre Angaben an unseren Versanddienst Web3Forms. Nur dann, und nur auf Ihren Klick.' },
+    ],
+  },
+  {
+    id: 'statistik',
+    titel: 'Statistik',
+    zweck: 'Zeigt uns, welche Seiten gelesen werden und worüber Besucher zu uns finden. Danach richten wir aus, woran wir arbeiten.',
+    eintraege: [
+      { name: '_ga', dauer: '2 Jahre', was: 'Google Analytics: unterscheidet Besucher voneinander. IP-Adresse wird gekürzt.' },
+      { name: `_ga_${GA_ID.replace('G-', '')}`, dauer: '2 Jahre', was: 'Google Analytics: hält den Zustand Ihrer Sitzung.' },
+    ],
+  },
+  {
+    id: 'marketing',
+    titel: 'Marketing',
+    zweck: 'Erlaubt Google, Ihren Besuch für Werbezwecke auszuwerten. Offen gesagt: Wir schalten derzeit keine Werbung, es ist also aktuell nichts angeschlossen, was diese Signale nutzt. Der Schalter steht trotzdem hier, damit die Antwort schon feststeht, falls sich das ändert.',
+    eintraege: [
+      { name: 'ad_storage, ad_user_data, ad_personalization', dauer: 'kein eigenes Cookie', was: 'Einwilligungssignale, die wir an Google senden. Stehen ohne Ihre Zustimmung auf „verweigert".' },
+    ],
+  },
 ]
 
+function setzeAttribut(gesetzt: boolean) {
+  document.documentElement.dataset.cookieConsent = gesetzt ? 'set' : 'none'
+}
+
+function lesen(): Auswahl | null {
+  try {
+    const roh = localStorage.getItem(SPEICHER)
+    if (roh === null) return null
+    // Alte Fassung kannte nur 'accepted'/'declined'. Diese Wahl bleibt
+    // gueltig — wer damals zugestimmt hat, wird nicht neu gefragt.
+    if (roh === 'accepted') return ALLE
+    if (roh === 'declined') return KEINE
+    const o = JSON.parse(roh)
+    return { statistik: !!o.statistik, marketing: !!o.marketing }
+  } catch {
+    return null
+  }
+}
+
+function loescheGoogleCookies() {
+  const basis = location.hostname.replace(/^www\./, '')
+  for (const roh of document.cookie.split(';')) {
+    const name = roh.trim().split('=')[0]
+    if (!/^(_ga|_gid|_gat|_gcl)/.test(name)) continue
+    // Google setzt auf die Basisdomain; die Varianten decken localhost
+    // und Vorschau-Domains mit ab.
+    for (const d of ['', `; domain=${location.hostname}`, `; domain=.${basis}`]) {
+      document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/${d}`
+    }
+  }
+}
+
+function Schalter({ an, aus, gesperrt, label }: { an: boolean; aus: () => void; gesperrt?: boolean; label: string }) {
+  return (
+    <button
+      type="button"
+      role="switch"
+      aria-checked={an}
+      aria-label={label}
+      disabled={gesperrt}
+      onClick={aus}
+      className={`cookie-schieber${an ? ' an' : ''}${gesperrt ? ' gesperrt' : ''}`}
+    >
+      <span className="cookie-schieber-knopf" />
+    </button>
+  )
+}
+
 export default function CookieConsent() {
-  // Der Schalter unten links erscheint erst, wenn eine Entscheidung
-  // vorliegt; Analytics laedt erst, wenn sie "accepted" lautet.
+  const [offen, setOffen] = useState(false)
   const [entschieden, setEntschieden] = useState(false)
-  const [analyticsAktiv, setAnalyticsAktiv] = useState(false)
+  const [wahl, setWahl] = useState<Auswahl>(KEINE)
+  // Steuert, ob gtag.js ueberhaupt angefordert wird. Vorher lud es
+  // immer — auch gegen die Ablehnung — und schickte cookielose Pings an
+  // Google, also Datenuebertragung ohne Einwilligung.
+  const [googleGeladen, setGoogleGeladen] = useState(false)
 
   useEffect(() => {
-    const stored = localStorage.getItem('cookie-consent')
-    setEntschieden(stored !== null)
-    if (stored === 'accepted') setAnalyticsAktiv(true)
+    const gespeichert = lesen()
+    if (!gespeichert) return
+    setWahl(gespeichert)
+    setEntschieden(true)
+    if (gespeichert.statistik || gespeichert.marketing) setGoogleGeladen(true)
   }, [])
 
-  const entscheide = (granted: boolean) => {
-    localStorage.setItem('cookie-consent', granted ? 'accepted' : 'declined')
-    setzeZustand(granted ? 'accepted' : 'declined')
+  const uebernehmen = (neu: Auswahl) => {
+    localStorage.setItem(SPEICHER, JSON.stringify(neu))
+    setWahl(neu)
     setEntschieden(true)
+    setOffen(false)
+    setzeAttribut(true)
 
-    if (granted) {
-      const w = window as unknown as { gtag?: (...args: unknown[]) => void }
-      w.gtag?.('consent', 'update', {
-        ad_storage: 'granted', ad_user_data: 'granted',
-        ad_personalization: 'granted', analytics_storage: 'granted',
-      })
-      setAnalyticsAktiv(true)
-      return
-    }
+    const braucht = neu.statistik || neu.marketing
+    const w = window as unknown as { gtag?: (...a: unknown[]) => void }
+    w.gtag?.('consent', 'update', {
+      analytics_storage: neu.statistik ? 'granted' : 'denied',
+      ad_storage: neu.marketing ? 'granted' : 'denied',
+      ad_user_data: neu.marketing ? 'granted' : 'denied',
+      ad_personalization: neu.marketing ? 'granted' : 'denied',
+    })
 
-    loescheAnalyticsCookies()
-    if (analyticsAktiv) {
-      // gtag laeuft bereits in dieser Seite. Neu laden ist der einzige
-      // Weg, der es sicher beendet — erst nach dem Loeschen der Cookies,
-      // und der localStorage-Eintrag sorgt dafuer, dass es nach dem
-      // Neuladen nicht wieder startet.
-      location.reload()
-    }
+    if (braucht) { setGoogleGeladen(true); return }
+
+    loescheGoogleCookies()
+    // Lief Google in dieser Sitzung bereits, ist Neuladen der einzige
+    // Weg, der es sicher beendet. Der gespeicherte Eintrag sorgt dafuer,
+    // dass es danach nicht wieder startet.
+    if (googleGeladen) location.reload()
   }
 
-  const erneutFragen = () => {
-    setzeZustand('none')
-    setEntschieden(false)
-  }
+  const umschalten = (id: 'statistik' | 'marketing') =>
+    setWahl((v) => ({ ...v, [id]: !v[id] }))
+
+  const wieder = () => { setWahl(lesen() ?? KEINE); setOffen(true); setzeAttribut(false) }
 
   return (
     <>
-      {/* Laeuft im Head, vor dem ersten Bild: blendet den Banner fuer
-          Wiederkehrer aus und setzt den Consent-Mode-Standard, bevor
-          gtag.js (falls zugestimmt) laedt. Laedt selbst nichts von aussen. */}
+      {/* Laeuft im Head, vor dem ersten Bild: blendet das Fenster fuer
+          Wiederkehrer aus, bevor es aufblitzt, und setzt den
+          Consent-Standard, bevor gtag.js ueberhaupt laden koennte.
+          Laedt selbst nichts von aussen. */}
       <Script id="ga-consent-default" strategy="beforeInteractive">{`
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         window.gtag = gtag;
 
-        var stored = null;
-        try { stored = localStorage.getItem('cookie-consent'); } catch (e) {}
-        var granted = stored === 'accepted';
+        var w = { statistik: false, marketing: false }, gesetzt = false;
+        try {
+          var roh = localStorage.getItem('${SPEICHER}');
+          if (roh !== null) {
+            gesetzt = true;
+            if (roh === 'accepted') w = { statistik: true, marketing: true };
+            else if (roh !== 'declined') {
+              var o = JSON.parse(roh);
+              w = { statistik: !!o.statistik, marketing: !!o.marketing };
+            }
+          }
+        } catch (e) {}
 
-        document.documentElement.dataset.cookieConsent = stored || 'none';
+        document.documentElement.dataset.cookieConsent = gesetzt ? 'set' : 'none';
 
         gtag('consent', 'default', {
-          ad_storage: granted ? 'granted' : 'denied',
-          ad_user_data: granted ? 'granted' : 'denied',
-          ad_personalization: granted ? 'granted' : 'denied',
-          analytics_storage: granted ? 'granted' : 'denied'
+          analytics_storage: w.statistik ? 'granted' : 'denied',
+          ad_storage: w.marketing ? 'granted' : 'denied',
+          ad_user_data: w.marketing ? 'granted' : 'denied',
+          ad_personalization: w.marketing ? 'granted' : 'denied'
         });
       `}</Script>
 
-      {analyticsAktiv && (
+      {googleGeladen && (
         <>
           <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
           <Script id="ga-config" strategy="afterInteractive">{`
@@ -135,44 +211,92 @@ export default function CookieConsent() {
         </>
       )}
 
-      <div className="cookie-banner" role="dialog" aria-label="Cookie-Einstellungen">
-        <div className="cookie-banner-inner">
-          <p>
-            Ohne Ihre Zustimmung setzt diese Seite keine Cookies — gespeichert wird nur
-            Ihre Auswahl selbst. Stimmen Sie zu, misst Google Analytics die Nutzung der
-            Seite (zwei Cookies, anonymisierte IP). Unsere eigene Reichweitenmessung
-            (Vercel) kommt ohne Cookies aus.{' '}
-            <a href="/datenschutz">Datenschutzerklärung</a>
-          </p>
-          <details className="cookie-details">
-            <summary>Welche Cookies genau?</summary>
-            <ul>
-              {COOKIE_LISTE.map((c) => (
-                <li key={c.name}>
-                  <strong>{c.name}</strong> · {c.art} · {c.dauer}
-                  <span>{c.zweck}</span>
-                </li>
-              ))}
+      {/* Steht immer im ausgelieferten HTML und wird per CSS versteckt
+          (html[data-cookie-consent='set']). Wuerde er erst nach der
+          Hydration gerendert, erschiene er gemessen nach rund 3,3
+          Sekunden und waere damit das groesste zuletzt gezeichnete
+          Element — also der LCP-Wert, den Google bewertet. */}
+      <div className="cookie-banner" role="dialog" aria-labelledby="cookie-titel">
+          <div className="cookie-banner-inner">
+            {/* Nur dieser Teil scrollt. Die Knoepfe stehen bewusst
+                ausserhalb: mit drei Kategorien wurde das Fenster auf dem
+                iPhone 699px hoch, und "Alle akzeptieren" wie "Nur
+                notwendige" lagen gemessen ausserhalb des Sichtfelds —
+                erreichbar nur, wer im Banner scrollt. */}
+            <div className="cookie-banner-scroll">
+            <h2 id="cookie-titel">Privatsphäre-Einstellungen</h2>
+            <p>
+              Diese Seite setzt von sich aus keine Cookies. Nur wenn Sie unten zustimmen,
+              messen wir mit Google Analytics, wie die Seite genutzt wird. Sie entscheiden
+              für jede Kategorie einzeln — und können das jederzeit über das Keks-Symbol
+              unten links wieder ändern.
+            </p>
+
+            <ul className="cookie-kategorien">
+              {KATEGORIEN.map((k) => {
+                const notwendig = k.id === 'notwendig'
+                const an = notwendig ? true : wahl[k.id as 'statistik' | 'marketing']
+                return (
+                  <li key={k.id}>
+                    <div className="cookie-kat-kopf">
+                      <span className="cookie-kat-titel">
+                        {k.titel}
+                        {notwendig && <em>immer aktiv</em>}
+                      </span>
+                      <Schalter
+                        an={an}
+                        gesperrt={notwendig}
+                        label={k.titel}
+                        aus={() => !notwendig && umschalten(k.id as 'statistik' | 'marketing')}
+                      />
+                    </div>
+                    <p>{k.zweck}</p>
+                    <details>
+                      <summary>Was genau wird gespeichert?</summary>
+                      <ul>
+                        {k.eintraege.map((e) => (
+                          <li key={e.name}>
+                            <strong>{e.name}</strong> · {e.dauer}
+                            <span>{e.was}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </details>
+                  </li>
+                )
+              })}
             </ul>
-          </details>
-          <div className="cookie-banner-aktionen">
-            <button onClick={() => entscheide(false)} className="btn-secondary">
-              Nur notwendige
-            </button>
-            <button onClick={() => entscheide(true)} className="btn-primary">
-              Alle akzeptieren
-            </button>
+
+            <p className="cookie-rechtliches">
+              <a href="/datenschutz">Datenschutzerklärung</a>
+              <a href="/impressum">Impressum</a>
+            </p>
+            </div>
+
+            <div className="cookie-banner-aktionen">
+              {/* Zustimmen und Ablehnen stehen gleich gross nebeneinander.
+                  Ein Ablehnen, das schwerer zu finden ist als das
+                  Zustimmen, ist keine freie Entscheidung. */}
+              <button onClick={() => uebernehmen(ALLE)} className="btn-primary">
+                Alle akzeptieren
+              </button>
+              <button onClick={() => uebernehmen(KEINE)} className="btn-secondary">
+                Nur notwendige
+              </button>
+              <button onClick={() => uebernehmen(wahl)} className="btn-secondary cookie-speichern">
+                Auswahl speichern
+              </button>
+            </div>
           </div>
-        </div>
       </div>
 
-      {entschieden && (
+      {entschieden && !offen && (
         <button
           type="button"
           className="cookie-schalter"
-          onClick={erneutFragen}
-          aria-label="Cookie-Einstellungen ändern"
-          title="Cookie-Einstellungen ändern"
+          onClick={wieder}
+          aria-label="Privatsphäre-Einstellungen ändern"
+          title="Privatsphäre-Einstellungen ändern"
         >
           {/* Keks: Kreis mit ein paar Stueckchen. 24x24-Raster und
               Strichstaerke 1.5 wie der uebrige Icon-Satz. */}
