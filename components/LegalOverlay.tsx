@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
-import { ABSCHNITTE, ANBIETER, ANBIETER_KONTAKT, STAND } from './agb-daten'
+import { ABSCHNITTE, ANBIETER_KONTAKT, ANBIETER_ZEILEN, STAND } from './agb-daten'
 
 interface Props {
   id: 'impressum' | 'datenschutz' | 'agb'
@@ -32,7 +32,7 @@ function AGB() {
 
       {ABSCHNITTE.map((a) => (
         <div key={a.nr}>
-          <h2>{`${a.nr}. ${a.titel}`}</h2>
+          <h2>{`§ ${a.nr} ${a.titel}`}</h2>
           {a.absaetze.map((text, i) => <p key={i}>{text}</p>)}
         </div>
       ))}
@@ -40,10 +40,10 @@ function AGB() {
       <hr style={{ margin: '2rem 0', opacity: 0.1 }} />
 
       <p>
-        {ANBIETER}<br />
-        Telefon: <a href={`tel:${ANBIETER_KONTAKT.telefonLink}`}>{ANBIETER_KONTAKT.telefon}</a><br />
-        E-Mail: <a href={`mailto:${ANBIETER_KONTAKT.email}`}>{ANBIETER_KONTAKT.email}</a><br />
-        USt-IdNr.: {ANBIETER_KONTAKT.ustId}
+        {ANBIETER_ZEILEN.map((z) => <span key={z}>{z}<br /></span>)}
+        <a href={`mailto:${ANBIETER_KONTAKT.email}`}>{ANBIETER_KONTAKT.email}</a>
+        {' | '}
+        {ANBIETER_KONTAKT.web}
       </p>
     </>
   )

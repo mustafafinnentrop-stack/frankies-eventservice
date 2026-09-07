@@ -81,7 +81,7 @@ export const euroGenau = (n: number) =>
 
   Das ist auch die Vorgabe der Preisangabenverordnung, sobald Verbraucher
   angesprochen werden — und die Cocktailbar richtet sich an Geburtstage,
-  Hochzeiten und JGA. Die AGB (Stand 07.09.2026, Abschnitt 4) sagen es
+  Hochzeiten und JGA. Die AGB (Stand 08.09.2026, § 4 Absatz 1) sagen es
   ausdruecklich: gegenueber Verbrauchern werden Preise einschliesslich der
   gesetzlichen Umsatzsteuer ausgewiesen, gegenueber Unternehmern koennen
   Nettopreise ausgewiesen werden. Die Anzeige hier deckt sich damit.
