@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Navbar from '@/components/Navbar'
 import { CinematicFooter } from '@/components/ui/motion-footer'
 import RevealWrapper from '@/components/RevealWrapper'
-import { ABSCHNITTE, ANBIETER, ANBIETER_KONTAKT, STAND } from '@/components/agb-daten'
+import { ABSCHNITTE, ANBIETER_KONTAKT, ANBIETER_ZEILEN, STAND } from '@/components/agb-daten'
 
 const PAGE_URL = 'https://frankies-eventservice.de/agb'
 
@@ -43,7 +43,7 @@ export default function AGBPage() {
 
                 {ABSCHNITTE.map((a) => (
                   <div key={a.nr}>
-                    <h2 style={H2}>{`${a.nr}. ${a.titel}`}</h2>
+                    <h2 style={H2}>{`§ ${a.nr} ${a.titel}`}</h2>
                     {a.absaetze.map((text, i) => (
                       <p key={i} style={{ marginBottom: '1rem' }}>{text}</p>
                     ))}
@@ -53,16 +53,12 @@ export default function AGBPage() {
                 <hr style={{ margin: '3rem 0', opacity: 0.1, border: 'none', borderTop: '1px solid var(--color-gold)' }} />
 
                 <p>
-                  {ANBIETER}<br />
-                  Telefon:{' '}
-                  <a href={`tel:${ANBIETER_KONTAKT.telefonLink}`} style={{ color: 'var(--color-gold)', textDecoration: 'none' }}>
-                    {ANBIETER_KONTAKT.telefon}
-                  </a><br />
-                  E-Mail:{' '}
+                  {ANBIETER_ZEILEN.map((z) => <span key={z}>{z}<br /></span>)}
                   <a href={`mailto:${ANBIETER_KONTAKT.email}`} style={{ color: 'var(--color-gold)', textDecoration: 'none' }}>
                     {ANBIETER_KONTAKT.email}
-                  </a><br />
-                  USt-IdNr.: {ANBIETER_KONTAKT.ustId}
+                  </a>
+                  {' | '}
+                  {ANBIETER_KONTAKT.web}
                 </p>
               </div>
             </div>
