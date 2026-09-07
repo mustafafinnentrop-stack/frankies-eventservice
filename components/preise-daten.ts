@@ -81,8 +81,10 @@ export const euroGenau = (n: number) =>
 
   Das ist auch die Vorgabe der Preisangabenverordnung, sobald Verbraucher
   angesprochen werden — und die Cocktailbar richtet sich an Geburtstage,
-  Hochzeiten und JGA. Die AGB nennen "Nettopreise zzgl. MwSt., sofern
-  nicht anders ausgewiesen"; dieser Zusatz deckt die Anzeige hier ab.
+  Hochzeiten und JGA. Die AGB (Stand 07.09.2026, Abschnitt 4) sagen es
+  ausdruecklich: gegenueber Verbrauchern werden Preise einschliesslich der
+  gesetzlichen Umsatzsteuer ausgewiesen, gegenueber Unternehmern koennen
+  Nettopreise ausgewiesen werden. Die Anzeige hier deckt sich damit.
 
   Wer spaeter Preise aendert: Die Werte in FLATS bleiben brutto. Ein
   Nettobetrag gehoert vorher umgerechnet, nicht dieser Hinweis angepasst.
