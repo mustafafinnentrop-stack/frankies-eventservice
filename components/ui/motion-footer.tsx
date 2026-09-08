@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image"
+import { EVENTBOOK } from "@/components/eventbook-daten"
 import * as React from "react";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
@@ -380,27 +381,41 @@ export function CinematicFooter() {
             </div>
           </div>
 
-          {/* Auszeichnung des Branchenverzeichnisses eventbook.com. Das Bild
-              liegt bewusst im eigenen public-Ordner statt als Hotlink auf
-              images.eventbook.com: Ein fremdes Bild wuerde bei jedem
-              Seitenaufruf die IP des Besuchers an einen Dritten senden — vor
-              jeder Einwilligung. Das passt nicht zu einer Seite, die Google
-              Analytics erst nach Zustimmung laedt. */}
-          <div className="relative z-20 w-full flex justify-center px-6 pb-2">
+          {/* Partnersiegel und Logo von eventbook.com, beide auf das
+              Anbieterprofil verlinkt. Bildpfade und Adresse kommen aus
+              components/eventbook-daten.ts — dort steht auch, warum die
+              Bilder selbst gehostet sind. */}
+          <div className="relative z-20 w-full flex flex-wrap items-center justify-center gap-x-8 gap-y-3 px-6 pb-2">
             <a
-              href="https://www.eventbook.com/de/providers/frankies-eventservice-lennestadt"
+              href={EVENTBOOK.profil}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Profil von Frankies Eventservice bei eventbook.com öffnen"
+              className="inline-block opacity-80 hover:opacity-100 transition-opacity"
+            >
+              <Image
+                src={EVENTBOOK.badge.src}
+                alt={EVENTBOOK.badge.alt}
+                width={EVENTBOOK.badge.breite}
+                height={EVENTBOOK.badge.hoehe}
+                sizes="180px"
+                style={{ width: '180px', height: 'auto' }}
+              />
+            </a>
+            <a
+              href={EVENTBOOK.profil}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Frankies Eventservice bei eventbook.com"
               className="inline-block opacity-70 hover:opacity-100 transition-opacity"
             >
               <Image
-                src="/eventbook-logo.svg"
-                alt="Frankies Eventservice bei eventbook.com"
-                width={727}
-                height={102}
-                sizes="170px"
-                style={{ width: '170px', height: 'auto' }}
+                src={EVENTBOOK.logo.src}
+                alt={EVENTBOOK.logo.alt}
+                width={EVENTBOOK.logo.breite}
+                height={EVENTBOOK.logo.hoehe}
+                sizes="150px"
+                style={{ width: '150px', height: 'auto' }}
               />
             </a>
           </div>

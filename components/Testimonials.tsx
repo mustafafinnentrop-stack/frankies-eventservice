@@ -1,4 +1,6 @@
+import Image from 'next/image'
 import { AnimatedReviewCards } from '@/components/ui/animated-review-card'
+import { EVENTBOOK } from '@/components/eventbook-daten'
 
 /* Ausschliesslich echte Google-Bewertungen von Frankies-Eventservice.
    Stand: 5,0 aus 2 Rezensionen. Kommt eine neue dazu, ist das hier eine
@@ -44,17 +46,34 @@ export default function Testimonials() {
 
         {/* Die Gesamtnote nachpruefbar machen: Wer klickt, landet direkt beim
             Google-Profil. Genau das macht wenige echte Bewertungen glaubwuerdiger
-            als viele, die niemand nachschauen kann. */}
-        <p className="section-text" style={{ marginBottom: '0.5rem' }}>
+            als viele, die niemand nachschauen kann. Daneben das Partnersiegel von
+            eventbook.com — ebenfalls verlinkt, damit auch das nachpruefbar bleibt. */}
+        <div className="vertrauen-zeile">
           <a
             href={GOOGLE_PROFIL}
             target="_blank"
             rel="noopener noreferrer"
-            style={{ color: 'var(--color-gold)', textDecoration: 'none', fontWeight: 500 }}
+            className="vertrauen-google"
           >
             5,0 ★★★★★ aus 2 Google-Bewertungen
           </a>
-        </p>
+          <a
+            href={EVENTBOOK.profil}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Profil von Frankies Eventservice bei eventbook.com öffnen"
+            className="vertrauen-siegel"
+          >
+            <Image
+              src={EVENTBOOK.badge.src}
+              alt={EVENTBOOK.badge.alt}
+              width={EVENTBOOK.badge.breite}
+              height={EVENTBOOK.badge.hoehe}
+              sizes="200px"
+              style={{ width: '200px', height: 'auto' }}
+            />
+          </a>
+        </div>
 
         <AnimatedReviewCards
           reviews={BEWERTUNGEN}
