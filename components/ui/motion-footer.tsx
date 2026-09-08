@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image"
 import * as React from "react";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
@@ -377,6 +378,31 @@ export function CinematicFooter() {
                 </MagneticButton>
               </div>
             </div>
+          </div>
+
+          {/* Auszeichnung des Branchenverzeichnisses eventbook.com. Das Bild
+              liegt bewusst im eigenen public-Ordner statt als Hotlink auf
+              images.eventbook.com: Ein fremdes Bild wuerde bei jedem
+              Seitenaufruf die IP des Besuchers an einen Dritten senden — vor
+              jeder Einwilligung. Das passt nicht zu einer Seite, die Google
+              Analytics erst nach Zustimmung laedt. */}
+          <div className="relative z-20 w-full flex justify-center px-6 pb-2">
+            <a
+              href="https://www.eventbook.com/de/providers/frankies-eventservice-lennestadt"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Profil von Frankies Eventservice bei eventbook.com öffnen"
+              className="inline-block opacity-70 hover:opacity-100 transition-opacity"
+            >
+              <Image
+                src="/eventbook-badge.png"
+                alt="Recommended by eventbook.com – Premium Partner"
+                width={660}
+                height={309}
+                sizes="180px"
+                style={{ width: '180px', height: 'auto' }}
+              />
+            </a>
           </div>
 
           {/* 3. Bottom Bar / Credits */}
