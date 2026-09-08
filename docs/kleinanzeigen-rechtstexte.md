@@ -138,22 +138,138 @@ https://ec.europa.eu/consumers/odr/
 
 ## 3. Widerrufsbelehrung (Feld „Widerrufsbelehrung")
 
-**Dieser Text fehlt bewusst und ist noch zu klären.**
+### Wann es Sie überhaupt trifft
 
-Der Grund: Bei Frankies liegen zwei verschiedene Fälle nebeneinander, und die
-Belehrung muss zum jeweiligen Geschäft passen.
+Ein gesetzliches Widerrufsrecht gibt es nur gegenüber **Verbrauchern**, also
+natürlichen Personen, die privat handeln (§ 13 BGB). Es entsteht nur, wenn der
+Vertrag im **Fernabsatz** (Telefon, E-Mail, WhatsApp, Kleinanzeigen-Chat) oder
+**außerhalb von Geschäftsräumen** geschlossen wird — zum Beispiel beim Kunden
+zu Hause nach der Besichtigung.
 
-- **Veranstaltungsleistungen mit festem Termin** (Cocktailbar am 14. Juni,
-  Thekenservice beim Schützenfest): Hier greift in der Regel die Ausnahme nach
-  § 312g Abs. 2 Nr. 9 BGB — Dienstleistungen im Zusammenhang mit
-  Freizeitbetätigungen zu einem spezifischen Termin. Ein Widerrufsrecht
-  besteht dann nicht. So steht es auch in den AGB, § 14 Abs. 2.
-- **Reine Vermietung oder Lieferung ohne Termin** (Bierzeltgarnituren für ein
-  Wochenende, Zapfanlage abholen): Hier greift die Ausnahme nicht ohne
-  Weiteres. Gegenüber Verbrauchern besteht dann üblicherweise ein
-  vierzehntägiges Widerrufsrecht mit Belehrungspflicht und
-  Muster-Widerrufsformular.
+Kein Widerrufsrecht besteht danach:
 
-Eine Belehrung, die pauschal „kein Widerrufsrecht" sagt, wäre im zweiten Fall
-falsch — und eine falsche Belehrung ist abmahnfähig und verlängert die
-Widerrufsfrist. Deshalb steht hier nichts Erfundenes.
+- gegenüber Firmen, Gastronomie und anderen Unternehmern (B2B)
+- gegenüber Vereinen, Feuerwehren und ähnlichen Körperschaften: Sie sind keine
+  natürlichen Personen im Sinne des § 13 BGB
+- bei terminierten Veranstaltungsleistungen: § 312g Abs. 2 Nr. 9 BGB nimmt
+  Dienstleistungen im Zusammenhang mit Freizeitbetätigungen aus, wenn der
+  Vertrag einen spezifischen Termin oder Zeitraum vorsieht. Genau das ist die
+  Cocktailbar am 14. Juni oder der Thekenservice beim Schützenfest. Der Sinn
+  der Ausnahme ist der Kapazitätsschutz: Wer einen Termin blockt, soll ihn
+  nicht 14 Tage lang folgenlos zurückgeben können.
+
+Bleibt der Fall, in dem es doch greift: **Vermietung von Equipment an einen
+Privatkunden ohne eigene Veranstaltungsleistung und ohne festen Termin** —
+Bierzeltgarnituren fürs Wochenende, Zapfanlage zum Abholen. Das ist keine
+Freizeit-Dienstleistung mit Termin, sondern schlichte Vermietung. Dafür ist
+der folgende Text da.
+
+### Text für das Kleinanzeigen-Feld
+
+**Widerrufsrecht**
+
+Verbrauchern steht ein Widerrufsrecht nach Maßgabe der folgenden Belehrung zu.
+Verbraucher ist jede natürliche Person, die ein Rechtsgeschäft zu Zwecken
+abschließt, die überwiegend weder ihrer gewerblichen noch ihrer selbständigen
+beruflichen Tätigkeit zugerechnet werden können.
+
+Sie haben das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen
+Vertrag zu widerrufen. Die Widerrufsfrist beträgt vierzehn Tage ab dem Tag des
+Vertragsabschlusses.
+
+Um Ihr Widerrufsrecht auszuüben, müssen Sie uns
+
+Frankies Eventservice, Inhaber Mustafa Yildirim
+Hachener Str. 7, 57368 Lennestadt
+Telefon: 0151 42840916
+E-Mail: info@frankies-eventservice.de
+
+mittels einer eindeutigen Erklärung (z. B. ein mit der Post versandter Brief
+oder eine E-Mail) über Ihren Entschluss, diesen Vertrag zu widerrufen,
+informieren. Sie können dafür das beigefügte Muster-Widerrufsformular
+verwenden, das jedoch nicht vorgeschrieben ist. Zur Wahrung der Widerrufsfrist
+reicht es aus, dass Sie die Mitteilung über die Ausübung des Widerrufsrechts
+vor Ablauf der Widerrufsfrist absenden.
+
+**Folgen des Widerrufs**
+
+Wenn Sie diesen Vertrag widerrufen, haben wir Ihnen alle Zahlungen, die wir von
+Ihnen erhalten haben, einschließlich der Lieferkosten (mit Ausnahme der
+zusätzlichen Kosten, die sich daraus ergeben, dass Sie eine andere Art der
+Lieferung als die von uns angebotene, günstigste Standardlieferung gewählt
+haben), unverzüglich und spätestens binnen vierzehn Tagen ab dem Tag
+zurückzuzahlen, an dem die Mitteilung über Ihren Widerruf dieses Vertrags bei
+uns eingegangen ist. Für diese Rückzahlung verwenden wir dasselbe
+Zahlungsmittel, das Sie bei der ursprünglichen Transaktion eingesetzt haben, es
+sei denn, mit Ihnen wurde ausdrücklich etwas anderes vereinbart; in keinem Fall
+werden Ihnen wegen dieser Rückzahlung Entgelte berechnet.
+
+Haben Sie verlangt, dass die Leistungen während der Widerrufsfrist beginnen
+sollen, so haben Sie uns einen angemessenen Betrag zu zahlen, der dem Anteil der
+bis zu dem Zeitpunkt, zu dem Sie uns von der Ausübung des Widerrufsrechts
+hinsichtlich dieses Vertrags unterrichten, bereits erbrachten Leistungen im
+Vergleich zum Gesamtumfang der im Vertrag vorgesehenen Leistungen entspricht.
+
+**Ausschluss des Widerrufsrechts**
+
+Das Widerrufsrecht besteht nicht bei Verträgen zur Erbringung von
+Dienstleistungen im Zusammenhang mit Freizeitbetätigungen, wenn der Vertrag für
+die Erbringung einen spezifischen Termin oder Zeitraum vorsieht
+(§ 312g Abs. 2 Nr. 9 BGB). Das betrifft insbesondere die Durchführung von
+Veranstaltungen an einem vereinbarten Termin, etwa Theken- und Barservice,
+mobile Cocktailbar, Servicepersonal und Getränkeausschank vor Ort.
+
+---
+
+## 4. Muster-Widerrufsformular
+
+Gesetzliches Muster nach Anlage 2 zu Artikel 246a § 1 Absatz 2 Satz 1 Nummer 1
+EGBGB. Es muss dem Verbraucher zusammen mit der Belehrung zur Verfügung
+gestellt werden — bei Kleinanzeigen gehört es mit in dasselbe Feld.
+
+**Muster-Widerrufsformular**
+
+(Wenn Sie den Vertrag widerrufen wollen, dann füllen Sie bitte dieses Formular
+aus und senden Sie es zurück.)
+
+An
+Frankies Eventservice, Inhaber Mustafa Yildirim
+Hachener Str. 7, 57368 Lennestadt
+E-Mail: info@frankies-eventservice.de
+
+Hiermit widerrufe(n) ich/wir (*) den von mir/uns (*) abgeschlossenen Vertrag
+über den Kauf der folgenden Waren (*)/die Erbringung der folgenden
+Dienstleistung (*)
+
+_______________________________________________
+
+Bestellt am (*)/erhalten am (*): _______________
+
+Name des/der Verbraucher(s): ___________________
+
+Anschrift des/der Verbraucher(s): ______________
+
+_______________________________________________
+
+Unterschrift des/der Verbraucher(s)
+(nur bei Mitteilung auf Papier): _______________
+
+Datum: _________________________________________
+
+(*) Unzutreffendes streichen.
+
+---
+
+## 5. Was im Angebot stehen sollte
+
+Zwei Sätze, die nichts kosten und im Ernstfall viel wert sind:
+
+1. **Bei kurzfristigen Buchungen** (Veranstaltung innerhalb der nächsten 14
+   Tage, Privatkunde): eine ausdrückliche Bitte des Kunden, mit der Leistung
+   schon vor Ablauf der Widerrufsfrist zu beginnen. Ohne diese Erklärung gibt
+   es im Widerrufsfall keinen Wertersatz für bereits erbrachte Arbeit
+   (§ 357 Abs. 8 BGB) — die Anfahrt und der halbe Aufbau wären dann umsonst.
+2. **Anzahlung und Storno**: Beide stehen seit der AGB-Fassung vom 08.09.2026
+   nicht mehr pauschal in den AGB, sondern gelten nur, wenn sie im Angebot
+   vereinbart sind (§ 4 Abs. 2, § 10). Wer die Zeile im Angebot vergisst, hat
+   im Zweifel weder Anzahlung noch Stornopauschale.
