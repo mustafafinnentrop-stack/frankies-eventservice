@@ -2140,3 +2140,17 @@ html[data-cookie-consent='set'] .cookie-banner { display: none; }
     color: var(--color-text-muted);
     margin-bottom: 0.85rem;
 }
+
+/* Vertrauenszeile in der Bewertungs-Sektion: Google-Note und eventbook-Siegel
+   nebeneinander, auf schmalen Bildschirmen untereinander. Beides verlinkt. */
+.vertrauen-zeile {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+    gap: 0.75rem 2rem; margin: 0 auto 1.5rem;
+}
+.vertrauen-google {
+    color: var(--color-gold); text-decoration: none; font-weight: 500;
+    font-size: 1rem; letter-spacing: 0.005em;
+}
+.vertrauen-siegel { display: inline-block; line-height: 0; opacity: 0.85; transition: opacity 0.2s ease; }
+.vertrauen-siegel:hover, .vertrauen-siegel:focus-visible { opacity: 1; }
+.vertrauen-siegel:focus-visible { outline: 2px solid var(--color-gold); outline-offset: 4px; }
