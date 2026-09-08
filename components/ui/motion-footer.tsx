@@ -395,12 +395,12 @@ export function CinematicFooter() {
               className="inline-block opacity-70 hover:opacity-100 transition-opacity"
             >
               <Image
-                src="/eventbook-badge.png"
-                alt="Recommended by eventbook.com – Premium Partner"
-                width={660}
-                height={309}
-                sizes="180px"
-                style={{ width: '180px', height: 'auto' }}
+                src="/eventbook-logo.svg"
+                alt="Frankies Eventservice bei eventbook.com"
+                width={727}
+                height={102}
+                sizes="170px"
+                style={{ width: '170px', height: 'auto' }}
               />
             </a>
           </div>
