@@ -141,6 +141,11 @@
 .sn-geplant { display: flex; flex-wrap: wrap; gap: 8px 28px; padding: 26px 0 0; font-size: 13px; color: var(--color-text-muted); }
 .sn-geplant strong { font-weight: 500; color: var(--color-gold); }
 
+.sn-vertrauen { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 32px; border-top: 1px solid var(--sn-line); margin-top: 40px; padding-top: 26px; }
+.sn-vertrauen-google { color: var(--color-gold); font-weight: 500; font-size: 15px; }
+.sn-vertrauen-siegel { display: inline-block; line-height: 0; opacity: 0.85; transition: opacity 0.2s; }
+.sn-vertrauen-siegel:hover { opacity: 1; }
+
 /* Ablauf */
 .sn-ablauf { padding-top: 125px; }
 .sn-ablauf-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 8vw; padding-top: 15px; }

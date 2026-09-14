@@ -1,4 +1,7 @@
+import Image from 'next/image'
 import { REFERENZEN } from '@/components/Referenzen'
+import { GOOGLE_PROFIL, BEWERTUNGEN } from '@/components/bewertungen-daten'
+import { EVENTBOOK } from '@/components/eventbook-daten'
 
 /*
   03 / Im Einsatz. Die Faelle haengen an components/Referenzen.tsx — der
@@ -79,6 +82,18 @@ export default function Einsaetze() {
             </div>
           </details>
         ))}
+      </div>
+
+      {/* Die beiden Belege von aussen: Google-Note und das eventbook-Siegel,
+          beide verlinkt, damit sie nachpruefbar bleiben. Die Zahl der
+          Bewertungen kommt aus Testimonials.tsx, nicht von hier. */}
+      <div className="sn-vertrauen sn-reveal">
+        <a href={GOOGLE_PROFIL} target="_blank" rel="noopener noreferrer" className="sn-vertrauen-google">
+          5,0 ★★★★★ aus {BEWERTUNGEN.length} Google-Bewertungen
+        </a>
+        <a href={EVENTBOOK.profil} target="_blank" rel="noopener noreferrer" aria-label="Profil von Frankies Eventservice bei eventbook.com öffnen" className="sn-vertrauen-siegel">
+          <Image src={EVENTBOOK.badge.src} alt={EVENTBOOK.badge.alt} width={EVENTBOOK.badge.breite} height={EVENTBOOK.badge.hoehe} sizes="180px" style={{ width: '180px', height: 'auto' }} />
+        </a>
       </div>
 
       {geplant.length > 0 && (
