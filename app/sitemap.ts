@@ -33,6 +33,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: 'https://frankies-eventservice.de/einsaetze',
+      lastModified: new Date('2026-09-14'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
       url: 'https://frankies-eventservice.de/partner',
       lastModified: new Date('2026-08-18'),
       changeFrequency: 'monthly',
