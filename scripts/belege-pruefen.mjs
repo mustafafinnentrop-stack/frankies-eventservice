@@ -11,7 +11,7 @@
 
   2. Fuer die Cocktailbar-Einleitung zusaetzlich: Jeder genannte Orts- oder
      Anlasstyp muss in den ORTE-Fotos (components/cocktailbar-daten.ts) oder
-     einer abgeschlossenen Cocktailbar-Referenz (components/Referenzen.tsx,
+     einer abgeschlossenen Cocktailbar-Referenz (components/referenzen-daten.ts,
      ohne `geplant: true`) vorkommen. Und jede Zahl, die ein Text nennt
      (100 Hektoliter, 12 Leute, rund 20 Veranstaltungen), muss in den
      Referenzen oder im Hero stehen — aendert dort jemand die Fakten, faellt
@@ -46,7 +46,7 @@ const orteBlock = datenQuelle.split('export const ORTE = [')[1]?.split('\n]')[0]
 if (!orteBlock) { console.error('ORTE nicht gefunden — Struktur geaendert?'); process.exit(2) }
 const orteTexte = [...orteBlock.matchAll(/(?:ort|zusatz):\s*'([^']+)'/g)].map((m) => m[1])
 
-const refQuelle = lesen('components/Referenzen.tsx')
+const refQuelle = lesen('components/referenzen-daten.ts')
 const refBlock = refQuelle.split('const REFERENZEN: Referenz[] = [')[1]?.split('\n]')[0]
 if (!refBlock) { console.error('REFERENZEN nicht gefunden — Struktur geaendert?'); process.exit(2) }
 const referenzen = [...refBlock.matchAll(/\{\s*\n\s{4}ort:[\s\S]*?\n\s{2}\},/g)].map((m) => {

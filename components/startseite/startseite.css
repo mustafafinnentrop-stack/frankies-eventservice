@@ -365,3 +365,9 @@
   .sn-owner > .sn-link { justify-self: start; }
   .sn-case-body dl { grid-template-columns: 1fr; }
 }
+
+/* Unterseite /einsaetze: gleiche Sprache wie die Startseite, eigener Kopf */
+.sn-seite { padding-top: 150px; padding-bottom: 100px; }
+.sn-seite .sn-h1 { font-size: clamp(44px, 5.6vw, 90px); line-height: 1.06; }
+@media (max-width: 800px) { .sn-seite { padding-top: 165px; } }
+@media (max-width: 560px) { .sn-seite { padding-top: 176px; padding-bottom: 70px; } .sn-seite .sn-h1 { font-size: clamp(38px, 10vw, 54px); } }

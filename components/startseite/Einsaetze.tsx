@@ -1,5 +1,6 @@
 import Image from 'next/image'
-import { REFERENZEN } from '@/components/Referenzen'
+import Link from 'next/link'
+import { REFERENZEN } from '@/components/referenzen-daten'
 import { GOOGLE_PROFIL, BEWERTUNGEN } from '@/components/bewertungen-daten'
 import { EVENTBOOK } from '@/components/eventbook-daten'
 
@@ -51,7 +52,7 @@ export default function Einsaetze() {
     <section className="sn-einsaetze" id="einsaetze" aria-labelledby="sn-einsaetze-titel">
       <div className="sn-top sn-reveal">
         <span className="sn-eyebrow">03 / Im Einsatz</span>
-        <span className="sn-note">Feste aus unserer Region.</span>
+        <Link className="sn-link" href="/einsaetze">Alle Einsätze <span aria-hidden="true">↗</span></Link>
       </div>
       <div className="sn-einsaetze-heading sn-reveal">
         <h2 id="sn-einsaetze-titel">Wo wir schon<br /><em>mit angepackt haben.</em></h2>
