@@ -46,7 +46,9 @@ export default function Einsaetze() {
   const faelle = FAELLE
     .map((f) => ({ ...f, ref: REFERENZEN.find((r) => r.ort === f.ort && !r.geplant) }))
     .filter((f) => f.ref)
-  const geplant = REFERENZEN.filter((r) => r.geplant)
+  // Alles, was nicht zu den vier gezeigten gehoert, deutet der Ausklang an.
+  const gezeigt = new Set(faelle.map((f) => f.ort))
+  const weitere = REFERENZEN.filter((r) => !gezeigt.has(r.ort)).slice(0, 2)
 
   return (
     <section className="sn-einsaetze" id="einsaetze" aria-labelledby="sn-einsaetze-titel">
@@ -85,9 +87,35 @@ export default function Einsaetze() {
         ))}
       </div>
 
+      {/* Die Liste geht sichtbar weiter — verschwommen, nicht klickbar — und
+          der Link liegt mittig darueber. Wer mehr sehen will, klickt. Die
+          angedeuteten Eintraege sind echte aus der Datenliste (die naechsten
+          nach den vier gezeigten), nichts Erfundenes. Fuer Screenreader sind
+          sie ausgeblendet; der Link steht auch im Kopf der Sektion. */}
+      {weitere.length > 0 && (
+        <div className="sn-mehr-wrap sn-reveal">
+          <div className="sn-ghost" aria-hidden="true">
+            {weitere.map((r, i) => (
+              <div className="sn-case" key={r.ort}>
+                <div className="sn-case-summary">
+                  <span className="sn-case-index">{String(faelle.length + i + 1).padStart(2, '0')}</span>
+                  <div>
+                    <span className="sn-case-type">{r.geplant ? 'Steht an' : r.ort.split(' ')[0]}</span>
+                    <h3>{r.ort.replace(/^\S+\s(auf\s)?/, '')}</h3>
+                  </div>
+                  <span className="sn-case-scope">{r.leistungen.join(' · ')}</span>
+                  <span className="sn-case-arrow">↗</span>
+                </div>
+              </div>
+            ))}
+          </div>
+          <Link className="sn-mehr" href="/einsaetze">Alle Einsätze ansehen <span aria-hidden="true">↗</span></Link>
+        </div>
+      )}
+
       {/* Die beiden Belege von aussen: Google-Note und das eventbook-Siegel,
           beide verlinkt, damit sie nachpruefbar bleiben. Die Zahl der
-          Bewertungen kommt aus Testimonials.tsx, nicht von hier. */}
+          Bewertungen kommt aus bewertungen-daten.ts, nicht von hier. */}
       <div className="sn-vertrauen sn-reveal">
         <a href={GOOGLE_PROFIL} target="_blank" rel="noopener noreferrer" className="sn-vertrauen-google">
           5,0 ★★★★★ aus {BEWERTUNGEN.length} Google-Bewertungen
@@ -96,15 +124,6 @@ export default function Einsaetze() {
           <Image src={EVENTBOOK.badge.src} alt={EVENTBOOK.badge.alt} width={EVENTBOOK.badge.breite} height={EVENTBOOK.badge.hoehe} sizes="180px" style={{ width: '180px', height: 'auto' }} />
         </a>
       </div>
-
-      {geplant.length > 0 && (
-        <p className="sn-geplant sn-reveal">
-          <strong>Steht an</strong>
-          {geplant.map((r) => (
-            <span key={r.ort}>{r.ort}{r.zahlen?.[0] ? ` — ${r.zahlen[0].wert} ${r.zahlen[0].was}` : ''}</span>
-          ))}
-        </p>
-      )}
     </section>
   )
 }

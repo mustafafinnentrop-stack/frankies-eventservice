@@ -16,6 +16,9 @@
   --sn-text2: #b8b4a8;
   --sn-gutter: clamp(24px, 4.5vw, 84px);
   --sn-ease: cubic-bezier(0.19, 1, 0.22, 1);
+  /* Ein Mass fuer den Abstand zwischen Sektionen — auf jedem Bildschirm dasselbe fuer alle. */
+  --sn-abschnitt: clamp(64px, 8vw, 120px);
+  --sn-innen: clamp(32px, 4vw, 48px);
   background: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-body);
@@ -41,7 +44,10 @@
 .sn-link span { font-size: 21px; color: var(--color-gold); line-height: 1; }
 .sn-link:hover { gap: 36px; color: var(--color-gold); }
 .sn-wrap { max-width: 1920px; margin: auto; padding: 0 var(--sn-gutter); }
-.sn-top { display: flex; justify-content: space-between; align-items: center; gap: 25px; border-top: 1px solid var(--sn-line); padding: 24px 0 34px; }
+.sn-top { display: flex; justify-content: space-between; align-items: center; gap: 25px; border-top: 1px solid var(--sn-line); padding: 22px 0 var(--sn-innen); }
+/* Ohne eigenes Padding, sonst ist die Kopfzeile mit Link 40px hoch und mit Eyebrow allein 18px —
+   und der Abstand Linie→Ueberschrift schwankt je Abschnitt um 20px. */
+.sn-top .sn-link { padding: 0; line-height: 1.3; }
 
 /* ---------- Hero ---------- */
 .sn-hero { position: relative; padding: 132px var(--sn-gutter) 0; max-width: 1920px; margin: auto; display: grid; grid-template-columns: 1.03fr 1fr; column-gap: 4.4vw; }
@@ -62,12 +68,15 @@
 .sn-corner-tl { left: 14px; top: 14px; border-top: 1px solid rgba(240,236,227,0.65); border-left: 1px solid rgba(240,236,227,0.65); }
 .sn-corner-br { right: 14px; bottom: 14px; border-bottom: 1px solid rgba(240,236,227,0.65); border-right: 1px solid rgba(240,236,227,0.65); }
 .sn-portrait figcaption { display: flex; justify-content: space-between; font-size: 12px; color: var(--color-text-muted); margin-top: 13px; gap: 10px; }
-.sn-hero-foot { grid-column: 1 / -1; display: flex; justify-content: space-between; gap: 24px; border-top: 1px solid var(--sn-line); margin-top: 45px; padding: 23px 0; font-size: 13px; color: var(--color-text-muted); }
+.sn-hero-foot { grid-column: 1 / -1; display: flex; justify-content: space-between; gap: 24px; border-top: 1px solid var(--sn-line); margin-top: 45px; padding: 23px 0 0; font-size: 13px; color: var(--color-text-muted); }
 .sn-hero-foot a span { color: var(--color-gold); margin-left: 12px; }
 
 /* ---------- Sektionen ---------- */
-.sn-mannschaft, .sn-leistungen, .sn-einsaetze, .sn-ablauf, .sn-anfrage { padding: 100px var(--sn-gutter) 0; max-width: 1920px; margin: auto; }
-.sn-intro-grid { display: grid; grid-template-columns: 1.35fr 0.65fr; gap: 8vw; align-items: start; padding: 20px 0 35px; }
+.sn-mannschaft, .sn-leistungen, .sn-einsaetze, .sn-ablauf, .sn-anfrage { padding: var(--sn-abschnitt) var(--sn-gutter) 0; max-width: 1920px; margin: auto; }
+/* globals.css gibt #leistungen und #ablauf per ID-Selektor 8rem (mobil 4rem) padding-bottom — das
+   zerlegt das einheitliche Raster. Klasse + ID schlaegt die ID-Regel in beiden Breakpoints. */
+.sn #leistungen, .sn #ablauf { padding-bottom: 0; }
+.sn-intro-grid { display: grid; grid-template-columns: 1.35fr 0.65fr; gap: 8vw; align-items: start; padding: 0 0 var(--sn-innen); }
 .sn-intro-grid > div { padding-top: 10px; max-width: 350px; }
 .sn-intro-grid p { font-size: 16px; line-height: 1.85; margin-bottom: 19px; }
 
@@ -85,14 +94,15 @@
 .sn-stage-caption { position: absolute; bottom: 5%; left: 0; font-size: 13px; color: var(--color-text); }
 .sn-rule { position: absolute; bottom: 5.7%; right: 0; height: 1px; width: 36%; background: var(--sn-line); }
 .sn-rule span { display: block; width: 100%; height: 1px; background: var(--color-gold); transform: scaleX(0.08); transform-origin: left; }
-.sn-owner { border-top: 1px solid var(--sn-line); border-bottom: 1px solid var(--sn-line); display: grid; grid-template-columns: 1fr 1fr auto; gap: 40px; padding: 31px 0; align-items: center; }
-.sn-owner > p { font-size: 14px; max-width: 220px; }
+.sn-owner { border-top: 1px solid var(--sn-line); border-bottom: 1px solid var(--sn-line); display: grid; grid-template-columns: 0.8fr 1.6fr auto; gap: 40px; padding: 34px 0; align-items: start; }
+.sn-owner > p { font-size: 14px; max-width: 220px; padding-top: 6px; }
+.sn-owner-text { font-size: 15px; line-height: 1.75; margin-top: 18px; max-width: 440px; }
+.sn-owner-links { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; padding-top: 4px; }
 .sn-owner-name { display: block; font-family: var(--font-display); font-size: 30px; line-height: 1.35; letter-spacing: -0.02em; color: var(--color-text); }
 .sn-owner-role { display: block; font-size: 12px; color: var(--color-text-muted); margin-top: 6px; }
 
 /* Leistungen */
-.sn-leistungen { padding-top: 120px; }
-.sn-heading { margin: 10px 0 55px; }
+.sn-heading { margin: 0 0 var(--sn-innen); }
 .sn-services { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 8vw; align-items: start; }
 .sn-visual { position: sticky; top: 110px; height: 650px; max-height: 80vh; overflow: hidden; background: #1e1e19; }
 .sn-visual > img { width: 100%; height: 100%; object-fit: cover; object-position: center 72%; }
@@ -118,12 +128,11 @@
 .sn-ergaenzung { font-size: 13px; color: var(--color-text-muted); padding: 22px 0 0 53px; }
 
 /* Einsaetze */
-.sn-einsaetze { padding-top: 135px; }
-.sn-einsaetze-heading { display: flex; justify-content: space-between; align-items: end; gap: 50px; margin: 15px 0 50px; }
+.sn-einsaetze-heading { display: flex; justify-content: space-between; align-items: end; gap: 50px; margin: 0 0 var(--sn-innen); }
 .sn-einsaetze-heading > p { font-size: 14px; padding-bottom: 9px; }
 .sn-case { border-top: 1px solid var(--sn-line); }
 .sn-case:last-of-type { border-bottom: 1px solid var(--sn-line); }
-.sn-case summary { display: grid; grid-template-columns: 60px 1.6fr 1fr auto; align-items: center; gap: 25px; padding: 34px 0; cursor: pointer; list-style: none; }
+.sn-case summary, .sn-case-summary { display: grid; grid-template-columns: 60px 1.6fr 1fr auto; align-items: center; gap: 25px; padding: 34px 0; cursor: pointer; list-style: none; }
 .sn-case summary::-webkit-details-marker { display: none; }
 .sn-case-index { font-size: 12px; color: var(--color-gold); align-self: start; margin-top: 9px; }
 .sn-case-type { font-size: 11px; color: var(--color-text-muted); letter-spacing: 0.15em; text-transform: uppercase; }
@@ -138,8 +147,14 @@
 .sn-case-body dl > div { display: flex; flex-direction: column; }
 .sn-case-body dt { font-size: 11px; color: var(--color-text-muted); }
 .sn-case-body dd { font-size: 14px; margin: 3px 0 0; color: var(--color-text); }
-.sn-geplant { display: flex; flex-wrap: wrap; gap: 8px 28px; padding: 26px 0 0; font-size: 13px; color: var(--color-text-muted); }
-.sn-geplant strong { font-weight: 500; color: var(--color-gold); }
+.sn-mehr-wrap { position: relative; }
+.sn-mehr-wrap .sn-case { border-bottom: 0; }
+.sn-ghost { pointer-events: none; user-select: none; filter: blur(3px); opacity: 0.55; -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 92%); mask-image: linear-gradient(to bottom, #000 0%, transparent 92%); }
+.sn-ghost .sn-case:first-child { border-top: 1px solid var(--sn-line); }
+.sn-mehr { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: inline-flex; align-items: center; gap: 22px; padding: 16px 28px; background: var(--color-bg); border: 1px solid var(--color-gold); color: var(--color-text); font-size: 14px; font-weight: 500; white-space: nowrap; transition: background 0.3s, color 0.3s; }
+.sn-mehr span { color: var(--color-gold); font-size: 21px; line-height: 1; transition: color 0.3s; }
+.sn-mehr:hover { background: var(--color-gold); color: var(--color-bg); }
+.sn-mehr:hover span { color: var(--color-bg); }
 
 .sn-vertrauen { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 32px; border-top: 1px solid var(--sn-line); margin-top: 40px; padding-top: 26px; }
 .sn-vertrauen-google { color: var(--color-gold); font-weight: 500; font-size: 15px; }
@@ -147,8 +162,7 @@
 .sn-vertrauen-siegel:hover { opacity: 1; }
 
 /* Ablauf */
-.sn-ablauf { padding-top: 125px; }
-.sn-ablauf-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 8vw; padding-top: 15px; }
+.sn-ablauf-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 8vw; }
 .sn-ablauf-layout > h2 { position: sticky; top: 110px; align-self: start; }
 .sn-step { display: flex; gap: 25px; padding: 24px 0 30px; border-bottom: 1px solid var(--sn-line); }
 .sn-step:first-child { padding-top: 0; }
@@ -157,10 +171,10 @@
 .sn-step p { font-size: 16px; line-height: 1.85; }
 
 /* Anfrage */
-.sn-anfrage { padding-top: 135px; padding-bottom: 100px; background: var(--color-surface); margin-top: 125px; max-width: none; }
+.sn-anfrage { padding-top: var(--sn-abschnitt); padding-bottom: var(--sn-abschnitt); background: var(--color-surface); margin-top: var(--sn-abschnitt); max-width: none; }
 .sn-anfrage > .sn-wrap { padding: 0; max-width: 1920px; margin: auto; }
 .sn-anfrage .sn-top { border-top: 0; padding-top: 0; }
-.sn-anfrage-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 10vw; padding-top: 20px; }
+.sn-anfrage-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 10vw; }
 .sn-anfrage-copy > p { margin-top: 30px; font-size: 16px; line-height: 1.8; }
 .sn-phone { display: block; font-size: clamp(24px, 2.5vw, 38px); letter-spacing: -0.04em; margin-top: 45px; color: var(--color-text); }
 .sn-phone > span { color: var(--color-gold); font-size: 30px; padding-left: 20px; }
@@ -226,7 +240,7 @@
   .sn-body { padding-left: 35px; padding-right: 12px; }
   .sn-ergaenzung { padding-left: 35px; }
   .sn-visual { height: 580px; }
-  .sn-case summary { grid-template-columns: 40px 1.6fr 1fr auto; gap: 15px; }
+  .sn-case summary, .sn-case-summary { grid-template-columns: 40px 1.6fr 1fr auto; gap: 15px; }
   .sn-case-body { padding-left: 55px; gap: 8vw; }
   .sn-anfrage-layout { gap: 6vw; }
   .sn-case-scope { font-size: 12px; }
@@ -242,7 +256,6 @@
   .sn-portrait-caption { font-size: 9px; left: 20px; bottom: 21px; }
   .sn-portrait figcaption { font-size: 10px; flex-direction: column; gap: 0; }
   .sn-hero-foot { font-size: 12px; line-height: 1.7; margin-top: 30px; }
-  .sn-mannschaft, .sn-leistungen, .sn-einsaetze, .sn-ablauf { padding-top: 75px; }
   .sn-intro-grid { grid-template-columns: 1fr; gap: 22px; }
   .sn-intro-grid > div { max-width: 530px; }
   .sn-intro-grid h2 { font-size: clamp(40px, 7vw, 64px); }
@@ -253,8 +266,9 @@
   .sn-frame-a { left: 3%; }
   .sn-frame-b { right: 3%; }
   .sn-word { font-size: 17vw; top: 35%; }
-  .sn-owner { grid-template-columns: 1fr auto; }
-  .sn-owner > p { grid-column: 1 / -1; max-width: none; }
+  .sn-owner { grid-template-columns: 1fr; gap: 18px; }
+  .sn-owner > p { max-width: none; padding-top: 0; }
+  .sn-owner-links { flex-direction: row; flex-wrap: wrap; gap: 10px 28px; padding-top: 2px; }
   .sn-services { grid-template-columns: 1fr; }
   .sn-visual { position: relative; top: 0; height: 420px; max-height: none; }
   .sn-visual > img { object-position: center 55%; }
@@ -267,12 +281,11 @@
   .sn-einsaetze-heading { display: block; }
   .sn-einsaetze-heading > p { margin-top: 25px; }
   .sn-case-scope { display: none; }
-  .sn-case summary { grid-template-columns: 30px 1fr auto; gap: 15px; }
+  .sn-case summary, .sn-case-summary { grid-template-columns: 30px 1fr auto; gap: 15px; }
   .sn-case h3 { font-size: 38px; }
   .sn-case-body { padding-left: 45px; padding-right: 0; gap: 25px; }
   .sn-ablauf-layout { grid-template-columns: 1fr; gap: 40px; }
   .sn-ablauf-layout > h2 { position: static; }
-  .sn-anfrage { padding-top: 55px; margin-top: 75px; padding-bottom: 60px; }
   .sn-anfrage-layout { grid-template-columns: 1fr; gap: 55px; }
   .sn-anfrage-copy > h2 { font-size: 50px; }
   .sn-phone { margin-top: 24px; }
@@ -294,16 +307,15 @@
   .sn-portrait-window img { position: absolute; inset: 0; object-position: center; }
   .sn-portrait figcaption { font-size: 11px; flex-direction: row; }
   .sn-portrait-caption { font-size: 9px; letter-spacing: 0.15em; }
-  .sn-hero-foot { display: block; margin-top: 25px; padding-bottom: 0; }
+  .sn-hero-foot { display: block; margin-top: 25px; }
   .sn-hero-foot > span { display: block; margin-bottom: 7px; }
-  .sn-mannschaft { padding-top: 65px; }
-  .sn-top { padding-top: 18px; padding-bottom: 20px; gap: 20px; align-items: start; }
+  .sn-top { padding-top: 18px; gap: 20px; align-items: start; }
   .sn-top .sn-note { display: none; }
   .sn-eyebrow { font-size: 10px; letter-spacing: 0.13em; }
   .sn-top .sn-link { padding: 0; font-size: 12px; gap: 8px; }
   .sn-top .sn-link span { font-size: 17px; }
   .sn h2, .sn-intro-grid h2 { font-size: clamp(35px, 9.2vw, 49px); line-height: 1.14; }
-  .sn-intro-grid { padding-top: 10px; padding-bottom: 0; gap: 17px; }
+  .sn-intro-grid { padding-bottom: 0; gap: 17px; }
   .sn-intro-grid p { font-size: 16px; line-height: 1.8; }
   .sn-seq { height: 680px; min-height: 0; }
   .sn-stage { height: 680px; min-height: 0; position: relative; overflow: hidden; }
@@ -314,13 +326,11 @@
   .sn-word { font-size: 18vw; top: 265px; }
   .sn-stage-caption { bottom: 48px; font-size: 12px; max-width: 210px; }
   .sn-rule { bottom: 32px; left: 0; width: 100%; }
-  .sn-owner { gap: 20px; padding: 24px 0; }
+  .sn-owner { gap: 16px; padding: 26px 0; }
   .sn-owner > p { font-size: 13px; }
   .sn-owner-name { font-size: 25px; }
   .sn-owner-role { font-size: 10px; }
   .sn-owner .sn-link { font-size: 11px; gap: 10px; }
-  .sn-leistungen { padding-top: 65px; }
-  .sn-heading { margin-top: 8px; margin-bottom: 32px; }
   .sn-visual { height: 370px; }
   .sn-visual-caption { font-size: 9px; padding: 50px 18px 18px; gap: 10px; }
   .sn-item h3 { font-size: 29px; }
@@ -330,10 +340,8 @@
   .sn-body .sn-detail { font-size: 13px; }
   .sn-body .sn-link { font-size: 12px; gap: 16px; }
   .sn-ergaenzung { padding-left: 35px; font-size: 12px; }
-  .sn-einsaetze { padding-top: 65px; }
-  .sn-einsaetze-heading { margin-top: 8px; margin-bottom: 30px; }
   .sn-einsaetze-heading > p { font-size: 14px; margin-top: 20px; }
-  .sn-case summary { padding: 26px 0; gap: 9px; grid-template-columns: 22px 1fr auto; }
+  .sn-case summary, .sn-case-summary { padding: 26px 0; gap: 9px; grid-template-columns: 22px 1fr auto; }
   .sn-case h3 { font-size: 31px; }
   .sn-case-index { font-size: 10px; }
   .sn-case-type { font-size: 9px; }
@@ -343,12 +351,10 @@
   .sn-case-body dl { grid-template-columns: 1fr 1fr; gap: 18px; }
   .sn-case-body dt { font-size: 10px; }
   .sn-case-body dd { font-size: 13px; }
-  .sn-ablauf { padding-top: 65px; }
   .sn-ablauf-layout { gap: 32px; }
   .sn-step { gap: 20px; }
   .sn-step h3 { font-size: 17px; }
   .sn-step p { font-size: 15px; }
-  .sn-anfrage { margin-top: 65px; padding-top: 35px; }
   .sn-anfrage-copy > h2 { font-size: clamp(38px, 10.2vw, 54px); }
   .sn-anfrage-copy > p { font-size: 16px; }
   .sn-phone { font-size: 29px; }
@@ -361,8 +367,6 @@
 @media (max-width: 380px) {
   .sn-hero h1 { font-size: 15vw; }
   .sn-phone { font-size: 26px; }
-  .sn-owner { grid-template-columns: 1fr; }
-  .sn-owner > .sn-link { justify-self: start; }
   .sn-case-body dl { grid-template-columns: 1fr; }
 }
 
