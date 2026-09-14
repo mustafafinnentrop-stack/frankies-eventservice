@@ -76,13 +76,20 @@ export default function Mannschaft() {
         </div>
       </div>
 
+      {/* Der Mensch hinter der Mannschaft. Nur, was belegt ist: Inhaber,
+          Lennestadt, am Veranstaltungstag selbst dabei (so beschreiben es
+          die Google-Bewertungen), Angebot innerhalb von 24 Stunden. */}
       <div className="sn-owner sn-reveal">
-        <p>Ihr Ansprechpartner vom ersten Gespräch an.</p>
+        <p>Ihr Ansprechpartner vom ersten Gespräch bis zum Abbau.</p>
         <div>
           <span className="sn-owner-name">Mustafa Yildirim</span>
-          <span className="sn-owner-role">Inhaber · Frankies Eventservice</span>
+          <span className="sn-owner-role">Inhaber · Frankies Eventservice · Lennestadt</span>
+          <p className="sn-owner-text">Plant Ihr Fest mit Ihnen durch und steht am Tag selbst mit im Einsatz. Auf jede Anfrage antwortet er innerhalb von 24 Stunden — mit einem Angebot, nicht mit einer Warteschleife.</p>
         </div>
-        <a className="sn-link" href="tel:+4915142840916">Direkt anrufen <span aria-hidden="true">↗</span></a>
+        <div className="sn-owner-links">
+          <a className="sn-link" href="tel:+4915142840916">Direkt anrufen <span aria-hidden="true">↗</span></a>
+          <a className="sn-link" href="mailto:info@frankies-eventservice.de">E-Mail schreiben <span aria-hidden="true">↗</span></a>
+        </div>
       </div>
     </section>
   )
