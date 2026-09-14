@@ -1,58 +1,40 @@
 import Navbar from '@/components/Navbar'
-import Hero from '@/components/Hero'
-import EventStrip from '@/components/EventStrip'
-import Leistungen from '@/components/Leistungen'
-import Cocktailbar from '@/components/Cocktailbar'
-import Ueber from '@/components/Ueber'
-import Ablauf from '@/components/Ablauf'
-import Region from '@/components/Region'
-import Referenzen from '@/components/Referenzen'
-import Kontakt from '@/components/Kontakt'
-import Testimonials from '@/components/Testimonials'
-import RevealWrapper from '@/components/RevealWrapper'
-import ClientEffects from '@/components/ClientEffects'
 import { CinematicFooter } from '@/components/ui/motion-footer'
+import StartseiteEffekte from '@/components/startseite/StartseiteEffekte'
+import StartseiteHero from '@/components/startseite/StartseiteHero'
+import Mannschaft from '@/components/startseite/Mannschaft'
+import LeistungenNeu from '@/components/startseite/LeistungenNeu'
+import Einsaetze from '@/components/startseite/Einsaetze'
+import AblaufNeu from '@/components/startseite/AblaufNeu'
+import Anfrage from '@/components/startseite/Anfrage'
+import '@/components/startseite/startseite.css'
 
+/*
+  Die Startseite, freigegeben vom Betreiber am 14.09.2026 nach Pruefung
+  des Entwurfs unter /entwurf auf dem Handy.
+
+  Aufbau: erst die Mannschaft und der Mensch dahinter, dann was wir
+  koennen, wo wir waren, wie es ablaeuft, zum Schluss die Anfrage. Die
+  Unterseiten bleiben die Orte fuer Details — hier wird verlinkt, nicht
+  ausgebreitet. Titel, Beschreibung und Canonical kommen aus layout.tsx.
+
+  .content-layer legt den Inhalt ueber die fixierte Abdunkelung aus
+  globals.css (body::before); .sn bringt Hintergrund und Stylesheet mit.
+*/
 export default function Home() {
   return (
     <>
       <Navbar />
-      {/* Der Footer liegt fixiert unter dem Inhalt und wird beim Scrollen
-          freigelegt. Der Inhalt braucht dafuer eine hoehere Ebene, aber
-          keinen deckenden Hintergrund — den Footer schneidet sein eigener
-          clip-path-Wrapper bis zum Seitenende ohnehin weg. Die frueher hier
-          gesetzte Deckfarbe hat nur das Hintergrundfoto verdeckt.
-          Siehe .content-layer in globals.css. */}
-      <div className="content-layer">
-        <RevealWrapper>
-          {/* Der Hero traegt sein Foto selbst als Hintergrund. Vorher lagen
-              hier zwei fixierte, formatfuellende Ebenen in einem
-              clip-path-Wrapper, die GSAP pro Bild verschoben hat. Gemessen
-              gingen 4,4 von 5,9 Sekunden Scrollzeit in (program), also ins
-              Malen und Kompositieren — genau das verursacht ein fixiertes
-              Vollbild, das sich jedes Bild bewegt. */}
-          <Hero />
-
-          {/* Alles unterhalb des Hero bekommt einen deckenden Hintergrund und
-              schiebt sich beim Scrollen ueber das fixierte Hintergrundfoto.
-              Dadurch ist das Foto nur hinter dem Hero zu sehen und wird
-              danach zugedeckt — derselbe Vorhang-Gedanke wie beim Footer,
-              nur andersherum. Siehe .below-hero in globals.css. */}
-          <div className="below-hero">
-            <EventStrip />
-            <Leistungen />
-            <Cocktailbar />
-            <Ueber />
-            <Ablauf />
-            <Region />
-            <Referenzen />
-            <Testimonials />
-            <Kontakt />
-          </div>
-        </RevealWrapper>
+      <div className="content-layer sn">
+        <StartseiteEffekte />
+        <StartseiteHero />
+        <Mannschaft />
+        <LeistungenNeu />
+        <Einsaetze />
+        <AblaufNeu />
+        <Anfrage />
       </div>
       <CinematicFooter />
-      <ClientEffects />
     </>
   )
 }

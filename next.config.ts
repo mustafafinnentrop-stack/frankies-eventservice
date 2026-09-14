@@ -20,6 +20,12 @@ const nextConfig: NextConfig = {
     lesbar — ein Disallow dort wuerde die Adressen erst recht bekannt machen.
     Der Header wirkt still und ohne Verzeichnis.
   */
+  /* Der Entwurf wurde unter /entwurf begutachtet und ist jetzt die
+     Startseite. Wer den alten Link noch hat, landet richtig. */
+  async redirects() {
+    return [{ source: '/entwurf', destination: '/', permanent: false }]
+  },
+
   async headers() {
     return [
       {

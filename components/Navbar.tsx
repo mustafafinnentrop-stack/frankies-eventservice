@@ -37,11 +37,11 @@ export default function Navbar() {
       bgColor: '#222018',
       textColor: '#F0ECE3',
       links: [
-        { label: 'Cocktailbar', ariaLabel: 'Cocktailbar Section', onClick: () => scrollTo('cocktailbar') },
-        { label: 'Über uns', ariaLabel: 'Über uns Section', onClick: () => scrollTo('ueber') },
-        { label: 'Referenzen', ariaLabel: 'Referenzen Section', onClick: () => scrollTo('referenzen') },
-        { label: 'Ablauf', ariaLabel: 'Ablauf Section', onClick: () => scrollTo('ablauf') },
-        { label: 'Region', ariaLabel: 'Region Section', onClick: () => scrollTo('region') },
+        { label: 'Die Mannschaft', ariaLabel: 'Abschnitt Die Mannschaft', onClick: () => scrollTo('mannschaft') },
+        { label: 'Was wir können', ariaLabel: 'Abschnitt Was wir können', onClick: () => scrollTo('leistungen') },
+        { label: 'Im Einsatz', ariaLabel: 'Abschnitt Im Einsatz', onClick: () => scrollTo('einsaetze') },
+        { label: 'Ablauf', ariaLabel: 'Abschnitt Ablauf', onClick: () => scrollTo('ablauf') },
+        { label: 'Anfrage', ariaLabel: 'Abschnitt Anfrage', onClick: () => scrollTo('anfrage') },
       ],
     },
     {
