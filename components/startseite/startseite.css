@@ -232,7 +232,7 @@
   .sn-case-scope { font-size: 12px; }
 }
 @media (max-width: 800px) {
-  .sn-hero { padding-top: 165px; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .sn-hero { padding-top: 118px; grid-template-columns: 1fr 1fr; gap: 20px; }
   .sn-hero .sn-eyebrow { font-size: 10px; }
   .sn-hero h1 { font-size: 8.8vw; margin-top: 25px; }
   .sn-hero-bottom { margin-top: 22px; }
@@ -280,7 +280,7 @@
   .sn-note { font-size: 11px; }
 }
 @media (max-width: 560px) {
-  .sn-hero { display: flex; flex-direction: column; gap: 0; padding-top: 176px; }
+  .sn-hero { display: flex; flex-direction: column; gap: 0; padding-top: 118px; }
   .sn-hero-copy { padding-top: 0; }
   .sn-hero .sn-eyebrow { font-size: 10px; letter-spacing: 0.16em; }
   .sn-hero h1 { font-size: clamp(56px, 13.1vw, 85px); line-height: 1.02; margin: 22px 0 0; letter-spacing: -0.04em; }
@@ -369,8 +369,8 @@
 /* Unterseite /einsaetze: gleiche Sprache wie die Startseite, eigener Kopf */
 .sn-seite { padding-top: 150px; padding-bottom: 100px; }
 .sn-seite .sn-h1 { font-size: clamp(44px, 5.6vw, 90px); line-height: 1.06; }
-@media (max-width: 800px) { .sn-seite { padding-top: 165px; } }
-@media (max-width: 560px) { .sn-seite { padding-top: 176px; padding-bottom: 70px; } .sn-seite .sn-h1 { font-size: clamp(38px, 10vw, 54px); } }
+@media (max-width: 800px) { .sn-seite { padding-top: 118px; } }
+@media (max-width: 560px) { .sn-seite { padding-top: 118px; padding-bottom: 70px; } .sn-seite .sn-h1 { font-size: clamp(38px, 10vw, 54px); } }
 
 /* Bewertungen im Wortlaut (/einsaetze) */
 .sn-zitate { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
