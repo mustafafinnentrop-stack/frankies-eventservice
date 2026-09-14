@@ -371,3 +371,12 @@
 .sn-seite .sn-h1 { font-size: clamp(44px, 5.6vw, 90px); line-height: 1.06; }
 @media (max-width: 800px) { .sn-seite { padding-top: 165px; } }
 @media (max-width: 560px) { .sn-seite { padding-top: 176px; padding-bottom: 70px; } .sn-seite .sn-h1 { font-size: clamp(38px, 10vw, 54px); } }
+
+/* Bewertungen im Wortlaut (/einsaetze) */
+.sn-zitate { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.sn-zitat { display: flex; flex-direction: column; gap: 14px; padding: 28px 0 0; border-top: 1px solid var(--sn-line); }
+.sn-zitat-sterne { color: var(--color-gold); letter-spacing: 0.12em; font-size: 15px; }
+.sn-zitat blockquote { margin: 0; }
+.sn-zitat p { font-size: 16px; line-height: 1.8; }
+.sn-zitat figcaption { font-size: 12px; color: var(--color-text-muted); margin-top: auto; }
+@media (max-width: 800px) { .sn-zitate { grid-template-columns: 1fr; gap: 20px; } }
