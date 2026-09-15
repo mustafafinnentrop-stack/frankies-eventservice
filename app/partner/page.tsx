@@ -14,8 +14,8 @@ import PartnerForm from '@/components/PartnerForm'
 const PAGE_URL = 'https://frankies-eventservice.de/partner'
 
 export const metadata: Metadata = {
-  title: 'Partner werden | Frankies Eventservice',
-  description: 'Empfehlen Sie Frankies Eventservice weiter und erhalten Sie bis zu 10% Provision pro vermitteltem Auftrag. Für Locations, Vereine, Eventdienstleister und private Empfehlungen im Sauerland.',
+  title: 'Partner werden: bis zu 10% Provision | Frankies Eventservice',
+  description: 'Frankies Eventservice empfehlen und bis zu 10% Provision pro Auftrag erhalten. Für Locations, Vereine, Eventdienstleister und private Empfehlungen im Sauerland.',
   keywords: 'Partnerprogramm Eventservice, Provision Vermittlung Event, Cocktailbar vermitteln, Eventpartner Sauerland, Kooperation Eventlocation Kreis Olpe',
   alternates: { canonical: PAGE_URL },
   openGraph: {

@@ -64,11 +64,11 @@ export default function Mannschaft() {
         <div className="sn-stage">
           <div className="sn-word" aria-hidden="true" ref={wortRef}>ZUSAMMEN.</div>
           <figure className="sn-frame sn-frame-a" ref={aRef}>
-            <Image src="/schuetzenfest.webp" alt="Eine Mitarbeiterin stellt frisch gezapftes Bier für den Service zusammen" width={1200} height={1500} sizes="(max-width: 560px) 51vw, 34vw" />
+            <Image src="/schuetzenfest.webp" alt="Eine Mitarbeiterin stellt frisch gezapftes Bier für den Service zusammen" width={1200} height={1500} sizes="(max-width: 560px) 51vw, 34vw" quality={60} />
             <figcaption>Am Gast.</figcaption>
           </figure>
           <figure className="sn-frame sn-frame-b" ref={bRef}>
-            <Image src="/glaeser.webp" alt="Zwei Mitarbeiter bereiten gemeinsam die Gläser an der Theke vor" width={1200} height={1500} sizes="(max-width: 560px) 51vw, 34vw" />
+            <Image src="/glaeser.webp" alt="Zwei Mitarbeiter bereiten gemeinsam die Gläser an der Theke vor" width={1200} height={1500} sizes="(max-width: 560px) 51vw, 34vw" quality={60} />
             <figcaption>Hinter der Theke.</figcaption>
           </figure>
           <p className="sn-stage-caption">Ein Handgriff greift in den nächsten.</p>
