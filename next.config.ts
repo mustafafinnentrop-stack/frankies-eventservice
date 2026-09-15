@@ -2,6 +2,13 @@ import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
   images: {
+    /*
+      Kein Foto im Projekt ist breiter als 1.200 px (Hintergrund 2.560 px laeuft
+      per CSS). Die Standardstufen 2048 und 3840 erzeugen deshalb nur Adressen
+      auf dieselbe Volldatei — und SEO-Crawler messen genau diese groesste
+      Kandidatin. Die Liste endet darum bei 1920.
+    */
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     remotePatterns: [
       {
         protocol: 'https',

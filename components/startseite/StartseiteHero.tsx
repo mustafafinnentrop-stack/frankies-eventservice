@@ -61,6 +61,7 @@ export default function StartseiteHero() {
             height={1500}
             priority
             sizes="(max-width: 560px) 100vw, 50vw"
+            quality={60}
           />
           <div className="sn-portrait-shade" />
           <span className="sn-corner sn-corner-tl" aria-hidden="true" />
