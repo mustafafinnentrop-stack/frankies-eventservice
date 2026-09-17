@@ -26,8 +26,15 @@ import BookingCTA from '@/components/BookingCTA'
   deshalb die Handy-Fassung — die Mehrheit der Besucher kommt mobil, und
   auf dem Desktop wird sofort nach dem Laden umgeschaltet.
 */
-const QUER = { video: '/cocktailbar-quer.mp4', bild: '/cocktailbar-quer-poster.webp' }
-const HOCH = { video: '/cocktailbar-web.mp4', bild: '/cocktailbar-poster.webp' }
+const QUER = { video: '/cocktailbar-quer.mp4', bild: '/cocktailbar-quer-poster.webp', hintergrund: '/bambustheke-quer.webp' }
+const HOCH = { video: '/cocktailbar-web.mp4', bild: '/cocktailbar-poster.webp', hintergrund: '/bambustheke.webp' }
+/*
+  Hintergrundfoto ebenfalls in zwei Fassungen. Das Hochkantfoto (860x1075)
+  liegt auf dem Desktop als Vollbild hinter dem Rahmen — dort wird ohnehin
+  nur der mittlere Streifen gezeigt. Der Querschnitt (1120x700) ist genau
+  dieser Streifen aus dem Original in voller Aufloesung und bleibt wie das
+  Hochkantfoto unter 100 KB, was die SEO-Pruefung je Bildadresse verlangt.
+*/
 
 export default function CocktailbarScrollHero() {
   const [medium, setMedium] = useState(HOCH)
@@ -45,7 +52,7 @@ export default function CocktailbarScrollHero() {
       mediaType="video"
       mediaSrc={medium.video}
       posterSrc={medium.bild}
-      bgImageSrc="/bambustheke.webp"
+      bgImageSrc={medium.hintergrund}
       title="Mobile Cocktailbar"
       date="Lennestadt & Kreis Olpe"
       scrollToExpand="Scrollen zum Öffnen"
