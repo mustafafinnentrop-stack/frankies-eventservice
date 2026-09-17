@@ -120,7 +120,7 @@ export default function Einsaetze() {
         <a href={GOOGLE_PROFIL} target="_blank" rel="noopener noreferrer" className="sn-vertrauen-google">
           5,0 ★★★★★ aus {BEWERTUNGEN.length} Google-Bewertungen
         </a>
-        <a href={EVENTBOOK.profil} target="_blank" rel="noopener noreferrer" aria-label="Profil von Frankies Eventservice bei eventbook.com öffnen" className="sn-vertrauen-siegel">
+        <a href={EVENTBOOK.profil} target="_blank" rel="nofollow noopener noreferrer" aria-label="Profil von Frankies Eventservice bei eventbook.com öffnen" className="sn-vertrauen-siegel">
           <Image src={EVENTBOOK.badge.src} alt={EVENTBOOK.badge.alt} width={EVENTBOOK.badge.breite} height={EVENTBOOK.badge.hoehe} sizes="180px" style={{ width: '180px', height: 'auto' }} />
         </a>
       </div>

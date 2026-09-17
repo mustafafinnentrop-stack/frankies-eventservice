@@ -27,12 +27,12 @@ export default function Testimonials() {
             rel="noopener noreferrer"
             className="vertrauen-google"
           >
-            5,0 ★★★★★ aus 2 Google-Bewertungen
+            5,0 ★★★★★ aus {BEWERTUNGEN.length} Google-Bewertungen
           </a>
           <a
             href={EVENTBOOK.profil}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="nofollow noopener noreferrer"
             aria-label="Profil von Frankies Eventservice bei eventbook.com öffnen"
             className="vertrauen-siegel"
           >
