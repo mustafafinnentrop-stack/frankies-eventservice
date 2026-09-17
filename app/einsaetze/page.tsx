@@ -9,16 +9,16 @@ import '@/components/startseite/startseite.css'
 const PAGE_URL = 'https://frankies-eventservice.de/einsaetze'
 
 export const metadata: Metadata = {
-  title: 'Unsere Einsätze | Frankies Eventservice',
+  title: 'Unsere Einsätze im Sauerland | Frankies Eventservice',
   description:
-    'Schützenfeste, Firmenfeiern, Hochzeiten, Cocktailbar: Wo Frankies Eventservice aus Lennestadt schon mit angepackt hat — mit echten Zahlen, und was als Nächstes ansteht.',
+    'Schützenfeste, Firmenfeiern, Hochzeiten, Cocktailbar: Wo Frankies Eventservice aus Lennestadt schon mit angepackt hat – mit echten Zahlen und dem, was ansteht.',
   alternates: { canonical: PAGE_URL },
   openGraph: {
     type: 'website',
     locale: 'de_DE',
     url: PAGE_URL,
     siteName: 'Frankies Eventservice',
-    title: 'Unsere Einsätze | Frankies Eventservice',
+    title: 'Unsere Einsätze im Sauerland | Frankies Eventservice',
     description: 'Wo Frankies Eventservice schon mit angepackt hat — Schützenfeste, Firmenfeiern, Hochzeiten, Cocktailbar. Mit echten Zahlen.',
     images: [{ url: 'https://frankies-eventservice.de/og/home.jpg', width: 1200, height: 630, alt: 'Frankies Eventservice im Einsatz' }],
   },
