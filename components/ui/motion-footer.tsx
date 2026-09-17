@@ -389,7 +389,7 @@ export function CinematicFooter() {
             <a
               href={EVENTBOOK.profil}
               target="_blank"
-              rel="noopener noreferrer"
+              rel="nofollow noopener noreferrer"
               aria-label="Profil von Frankies Eventservice bei eventbook.com öffnen"
               className="inline-block opacity-80 hover:opacity-100 transition-opacity"
             >
@@ -405,7 +405,7 @@ export function CinematicFooter() {
             <a
               href={EVENTBOOK.profil}
               target="_blank"
-              rel="noopener noreferrer"
+              rel="nofollow noopener noreferrer"
               aria-label="Frankies Eventservice bei eventbook.com"
               className="inline-block opacity-70 hover:opacity-100 transition-opacity"
             >
