@@ -128,11 +128,8 @@ Web: frankies-eventservice.de
 
 Umsatzsteuer-Identifikationsnummer gemäß § 27 a UStG: DE354807768
 
-Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor
+Wir sind weder bereit noch verpflichtet, an Streitbeilegungsverfahren vor
 einer Verbraucherschlichtungsstelle teilzunehmen.
-
-Plattform der EU-Kommission zur Online-Streitbeilegung:
-https://ec.europa.eu/consumers/odr/
 
 ---
 
