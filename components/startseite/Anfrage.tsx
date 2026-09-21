@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { MAX, kuerzen, HONEYPOT_STIL, gesperrt, sperren } from '@/components/formular-schutz'
 import dynamic from 'next/dynamic'
 
 /*
@@ -26,6 +27,7 @@ export default function Anfrage() {
   const [f, setF] = useState<Felder>({ anlass: '', datum: '', gaeste: '', ort: '', nachricht: '', name: '', email: '', telefon: '' })
   const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle')
   const [hinweis, setHinweis] = useState('')
+  const [falle, setFalle] = useState(false)
 
   const set = (k: keyof Felder) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
     setF((alt) => ({ ...alt, [k]: e.target.value }))
@@ -36,26 +38,34 @@ export default function Anfrage() {
       setHinweis('Bitte Anlass, Name und eine gültige E-Mail-Adresse angeben.')
       return
     }
+    if (falle) { setStatus('done'); return }
+    if (gesperrt('fe-anfrage')) {
+      setHinweis('Ihre Anfrage ist bereits unterwegs. Bitte einen Moment warten.')
+      return
+    }
     setHinweis('')
     setStatus('sending')
+    const name = kuerzen(f.name, MAX.name)
     try {
       const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           access_key: WEB3FORMS_KEY,
-          subject: `Anfrage: ${f.anlass} — ${f.name}`,
+          botcheck: false,
+          subject: `Anfrage: ${f.anlass} — ${name}`,
           from_name: 'Frankies Eventservice Website',
-          Name: f.name,
-          'E-Mail': f.email,
-          Telefon: f.telefon || '–',
+          Name: name,
+          'E-Mail': kuerzen(f.email, MAX.email),
+          Telefon: kuerzen(f.telefon, MAX.telefon) || '–',
           Veranstaltung: f.anlass,
           Datum: f.datum || '–',
           Gäste: f.gaeste || '–',
-          Ort: f.ort || '–',
-          Nachricht: f.nachricht || '–',
+          Ort: kuerzen(f.ort, MAX.ort) || '–',
+          Nachricht: kuerzen(f.nachricht, MAX.nachricht) || '–',
         }),
       })
+      if (res.ok) sperren('fe-anfrage')
       setStatus(res.ok ? 'done' : 'error')
     } catch {
       setStatus('error')
@@ -89,6 +99,10 @@ export default function Anfrage() {
             </div>
           ) : (
             <form className="sn-form sn-reveal" onSubmit={senden} noValidate>
+              {/* Honeypot — siehe components/formular-schutz.ts */}
+              <div style={HONEYPOT_STIL} aria-hidden="true">
+                <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" checked={falle} onChange={(e) => setFalle(e.target.checked)} />
+              </div>
               <div className="sn-field full">
                 <label htmlFor="sn-anlass">Was haben Sie vor? *</label>
                 <select id="sn-anlass" value={f.anlass} onChange={set('anlass')} required>
@@ -109,23 +123,23 @@ export default function Anfrage() {
               </div>
               <div className="sn-field full">
                 <label htmlFor="sn-ort">Wo wird gefeiert?</label>
-                <input id="sn-ort" value={f.ort} onChange={set('ort')} autoComplete="address-level2" placeholder="Ort oder Location" />
+                <input id="sn-ort" value={f.ort} onChange={set('ort')} autoComplete="address-level2" placeholder="Ort oder Location" maxLength={MAX.ort} />
               </div>
               <div className="sn-field full">
                 <label htmlFor="sn-nachricht">Was sollen wir übernehmen?</label>
-                <textarea id="sn-nachricht" value={f.nachricht} onChange={set('nachricht')} rows={2} placeholder="z. B. Getränke und Service von 17 bis 1 Uhr" />
+                <textarea id="sn-nachricht" value={f.nachricht} onChange={set('nachricht')} rows={2} placeholder="z. B. Getränke und Service von 17 bis 1 Uhr" maxLength={MAX.nachricht} />
               </div>
               <div className="sn-field">
                 <label htmlFor="sn-name">Ihr Name *</label>
-                <input id="sn-name" value={f.name} onChange={set('name')} autoComplete="name" placeholder="Vor- und Nachname" required />
+                <input id="sn-name" value={f.name} onChange={set('name')} autoComplete="name" placeholder="Vor- und Nachname" maxLength={MAX.name} required />
               </div>
               <div className="sn-field">
                 <label htmlFor="sn-email">E-Mail *</label>
-                <input type="email" id="sn-email" value={f.email} onChange={set('email')} autoComplete="email" placeholder="ihre@email.de" required />
+                <input type="email" id="sn-email" value={f.email} onChange={set('email')} autoComplete="email" placeholder="ihre@email.de" maxLength={MAX.email} required />
               </div>
               <div className="sn-field full">
                 <label htmlFor="sn-telefon">Telefon</label>
-                <input type="tel" id="sn-telefon" value={f.telefon} onChange={set('telefon')} autoComplete="tel" placeholder="Für Rückfragen" />
+                <input type="tel" id="sn-telefon" value={f.telefon} onChange={set('telefon')} autoComplete="tel" placeholder="Für Rückfragen" maxLength={MAX.telefon} />
               </div>
               {hinweis && <p className="sn-form-fehler" role="alert">{hinweis}</p>}
               {status === 'error' && (
