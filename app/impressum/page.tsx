@@ -35,7 +35,7 @@ export default function ImpressumPage() {
               <h1 className="section-title" style={{ marginBottom: '3rem' }}>Impressum</h1>
 
               <div className="legal-text-content" style={{ color: 'var(--color-text-muted)', lineHeight: 1.8, fontWeight: 300 }}>
-                <h2 style={H2}>Angaben gemäß § 5 TMG</h2>
+                <h2 style={H2}>Angaben gemäß § 5 DDG</h2>
                 <p>
                   Frankies Eventservice<br />
                   Mustafa Yildirim<br />
@@ -69,18 +69,9 @@ export default function ImpressumPage() {
                   57368 Lennestadt
                 </p>
 
-                <h2 style={H2}>EU-Streitschlichtung</h2>
-                <p>
-                  Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:{' '}
-                  <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer" style={LINK}>
-                    https://ec.europa.eu/consumers/odr/
-                  </a>
-                </p>
-                <p>Unsere E-Mail-Adresse finden Sie oben im Impressum.</p>
-
                 <h2 style={H2}>Verbraucherstreitbeilegung / Universalschlichtungsstelle</h2>
                 <p>
-                  Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor
+                  Wir sind weder bereit noch verpflichtet, an Streitbeilegungsverfahren vor
                   einer Verbraucherschlichtungsstelle teilzunehmen.
                 </p>
 

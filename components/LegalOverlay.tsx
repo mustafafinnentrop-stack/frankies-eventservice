@@ -54,7 +54,7 @@ function Impressum() {
     <>
       <h1>Impressum</h1>
 
-      <h2>Angaben gemäß § 5 TMG</h2>
+      <h2>Angaben gemäß § 5 DDG</h2>
       <p>
         Frankies Eventservice<br />
         Mustafa Yildirim<br />
@@ -88,18 +88,9 @@ function Impressum() {
         57368 Lennestadt
       </p>
 
-      <h2>EU-Streitschlichtung</h2>
-      <p>
-        Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:{' '}
-        <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">
-          https://ec.europa.eu/consumers/odr/
-        </a>
-      </p>
-      <p>Unsere E-Mail-Adresse finden Sie oben im Impressum.</p>
-
       <h2>Verbraucherstreitbeilegung / Universalschlichtungsstelle</h2>
       <p>
-        Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor
+        Wir sind weder bereit noch verpflichtet, an Streitbeilegungsverfahren vor
         einer Verbraucherschlichtungsstelle teilzunehmen.
       </p>
     </>
