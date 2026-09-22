@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import dynamic from 'next/dynamic'
 import Icon from './Icon'
+import { MAX, kuerzen, HONEYPOT_STIL, gesperrt, sperren } from './formular-schutz'
 
 /*
   Bewusst nachgeladen statt fest importiert. Fest importiert haengt der
@@ -27,6 +28,7 @@ export default function Kontakt() {
     eventtype: '', eventdate: '', guests: '', location: '', message: '',
   })
   const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle')
+  const [falle, setFalle] = useState(false)
 
   const update = (field: keyof FormData) =>
     (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
@@ -41,26 +43,33 @@ export default function Kontakt() {
       alert('Bitte geben Sie eine gültige E-Mail-Adresse ein.')
       return
     }
+    if (falle) { setStatus('done'); return }
+    if (gesperrt('fe-kontakt')) {
+      alert('Ihre Anfrage ist bereits unterwegs. Bitte einen Moment warten.')
+      return
+    }
     setStatus('sending')
+    const name = kuerzen(`${form.fname} ${form.lname}`, MAX.name)
     try {
       const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           access_key: WEB3FORMS_KEY,
-          subject: `Anfrage: ${form.eventtype} — ${form.fname} ${form.lname}`,
+          botcheck: false,
+          subject: `Anfrage: ${form.eventtype} — ${name}`,
           from_name: 'Frankies Eventservice Website',
-          'Name': `${form.fname} ${form.lname}`,
-          'E-Mail': form.email,
-          'Telefon': form.phone || '–',
+          'Name': name,
+          'E-Mail': kuerzen(form.email, MAX.email),
+          'Telefon': kuerzen(form.phone, MAX.telefon) || '–',
           'Veranstaltung': form.eventtype,
           'Datum': form.eventdate || '–',
           'Gäste': form.guests || '–',
-          'Ort': form.location || '–',
-          'Nachricht': form.message || '–',
+          'Ort': kuerzen(form.location, MAX.ort) || '–',
+          'Nachricht': kuerzen(form.message, MAX.nachricht) || '–',
         }),
       })
-      if (res.ok) setStatus('done')
+      if (res.ok) { sperren('fe-kontakt'); setStatus('done') }
       else setStatus('error')
     } catch {
       setStatus('error')
@@ -98,24 +107,28 @@ export default function Kontakt() {
 
         {status !== 'done' && (
           <div className="contact-form reveal" id="contactForm">
+            {/* Honeypot — siehe components/formular-schutz.ts */}
+            <div style={HONEYPOT_STIL} aria-hidden="true">
+              <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" checked={falle} onChange={(e) => setFalle(e.target.checked)} />
+            </div>
             <div className="form-row-double">
               <div className="form-row">
                 <label htmlFor="fname">Vorname *</label>
-                <input type="text" id="fname" value={form.fname} onChange={update('fname')} placeholder="Ihr Vorname" required />
+                <input type="text" id="fname" value={form.fname} onChange={update('fname')} placeholder="Ihr Vorname" maxLength={50} required />
               </div>
               <div className="form-row">
                 <label htmlFor="lname">Nachname *</label>
-                <input type="text" id="lname" value={form.lname} onChange={update('lname')} placeholder="Ihr Nachname" required />
+                <input type="text" id="lname" value={form.lname} onChange={update('lname')} placeholder="Ihr Nachname" maxLength={50} required />
               </div>
             </div>
             <div className="form-row-double">
               <div className="form-row">
                 <label htmlFor="email">E-Mail *</label>
-                <input type="email" id="email" value={form.email} onChange={update('email')} placeholder="ihre@email.de" required />
+                <input type="email" id="email" value={form.email} onChange={update('email')} placeholder="ihre@email.de" maxLength={MAX.email} required />
               </div>
               <div className="form-row">
                 <label htmlFor="phone">Telefon</label>
-                <input type="tel" id="phone" value={form.phone} onChange={update('phone')} placeholder="Ihre Telefonnummer" />
+                <input type="tel" id="phone" value={form.phone} onChange={update('phone')} placeholder="Ihre Telefonnummer" maxLength={MAX.telefon} />
               </div>
             </div>
             <div className="form-row">
@@ -144,11 +157,11 @@ export default function Kontakt() {
             </div>
             <div className="form-row">
               <label htmlFor="location">Veranstaltungsort</label>
-              <input type="text" id="location" value={form.location} onChange={update('location')} placeholder="Stadt / Ort der Veranstaltung" />
+              <input type="text" id="location" value={form.location} onChange={update('location')} placeholder="Stadt / Ort der Veranstaltung" maxLength={MAX.ort} />
             </div>
             <div className="form-row">
               <label htmlFor="message">Ihre Nachricht</label>
-              <textarea id="message" value={form.message} onChange={update('message')} placeholder="Erzählen Sie uns kurz, was Sie planen..." />
+              <textarea id="message" value={form.message} onChange={update('message')} placeholder="Erzählen Sie uns kurz, was Sie planen..." maxLength={MAX.nachricht} />
             </div>
 
             {status === 'error' && (

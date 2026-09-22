@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import Icon from './Icon'
 import { FLATS, flatName, euro } from './preise-daten'
+import { MAX, kuerzen, HONEYPOT_STIL, gesperrt, sperren } from './formular-schutz'
 
 const EVENT_TYPES = ['Hochzeit', 'Schützenfest', 'Geburtstag', 'Firmenfeier', 'JGA', 'Vereinsfest', 'Dorffest', 'Sonstiges']
 const GUEST_COUNTS = ['bis 50', '50–100', '100–200', '200–300', '300+']
@@ -72,7 +73,14 @@ export default function BookingModal({ onClose, initialPackage }: Props) {
 
   const calUrl = `${CALCOM_URL}?name=${encodeURIComponent(form.firstName + ' ' + form.lastName)}&email=${encodeURIComponent(form.email)}&notes=${encodeURIComponent(`${form.eventType}, ${form.guestCount} Gäste, ${form.eventLocation}, ${form.eventDate}`)}`
 
+  const [falle, setFalle] = useState(false)
+
   const submit = async () => {
+    if (falle) { setDone(true); return }
+    if (gesperrt('fe-buchung')) {
+      setError('Ihre Anfrage ist bereits unterwegs. Bitte einen Moment warten.')
+      return
+    }
     setSending(true)
     setError('')
     try {
@@ -82,22 +90,23 @@ export default function BookingModal({ onClose, initialPackage }: Props) {
         body: JSON.stringify({
           access_key: WEB3FORMS_KEY,
           botcheck: false,
-          subject: `Buchungsanfrage: ${form.eventType} — ${form.firstName} ${form.lastName}`,
+          subject: `Buchungsanfrage: ${form.eventType} — ${kuerzen(`${form.firstName} ${form.lastName}`, MAX.name)}`,
           from_name: 'Frankies Eventservice Booking',
           ...(form.cocktailPackage ? { 'Cocktailbar-Paket': form.cocktailPackage } : {}),
           'Art der Veranstaltung': form.eventType,
           'Anzahl Gäste': form.guestCount,
           'Datum': form.eventDate,
-          'Veranstaltungsort': form.eventLocation,
-          'Name': `${form.firstName} ${form.lastName}`,
-          'E-Mail': form.email,
-          'Telefon': form.phone,
-          'Adresse': `${form.street}, ${form.zip} ${form.city}`,
-          'Nachricht': form.message || '–',
+          'Veranstaltungsort': kuerzen(form.eventLocation, MAX.ort),
+          'Name': kuerzen(`${form.firstName} ${form.lastName}`, MAX.name),
+          'E-Mail': kuerzen(form.email, MAX.email),
+          'Telefon': kuerzen(form.phone, MAX.telefon),
+          'Adresse': `${kuerzen(form.street, MAX.strasse)}, ${kuerzen(form.zip, MAX.plz)} ${kuerzen(form.city, MAX.stadt)}`,
+          'Nachricht': kuerzen(form.message, MAX.nachricht) || '–',
         }),
       })
       const data = await res.json()
       if (!data.success) throw new Error(data.message || 'Unbekannter Fehler')
+      sperren('fe-buchung')
       setDone(true)
     } catch (err) {
       const msg = err instanceof Error ? err.message : ''
@@ -194,10 +203,13 @@ export default function BookingModal({ onClose, initialPackage }: Props) {
               </div>
 
               <p style={labelStyle}>Wunschdatum *</p>
+              <div style={HONEYPOT_STIL} aria-hidden="true">
+                <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" checked={falle} onChange={(e) => setFalle(e.target.checked)} />
+              </div>
               <input type="date" value={form.eventDate} onChange={e => set('eventDate', e.target.value)} style={inputStyle} min={new Date().toISOString().split('T')[0]} />
 
               <p style={labelStyle}>Veranstaltungsort *</p>
-              <input type="text" placeholder="z.B. Festzelt Kirchhundem" value={form.eventLocation} onChange={e => set('eventLocation', e.target.value)} style={inputStyle} />
+              <input type="text" placeholder="z.B. Festzelt Kirchhundem" value={form.eventLocation} onChange={e => set('eventLocation', e.target.value)} style={inputStyle} maxLength={MAX.ort} />
 
               <button type="button" onClick={() => setStep(2)} disabled={!step1OK} className="btn-primary" style={{ width: '100%', marginTop: '0.5rem', opacity: step1OK ? 1 : 0.4, cursor: step1OK ? 'pointer' : 'not-allowed' }}>
                 Weiter zu Ihren Daten
@@ -211,22 +223,22 @@ export default function BookingModal({ onClose, initialPackage }: Props) {
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
                 <div>
                   <p style={labelStyle}>Vorname *</p>
-                  <input type="text" placeholder="Max" value={form.firstName} onChange={e => set('firstName', e.target.value)} style={inputStyle} />
+                  <input type="text" placeholder="Max" value={form.firstName} onChange={e => set('firstName', e.target.value)} style={inputStyle} maxLength={50} />
                 </div>
                 <div>
                   <p style={labelStyle}>Nachname *</p>
-                  <input type="text" placeholder="Muster" value={form.lastName} onChange={e => set('lastName', e.target.value)} style={inputStyle} />
+                  <input type="text" placeholder="Muster" value={form.lastName} onChange={e => set('lastName', e.target.value)} style={inputStyle} maxLength={50} />
                 </div>
               </div>
 
               <p style={labelStyle}>E-Mail *</p>
-              <input type="email" placeholder="max@beispiel.de" value={form.email} onChange={e => set('email', e.target.value)} style={inputStyle} />
+              <input type="email" placeholder="max@beispiel.de" value={form.email} onChange={e => set('email', e.target.value)} style={inputStyle} maxLength={MAX.email} />
 
               <p style={labelStyle}>Telefon *</p>
-              <input type="tel" placeholder="+49 151 234 567" value={form.phone} onChange={e => set('phone', e.target.value)} style={inputStyle} />
+              <input type="tel" placeholder="+49 151 234 567" value={form.phone} onChange={e => set('phone', e.target.value)} style={inputStyle} maxLength={MAX.telefon} />
 
               <p style={labelStyle}>Straße &amp; Hausnummer *</p>
-              <input type="text" placeholder="Musterstraße 7" value={form.street} onChange={e => set('street', e.target.value)} style={inputStyle} />
+              <input type="text" placeholder="Musterstraße 7" value={form.street} onChange={e => set('street', e.target.value)} style={inputStyle} maxLength={MAX.strasse} />
 
               <div style={{ display: 'grid', gridTemplateColumns: '5rem 1fr', gap: '0.75rem' }}>
                 <div>
@@ -235,12 +247,12 @@ export default function BookingModal({ onClose, initialPackage }: Props) {
                 </div>
                 <div>
                   <p style={labelStyle}>Ort *</p>
-                  <input type="text" placeholder="Lennestadt" value={form.city} onChange={e => set('city', e.target.value)} style={inputStyle} />
+                  <input type="text" placeholder="Lennestadt" value={form.city} onChange={e => set('city', e.target.value)} style={inputStyle} maxLength={MAX.stadt} />
                 </div>
               </div>
 
               <p style={labelStyle}>Nachricht (optional)</p>
-              <textarea placeholder="Besondere Wünsche, Fragen..." value={form.message} onChange={e => set('message', e.target.value)} rows={3} style={{ ...inputStyle, resize: 'vertical' }} />
+              <textarea placeholder="Besondere Wünsche, Fragen..." value={form.message} onChange={e => set('message', e.target.value)} rows={3} style={{ ...inputStyle, resize: 'vertical' }} maxLength={MAX.nachricht} />
 
               {error && <p style={{ color: '#e07070', fontSize: '0.85rem', marginBottom: '1rem' }}>{error}</p>}
 
