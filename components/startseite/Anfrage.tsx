@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { LEISTUNGSWAHL, VORWAHL_EREIGNIS, type Leistung } from './vorwahl'
 import { MAX, kuerzen, HONEYPOT_STIL, gesperrt, sperren } from '@/components/formular-schutz'
 import dynamic from 'next/dynamic'
 
@@ -21,10 +22,20 @@ const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || ''
 const ANLAESSE = ['Schützenfest', 'Hochzeit', 'Firmenfeier', 'Geburtstag', 'Vereinsfest', 'Karneval', 'Mobile Cocktailbar', 'Equipment mieten', 'Sonstige Veranstaltung']
 const GAESTE = ['bis 50', '50–100', '100–200', '200–500', 'über 500']
 
-type Felder = { anlass: string; datum: string; gaeste: string; ort: string; nachricht: string; name: string; email: string; telefon: string }
+type Felder = { anlass: string; datum: string; gaeste: string; ort: string; leistungen: Leistung[]; nachricht: string; name: string; email: string; telefon: string }
 
 export default function Anfrage() {
-  const [f, setF] = useState<Felder>({ anlass: '', datum: '', gaeste: '', ort: '', nachricht: '', name: '', email: '', telefon: '' })
+  const [f, setF] = useState<Felder>({ anlass: '', datum: '', gaeste: '', ort: '', leistungen: [], nachricht: '', name: '', email: '', telefon: '' })
+
+  /* Vorwahl aus dem Stufen-Block: setzt die Kaestchen, sonst nichts. */
+  useEffect(() => {
+    const h = (e: Event) => setF((alt) => ({ ...alt, leistungen: (e as CustomEvent<Leistung[]>).detail }))
+    window.addEventListener(VORWAHL_EREIGNIS, h)
+    return () => window.removeEventListener(VORWAHL_EREIGNIS, h)
+  }, [])
+
+  const umschalten = (l: Leistung) => () =>
+    setF((alt) => ({ ...alt, leistungen: alt.leistungen.includes(l) ? alt.leistungen.filter((x) => x !== l) : [...alt.leistungen, l] }))
   const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle')
   const [hinweis, setHinweis] = useState('')
   const [falle, setFalle] = useState(false)
@@ -62,6 +73,7 @@ export default function Anfrage() {
           Datum: f.datum || '–',
           Gäste: f.gaeste || '–',
           Ort: kuerzen(f.ort, MAX.ort) || '–',
+          Leistungen: f.leistungen.join(', ') || '–',
           Nachricht: kuerzen(f.nachricht, MAX.nachricht) || '–',
         }),
       })
@@ -78,7 +90,7 @@ export default function Anfrage() {
     <section className="sn-anfrage" id="anfrage" aria-labelledby="sn-anfrage-titel">
       <div className="sn-wrap">
         <div className="sn-top sn-reveal">
-          <span className="sn-eyebrow">05 / Ihr Fest</span>
+          <span className="sn-eyebrow">06 / Ihr Fest</span>
           <span className="sn-note">Lennestadt · Kreis Olpe · Sauerland</span>
         </div>
         <div className="sn-anfrage-layout" id="kontakt">
@@ -125,9 +137,20 @@ export default function Anfrage() {
                 <label htmlFor="sn-ort">Wo wird gefeiert?</label>
                 <input id="sn-ort" value={f.ort} onChange={set('ort')} autoComplete="address-level2" placeholder="Ort oder Location" maxLength={MAX.ort} />
               </div>
+              <fieldset className="sn-field full sn-wahl">
+                <legend>Was sollen wir übernehmen?</legend>
+                <div className="sn-wahl-liste">
+                  {LEISTUNGSWAHL.map((l) => (
+                    <label key={l} className={f.leistungen.includes(l) ? 'is-on' : undefined}>
+                      <input type="checkbox" name="leistungen" value={l} checked={f.leistungen.includes(l)} onChange={umschalten(l)} />
+                      <span>{l}</span>
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
               <div className="sn-field full">
-                <label htmlFor="sn-nachricht">Was sollen wir übernehmen?</label>
-                <textarea id="sn-nachricht" value={f.nachricht} onChange={set('nachricht')} rows={2} placeholder="z. B. Getränke und Service von 17 bis 1 Uhr" maxLength={MAX.nachricht} />
+                <label htmlFor="sn-nachricht">Sonst noch etwas?</label>
+                <textarea id="sn-nachricht" value={f.nachricht} onChange={set('nachricht')} rows={2} placeholder="z. B. Ausschank von 17 bis 1 Uhr, Zelt steht schon" maxLength={MAX.nachricht} />
               </div>
               <div className="sn-field">
                 <label htmlFor="sn-name">Ihr Name *</label>

@@ -41,6 +41,7 @@ export default function Navbar() {
         { label: 'Was wir können', ariaLabel: 'Abschnitt Was wir können', onClick: () => scrollTo('leistungen') },
         { label: 'Im Einsatz', ariaLabel: 'Abschnitt Im Einsatz', onClick: () => scrollTo('einsaetze') },
         { label: 'Ablauf', ariaLabel: 'Abschnitt Ablauf', onClick: () => scrollTo('ablauf') },
+        { label: 'Fragen', ariaLabel: 'Abschnitt Fragen', onClick: () => scrollTo('fragen') },
         { label: 'Anfrage', ariaLabel: 'Abschnitt Anfrage', onClick: () => scrollTo('anfrage') },
       ],
     },

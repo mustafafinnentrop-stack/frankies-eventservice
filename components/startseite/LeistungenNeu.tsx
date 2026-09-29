@@ -3,6 +3,7 @@
 import { useRef, useState } from 'react'
 import Link from 'next/link'
 import { FLATS } from '@/components/preise-daten'
+import Stufen from './Stufen'
 
 /*
   02 / Was wir können. Die vier Leistungsbereiche, wie der Betreiber sie
@@ -37,7 +38,7 @@ const DIENSTE: Dienst[] = [
   {
     nr: '01',
     titel: <>Thekenservice mit <br />eigener Mannschaft</>,
-    text: 'Wir kommen mit Theke, Zapftechnik und bis zu zwanzig Leuten und führen den gesamten Ausschank durch — von Aufbau über Service bis Abbau.',
+    text: 'Personal, das zapft, mixt und bedient: Wir kommen mit Theke, Zapftechnik und bis zu zwanzig Leuten und führen den gesamten Ausschank durch — von Aufbau über Service bis Abbau.',
     detail: 'Für Schützenfeste, Karneval, Vereinsfeste und Firmenfeiern.',
     link: { href: '/getraenkeservice-schuetzenfest', text: 'Thekenservice ansehen' },
     bild: '/ausschankwagen.webp',
@@ -48,7 +49,7 @@ const DIENSTE: Dienst[] = [
   {
     nr: '02',
     titel: 'Getränkecatering',
-    text: 'Sie kaufen die Getränke für Ihr Fest bei uns. Die Menge planen wir gemeinsam, geliefert und gekühlt kommt sie an.',
+    text: 'Sie kaufen die Getränke für Ihr Fest bei uns. Die Menge planen wir gemeinsam, geliefert und gekühlt kommt sie an — Sie schenken selbst aus.',
     detail: 'Auf Wunsch mit Servicepersonal, das den Ausschank übernimmt.',
     link: { href: '/service', text: 'Getränkecatering ansehen' },
     bild: '/schuetzenfest.webp',
@@ -163,7 +164,14 @@ export default function LeistungenNeu() {
         <Link className="sn-link" href="/service">Alle Leistungen <span aria-hidden="true">↗</span></Link>
       </div>
       <div className="sn-heading sn-reveal">
-        <h2 id="sn-leistungen-titel">Sie haben den Anlass.<br />Wir kümmern uns <em>um den Rest.</em></h2>
+        <h2 id="sn-leistungen-titel">Wie viel wollen Sie<br /><em>selbst machen?</em></h2>
+      </div>
+
+      <Stufen />
+
+      <div className="sn-zwischen sn-reveal">
+        <span className="sn-eyebrow">Im Detail</span>
+        <p>Vier Bausteine, einzeln oder zusammen. Sie haben den Anlass, wir kümmern uns um den Rest.</p>
       </div>
 
       <div className="sn-services">
