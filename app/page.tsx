@@ -6,6 +6,7 @@ import Mannschaft from '@/components/startseite/Mannschaft'
 import LeistungenNeu from '@/components/startseite/LeistungenNeu'
 import Einsaetze from '@/components/startseite/Einsaetze'
 import AblaufNeu from '@/components/startseite/AblaufNeu'
+import FragenNeu from '@/components/startseite/FragenNeu'
 import Anfrage from '@/components/startseite/Anfrage'
 import '@/components/startseite/startseite.css'
 
@@ -32,6 +33,7 @@ export default function Home() {
         <LeistungenNeu />
         <Einsaetze />
         <AblaufNeu />
+        <FragenNeu />
         <Anfrage />
       </div>
       <CinematicFooter />

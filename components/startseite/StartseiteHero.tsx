@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -47,8 +48,15 @@ export default function StartseiteHero() {
           <span className="sn-line sn-line-gold"><span><em>Mannschaft.</em></span></span>
         </h1>
         <div className="sn-hero-bottom sn-intro">
-          <p>Wir übernehmen Theke, Getränke und Service. Damit Sie bei Ihrem eigenen Fest dabei sein können.</p>
-          <a className="sn-link" href="#mannschaft">Lernen Sie uns kennen <span aria-hidden="true">↓</span></a>
+          <p className="sn-hero-klartext">Getränke, Theke und Personal für Ihr Fest. Aus einer Hand, aus Lennestadt.</p>
+          <p>Wir liefern, zapfen, mixen und räumen wieder ab. Damit Sie bei Ihrem eigenen Fest dabei sein können.</p>
+          <ul className="sn-chips" aria-label="Typische Anlässe">
+            <li><Link href="/getraenkeservice-schuetzenfest">Schützenfest</Link></li>
+            <li><Link href="/hochzeit-sauerland">Hochzeit</Link></li>
+            <li><Link href="/eventservice-kreis-olpe">Firmenfeier</Link></li>
+            <li><a href="#leistungen">Vereinsfest</a></li>
+          </ul>
+          <a className="sn-link" href="#leistungen">Was passt zu Ihnen? <span aria-hidden="true">↓</span></a>
         </div>
       </div>
 

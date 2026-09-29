@@ -71,6 +71,56 @@
 .sn-hero-foot { grid-column: 1 / -1; display: flex; justify-content: space-between; gap: 24px; border-top: 1px solid var(--sn-line); margin-top: 45px; padding: 23px 0 0; font-size: 13px; color: var(--color-text-muted); }
 .sn-hero-foot a span { color: var(--color-gold); margin-left: 12px; }
 
+/* ---------- Hero: Klartext und Anlaesse ---------- */
+.sn-hero-klartext { font-size: 19px; line-height: 1.55; color: var(--color-text); font-weight: 400; margin-bottom: 12px; }
+.sn-chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0 0 22px; padding: 0; }
+.sn-chips a { display: inline-block; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; padding: 8px 13px; border: 1px solid rgba(240,236,227,0.28); border-radius: 999px; color: var(--color-text); transition: border-color 0.3s, color 0.3s; }
+.sn-chips a:hover { border-color: var(--color-gold); color: var(--color-gold); }
+
+/* ---------- Stufen: wie viel selbst machen ---------- */
+.sn-stufen { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--sn-line); border-bottom: 1px solid var(--sn-line); margin-bottom: var(--sn-innen); }
+.sn-stufe { padding: 34px 32px 34px 0; border-right: 1px solid var(--sn-line); margin-right: 32px; display: flex; flex-direction: column; }
+.sn-stufe:last-child { border-right: 0; margin-right: 0; padding-right: 0; }
+.sn-stufe-no { color: var(--color-gold); font-size: 12px; margin-bottom: 18px; }
+.sn-stufe h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(26px, 2.4vw, 36px); line-height: 1.15; letter-spacing: -0.02em; color: var(--color-text); margin-bottom: 8px; }
+.sn-stufe .sn-stufe-kurz { font-size: 14px; color: var(--color-gold); font-weight: 500; margin-bottom: 14px; }
+.sn-stufe p { font-size: 15px; line-height: 1.8; }
+.sn-stufe .sn-link { margin-top: auto; align-self: flex-start; background: none; border: 0; border-bottom: 1px solid rgba(200, 164, 78, 0.45); padding: 9px 0; font-size: 14px; font-family: inherit; }
+.sn-stufe > p:last-of-type { margin-bottom: 22px; }
+.sn-zwischen { display: flex; align-items: baseline; gap: 28px; margin-bottom: 28px; }
+.sn-zwischen p { font-size: 15px; }
+
+/* ---------- Kaestchen im Formular ---------- */
+.sn-wahl { border: 0; padding: 0; margin: 0; min-width: 0; }
+.sn-wahl legend { font-size: 14px; margin-bottom: 12px; color: #c4c0b4; padding: 0; }
+.sn-wahl-liste { display: flex; flex-wrap: wrap; gap: 10px; }
+.sn-wahl-liste label { position: relative; display: inline-flex; align-items: center; gap: 10px; padding: 10px 15px; border: 1px solid rgba(240,236,227,0.3); border-radius: 999px; font-size: 14px; color: var(--color-text); cursor: pointer; transition: border-color 0.3s, background 0.3s, color 0.3s; }
+.sn-wahl-liste label:hover { border-color: var(--color-gold); }
+.sn-wahl-liste label.is-on { border-color: var(--color-gold); background: rgba(200,164,78,0.14); color: var(--color-gold); }
+/* Das echte Kaestchen bleibt fuer Tastatur und Screenreader da, sichtbar ist die Pille.
+   Spezifischer als .sn-field input, sonst erbt es dessen 100 % Breite und laeuft ueber. */
+.sn-field .sn-wahl-liste input { position: absolute; left: 0; top: 0; width: 1px; height: 1px; min-height: 0; opacity: 0; pointer-events: none; border: 0; padding: 0; margin: 0; }
+.sn-wahl-liste label:has(input:focus-visible) { outline: 2px solid var(--color-gold); outline-offset: 3px; }
+.sn-wahl-liste span::before { content: ''; display: inline-block; width: 8px; height: 8px; border-radius: 50%; border: 1px solid currentColor; margin-right: 9px; vertical-align: 1px; }
+.sn-wahl-liste label.is-on span::before { background: currentColor; }
+
+/* ---------- Fragen ---------- */
+.sn-fragen { padding: var(--sn-abschnitt) var(--sn-gutter) 0; max-width: 1920px; margin: auto; }
+.sn-fragen-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 8vw; }
+.sn-fragen-layout > h2 { position: sticky; top: 110px; align-self: start; }
+.sn-frage { border-top: 1px solid var(--sn-line); }
+.sn-frage:last-of-type { border-bottom: 1px solid var(--sn-line); }
+.sn-frage summary { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 22px 0; cursor: pointer; list-style: none; }
+.sn-frage summary::-webkit-details-marker { display: none; }
+.sn-frage h3 { font-size: 18px; font-weight: 500; line-height: 1.5; color: var(--color-text); transition: color 0.3s; }
+.sn-frage summary:hover h3 { color: var(--color-gold); }
+.sn-frage-plus { position: relative; flex: 0 0 18px; height: 18px; }
+.sn-frage-plus::before, .sn-frage-plus::after { content: ''; position: absolute; background: var(--color-gold); left: 50%; top: 50%; transform: translate(-50%, -50%); }
+.sn-frage-plus::before { width: 18px; height: 1px; }
+.sn-frage-plus::after { width: 1px; height: 18px; transition: transform 0.35s; }
+.sn-frage[open] .sn-frage-plus::after { transform: translate(-50%, -50%) rotate(90deg); }
+.sn-frage > p { font-size: 16px; line-height: 1.85; padding: 0 42px 26px 0; max-width: 620px; animation: snContentIn 0.45s var(--sn-ease); }
+
 /* ---------- Sektionen ---------- */
 .sn-mannschaft, .sn-leistungen, .sn-einsaetze, .sn-ablauf, .sn-anfrage { padding: var(--sn-abschnitt) var(--sn-gutter) 0; max-width: 1920px; margin: auto; }
 /* globals.css gibt #leistungen und #ablauf per ID-Selektor 8rem (mobil 4rem) padding-bottom — das
@@ -384,3 +434,22 @@
 .sn-zitat p { font-size: 16px; line-height: 1.8; }
 .sn-zitat figcaption { font-size: 12px; color: var(--color-text-muted); margin-top: auto; }
 @media (max-width: 800px) { .sn-zitate { grid-template-columns: 1fr; gap: 20px; } }
+
+/* ---------- Neue Bloecke: Tablet und Handy ---------- */
+@media (max-width: 1000px) {
+  .sn-stufen { grid-template-columns: 1fr; }
+  .sn-stufe { border-right: 0; margin-right: 0; padding: 26px 0; border-bottom: 1px solid var(--sn-line); }
+  .sn-stufe:last-child { border-bottom: 0; }
+  .sn-fragen-layout { grid-template-columns: 1fr; gap: 36px; }
+  .sn-fragen-layout > h2 { position: static; }
+}
+@media (max-width: 560px) {
+  .sn-hero-klartext { font-size: 17px; }
+  .sn-chips a { font-size: 11px; padding: 7px 11px; }
+  .sn-stufe h3 { font-size: 24px; }
+  .sn-stufe p { font-size: 15px; }
+  .sn-zwischen { flex-direction: column; gap: 8px; margin-bottom: 20px; }
+  .sn-wahl-liste label { font-size: 13px; padding: 9px 13px; }
+  .sn-frage h3 { font-size: 16px; }
+  .sn-frage > p { font-size: 15px; padding-right: 24px; }
+}
