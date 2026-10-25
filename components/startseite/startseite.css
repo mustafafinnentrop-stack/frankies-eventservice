@@ -566,3 +566,15 @@ a.sn-hero-angebot > span:last-child { font-size: 18px; line-height: 1; }
 .sn-step:last-child { border-bottom: 0; padding-bottom: 0; }
 .sn-stufe:last-child { padding-bottom: 0; }
 @media (min-width: 1001px) { .sn-stufe { padding-bottom: 0; } }
+
+/* Anlass-Chips (25.10.2026): nie mehr 3+1 mit Loch. Der Block misst
+   seine eigene Breite (Container Query): Passen alle vier in eine Zeile,
+   stehen sie dort. Sonst zwei mal zwei gleich breite Felder ueber die
+   volle Breite. */
+.sn-hero-bottom { container-type: inline-size; container-name: sn-hero-text; }
+.sn-chips { display: grid; grid-template-columns: repeat(4, max-content); justify-content: start; }
+.sn-chips li { display: block; min-width: 0; }
+@container sn-hero-text (max-width: 479px) {
+  .sn-chips { grid-template-columns: 1fr 1fr; }
+  .sn-chips a { display: block; text-align: center; padding-left: 6px; padding-right: 6px; white-space: nowrap; }
+}
