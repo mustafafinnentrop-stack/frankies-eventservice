@@ -71,7 +71,7 @@ export default function StartseiteHero() {
             <li><Link href="/getraenkeservice-schuetzenfest">Schützenfest</Link></li>
             <li><Link href="/hochzeit-sauerland">Hochzeit</Link></li>
             <li><Link href="/eventservice-kreis-olpe">Firmenfeier</Link></li>
-            <li><a href="#leistungen">Vereinsfest</a></li>
+            <li><a href="#pakete">Vereinsfest</a></li>
           </ul>
           <div className="sn-hero-cta">
             <a className="sn-submit sn-hero-angebot" href="#anfrage">Angebot anfordern <span aria-hidden="true">↗</span></a>

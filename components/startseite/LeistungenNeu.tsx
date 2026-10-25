@@ -189,16 +189,17 @@ export default function LeistungenNeu() {
 
   const d0 = DIENSTE[0]
   return (
-    <section className="sn-leistungen" id="leistungen" aria-labelledby="sn-leistungen-titel">
+    <>
+    {/* 02 — Warum Frankies */}
+    <section className="sn-leistungen" id="warum" aria-labelledby="sn-warum-titel">
       <div className="sn-top sn-reveal">
         <span className="sn-eyebrow">02 / Warum Frankies</span>
-        <Link className="sn-link" href="/service">Alle Leistungen <span aria-hidden="true">↗</span></Link>
+        <span className="sn-note">Vier Gründe</span>
       </div>
       <div className="sn-heading sn-reveal">
-        <h2 id="sn-leistungen-titel">Ein Fest ist Arbeit.<br /><em>Unsere.</em></h2>
+        <h2 id="sn-warum-titel">Ein Fest ist Arbeit.<br /><em>Unsere.</em></h2>
       </div>
-
-      <div className="sn-gruende sn-reveal" id="warum" role="list" aria-label="Vier Gründe für Frankies">
+      <div className="sn-gruende sn-reveal" role="list" aria-label="Vier Gründe für Frankies">
         {GRUENDE.map((g, i) => (
           <article key={g.titel} className="sn-grund" role="listitem">
             <span className="sn-stufe-no">{String(i + 1).padStart(2, '0')}</span>
@@ -207,19 +208,29 @@ export default function LeistungenNeu() {
           </article>
         ))}
       </div>
+    </section>
 
-      <div className="sn-zwischen sn-reveal">
-        <span className="sn-eyebrow">Drei Pakete</span>
-        <p>So buchen Sie uns — vom kompletten Fest bis zur reinen Lieferung.</p>
+    {/* 03 — Pakete */}
+    <section className="sn-leistungen" id="pakete" aria-labelledby="sn-pakete-titel">
+      <div className="sn-top sn-reveal">
+        <span className="sn-eyebrow">03 / Unsere Pakete</span>
+        <span className="sn-note">Festwirtschaft · Theke · Lieferung</span>
       </div>
-
+      <div className="sn-heading sn-reveal">
+        <h2 id="sn-pakete-titel">So buchen Sie uns.<br /><em>Vom ganzen Fest bis zur Lieferung.</em></h2>
+      </div>
       <Stufen />
+    </section>
 
-      <div className="sn-zwischen sn-reveal">
-        <span className="sn-eyebrow">Der Vergleich</span>
-        <p>Selbst organisieren oder Frankies — der Unterschied auf einen Blick.</p>
+    {/* 04 — Vergleich */}
+    <section className="sn-leistungen" id="vergleich" aria-labelledby="sn-vergleich-titel">
+      <div className="sn-top sn-reveal">
+        <span className="sn-eyebrow">04 / Der Vergleich</span>
+        <span className="sn-note">Der Unterschied auf einen Blick</span>
       </div>
-
+      <div className="sn-heading sn-reveal">
+        <h2 id="sn-vergleich-titel">Selbst organisieren?<br /><em>Oder Frankies.</em></h2>
+      </div>
       <div className="sn-vt sn-reveal" role="table" aria-label="Mit Frankies im Vergleich zum Selbstorganisieren">
         <div className="sn-vt-kopf" role="row">
           <span className="sn-vt-leer" role="columnheader"><span className="sn-nur-vorleser">Leistung</span></span>
@@ -254,10 +265,16 @@ export default function LeistungenNeu() {
           <span className="sn-vt-neben sn-vt-nebenfuss" role="cell" />
         </div>
       </div>
+    </section>
 
-      <div className="sn-zwischen sn-reveal">
-        <span className="sn-eyebrow">Im Detail</span>
-        <p>Vier Bausteine, einzeln oder zusammen. Sie haben den Anlass, wir kümmern uns um den Rest.</p>
+    {/* 05 — Was wir koennen (Bausteine im Detail) */}
+    <section className="sn-leistungen" id="leistungen" aria-labelledby="sn-leistungen-titel">
+      <div className="sn-top sn-reveal">
+        <span className="sn-eyebrow">05 / Was wir können</span>
+        <Link className="sn-link" href="/service">Alle Leistungen <span aria-hidden="true">↗</span></Link>
+      </div>
+      <div className="sn-heading sn-reveal">
+        <h2 id="sn-leistungen-titel">Vier Bausteine.<br /><em>Einzeln oder zusammen.</em></h2>
       </div>
 
       <div className="sn-services">
@@ -301,5 +318,6 @@ export default function LeistungenNeu() {
         </div>
       </div>
     </section>
+    </>
   )
 }

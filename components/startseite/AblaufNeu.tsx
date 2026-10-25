@@ -23,7 +23,7 @@ export default function AblaufNeu() {
   return (
     <section className="sn-ablauf" id="ablauf" aria-labelledby="sn-ablauf-titel">
       <div className="sn-top sn-reveal">
-        <span className="sn-eyebrow">04 / Vom ersten Gespräch zum Fest</span>
+        <span className="sn-eyebrow">07 / Vom ersten Gespräch zum Fest</span>
       </div>
       <div className="sn-ablauf-layout">
         <h2 className="sn-reveal" id="sn-ablauf-titel">Vorher klären.<br /><em>Vor Ort machen.</em></h2>

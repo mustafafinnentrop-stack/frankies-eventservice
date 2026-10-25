@@ -90,7 +90,7 @@ export default function Anfrage() {
     <section className="sn-anfrage" id="anfrage" aria-labelledby="sn-anfrage-titel">
       <div className="sn-wrap">
         <div className="sn-top sn-reveal">
-          <span className="sn-eyebrow">06 / Ihr Fest</span>
+          <span className="sn-eyebrow">09 / Ihr Fest</span>
           <span className="sn-note">Lennestadt · Kreis Olpe · Sauerland</span>
         </div>
         <div className="sn-anfrage-layout" id="kontakt">

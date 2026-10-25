@@ -78,7 +78,7 @@
 .sn-chips a:hover { border-color: var(--color-gold); color: var(--color-gold); }
 
 /* ---------- Stufen: wie viel selbst machen ---------- */
-.sn-stufen { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--sn-line); border-bottom: 1px solid var(--sn-line); margin-bottom: var(--sn-innen); }
+.sn-stufen { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--sn-line); border-bottom: 1px solid var(--sn-line); margin-bottom: 0; }
 .sn-stufe { padding: 34px 32px 34px 0; border-right: 1px solid var(--sn-line); margin-right: 32px; display: flex; flex-direction: column; }
 .sn-stufe:last-child { border-right: 0; margin-right: 0; padding-right: 0; }
 .sn-stufe-no { color: var(--color-gold); font-size: 12px; margin-bottom: 18px; }
@@ -309,7 +309,6 @@
   .sn-hero-foot { font-size: 12px; line-height: 1.7; margin-top: 30px; }
   .sn-intro-grid { grid-template-columns: 1fr; gap: 22px; }
   .sn-intro-grid > div { max-width: 530px; }
-  .sn-intro-grid h2 { font-size: clamp(40px, 7vw, 64px); }
   .sn-intro-grid p { margin-bottom: 12px; }
   .sn-seq { height: 125vh; min-height: 750px; }
   .sn-stage { min-height: 650px; max-height: 850px; }
@@ -338,7 +337,6 @@
   .sn-ablauf-layout { grid-template-columns: 1fr; gap: 40px; }
   .sn-ablauf-layout > h2 { position: static; }
   .sn-anfrage-layout { grid-template-columns: 1fr; gap: 55px; }
-  .sn-anfrage-copy > h2 { font-size: 50px; }
   .sn-phone { margin-top: 24px; }
   .sn-anfrage-copy > p { margin-top: 24px; }
   .sn-note { font-size: 11px; }
@@ -406,7 +404,6 @@
   .sn-step { gap: 20px; }
   .sn-step h3 { font-size: 17px; }
   .sn-step p { font-size: 15px; }
-  .sn-anfrage-copy > h2 { font-size: clamp(38px, 10.2vw, 54px); }
   .sn-anfrage-copy > p { font-size: 16px; }
   .sn-phone { font-size: 29px; }
   .sn-email { font-size: 13px; }
@@ -467,7 +464,7 @@
 a.sn-hero-angebot { display: inline-flex; width: auto; justify-content: flex-start; padding: 15px 22px; gap: 12px; }
 a.sn-hero-angebot > span:last-child { font-size: 18px; line-height: 1; }
 
-.sn-gruende { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-bottom: var(--sn-innen); }
+.sn-gruende { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-bottom: 0; }
 .sn-grund { border-top: 1px solid var(--sn-line); padding-top: 22px; }
 .sn-grund .sn-stufe-no { display: block; }
 .sn-grund h3 { font-size: 19px; font-weight: 500; color: var(--color-text); margin-bottom: 10px; line-height: 1.3; }
@@ -481,7 +478,7 @@ a.sn-hero-angebot > span:last-child { font-size: 18px; line-height: 1; }
 .sn-nur-vorleser { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 /* Vergleichstabelle: Gold-Spalte "Mit Frankies" gegen "Selbst organisieren" */
-.sn-vt { display: grid; grid-template-columns: 1.5fr 1fr 1fr; margin-bottom: var(--sn-innen); }
+.sn-vt { display: grid; grid-template-columns: 1.5fr 1fr 1fr; margin-bottom: 0; }
 .sn-vt-kopf, .sn-vt-zeile, .sn-vt-fuss { display: contents; }
 .sn-vt-haupt { background: var(--color-gold); color: var(--color-bg); display: flex; align-items: center; justify-content: center; padding: 14px 16px; position: relative; }
 .sn-vt-kopfzelle { flex-direction: column; gap: 10px; padding: 26px 16px 18px; border-radius: 12px 12px 0 0; }
@@ -556,3 +553,16 @@ a.sn-hero-angebot > span:last-child { font-size: 18px; line-height: 1; }
   .sn-portrait { margin-left: 0; }
   .sn-vt { grid-template-columns: calc((100% - 5vw) / 2 + 5vw) 1fr 1fr; }
 }
+
+/* Keine Abschlusslinie am Sektionsende (25.10.2026): Die Kopflinie der
+   naechsten Sektion trennt bereits. Sonst stehen zwei Linien ohne Inhalt
+   dazwischen uebereinander, auf dem Handy nur 64 px auseinander. */
+.sn-stufen { border-bottom: 0; }
+.sn-owner { border-bottom: 0; padding-bottom: 0; }
+
+/* Sektionsende ohne Restabstand (25.10.2026): Der Abstand zwischen zwei
+   Sektionen kommt ausschliesslich aus --sn-abschnitt. Letzter Ablauf-
+   Schritt ohne Linie, weil die Kopflinie der naechsten Sektion folgt. */
+.sn-step:last-child { border-bottom: 0; padding-bottom: 0; }
+.sn-stufe:last-child { padding-bottom: 0; }
+@media (min-width: 1001px) { .sn-stufe { padding-bottom: 0; } }
