@@ -63,8 +63,8 @@ export default function StartseiteHero() {
         </h1>
         <div className="sn-hero-bottom sn-intro">
           <p className="sn-hero-klartext">
-            Getränke, Theke und Personal aus einer Hand — für{' '}
-            <span className="sn-rotwort"><span key={anlass} className="sn-rotwort-wort">{ANLAESSE[anlass]}</span></span>.
+            Getränke, Theke und Personal aus einer Hand —{' '}
+            <span className="sn-rotwort">für <span key={anlass} className="sn-rotwort-wort">{ANLAESSE[anlass]}</span></span>.
           </p>
           <p>Wir liefern, zapfen, mixen und räumen wieder ab. Damit Sie bei Ihrem eigenen Fest dabei sein können.</p>
           <ul className="sn-chips" aria-label="Typische Anlässe">

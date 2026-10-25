@@ -215,6 +215,11 @@ export default function LeistungenNeu() {
 
       <Stufen />
 
+      <div className="sn-zwischen sn-reveal">
+        <span className="sn-eyebrow">Der Vergleich</span>
+        <p>Selbst organisieren oder Frankies — der Unterschied auf einen Blick.</p>
+      </div>
+
       <div className="sn-vt sn-reveal" role="table" aria-label="Mit Frankies im Vergleich zum Selbstorganisieren">
         <div className="sn-vt-kopf" role="row">
           <span className="sn-vt-leer" role="columnheader"><span className="sn-nur-vorleser">Leistung</span></span>
