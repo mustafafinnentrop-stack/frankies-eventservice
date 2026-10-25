@@ -219,7 +219,7 @@ export default function LeistungenNeu() {
         <div className="sn-vt-kopf" role="row">
           <span className="sn-vt-leer" role="columnheader"><span className="sn-nur-vorleser">Leistung</span></span>
           <span className="sn-vt-haupt sn-vt-kopfzelle" role="columnheader">
-            <Image src="/theke-vor-ort.webp" alt="" width={96} height={96} quality={60} className="sn-vt-bild" />
+            <Image src="/team.webp" alt="" width={96} height={96} quality={60} className="sn-vt-bild" />
             <strong>Mit Frankies</strong>
             <span className="sn-vt-badge">Alles aus einer Hand</span>
           </span>
