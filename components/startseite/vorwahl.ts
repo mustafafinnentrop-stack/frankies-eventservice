@@ -1,9 +1,14 @@
 /*
   Was ein Kunde ankreuzen kann, statt es formulieren zu muessen — dieselbe
-  Liste im Stufen-Block ("Wie viel wollen Sie selbst machen?") und im
-  Anfrageformular. Klickt jemand bei einer Stufe auf "Das brauche ich",
-  springt die Seite zum Formular und die passenden Kaestchen sind schon
-  gesetzt. Uebergabe per Browser-Ereignis, nichts wird gespeichert.
+  Liste im Paket-Block und im Anfrageformular. Klickt jemand bei einem
+  Paket auf "Angebot anfordern", springt die Seite zum Formular und die
+  passenden Kaestchen sind schon gesetzt. Uebergabe per Browser-Ereignis,
+  nichts wird gespeichert.
+
+  Umbau 25.10.2026 nach Vorgabe des Betreibers: Die Pakete heissen nach
+  dem Ergebnis, nicht nach der Eigenleistung ("Wie viel wollen Sie selbst
+  machen?" ist gestrichen). Die Festwirtschaft steht zuerst und traegt
+  die Empfehlung.
 */
 export const LEISTUNGSWAHL = [
   'Getränke liefern',
@@ -15,24 +20,25 @@ export const LEISTUNGSWAHL = [
 
 export type Leistung = (typeof LEISTUNGSWAHL)[number]
 
-export const STUFEN: { titel: string; kurz: string; text: string; wahl: Leistung[] }[] = [
+export const STUFEN: { titel: string; kurz: string; text: string; wahl: Leistung[]; empfohlen?: boolean }[] = [
   {
-    titel: 'Nur liefern',
-    kurz: 'Sie schenken selbst aus.',
-    text: 'Getränke, Zapfanlage und Kühlung kommen von uns, geliefert und aufgebaut. Hinter der Theke stehen Ihre Leute.',
-    wahl: ['Getränke liefern', 'Zelt und Equipment mieten'],
+    titel: 'Komplette Festwirtschaft',
+    kurz: 'Sie feiern. Wir machen den Rest.',
+    text: 'Getränke, Theke mit Personal, auf Wunsch Cocktailbar, Zelt und Garnituren. Wir bauen auf, machen den Abend und räumen wieder ab.',
+    wahl: ['Getränke liefern', 'Theke mit Personal', 'Mobile Cocktailbar', 'Zelt und Equipment mieten'],
+    empfohlen: true,
   },
   {
-    titel: 'Liefern und ausschenken',
-    kurz: 'Unsere Leute stehen an der Theke.',
-    text: 'Getränke plus Personal, das zapft, mixt und bedient — von Aufbau bis Abbau. Sie kümmern sich um Ihre Gäste, nicht um den Ausschank.',
+    titel: 'Theke mit Personal',
+    kurz: 'Unsere Leute an Ihrer Theke.',
+    text: 'Getränke plus Personal, das zapft, mixt und bedient — vom Aufbau bis zum Abbau. Sie kümmern sich um Ihre Gäste, nicht um den Ausschank.',
     wahl: ['Getränke liefern', 'Theke mit Personal'],
   },
   {
-    titel: 'Alles abgeben',
-    kurz: 'Sie feiern nur noch.',
-    text: 'Getränke, Theke mit Personal, mobile Cocktailbar, Zelt und Garnituren. Wir bauen auf, machen den Abend und räumen wieder ab.',
-    wahl: ['Getränke liefern', 'Theke mit Personal', 'Mobile Cocktailbar', 'Zelt und Equipment mieten'],
+    titel: 'Getränkelieferung',
+    kurz: 'Geliefert, gekühlt, aufgebaut.',
+    text: 'Getränke, Zapfanlage und Kühlung kommen von uns — geliefert und fertig aufgebaut. Personal können Sie jederzeit dazubuchen.',
+    wahl: ['Getränke liefern', 'Zelt und Equipment mieten'],
   },
 ]
 

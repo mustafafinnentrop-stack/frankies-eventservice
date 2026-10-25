@@ -3,10 +3,10 @@
 import { STUFEN, vorwahlSenden } from './vorwahl'
 
 /*
-  Die Frage, die Anrufer wirklich stellen: "Macht ihr auch das Personal
-  dazu?" Statt vier Leistungsbereichen aus Anbietersicht drei Stufen aus
-  Kundensicht — sortiert danach, wie viel jemand selbst machen will.
-  Die Details stehen darunter im Akkordeon.
+  Die drei Pakete, nach Ergebnis benannt (Umbau 25.10.2026): Komplette
+  Festwirtschaft zuerst und als Empfehlung markiert, dann Theke mit
+  Personal, dann die reine Lieferung. Der Knopf springt zum Formular
+  und setzt die passenden Kaestchen.
 */
 export default function Stufen() {
   const waehlen = (i: number) => {
@@ -15,15 +15,18 @@ export default function Stufen() {
   }
 
   return (
-    <div className="sn-stufen sn-reveal" role="list" aria-label="Drei Stufen: wie viel Sie selbst machen">
+    <div className="sn-stufen sn-reveal" role="list" aria-label="Unsere drei Pakete">
       {STUFEN.map((s, i) => (
-        <article key={s.titel} className="sn-stufe" role="listitem">
-          <span className="sn-stufe-no">{String(i + 1).padStart(2, '0')}</span>
+        <article key={s.titel} className={`sn-stufe${s.empfohlen ? ' is-empfohlen' : ''}`} role="listitem">
+          <span className="sn-stufe-kopf">
+            <span className="sn-stufe-no">{String(i + 1).padStart(2, '0')}</span>
+            {s.empfohlen && <span className="sn-stufe-badge">Unsere Empfehlung</span>}
+          </span>
           <h3>{s.titel}</h3>
           <p className="sn-stufe-kurz">{s.kurz}</p>
           <p>{s.text}</p>
           <button type="button" className="sn-link" onClick={() => waehlen(i)}>
-            Das brauche ich <span aria-hidden="true">↗</span>
+            Angebot anfordern <span aria-hidden="true">↗</span>
           </button>
         </article>
       ))}

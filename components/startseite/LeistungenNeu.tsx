@@ -81,6 +81,21 @@ const DIENSTE: Dienst[] = [
   },
 ]
 
+/*
+  Umbau 25.10.2026 nach Vorgabe des Betreibers: kein "Wie viel wollen Sie
+  selbst machen?" mehr. Erst vier Gruende fuer uns, dann die Pakete
+  (Festwirtschaft zuerst), dann der Vergleich "Selbst organisieren /
+  Mit Frankies". Jede Aussage ist durch Seite oder AGB gedeckt:
+  Ruecknahme originalverschlossener Gebinde nur nach Vereinbarung
+  (AGB § 6 Abs. 3), Personal bis zu zwanzig (Leistungstext 01).
+*/
+const GRUENDE = [
+  { titel: 'Komplett ausgestattet', text: 'Theke, Zapftechnik, Kühlung und Gläser bringen wir mit. Auch Zelt und Garnituren, wenn Sie wollen.' },
+  { titel: 'Eingespieltes Personal', text: 'Unsere Leute zapfen, mixen und bedienen — bei großen Festen bis zu zwanzig, vom Aufbau bis zum Schluss.' },
+  { titel: 'Keine Reste, kein Risiko', text: 'Originalverschlossene Getränke nehmen wir nach Absprache zurück. Das steht dann so im Angebot.' },
+  { titel: 'Ein Ansprechpartner', text: 'Von der Planung über den Abend bis zur Abrechnung: eine Nummer, ein Team.' },
+]
+
 const EASE = 'cubic-bezier(.19,1,.22,1)'
 
 export default function LeistungenNeu() {
@@ -160,14 +175,51 @@ export default function LeistungenNeu() {
   return (
     <section className="sn-leistungen" id="leistungen" aria-labelledby="sn-leistungen-titel">
       <div className="sn-top sn-reveal">
-        <span className="sn-eyebrow">02 / Was wir können</span>
+        <span className="sn-eyebrow">02 / Warum Frankies</span>
         <Link className="sn-link" href="/service">Alle Leistungen <span aria-hidden="true">↗</span></Link>
       </div>
       <div className="sn-heading sn-reveal">
-        <h2 id="sn-leistungen-titel">Wie viel wollen Sie<br /><em>selbst machen?</em></h2>
+        <h2 id="sn-leistungen-titel">Ein Fest ist Arbeit.<br /><em>Unsere.</em></h2>
+      </div>
+
+      <div className="sn-gruende sn-reveal" id="warum" role="list" aria-label="Vier Gründe für Frankies">
+        {GRUENDE.map((g, i) => (
+          <article key={g.titel} className="sn-grund" role="listitem">
+            <span className="sn-stufe-no">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{g.titel}</h3>
+            <p>{g.text}</p>
+          </article>
+        ))}
+      </div>
+
+      <div className="sn-zwischen sn-reveal">
+        <span className="sn-eyebrow">Drei Pakete</span>
+        <p>So buchen Sie uns — vom kompletten Fest bis zur reinen Lieferung.</p>
       </div>
 
       <Stufen />
+
+      <div className="sn-vergleich sn-reveal" aria-label="Selbst organisieren im Vergleich zu Frankies">
+        <div className="sn-vgl sn-vgl-ohne">
+          <h3>Selbst organisieren</h3>
+          <ul>
+            <li>Personal suchen, einteilen und durch die Nacht bringen</li>
+            <li>Zapfanlage, Kühlwagen und Gläser zusammenleihen</li>
+            <li>Getränkemengen schätzen — und auf den Resten sitzen</li>
+            <li>Nachts abbauen, am Morgen danach alles zurückfahren</li>
+          </ul>
+        </div>
+        <div className="sn-vgl sn-vgl-mit">
+          <h3>Mit Frankies</h3>
+          <ul>
+            <li>Ein Anruf, ein Angebot, ein Ansprechpartner</li>
+            <li>Theke, Technik, Kühlung und Gläser kommen mit uns</li>
+            <li>Originalverschlossenes nehmen wir nach Absprache zurück</li>
+            <li>Wir bauen auf, schenken aus und räumen wieder ab</li>
+          </ul>
+          <a className="sn-link" href="#anfrage">Angebot anfordern <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
 
       <div className="sn-zwischen sn-reveal">
         <span className="sn-eyebrow">Im Detail</span>
