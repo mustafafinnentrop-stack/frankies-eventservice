@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { gsap } from 'gsap'
@@ -8,6 +8,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 /*
   Der Einstieg. Links die drei Titelzeilen, rechts das Mannschaftsfoto.
+
+  Umbau 25.10.2026 nach Vorgabe des Betreibers: Nutzen zuerst ("Sie
+  feiern. Wir machen den Rest."), ein goldener Angebots-Knopf, und im
+  Klartext rotiert der Anlass ("Ihr Schuetzenfest / Ihre Hochzeit ...").
+  Die Rotation steht bei Bewegungswunsch "reduziert" still.
 
   Der Einstieg selbst laeuft ueber CSS-Keyframes (siehe startseite.css):
   Titelzeilen fahren aus einer verdeckten Zeile hoch, das Foto wird von
@@ -17,9 +22,18 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
   Nur der leichte Zoom des Fotos beim Scrollen kommt von GSAP — und nur
   auf breiten Bildschirmen, auf dem Handy scrollt das Foto einfach mit.
 */
+const ANLAESSE = ['Ihr Schützenfest', 'Ihre Hochzeit', 'Ihre Firmenfeier', 'Ihr Vereinsfest']
+
 export default function StartseiteHero() {
   const heroRef = useRef<HTMLElement>(null)
   const fensterRef = useRef<HTMLDivElement>(null)
+  const [anlass, setAnlass] = useState(0)
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const takt = window.setInterval(() => setAnlass((a) => (a + 1) % ANLAESSE.length), 2600)
+    return () => window.clearInterval(takt)
+  }, [])
 
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
@@ -43,12 +57,15 @@ export default function StartseiteHero() {
       <div className="sn-hero-copy">
         <p className="sn-eyebrow sn-intro">Aus Lennestadt. Mittendrin.</p>
         <h1 id="sn-hero-titel">
-          <span className="sn-line"><span>Ihr Fest.</span></span>
-          <span className="sn-line"><span>Unsere</span></span>
-          <span className="sn-line sn-line-gold"><span><em>Mannschaft.</em></span></span>
+          <span className="sn-line"><span>Sie feiern.</span></span>
+          <span className="sn-line"><span>Wir machen</span></span>
+          <span className="sn-line sn-line-gold"><span><em>den Rest.</em></span></span>
         </h1>
         <div className="sn-hero-bottom sn-intro">
-          <p className="sn-hero-klartext">Getränke, Theke und Personal für Ihr Fest. Aus einer Hand, aus Lennestadt.</p>
+          <p className="sn-hero-klartext">
+            Getränke, Theke und Personal aus einer Hand — für{' '}
+            <span className="sn-rotwort"><span key={anlass} className="sn-rotwort-wort">{ANLAESSE[anlass]}</span></span>.
+          </p>
           <p>Wir liefern, zapfen, mixen und räumen wieder ab. Damit Sie bei Ihrem eigenen Fest dabei sein können.</p>
           <ul className="sn-chips" aria-label="Typische Anlässe">
             <li><Link href="/getraenkeservice-schuetzenfest">Schützenfest</Link></li>
@@ -56,7 +73,10 @@ export default function StartseiteHero() {
             <li><Link href="/eventservice-kreis-olpe">Firmenfeier</Link></li>
             <li><a href="#leistungen">Vereinsfest</a></li>
           </ul>
-          <a className="sn-link" href="#leistungen">Was passt zu Ihnen? <span aria-hidden="true">↓</span></a>
+          <div className="sn-hero-cta">
+            <a className="sn-submit sn-hero-angebot" href="#anfrage">Angebot anfordern <span aria-hidden="true">↗</span></a>
+            <a className="sn-link" href="#warum">Warum Frankies? <span aria-hidden="true">↓</span></a>
+          </div>
         </div>
       </div>
 

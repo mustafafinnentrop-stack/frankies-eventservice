@@ -453,3 +453,47 @@
   .sn-frage h3 { font-size: 16px; }
   .sn-frage > p { font-size: 15px; padding-right: 24px; }
 }
+
+/* ===== Umbau 25.10.2026: Nutzen zuerst (Hero-CTA, rotierender Anlass,
+   Gruende, Pakete-Empfehlung, Vergleich) ===== */
+.sn-rotwort { color: var(--color-gold); font-weight: 500; white-space: nowrap; }
+.sn-rotwort-wort { display: inline-block; animation: sn-rotwort-rein 0.35s cubic-bezier(.19,1,.22,1) both; }
+@keyframes sn-rotwort-rein { from { opacity: 0; transform: translateY(0.55em); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .sn-rotwort-wort { animation: none; } }
+
+.sn-hero-cta { display: flex; align-items: center; flex-wrap: wrap; gap: 14px 26px; }
+a.sn-hero-angebot { display: inline-flex; width: auto; justify-content: flex-start; padding: 15px 22px; gap: 12px; }
+a.sn-hero-angebot > span:last-child { font-size: 18px; line-height: 1; }
+
+.sn-gruende { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-bottom: var(--sn-innen); }
+.sn-grund { border-top: 1px solid var(--sn-line); padding-top: 22px; }
+.sn-grund .sn-stufe-no { display: block; }
+.sn-grund h3 { font-size: 19px; font-weight: 500; color: var(--color-text); margin-bottom: 10px; line-height: 1.3; }
+.sn-grund p { font-size: 15px; line-height: 1.8; }
+
+.sn-stufe-kopf { display: flex; align-items: center; gap: 12px; height: 26px; margin-bottom: 14px; }
+.sn-stufe-kopf .sn-stufe-no { margin-bottom: 0; }
+.sn-stufe-badge { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-bg); background: var(--color-gold); padding: 5px 11px; border-radius: 999px; font-weight: 600; line-height: 1; }
+.sn-stufe.is-empfohlen h3 { color: var(--color-gold-light); }
+
+.sn-vergleich { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: var(--sn-innen); }
+.sn-vgl { border: 1px solid var(--sn-line); padding: 32px 34px; }
+.sn-vgl h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(22px, 2vw, 30px); letter-spacing: -0.01em; margin-bottom: 20px; color: var(--color-text); }
+.sn-vgl ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.sn-vgl li { font-size: 15px; line-height: 1.7; padding-left: 26px; position: relative; }
+.sn-vgl-ohne h3, .sn-vgl-ohne li { color: var(--color-text-muted); }
+.sn-vgl-ohne li::before { content: '—'; position: absolute; left: 0; color: var(--color-text-muted); }
+.sn-vgl-mit { border-color: rgba(200, 164, 78, 0.5); }
+.sn-vgl-mit li::before { content: '+'; position: absolute; left: 0; color: var(--color-gold); }
+.sn-vgl-mit .sn-link { margin-top: 22px; display: inline-flex; }
+
+@media (max-width: 1000px) {
+  .sn-gruende { grid-template-columns: 1fr 1fr; gap: 26px; }
+  .sn-vergleich { grid-template-columns: 1fr; gap: 20px; }
+}
+@media (max-width: 560px) {
+  .sn-gruende { grid-template-columns: 1fr; gap: 20px; }
+  .sn-grund { padding-top: 18px; }
+  .sn-vgl { padding: 24px 20px; }
+  a.sn-hero-angebot { width: 100%; justify-content: space-between; }
+}
