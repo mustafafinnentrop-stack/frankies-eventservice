@@ -53,7 +53,7 @@ export default function Einsaetze() {
   return (
     <section className="sn-einsaetze" id="einsaetze" aria-labelledby="sn-einsaetze-titel">
       <div className="sn-top sn-reveal">
-        <span className="sn-eyebrow">03 / Im Einsatz</span>
+        <span className="sn-eyebrow">06 / Im Einsatz</span>
         <Link className="sn-link" href="/einsaetze">Alle Einsätze <span aria-hidden="true">↗</span></Link>
       </div>
       <div className="sn-einsaetze-heading sn-reveal">

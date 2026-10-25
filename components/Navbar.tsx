@@ -38,6 +38,7 @@ export default function Navbar() {
       textColor: '#F0ECE3',
       links: [
         { label: 'Die Mannschaft', ariaLabel: 'Abschnitt Die Mannschaft', onClick: () => scrollTo('mannschaft') },
+        { label: 'Pakete', ariaLabel: 'Abschnitt Unsere Pakete', onClick: () => scrollTo('pakete') },
         { label: 'Was wir können', ariaLabel: 'Abschnitt Was wir können', onClick: () => scrollTo('leistungen') },
         { label: 'Im Einsatz', ariaLabel: 'Abschnitt Im Einsatz', onClick: () => scrollTo('einsaetze') },
         { label: 'Ablauf', ariaLabel: 'Abschnitt Ablauf', onClick: () => scrollTo('ablauf') },

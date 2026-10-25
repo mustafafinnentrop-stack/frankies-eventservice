@@ -1,7 +1,7 @@
 import { FLATS } from '@/components/preise-daten'
 
 /*
-  05 / Bevor Sie anfragen. Antworten auf die Fragen, die vor einer Anfrage
+  08 / Bevor Sie anfragen. Antworten auf die Fragen, die vor einer Anfrage
   kommen. Jede Antwort ist durch die Seite oder die AGB gedeckt:
   - Personal + Getränke aus einer Hand: das Geschaeftsmodell (Thekenservice
     mit eigener Mannschaft, Getraenkecatering, Bausteine einzeln).
@@ -61,7 +61,7 @@ export default function FragenNeu() {
     <section className="sn-fragen" id="fragen" aria-labelledby="sn-fragen-titel">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <div className="sn-top sn-reveal">
-        <span className="sn-eyebrow">05 / Bevor Sie anfragen</span>
+        <span className="sn-eyebrow">08 / Bevor Sie anfragen</span>
         <span className="sn-note">Was uns am Telefon gefragt wird</span>
       </div>
       <div className="sn-fragen-layout">
