@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, useState } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { FLATS } from '@/components/preise-daten'
 import Stufen from './Stufen'
@@ -89,6 +90,21 @@ const DIENSTE: Dienst[] = [
   Ruecknahme originalverschlossener Gebinde nur nach Vereinbarung
   (AGB § 6 Abs. 3), Personal bis zu zwanzig (Leistungstext 01).
 */
+/*
+  Vergleichstabelle (Umbau 25.10.2026, Vorbild: Vergleichstabelle aus dem
+  Onlineshop des Betreibers): hervorgehobene Gold-Spalte "Mit Frankies"
+  mit Haken, daneben "Selbst organisieren" mit Kreuzen. Jede Zeile ist
+  durch Seite oder AGB gedeckt; Ruecknahme nur nach Absprache (§ 6 Abs. 3).
+*/
+const VERGLEICH = [
+  'Personal, das zapft, mixt und bedient',
+  'Theke, Zapfanlage und Kühlung',
+  'Gläser, Zelt und Garnituren',
+  'Auf- und Abbau am Festtag',
+  'Rücknahme übriger Getränke nach Absprache',
+  'Ein Ansprechpartner bis zur Abrechnung',
+]
+
 const GRUENDE = [
   { titel: 'Komplett ausgestattet', text: 'Theke, Zapftechnik, Kühlung und Gläser bringen wir mit. Auch Zelt und Garnituren, wenn Sie wollen.' },
   { titel: 'Eingespieltes Personal', text: 'Unsere Leute zapfen, mixen und bedienen — bei großen Festen bis zu zwanzig, vom Aufbau bis zum Schluss.' },
@@ -199,25 +215,38 @@ export default function LeistungenNeu() {
 
       <Stufen />
 
-      <div className="sn-vergleich sn-reveal" aria-label="Selbst organisieren im Vergleich zu Frankies">
-        <div className="sn-vgl sn-vgl-ohne">
-          <h3>Selbst organisieren</h3>
-          <ul>
-            <li>Personal suchen, einteilen und durch die Nacht bringen</li>
-            <li>Zapfanlage, Kühlwagen und Gläser zusammenleihen</li>
-            <li>Getränkemengen schätzen — und auf den Resten sitzen</li>
-            <li>Nachts abbauen, am Morgen danach alles zurückfahren</li>
-          </ul>
+      <div className="sn-vt sn-reveal" role="table" aria-label="Mit Frankies im Vergleich zum Selbstorganisieren">
+        <div className="sn-vt-kopf" role="row">
+          <span className="sn-vt-leer" role="columnheader"><span className="sn-nur-vorleser">Leistung</span></span>
+          <span className="sn-vt-haupt sn-vt-kopfzelle" role="columnheader">
+            <Image src="/team.webp" alt="" width={96} height={96} quality={60} className="sn-vt-bild" />
+            <strong>Mit Frankies</strong>
+            <span className="sn-vt-badge">Alles aus einer Hand</span>
+          </span>
+          <span className="sn-vt-neben sn-vt-nebenkopf" role="columnheader">
+            <strong>Selbst organisieren</strong>
+            <span className="sn-vt-unter">Alles einzeln besorgen</span>
+          </span>
         </div>
-        <div className="sn-vgl sn-vgl-mit">
-          <h3>Mit Frankies</h3>
-          <ul>
-            <li>Ein Anruf, ein Angebot, ein Ansprechpartner</li>
-            <li>Theke, Technik, Kühlung und Gläser kommen mit uns</li>
-            <li>Originalverschlossenes nehmen wir nach Absprache zurück</li>
-            <li>Wir bauen auf, schenken aus und räumen wieder ab</li>
-          </ul>
-          <a className="sn-link" href="#anfrage">Angebot anfordern <span aria-hidden="true">↗</span></a>
+        {VERGLEICH.map((z) => (
+          <div className="sn-vt-zeile" role="row" key={z}>
+            <span className="sn-vt-merkmal" role="cell">{z}</span>
+            <span className="sn-vt-haupt" role="cell">
+              <span className="sn-vt-ja" aria-hidden="true">✓</span>
+              <span className="sn-nur-vorleser">inklusive</span>
+            </span>
+            <span className="sn-vt-neben" role="cell">
+              <span className="sn-vt-nein" aria-hidden="true">✕</span>
+              <span className="sn-nur-vorleser">müssen Sie selbst organisieren</span>
+            </span>
+          </div>
+        ))}
+        <div className="sn-vt-fuss" role="row">
+          <span className="sn-vt-leer" role="cell" />
+          <span className="sn-vt-haupt sn-vt-fusszelle" role="cell">
+            <a className="sn-vt-cta" href="#anfrage">Angebot anfordern <span aria-hidden="true">↗</span></a>
+          </span>
+          <span className="sn-vt-neben sn-vt-nebenfuss" role="cell" />
         </div>
       </div>
 

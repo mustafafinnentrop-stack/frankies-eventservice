@@ -476,24 +476,49 @@ a.sn-hero-angebot > span:last-child { font-size: 18px; line-height: 1; }
 .sn-stufe-badge { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-bg); background: var(--color-gold); padding: 5px 11px; border-radius: 999px; font-weight: 600; line-height: 1; }
 .sn-stufe.is-empfohlen h3 { color: var(--color-gold-light); }
 
-.sn-vergleich { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: var(--sn-innen); }
-.sn-vgl { border: 1px solid var(--sn-line); padding: 32px 34px; }
-.sn-vgl h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(22px, 2vw, 30px); letter-spacing: -0.01em; margin-bottom: 20px; color: var(--color-text); }
-.sn-vgl ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
-.sn-vgl li { font-size: 15px; line-height: 1.7; padding-left: 26px; position: relative; }
-.sn-vgl-ohne h3, .sn-vgl-ohne li { color: var(--color-text-muted); }
-.sn-vgl-ohne li::before { content: '—'; position: absolute; left: 0; color: var(--color-text-muted); }
-.sn-vgl-mit { border-color: rgba(200, 164, 78, 0.5); }
-.sn-vgl-mit li::before { content: '+'; position: absolute; left: 0; color: var(--color-gold); }
-.sn-vgl-mit .sn-link { margin-top: 22px; display: inline-flex; }
+.sn-nur-vorleser { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Vergleichstabelle: Gold-Spalte "Mit Frankies" gegen "Selbst organisieren" */
+.sn-vt { display: grid; grid-template-columns: 1.5fr 1fr 1fr; margin-bottom: var(--sn-innen); max-width: 980px; }
+.sn-vt-kopf, .sn-vt-zeile, .sn-vt-fuss { display: contents; }
+.sn-vt-haupt { background: var(--color-gold); color: var(--color-bg); display: flex; align-items: center; justify-content: center; padding: 14px 16px; position: relative; }
+.sn-vt-kopfzelle { flex-direction: column; gap: 10px; padding: 26px 16px 18px; border-radius: 12px 12px 0 0; }
+.sn-vt-kopfzelle strong { font-size: 18px; font-weight: 600; letter-spacing: -0.01em; }
+.sn-vt-bild { border-radius: 8px; object-fit: cover; }
+.sn-vt-badge { background: rgba(12, 12, 12, 0.88); color: var(--color-gold-light); border-radius: 999px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 13px; font-weight: 600; white-space: nowrap; }
+.sn-vt-neben { display: flex; align-items: center; justify-content: center; padding: 14px 16px; }
+.sn-vt-nebenkopf { flex-direction: column; justify-content: flex-end; gap: 6px; padding-bottom: 18px; text-align: center; }
+.sn-vt-nebenkopf strong { font-size: 16px; font-weight: 500; color: var(--color-text-muted); }
+.sn-vt-unter { font-size: 12px; color: var(--color-text-muted); opacity: 0.8; }
+.sn-vt-merkmal { display: flex; align-items: center; padding: 17px 20px 17px 0; font-size: 15px; line-height: 1.5; color: var(--color-text); border-bottom: 1px solid var(--sn-line); }
+.sn-vt-zeile .sn-vt-neben { border-bottom: 1px solid var(--sn-line); }
+.sn-vt-kopf .sn-vt-leer, .sn-vt-fuss .sn-vt-leer { border: 0; }
+.sn-vt-ja { width: 26px; height: 26px; border-radius: 50%; background: var(--color-bg); color: var(--color-gold-light); display: flex; align-items: center; justify-content: center; font-size: 13px; }
+.sn-vt-nein { width: 26px; height: 26px; border-radius: 50%; background: rgba(240, 236, 227, 0.1); color: var(--color-text-muted); display: flex; align-items: center; justify-content: center; font-size: 12px; }
+.sn-vt-fusszelle { padding: 10px 16px 26px; border-radius: 0 0 12px 12px; }
+.sn-vt-cta { display: inline-flex; align-items: center; gap: 10px; background: var(--color-bg); color: var(--color-gold-light); padding: 13px 20px; font-size: 14px; font-weight: 500; transition: color 0.3s; }
+.sn-vt-cta:hover { color: var(--color-text); }
 
 @media (max-width: 1000px) {
   .sn-gruende { grid-template-columns: 1fr 1fr; gap: 26px; }
-  .sn-vergleich { grid-template-columns: 1fr; gap: 20px; }
+  .sn-vt { grid-template-columns: 1.3fr 1fr 1fr; }
 }
 @media (max-width: 560px) {
   .sn-gruende { grid-template-columns: 1fr; gap: 20px; }
   .sn-grund { padding-top: 18px; }
-  .sn-vgl { padding: 24px 20px; }
   a.sn-hero-angebot { width: 100%; justify-content: space-between; }
+  .sn-vt { grid-template-columns: 1.15fr 0.95fr 0.95fr; }
+  .sn-vt-neben { padding: 12px 6px; }
+  .sn-vt-haupt { padding: 12px 8px; }
+  .sn-vt-merkmal { font-size: 13px; padding-right: 10px; }
+  .sn-vt-kopfzelle { padding: 18px 8px 14px; }
+  .sn-vt-kopfzelle strong { font-size: 14px; }
+  .sn-vt-bild { width: 64px; height: 64px; }
+  .sn-vt-badge { font-size: 9px; padding: 5px 9px; letter-spacing: 0.06em; }
+  .sn-vt-nebenkopf strong { font-size: 12px; }
+  .sn-vt-nebenkopf { padding-bottom: 14px; }
+  .sn-vt-unter { font-size: 10px; }
+  .sn-vt-ja, .sn-vt-nein { width: 22px; height: 22px; font-size: 11px; }
+  .sn-vt-cta { font-size: 12px; padding: 11px 13px; gap: 7px; }
+  .sn-vt-fusszelle { padding: 8px 8px 18px; }
 }
