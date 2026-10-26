@@ -80,8 +80,18 @@ export default function Mannschaft() {
           Lennestadt, am Veranstaltungstag selbst dabei (so beschreiben es
           die Google-Bewertungen), Angebot innerhalb von 24 Stunden. */}
       <div className="sn-owner sn-reveal">
-        <p>Ihr Ansprechpartner vom ersten Gespräch bis zum Abbau.</p>
+        <figure className="sn-owner-foto">
+          <Image
+            src="/inhaber-mustafa.webp"
+            alt="Mustafa Yildirim, Inhaber von Frankies Eventservice, zapft Bier an der Theke"
+            width={800}
+            height={1000}
+            sizes="(max-width: 800px) 100vw, 240px"
+            quality={60}
+          />
+        </figure>
         <div>
+          <p className="sn-owner-intro">Ihr Ansprechpartner vom ersten Gespräch bis zum Abbau.</p>
           <span className="sn-owner-name">Mustafa Yildirim</span>
           <span className="sn-owner-role">Inhaber · Frankies Eventservice · Lennestadt</span>
           <p className="sn-owner-text">Plant Ihr Fest mit Ihnen durch und steht am Tag selbst mit im Einsatz. Auf jede Anfrage antwortet er innerhalb von 24 Stunden — mit einem Angebot, nicht mit einer Warteschleife.</p>
