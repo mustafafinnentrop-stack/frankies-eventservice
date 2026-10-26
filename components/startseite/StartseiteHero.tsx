@@ -102,10 +102,6 @@ export default function StartseiteHero() {
         </figcaption>
       </figure>
 
-      <div className="sn-hero-foot">
-        <span>Schützenfest, Hochzeit oder Firmenfeier.</span>
-        <a href="#leistungen">Wir bringen mit, was Ihr Fest braucht. <span aria-hidden="true">↓</span></a>
-      </div>
     </section>
   )
 }
