@@ -578,3 +578,10 @@ a.sn-hero-angebot > span:last-child { font-size: 18px; line-height: 1; }
   .sn-chips { grid-template-columns: 1fr 1fr; }
   .sn-chips a { display: block; text-align: center; padding-left: 6px; padding-right: 6px; white-space: nowrap; }
 }
+
+/* Keine Silbentrennung in Ueberschriften (26.10.2026): body trennt
+   Woerter ab 12 Buchstaben automatisch (globals.css). Safari zerlegte
+   damit "Zusammenspiel." in "Zusammen-" / "spiel.". Gemessen: Ohne
+   Trennung passt jede Ueberschrift der Startseite von 320 bis 1920 px,
+   nichts laeuft ueber. Fliesstext behaelt die Trennung. */
+.sn h1, .sn h2, .sn h3 { -webkit-hyphens: manual; hyphens: manual; }
