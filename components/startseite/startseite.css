@@ -585,3 +585,9 @@ a.sn-hero-angebot > span:last-child { font-size: 18px; line-height: 1; }
    Trennung passt jede Ueberschrift der Startseite von 320 bis 1920 px,
    nichts laeuft ueber. Fliesstext behaelt die Trennung. */
 .sn h1, .sn h2, .sn h3 { -webkit-hyphens: manual; hyphens: manual; }
+
+/* Doppelte Linien (26.10.2026): Die Hero-Fusszeile ist entfernt (wiederholte
+   nur Anlass-Chips und Link darueber, stand zwischen zwei Linien). Die
+   Leistungsliste schliesst ohne Linie unter dem letzten Eintrag, damit der
+   Hinweis "Ergaenzend buchbar" nicht zwischen zwei Linien haengt. */
+.sn-index > .sn-item:last-of-type { border-bottom: 0; }
