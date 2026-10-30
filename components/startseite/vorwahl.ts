@@ -15,6 +15,7 @@ export const LEISTUNGSWAHL = [
   'Theke mit Personal',
   'Mobile Cocktailbar',
   'Zelt und Equipment mieten',
+  'Winterbar',
   'Weiß ich noch nicht',
 ] as const
 

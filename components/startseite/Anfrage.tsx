@@ -31,6 +31,11 @@ export default function Anfrage() {
   useEffect(() => {
     const h = (e: Event) => setF((alt) => ({ ...alt, leistungen: (e as CustomEvent<Leistung[]>).detail }))
     window.addEventListener(VORWAHL_EREIGNIS, h)
+    // Vorauswahl ueber die Adresse, z. B. von der Winterbar-Seite:
+    // /?leistung=winterbar#anfrage setzt das Kaestchen "Winterbar".
+    // Nur bekannte Werte, nichts Freies aus der URL landet im Formular.
+    const wunsch = new URLSearchParams(window.location.search).get('leistung')
+    if (wunsch === 'winterbar') setF((alt) => ({ ...alt, leistungen: ['Winterbar'] }))
     return () => window.removeEventListener(VORWAHL_EREIGNIS, h)
   }, [])
 

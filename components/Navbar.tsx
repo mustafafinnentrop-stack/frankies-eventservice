@@ -27,6 +27,7 @@ export default function Navbar() {
       links: [
         { label: 'Service-Pakete & Portfolio', href: '/service', ariaLabel: 'Service-Pakete und Portfolio' },
         { label: 'Mobile Cocktailbar', href: '/cocktailbar-lennestadt', ariaLabel: 'Mobile Cocktailbar Lennestadt' },
+        { label: 'Winterbar', href: '/winterbar', ariaLabel: 'Winterbar mit heißen Cocktails und Punsch' },
         { label: 'Getränkeservice Schützenfest', href: '/getraenkeservice-schuetzenfest', ariaLabel: 'Getränkeservice Schützenfest' },
         { label: 'Thekenservice Hochzeit', href: '/hochzeit-sauerland', ariaLabel: 'Thekenservice Hochzeit Sauerland' },
         { label: 'Eventservice Kreis Olpe', href: '/eventservice-kreis-olpe', ariaLabel: 'Eventservice Kreis Olpe' },
