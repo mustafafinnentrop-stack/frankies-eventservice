@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import { CinematicFooter } from '@/components/ui/motion-footer'
 import StartseiteEffekte from '@/components/startseite/StartseiteEffekte'
-import { WINTER_MIT_SCHUSS, WINTER_OHNE_ALKOHOL, WINTER_HINWEISE, type WinterGetraenk } from '@/components/winterbar-daten'
+import { WINTER_MIT_SCHUSS, WINTER_OHNE_ALKOHOL, WINTER_HINWEISE, WINTER_SAISON_TEXT, WINTER_ANLAESSE, type WinterGetraenk } from '@/components/winterbar-daten'
 import '@/components/startseite/startseite.css'
 
 const PAGE_URL = 'https://frankies-eventservice.de/winterbar'
@@ -65,14 +65,14 @@ export default function WinterbarSeite() {
         <section className="sn-leistungen sn-seite sn-winter" aria-labelledby="winterbar-titel">
           <div className="sn-top">
             <span className="sn-eyebrow">Winterbar</span>
-            <span className="sn-note">Heiße Cocktails &amp; Punsch</span>
+            <span className="sn-note">Saison {WINTER_SAISON_TEXT}</span>
           </div>
           <div className="sn-winter-hero">
             <div>
               <h1 id="winterbar-titel" className="sn-h1">Die Winterbar.<br /><em>Heiß serviert.</em></h1>
               <p className="sn-winter-lead">
                 Unsere mobile Bambustheke im Winterkleid: heiße Cocktails, Punsch und Kakao, mit und ohne Alkohol.
-                Wir bauen auf, schenken aus und räumen wieder ab.
+                Für {WINTER_ANLAESSE}. Wir bauen auf, schenken aus und räumen wieder ab.
               </p>
               <div className="sn-hero-cta">
                 <a className="sn-submit sn-hero-angebot" href="/?leistung=winterbar#anfrage">Winterbar anfragen <span aria-hidden="true">↗</span></a>
@@ -130,7 +130,7 @@ export default function WinterbarSeite() {
           <div className="sn-winter-hero sn-reveal">
             <h2 id="winter-anfrage-titel">Ihr Fest<br />mit Winterbar?<br /><em>Fragen Sie an.</em></h2>
             <div>
-              <p className="sn-winter-lead">Sagen Sie uns Datum, Ort und Gästezahl. Sie bekommen innerhalb von 24 Stunden ein Angebot.</p>
+              <p className="sn-winter-lead">Buchbar von {WINTER_SAISON_TEXT}. Grundsätzlich gelten die Preise unserer Karte. Sagen Sie uns Datum, Ort und Gästezahl, Sie bekommen innerhalb von 24 Stunden ein Angebot.</p>
               <div className="sn-hero-cta">
                 <a className="sn-submit sn-hero-angebot" href="/?leistung=winterbar#anfrage">Winterbar anfragen <span aria-hidden="true">↗</span></a>
                 <a className="sn-link" href="tel:+4915142840916">Direkt anrufen <span aria-hidden="true">↗</span></a>
