@@ -119,7 +119,7 @@ export default function EinsaetzeSeite() {
             ))}
           </div>
 
-          <div className="sn-owner sn-reveal" style={{ marginTop: '70px' }}>
+          <div className="sn-owner sn-owner-schluss sn-reveal" style={{ marginTop: '70px' }}>
             <p>Ihr Fest soll das nächste sein?</p>
             <div>
               <span className="sn-owner-name">Mustafa Yildirim</span>

@@ -610,3 +610,49 @@ a.sn-hero-angebot > span:last-child { font-size: 18px; line-height: 1; }
 @media (max-width: 560px) {
   .sn-owner-intro { font-size: 13px; }
 }
+
+/* ===== Winterbar-Seite (30.10.2026) =====
+   Gleiches Raster wie die Startseite: zwei gleiche Spalten, 8vw bzw. 5vw
+   Abstand, Kopflinie pro Abschnitt, einheitlicher Sektionsabstand. */
+.sn-winter { padding-bottom: 0; }
+.sn-winter-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 8vw; align-items: center; }
+/* .sn p setzt margin: 0 mit hoeherer Spezifitaet, daher .sn davor */
+.sn .sn-winter-lead { font-size: 17px; line-height: 1.75; max-width: 480px; margin: 28px 0 30px; }
+.sn-winter-bild { margin: 0; aspect-ratio: 4 / 3; overflow: hidden; background: var(--color-surface); }
+.sn-winter-bild img { width: 100%; height: 100%; object-fit: cover; }
+.sn-winter-karte { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 8vw; align-items: start; }
+.sn-wk-titel { font-family: var(--font-display); font-weight: 400; font-size: clamp(24px, 2.2vw, 32px); color: var(--color-text); margin-bottom: 10px; letter-spacing: -0.01em; }
+.sn-wk ul { list-style: none; margin: 0; padding: 0; }
+.sn-wk li { border-top: 1px solid var(--sn-line); padding: 16px 0; }
+.sn-wk-zeile { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+.sn-wk-name { font-size: 17px; font-weight: 500; color: var(--color-text); }
+.sn-wk-preis { font-size: 16px; color: var(--color-gold); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.sn .sn-wk li p { font-size: 14px; line-height: 1.6; margin-top: 4px; }
+.sn-wk-neu { display: inline-block; margin-left: 10px; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; background: var(--color-gold); color: var(--color-bg); padding: 3px 8px; border-radius: 999px; vertical-align: 2px; font-weight: 600; line-height: 1.4; }
+.sn-winter-detail { margin: 36px 0 0; aspect-ratio: 3 / 4; overflow: hidden; max-width: 360px; background: var(--color-surface); }
+.sn-winter-detail img { width: 100%; height: 100%; object-fit: cover; }
+.sn-winter-hinweise { margin-top: 24px; }
+.sn-winter-hinweise p { font-size: 12px; color: var(--color-text-muted); line-height: 1.7; }
+.sn-winter-ende { padding-bottom: var(--sn-abschnitt); }
+.sn-ergaenzung a { color: var(--color-text); text-decoration: underline; text-decoration-color: rgba(200, 164, 78, 0.6); text-underline-offset: 4px; }
+.sn-ergaenzung a:hover { color: var(--color-gold); }
+@media (max-width: 1100px) {
+  .sn-winter-hero, .sn-winter-karte { column-gap: 5vw; }
+}
+@media (max-width: 800px) {
+  .sn-winter-hero, .sn-winter-karte { grid-template-columns: 1fr; row-gap: 40px; }
+  .sn-winter-detail { max-width: none; }
+}
+@media (max-width: 560px) {
+  .sn-wk-name { font-size: 16px; }
+  .sn .sn-winter-lead { font-size: 16px; }
+}
+
+/* Abschlussblock auf /einsaetze (30.10.2026): nutzt .sn-owner, hat aber
+   kein Foto und steht nach den Bewertungen. Die Startseiten-Anpassungen
+   (ohne Linien, Fotospalte) gelten hier nicht: eine Trennlinie oben,
+   die alte Spaltenaufteilung, Link nur so breit wie sein Text. */
+.sn-owner.sn-owner-schluss { border-top: 1px solid var(--sn-line); padding-top: 34px; grid-template-columns: 0.8fr 1.6fr auto; align-items: start; }
+.sn-owner-schluss > .sn-link { justify-self: start; }
+@media (max-width: 1100px) { .sn-owner.sn-owner-schluss { grid-template-columns: 1fr 1.2fr auto; } }
+@media (max-width: 800px) { .sn-owner.sn-owner-schluss { grid-template-columns: 1fr; padding-top: 26px; } }

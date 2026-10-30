@@ -314,7 +314,7 @@ export default function LeistungenNeu() {
               </article>
             )
           })}
-          <p className="sn-ergaenzung">Ergänzend buchbar: Catering mit Foodtruck und eine Kaffeestation.</p>
+          <p className="sn-ergaenzung">Ergänzend buchbar: Catering mit Foodtruck, eine Kaffeestation und unsere <Link href="/winterbar">Winterbar mit heißen Cocktails und Punsch</Link>.</p>
         </div>
       </div>
     </section>

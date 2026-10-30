@@ -33,6 +33,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: 'https://frankies-eventservice.de/winterbar',
+      lastModified: new Date('2026-10-30'),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
       url: 'https://frankies-eventservice.de/einsaetze',
       lastModified: new Date('2026-09-14'),
       changeFrequency: 'monthly',
