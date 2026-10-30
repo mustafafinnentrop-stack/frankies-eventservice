@@ -1,10 +1,11 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FLATS } from '@/components/preise-daten'
 import Stufen from './Stufen'
+import { WINTER_HINWEIS_MONATE, WINTER_SAISON_TEXT } from '@/components/winterbar-daten'
 
 /*
   02 / Was wir können. Die vier Leistungsbereiche, wie der Betreiber sie
@@ -116,6 +117,11 @@ const EASE = 'cubic-bezier(.19,1,.22,1)'
 
 export default function LeistungenNeu() {
   const [aktiv, setAktiv] = useState(0)
+  // Winterbar-Hinweis nur in der Saison (inkl. Vorlauf), siehe winterbar-daten.ts.
+  // Im Browser entschieden: Die Seite ist statisch gebaut, ein Datum zur
+  // Bauzeit wuerde einfrieren.
+  const [winterZeit, setWinterZeit] = useState(false)
+  useEffect(() => { setWinterZeit(WINTER_HINWEIS_MONATE.includes(new Date().getMonth() + 1)) }, [])
   const visualRef = useRef<HTMLDivElement>(null)
   const bildRef = useRef<HTMLImageElement>(null)
   const anfrageRef = useRef(0)
@@ -314,7 +320,9 @@ export default function LeistungenNeu() {
               </article>
             )
           })}
-          <p className="sn-ergaenzung">Ergänzend buchbar: Catering mit Foodtruck, eine Kaffeestation und unsere <Link href="/winterbar">Winterbar mit heißen Cocktails und Punsch</Link>.</p>
+          {winterZeit
+            ? <p className="sn-ergaenzung">Ergänzend buchbar: Catering mit Foodtruck, eine Kaffeestation und von {WINTER_SAISON_TEXT} unsere <Link href="/winterbar">Winterbar mit heißen Cocktails und Punsch</Link>.</p>
+            : <p className="sn-ergaenzung">Ergänzend buchbar: Catering mit Foodtruck und eine Kaffeestation.</p>}
         </div>
       </div>
     </section>
