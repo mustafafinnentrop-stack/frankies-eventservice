@@ -41,11 +41,11 @@ export const WINTER_HINWEISE = [
 ]
 
 /*
-  Saison laut Betreiber (30.10.2026): November bis Februar.
-  Der Hinweis auf der Startseite erscheint schon ab September, weil
-  Weihnachtsfeiern meist im Herbst gebucht werden. Monate 1–12.
+  Saison laut Betreiber: September bis Februar (geaendert am 30.10.2026,
+  vorher November bis Februar). Der Hinweis auf der Startseite erscheint
+  in genau diesen Monaten. Monate 1–12.
   Die Seite /winterbar selbst bleibt das ganze Jahr erreichbar.
 */
-export const WINTER_SAISON_TEXT = 'November bis Februar'
+export const WINTER_SAISON_TEXT = 'September bis Februar'
 export const WINTER_HINWEIS_MONATE = [9, 10, 11, 12, 1, 2]
 export const WINTER_ANLAESSE = 'Weihnachtsfeiern, Adventsmärkte, Firmenfeiern und Hochzeiten im Winter'
