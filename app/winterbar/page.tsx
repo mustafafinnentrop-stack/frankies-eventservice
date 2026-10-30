@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     siteName: 'Frankies Eventservice',
     title: 'Winterbar mieten: heiße Cocktails & Punsch | Frankies',
     description: 'Hot Aperol, Glühgin, Punsch und Kakao an unserer mobilen Bambustheke. Für Ihr Fest im Sauerland.',
-    images: [{ url: 'https://frankies-eventservice.de/og/home.jpg', width: 1200, height: 630, alt: 'Frankies Eventservice' }],
+    images: [{ url: 'https://frankies-eventservice.de/og/winterbar.jpg', width: 1200, height: 630, alt: 'Frankies Winterbar: heiße Cocktails und Punsch' }],
   },
 }
 
