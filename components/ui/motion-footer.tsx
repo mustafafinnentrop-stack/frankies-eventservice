@@ -364,6 +364,9 @@ export function CinematicFooter() {
                 <MagneticButton as="a" href="/cocktailbar-lennestadt" className="footer-glass-pill px-4 py-3 md:px-6 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground text-center justify-center">
                   Mobile Cocktailbar
                 </MagneticButton>
+                <MagneticButton as="a" href="/winterbar" className="footer-glass-pill px-4 py-3 md:px-6 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground text-center justify-center">
+                  Winterbar
+                </MagneticButton>
                 {/* Der Blog liegt auf einer eigenen Subdomain. Ohne Link von hier
                     kennt ihn weder ein Besucher noch eine Suchmaschine, die von
                     der Hauptdomain kommt. Bewusst ohne rel="nofollow" — das

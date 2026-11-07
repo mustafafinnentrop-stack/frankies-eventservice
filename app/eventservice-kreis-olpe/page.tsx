@@ -227,7 +227,8 @@ export default function EventserviceKreisOlpe() {
                   { href: '/cocktailbar-lennestadt', label: 'Mobile Cocktailbar' },
                   { href: '/getraenkeservice-schuetzenfest', label: 'Getränkeservice Schützenfest' },
                   { href: '/hochzeit-sauerland', label: 'Thekenservice Hochzeit' },
-                  { href: '/', label: '← Zur Startseite' },
+                  { href: '/winterbar', label: 'Winterbar: heiße Cocktails & Punsch' },
+                  { href: '/', label: '← Getränke- & Thekenservice Lennestadt' },
                 ].map(link => (
                   <a key={link.href} href={link.href} style={{ padding: '0.7rem 1.4rem', border: '1px solid rgba(200,164,78,0.2)', color: 'var(--color-text-muted)', fontSize: '0.8rem', textDecoration: 'none', letterSpacing: '0.05em' }}>
                     {link.label}

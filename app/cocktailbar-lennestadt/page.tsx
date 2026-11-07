@@ -274,7 +274,8 @@ export default function CocktailbarLennestadt() {
                   { href: '/getraenkeservice-schuetzenfest', label: 'Getränkeservice Schützenfest' },
                   { href: '/hochzeit-sauerland', label: 'Thekenservice Hochzeit' },
                   { href: '/eventservice-kreis-olpe', label: 'Eventservice Kreis Olpe' },
-                  { href: '/', label: '← Startseite' },
+                  { href: '/winterbar', label: 'Winterbar: heiße Cocktails & Punsch' },
+                  { href: '/', label: '← Getränke- & Thekenservice Lennestadt' },
                 ].map(l => <a key={l.href} href={l.href} style={{ padding: '0.7rem 1.4rem', border: '1px solid rgba(200,164,78,0.2)', color: 'var(--color-text-muted)', fontSize: '0.8rem', textDecoration: 'none', letterSpacing: '0.05em' }}>{l.label}</a>)}
               </div>
             </div>
