@@ -656,3 +656,16 @@ a.sn-hero-angebot > span:last-child { font-size: 18px; line-height: 1; }
 .sn-owner-schluss > .sn-link { justify-self: start; }
 @media (max-width: 1100px) { .sn-owner.sn-owner-schluss { grid-template-columns: 1fr 1.2fr auto; } }
 @media (max-width: 800px) { .sn-owner.sn-owner-schluss { grid-template-columns: 1fr; padding-top: 26px; } }
+
+/* Google-Bewertung im Hero (07.11.2026) */
+.sn a.sn-hero-bewertung { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 22px; padding: 9px 16px; border: 1px solid rgba(200, 164, 78, 0.5); border-radius: 999px; font-size: 14px; color: var(--color-text); background: rgba(200, 164, 78, 0.06); transition: border-color 0.3s, background 0.3s; line-height: 1.2; }
+.sn a.sn-hero-bewertung:hover { border-color: var(--color-gold); background: rgba(200, 164, 78, 0.12); }
+.sn-hero-sterne { color: var(--color-gold); letter-spacing: 2px; font-size: 15px; }
+.sn-hero-bewertung strong { font-weight: 600; }
+.sn-hero-bewertung span:not(.sn-hero-sterne):not(.sn-hero-bewertung-pfeil) { color: var(--sn-text2); }
+.sn-hero-bewertung-pfeil { color: var(--color-gold); font-size: 14px; }
+.sn-hero-copy > .sn-eyebrow { display: block; }
+@media (max-width: 560px) {
+  .sn a.sn-hero-bewertung { font-size: 13px; padding: 8px 13px; gap: 6px; margin-bottom: 16px; }
+  .sn-hero-sterne { font-size: 13px; letter-spacing: 1px; }
+}

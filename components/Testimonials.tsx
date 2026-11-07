@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { AnimatedReviewCards } from '@/components/ui/animated-review-card'
 import { EVENTBOOK } from '@/components/eventbook-daten'
 
-import { BEWERTUNGEN, GOOGLE_PROFIL } from './bewertungen-daten'
+import { BEWERTUNGEN, GOOGLE_PROFIL, GOOGLE_NOTE, GOOGLE_ANZAHL } from './bewertungen-daten'
 // Weiter von hier exportiert, damit bestehende Importe nicht brechen.
 export { BEWERTUNGEN, GOOGLE_PROFIL }
 
@@ -27,7 +27,7 @@ export default function Testimonials() {
             rel="noopener noreferrer"
             className="vertrauen-google"
           >
-            5,0 ★★★★★ aus {BEWERTUNGEN.length} Google-Bewertungen
+            {GOOGLE_NOTE} ★★★★★ aus {GOOGLE_ANZAHL} Google-Bewertungen
           </a>
           <a
             href={EVENTBOOK.profil}

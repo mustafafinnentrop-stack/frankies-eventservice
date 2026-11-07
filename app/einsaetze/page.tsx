@@ -3,7 +3,7 @@ import Navbar from '@/components/Navbar'
 import { CinematicFooter } from '@/components/ui/motion-footer'
 import StartseiteEffekte from '@/components/startseite/StartseiteEffekte'
 import { REFERENZEN, type Referenz } from '@/components/referenzen-daten'
-import { BEWERTUNGEN, GOOGLE_PROFIL } from '@/components/bewertungen-daten'
+import { BEWERTUNGEN, GOOGLE_PROFIL, GOOGLE_NOTE, GOOGLE_ANZAHL } from '@/components/bewertungen-daten'
 import '@/components/startseite/startseite.css'
 
 const PAGE_URL = 'https://frankies-eventservice.de/einsaetze'
@@ -106,7 +106,7 @@ export default function EinsaetzeSeite() {
           <div className="sn-top sn-reveal" style={{ marginTop: '70px' }}>
             <span className="sn-eyebrow">Was Kunden sagen</span>
             <a className="sn-link" href={GOOGLE_PROFIL} target="_blank" rel="noopener noreferrer">
-              5,0 aus {BEWERTUNGEN.length} Google-Bewertungen <span aria-hidden="true">↗</span>
+              {GOOGLE_NOTE} aus {GOOGLE_ANZAHL} Google-Bewertungen <span aria-hidden="true">↗</span>
             </a>
           </div>
           <div className="sn-zitate">

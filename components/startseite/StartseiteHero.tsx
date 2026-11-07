@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { GOOGLE_PROFIL, GOOGLE_NOTE, GOOGLE_ANZAHL } from '@/components/bewertungen-daten'
 
 /*
   Der Einstieg. Links die drei Titelzeilen, rechts das Mannschaftsfoto.
@@ -55,6 +56,16 @@ export default function StartseiteHero() {
   return (
     <section className="sn-hero" id="start" aria-labelledby="sn-hero-titel" ref={heroRef}>
       <div className="sn-hero-copy">
+        {/* Google-Bewertung direkt ueber der Ueberschrift: Vertrauen vor dem
+            ersten Satz. Werte aus bewertungen-daten.ts, Link zum Profil,
+            damit jeder nachpruefen kann. */}
+        <a className="sn-hero-bewertung sn-intro" href={GOOGLE_PROFIL} target="_blank" rel="noopener noreferrer"
+          aria-label={`${GOOGLE_NOTE} von 5 Sternen aus ${GOOGLE_ANZAHL} Google-Bewertungen, zum Google-Profil`}>
+          <span className="sn-hero-sterne" aria-hidden="true">★★★★★</span>
+          <strong>{GOOGLE_NOTE}</strong>
+          <span>· {GOOGLE_ANZAHL} Google-Bewertungen</span>
+          <span className="sn-hero-bewertung-pfeil" aria-hidden="true">↗</span>
+        </a>
         <p className="sn-eyebrow sn-intro">Aus Lennestadt. Mittendrin.</p>
         <h1 id="sn-hero-titel">
           <span className="sn-line"><span>Sie feiern.</span></span>

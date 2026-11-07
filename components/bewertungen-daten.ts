@@ -46,3 +46,11 @@ export const BEWERTUNGEN = [
 
 export const GOOGLE_PROFIL =
   'https://www.google.com/search?q=Frankies-Eventservice&kgmid=/g/11z1_pnp_3'
+
+/* Gesamtnote und Anzahl laut Google-Profil, abgelesen vom Screenshot des
+   Betreibers am 07.11.2026: 5,0 aus 8 Rezensionen. Oben stehen nur drei
+   davon im Wortlaut; die Anzahl hier ist die von Google angezeigte.
+   Bei jeder neuen Bewertung beide Werte nachziehen, sonst stimmt die
+   Angabe auf der Seite nicht mehr (Irrefuehrung, § 5 UWG). */
+export const GOOGLE_NOTE = '5,0'
+export const GOOGLE_ANZAHL = 8
