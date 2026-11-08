@@ -8,6 +8,7 @@ import BookingCTA from '@/components/BookingCTA'
 import { FLATS, IMMER_DABEI, flatName, proCocktail, euro, euroGenau, STEUER_HINWEIS } from '@/components/preise-daten'
 import CocktailbarScrollHero from '@/components/CocktailbarScrollHero'
 import Icon from '@/components/Icon'
+import Ratgeber from '@/components/Ratgeber'
 
 const PAGE_URL = 'https://frankies-eventservice.de/cocktailbar-lennestadt'
 const OG_IMAGE = 'https://frankies-eventservice.de/og/cocktailbar.jpg'
@@ -266,8 +267,10 @@ export default function CocktailbarLennestadt() {
             </div>
           </section>
 
-          <section style={{ padding: '3rem 2rem', background: 'var(--color-surface)' }}>
+          {/* Unten mehr Abstand: die Kurve des Fussbereichs ragt ca. 50 px in diesen Abschnitt */}
+          <section style={{ padding: '3rem 2rem 6rem', background: 'var(--color-surface)' }}>
             <div className="section-container" style={{ textAlign: 'center' }}>
+              <Ratgeber thema="cocktailbar" />
               <p className="section-label" style={{ marginBottom: '1.5rem' }}>Weitere Leistungen</p>
               <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                 {[
