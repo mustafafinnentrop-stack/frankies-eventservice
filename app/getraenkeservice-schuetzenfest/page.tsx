@@ -6,6 +6,7 @@ import Testimonials from '@/components/Testimonials'
 import RevealWrapper from '@/components/RevealWrapper'
 import BookingCTA from '@/components/BookingCTA'
 import Icon from '@/components/Icon'
+import Ratgeber from '@/components/Ratgeber'
 
 const PAGE_URL = 'https://frankies-eventservice.de/getraenkeservice-schuetzenfest'
 const OG_IMAGE = 'https://frankies-eventservice.de/og/schuetzenfest.jpg'
@@ -207,6 +208,7 @@ export default function GetraenkeserviceSchuetzenfest() {
 
           <section style={{ padding: '4rem 2rem' }}>
             <div className="section-container" style={{ textAlign: 'center' }}>
+              <Ratgeber thema="schuetzenfest" />
               <p className="section-label" style={{ marginBottom: '1.5rem' }}>Weitere Leistungen</p>
               <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                 {[
