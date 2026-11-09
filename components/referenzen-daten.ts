@@ -35,10 +35,10 @@ export const REFERENZEN: Referenz[] = [
     geplant: true,
   },
   {
+    // Durchgefuehrt am 05.09.2026 (Angabe des Betreibers, 09.11.2026).
     ort: 'Hochzeit auf Schloss Melschede',
     leistungen: ['Getränkecatering', 'Servicepersonal', 'Kaffeestation'],
     zahlen: [{ wert: '80', was: 'Gäste' }],
-    geplant: true,
   },
   {
     ort: 'Schützenfest Marmecke',
