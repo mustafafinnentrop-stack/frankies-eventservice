@@ -164,7 +164,69 @@ export default function HochzeitSauerland() {
             </div>
           </section>
 
-          <section className="section-block">
+          {/* Praxisbericht (09.11.2026). Alle Angaben vom Betreiber bzw. aus
+              referenzen-daten.ts: Datum, Ort, 80 Gaeste, Leistungen, fuenf
+              Leute im Einsatz (Foto). Nichts hinzuerfunden. Fotos vom
+              Betreiber, ohne Metadaten; Schloss-Foto so beschnitten, dass
+              kein Kennzeichen zu sehen ist. */}
+          <section className="section-block" id="melschede">
+            <div className="section-container">
+              <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
+                <p className="section-label">Aus der Praxis</p>
+                <h2 className="section-title" style={{ margin: '0 auto 1rem' }}>Hochzeit auf Schloss Melschede</h2>
+                <p className="section-text" style={{ margin: '0 auto' }}>
+                  5. September 2026, Sundern im Sauerland. 80 Gäste, ein Barockschloss mit Innenhof, und ein Brautpaar, das sich um nichts kümmern wollte außer um seine Gäste.
+                </p>
+              </div>
+              <div className="reveal glow-frame" style={{ marginBottom: '2rem' }}>
+                <Image
+                  src="/melschede-schloss.webp"
+                  alt="Innenhof von Schloss Melschede in Sundern, Schauplatz der Hochzeit am 5. September 2026"
+                  width={1600}
+                  height={698}
+                  sizes="(max-width: 768px) 100vw, 1100px"
+                  quality={75}
+                  style={{ width: '100%', height: 'auto', display: 'block' }}
+                />
+              </div>
+              <div className="cocktail-grid reveal">
+                <div className="grid-text" style={{ textAlign: 'left' }}>
+                  <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', fontWeight: 400, marginBottom: '1rem' }}>Was wir übernommen haben</h3>
+                  <p className="section-text" style={{ textAlign: 'left', margin: 0 }}>
+                    Das komplette Getränkecatering für den Tag, dazu unser Servicepersonal und eine Kaffeestation für den Nachmittag. Fünf von uns waren vor Ort: aufbauen, ausschenken, nachlegen, abräumen.
+                  </p>
+                  <ul style={{ listStyle: 'none', padding: 0, margin: '1.5rem 0 0', display: 'grid', gap: '0.75rem' }}>
+                    {[
+                      ['80', 'Gäste'],
+                      ['5', 'Leute im Einsatz'],
+                      ['3', 'Leistungen: Getränkecatering, Servicepersonal, Kaffeestation'],
+                    ].map(([zahl, was]) => (
+                      <li key={was} style={{ display: 'flex', gap: '1rem', alignItems: 'baseline', borderTop: '1px solid rgba(200,164,78,0.15)', paddingTop: '0.75rem' }}>
+                        <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.6rem', color: 'var(--color-gold)', minWidth: '2.2rem' }}>{zahl}</span>
+                        <span style={{ fontSize: '0.92rem', color: 'var(--color-text-muted)', lineHeight: 1.6 }}>{was}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="section-text" style={{ textAlign: 'left', margin: '1.5rem 0 0' }}>
+                    Das Schloss liegt abgelegen bei Sundern, nahe dem Sorpesee. Genau solche Orte sind unser Alltag: alles, was an Getränken, Kühlung und Personal gebraucht wird, bringen wir mit.
+                  </p>
+                </div>
+                <div className="cocktail-visual glow-frame">
+                  <Image
+                    src="/melschede-team.webp"
+                    alt="Das Frankies-Team auf Schloss Melschede: fünf Servicekräfte in schwarzen Hemden mit Frankies-Schürzen"
+                    width={900}
+                    height={1200}
+                    sizes="(max-width: 768px) 100vw, 600px"
+                    quality={75}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  />
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="section-block section-block--alt">
             <div className="section-container">
               <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
                 <p className="section-label">Darum Frankies</p>
