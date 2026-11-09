@@ -88,6 +88,16 @@ export default function EinsaetzeSeite() {
             <h1 id="einsaetze-titel" className="sn-h1">Wo wir schon<br /><em>mit angepackt haben.</em></h1>
             <p>Echte Veranstaltungen, echte Zahlen.<br />Was gelaufen ist — und was als Nächstes ansteht.</p>
           </div>
+          {/* Einordnung (09.11.2026): Warum hier nur steht, was wir selbst
+              gemacht haben. Zahlen aus referenzen-daten.ts. */}
+          <div className="sn-einsaetze-intro sn-reveal">
+            <p>
+              Diese Liste ist kurz, und das mit Absicht. Hier steht nur, was wir selbst mit eigener Mannschaft und eigenem Equipment gemacht haben, mit den Zahlen, die wir belegen können. Keine „über 500 Events“, keine Logos von Firmen, für die wir einmal zwei Kisten geliefert haben.
+            </p>
+            <p>
+              Was die Zahlen bedeuten: 100 Hektoliter Bier in Berghausen sind 10.000 Liter über ein Schützenfest-Wochenende. 18 Leute im Einsatz heißt, dass an jeder Theke jemand steht, der weiß, was er tut, und dass im Hintergrund jemand nachlegt, kühlt und abrechnet. Was als Nächstes ansteht, steht darunter als „Steht an“, damit niemand denkt, es sei schon gelaufen.
+            </p>
+          </div>
           <Liste eintraege={gelaufen} offset={0} />
 
           {geplant.length > 0 && (
