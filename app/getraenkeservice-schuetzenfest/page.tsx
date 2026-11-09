@@ -169,7 +169,61 @@ export default function GetraenkeserviceSchuetzenfest() {
             </div>
           </section>
 
-          <section className="section-block">
+          {/* Praxisbericht (09.11.2026). Zahlen aus referenzen-daten.ts
+              (Berghausen: 100 hl Bier, 18 Leute; Marmecke: 12 Leute). Die
+              Umrechnung 100 hl = 10.000 Liter ist Arithmetik. Die Klaerpunkte
+              stammen aus den FAQ der Startseite (FragenNeu.tsx). Nichts
+              darueber hinaus behauptet. */}
+          <section className="section-block" id="praxis">
+            <div className="section-container">
+              <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
+                <p className="section-label">Aus der Praxis</p>
+                <h2 className="section-title" style={{ margin: '0 auto 1rem' }}>Berghausen und Marmecke</h2>
+                <p className="section-text" style={{ margin: '0 auto' }}>
+                  Zwei Schützenfeste, zwei Größen. Beide zeigen, was wir meinen, wenn wir sagen: Sie feiern, wir machen den Rest.
+                </p>
+              </div>
+              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(300px, 100%), 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
+                <div style={{ background: 'var(--color-surface)', border: '1px solid rgba(200,164,78,0.12)', padding: '2rem' }}>
+                  <p style={{ fontSize: '0.75rem', letterSpacing: '0.25em', color: 'var(--color-gold)', textTransform: 'uppercase', marginBottom: '0.75rem' }}>Schützenfest Berghausen</p>
+                  <p style={{ fontFamily: 'var(--font-display)', fontSize: '2.4rem', lineHeight: 1, marginBottom: '0.5rem' }}>100 <span style={{ fontSize: '1.1rem' }}>Hektoliter Bier</span></p>
+                  <p style={{ fontFamily: 'var(--font-display)', fontSize: '1.6rem', lineHeight: 1, marginBottom: '1.25rem', color: 'var(--color-text-muted)' }}>18 <span style={{ fontSize: '1rem' }}>Leute im Einsatz</span></p>
+                  <p style={{ fontSize: '0.92rem', color: 'var(--color-text-muted)', lineHeight: 1.7, fontWeight: 300 }}>
+                    100 Hektoliter sind 10.000 Liter. Wer das einmal gezapft hat, weiß, warum Kühlung, Nachschub und Schichtplan nicht dem Zufall überlassen werden dürfen. In Berghausen waren 18 von uns im Einsatz, damit der Festausschuss den Kopf frei hat für sein Fest.
+                  </p>
+                </div>
+                <div style={{ background: 'var(--color-surface)', border: '1px solid rgba(200,164,78,0.12)', padding: '2rem' }}>
+                  <p style={{ fontSize: '0.75rem', letterSpacing: '0.25em', color: 'var(--color-gold)', textTransform: 'uppercase', marginBottom: '0.75rem' }}>Schützenfest Marmecke</p>
+                  <p style={{ fontFamily: 'var(--font-display)', fontSize: '2.4rem', lineHeight: 1, marginBottom: '0.5rem' }}>12 <span style={{ fontSize: '1.1rem' }}>Leute im Einsatz</span></p>
+                  <p style={{ fontFamily: 'var(--font-display)', fontSize: '1.6rem', lineHeight: 1, marginBottom: '1.25rem', color: 'var(--color-text-muted)' }}>Thekenservice</p>
+                  <p style={{ fontSize: '0.92rem', color: 'var(--color-text-muted)', lineHeight: 1.7, fontWeight: 300 }}>
+                    Ein Dorffest ist nicht kleiner, nur anders: jeder kennt jeden, und die Stammkundschaft merkt sofort, ob das Bier richtig gezapft ist. Zwölf Leute, ein Wochenende.
+                  </p>
+                </div>
+              </div>
+              <div className="reveal" style={{ maxWidth: '760px', margin: '0 auto' }}>
+                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', fontWeight: 400, marginBottom: '1rem', textAlign: 'center' }}>Was wir vorher mit Ihrem Festausschuss klären</h3>
+                <p className="section-text" style={{ margin: '0 auto 1.5rem' }}>
+                  Ein Schützenfest wird nicht am Freitag geplant, sondern Monate vorher am Küchentisch. Diese Punkte gehen wir mit Ihnen durch, bevor Sie ein Angebot bekommen:
+                </p>
+                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: '0.9rem' }}>
+                  {[
+                    ['Programm und Gäste', 'Was läuft an welchem Tag, und wie viele kommen zum Kommers, zum Ball, zum Frühschoppen? Danach richten sich Mannschaft und Menge.'],
+                    ['Strom und Zufahrt', 'Zapfanlage und Kühlung brauchen Strom, der Kühlanhänger braucht einen Weg ans Zelt. Das prüfen wir vorher, damit am Freitag nichts fehlt.'],
+                    ['Reste', 'Originalverschlossene, unbeschädigte Gebinde nehmen wir nach Absprache zurück. Das steht dann ausdrücklich im Angebot.'],
+                    ['Ein Ansprechpartner', 'Von der Planung über das Wochenende bis zur Abrechnung: eine Nummer, ein Team. Für große Feste fragen Sie am besten drei bis sechs Monate vorher an.'],
+                  ].map(([t, x]) => (
+                    <li key={t} style={{ borderTop: '1px solid rgba(200,164,78,0.15)', paddingTop: '0.9rem' }}>
+                      <strong style={{ display: 'block', fontWeight: 500, color: 'var(--color-text)', marginBottom: '0.3rem' }}>{t}</strong>
+                      <span style={{ display: 'block', fontSize: '0.92rem', color: 'var(--color-text-muted)', lineHeight: 1.7, fontWeight: 300 }}>{x}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section className="section-block section-block--alt">
             <div className="section-container">
               <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
                 <p className="section-label">Das bringen wir mit</p>

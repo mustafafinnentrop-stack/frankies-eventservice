@@ -669,3 +669,22 @@ a.sn-hero-angebot > span:last-child { font-size: 18px; line-height: 1; }
   .sn a.sn-hero-bewertung { font-size: 13px; padding: 8px 13px; gap: 6px; margin-bottom: 16px; }
   .sn-hero-sterne { font-size: 13px; letter-spacing: 1px; }
 }
+
+
+/* Einsätze: Einordnung unter der Überschrift (09.11.2026). Zwei Absätze,
+   schmal, linksbündig unter dem Titel — .sn p setzt Margins zurück, daher
+   hier eigene Abstände. */
+.sn .sn-einsaetze-intro { max-width: 62ch; margin: 0 0 56px; }
+.sn .sn-einsaetze-intro p { font-size: 17px; line-height: 1.65; color: var(--sn-text2); margin: 0 0 16px; }
+.sn .sn-einsaetze-intro p:last-child { margin-bottom: 0; }
+
+/* Winterbar: Ablauf in drei Spalten, ab 801 px nebeneinander. */
+.sn .sn-winter-ablauf { display: grid; gap: 28px; }
+.sn .sn-winter-ablauf h3 { font-size: 22px; margin: 0 0 10px; }
+.sn .sn-winter-ablauf p { font-size: 16px; line-height: 1.65; color: var(--sn-text2); margin: 0; }
+@media (min-width: 801px) {
+  .sn .sn-winter-ablauf { grid-template-columns: repeat(3, 1fr); gap: 5vw; }
+}
+@media (min-width: 1101px) {
+  .sn .sn-winter-ablauf { gap: 8vw; }
+}

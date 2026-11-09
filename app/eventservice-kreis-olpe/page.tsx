@@ -157,7 +157,44 @@ export default function EventserviceKreisOlpe() {
             </div>
           </section>
 
-          <section className="section-block">
+          {/* Praxisbericht (09.11.2026). Drei Einsaetze aus referenzen-daten.ts,
+              Ablauf einer Anfrage aus den FAQ der Startseite. Keine Zahl, die
+              dort nicht steht. */}
+          <section className="section-block" id="praxis">
+            <div className="section-container">
+              <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
+                <p className="section-label">Aus der Praxis</p>
+                <h2 className="section-title" style={{ margin: '0 auto 1rem' }}>Drei Einsätze, drei verschiedene Feste</h2>
+                <p className="section-text" style={{ margin: '0 auto' }}>
+                  Was „Eventservice“ im Alltag heißt, sieht man am besten an dem, was wir schon gemacht haben.
+                </p>
+              </div>
+              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(260px, 100%), 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
+                {[
+                  ['Schützenfest', 'Berghausen', '100 Hektoliter Bier, 18 Leute im Einsatz. Theke, Zapftechnik und Kühlung von uns, das ganze Wochenende. Der Verein hat gefeiert, wir haben gezapft.'],
+                  ['Firmenfeier', 'Schneider Haustechnik', 'Catering und mobile Cocktailbar aus einer Hand. Für die Firma hieß das: ein Ansprechpartner statt drei, damit die Gastgeber an ihrem eigenen Abend selbst Gäste sein können.'],
+                  ['Cocktailbar', 'Campingplatz Kalberschnacke', 'Die Bambustheke auf der Wiese, frisch gemixt im Freien. Die Bar läuft ohne Strom- und Wasseranschluss, deshalb geht sie auch dort, wo es keinen gibt.'],
+                ].map(([art, name, text]) => (
+                  <div key={name} style={{ background: 'var(--color-surface)', border: '1px solid rgba(200,164,78,0.12)', padding: '2rem' }}>
+                    <p style={{ fontSize: '0.75rem', letterSpacing: '0.25em', color: 'var(--color-gold)', textTransform: 'uppercase', marginBottom: '0.5rem' }}>{art}</p>
+                    <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.3rem', fontWeight: 400, marginBottom: '0.75rem' }}>{name}</h3>
+                    <p style={{ fontSize: '0.92rem', color: 'var(--color-text-muted)', lineHeight: 1.7, fontWeight: 300 }}>{text}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="reveal" style={{ maxWidth: '760px', margin: '0 auto', textAlign: 'center' }}>
+                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', fontWeight: 400, marginBottom: '1rem' }}>So läuft eine Anfrage bei uns</h3>
+                <p className="section-text" style={{ margin: '0 auto 1rem' }}>
+                  Sie rufen an oder schreiben uns. Wir fragen nach Datum, Ort, Gästezahl und was Sie sich vorstellen. Dann klären wir, was Ihr Ort bieten muss, etwa Strom für Zapfanlage und Kühlung, und Sie bekommen innerhalb von 24 Stunden ein Angebot. Für die Cocktailbar gibt es feste Pauschalen, für Thekenservice und Getränke rechnen wir nach Gästezahl, Dauer, Personal, Technik und Anfahrt. Ein Viertagesfest lässt sich eben nicht mit einem Abend vergleichen.
+                </p>
+                <p className="section-text" style={{ margin: '0 auto' }}>
+                  Und wenn Ihr Fest außerhalb des Kreises liegt: fragen Sie trotzdem. Wir sagen Ihnen ehrlich, ob es passt.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section className="section-block section-block--alt">
             <div className="section-container">
               <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
                 <p className="section-label">Unsere Leistungen</p>
@@ -198,7 +235,7 @@ export default function EventserviceKreisOlpe() {
             </div>
           </section>
 
-          <section className="section-block section-block--alt">
+          <section className="section-block">
             <div className="section-container" style={{ textAlign: 'center' }}>
               <div className="reveal" style={{ padding: '3rem 2rem', background: 'var(--color-surface-2)', border: '1px solid rgba(200,164,78,0.15)', maxWidth: '700px', margin: '0 auto' }}>
                 <p className="section-label">Kontakt &amp; Adresse</p>

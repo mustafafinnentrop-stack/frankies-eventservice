@@ -122,9 +122,36 @@ export default function WinterbarSeite() {
           </div>
         </section>
 
+        {/* So laeuft ein Winterbar-Abend (09.11.2026). Nur Belegtes: Karte,
+            Saison und Anlaesse aus winterbar-daten.ts, Klaerung von Strom und
+            Platz aus den FAQ der Startseite, Alkohol ab 18 aus der Karte. */}
+        <section className="sn-leistungen" id="ablauf" aria-labelledby="winter-ablauf-titel">
+          <div className="sn-top sn-reveal">
+            <span className="sn-eyebrow">02 / So läuft es</span>
+            <span className="sn-note">Aufbau · Ausschank · Abbau</span>
+          </div>
+          <div className="sn-heading sn-reveal">
+            <h2 id="winter-ablauf-titel">Ein Winterbar-Abend,<br /><em>von vorne bis hinten.</em></h2>
+          </div>
+          <div className="sn-winter-ablauf sn-reveal">
+            <div>
+              <h3>Vorher</h3>
+              <p>Sie sagen uns Datum, Ort und Gästezahl. Wir klären, was Ihr Platz bieten muss, etwa Strom für die Theke, und wie viel Karte Sie wollen: alle zwölf Getränke oder eine Auswahl für Ihren Anlass. Innerhalb von 24 Stunden haben Sie ein Angebot.</p>
+            </div>
+            <div>
+              <h3>Am Tag</h3>
+              <p>Wir bauen die Bambustheke im Winterbanner auf, stellen die Kessel an und schenken aus: Hot Aperol, Glühgin und Punsch mit Schuss für die Erwachsenen, Kakao mit Marshmallows und Kinderpunsch für alle anderen. Alkohol gibt es bei uns nur an Gäste ab 18, das sagen wir vorher und halten uns daran.</p>
+            </div>
+            <div>
+              <h3>Danach</h3>
+              <p>Wir räumen ab, nehmen alles wieder mit, und Sie haben am nächsten Morgen keinen Stapel Becher auf dem Hof. Buchbar von {WINTER_SAISON_TEXT}, für {WINTER_ANLAESSE}.</p>
+            </div>
+          </div>
+        </section>
+
         <section className="sn-leistungen sn-winter-ende" aria-labelledby="winter-anfrage-titel">
           <div className="sn-top sn-reveal">
-            <span className="sn-eyebrow">02 / Anfragen</span>
+            <span className="sn-eyebrow">03 / Anfragen</span>
             <Link className="sn-link" href="/cocktailbar-lennestadt">Zur Cocktailbar <span aria-hidden="true">↗</span></Link>
           </div>
           <div className="sn-winter-hero sn-reveal">
