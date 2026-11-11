@@ -121,16 +121,24 @@ const STYLES = `
 }
 
 /* Giant Background Text Masking */
+/* Grosser Schriftzug unten (11.11.2026): vorher 26vw breit, 5 vh unter
+   den Rand geschoben und nur 5-10 % deckend. Am Handy war er zur Haelfte
+   abgeschnitten und breiter als der Bildschirm. Jetzt ganz im Bild und
+   deutlich sichtbarer, bleibt aber Hintergrund. Am Handy 18vw unter dem
+   Copyright, ab 768 px 14vw knapp ueber dem unteren Rand, unter dem eventbook-Siegel. */
 .footer-giant-bg-text {
-  font-size: 26vw;
-  line-height: 0.75;
+  font-size: 18vw;
+  line-height: 0.8;
   font-weight: 900;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.04em;
   color: transparent;
-  -webkit-text-stroke: 1px color-mix(in oklch, var(--foreground) 5%, transparent);
-  background: linear-gradient(180deg, color-mix(in oklch, var(--foreground) 10%, transparent) 0%, transparent 60%);
+  -webkit-text-stroke: 1px color-mix(in oklch, var(--foreground) 14%, transparent);
+  background: linear-gradient(180deg, color-mix(in oklch, var(--foreground) 18%, transparent) 0%, color-mix(in oklch, var(--foreground) 3%, transparent) 90%);
   -webkit-background-clip: text;
   background-clip: text;
+}
+@media (min-width: 768px) {
+  .footer-giant-bg-text { font-size: 14vw; }
 }
 
 /* Metallic Text Glow */
@@ -316,7 +324,7 @@ export function CinematicFooter() {
           {/* Giant background text */}
           <div
             ref={giantTextRef}
-            className="footer-giant-bg-text absolute -bottom-[5vh] left-1/2 -translate-x-1/2 whitespace-nowrap z-0 pointer-events-none select-none"
+            className="footer-giant-bg-text relative order-last w-full text-center pt-4 pb-24 md:pb-0 md:pt-0 md:absolute md:bottom-[3vh] md:left-1/2 md:-translate-x-1/2 md:w-auto whitespace-nowrap z-0 pointer-events-none select-none"
           >
             FRANKIES
           </div>
