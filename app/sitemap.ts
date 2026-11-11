@@ -50,6 +50,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: 'https://frankies-eventservice.de/kontakt',
+      lastModified: new Date('2026-11-11'),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
       url: 'https://frankies-eventservice.de/einsaetze',
       lastModified: new Date('2026-11-07'),
       changeFrequency: 'monthly',

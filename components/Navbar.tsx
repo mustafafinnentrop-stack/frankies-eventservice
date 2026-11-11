@@ -52,6 +52,7 @@ export default function Navbar() {
       bgColor: '#2A2318',
       textColor: '#F0ECE3',
       links: [
+        { label: 'Kontaktformular', href: '/kontakt', ariaLabel: 'Kontaktformular: Anfrage senden' },
         { label: 'Kostenloses Erstgespräch', href: CALCOM_URL, ariaLabel: 'Kostenloses Erstgespräch' },
         { label: 'Partner werden', href: '/partner', ariaLabel: 'Partner werden' },
         { label: 'Anrufen', href: 'tel:+4915142840916', ariaLabel: 'Anrufen' },

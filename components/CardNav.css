@@ -292,3 +292,15 @@
     font-size: 0.85rem;
   }
 }
+
+/* Offenes Menue darf nie hoeher sein als der Bildschirm (11.11.2026).
+   Mit drei Karten und 20 Links ist es auf kleinen Handys hoeher als der
+   Viewport; dann scrollt der Inhalt innen, statt unten abgeschnitten zu
+   werden. dvh beruecksichtigt die Browserleisten auf dem Handy. */
+@media (max-width: 768px) {
+  .card-nav.open { max-height: calc(100dvh - 1.5em); }
+  .card-nav.open .card-nav-content { overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  /* Karten behalten ihre Hoehe; sonst drueckt die Flex-Spalte sie beim
+     Scrollen zusammen und die letzten Links verschwinden unter der naechsten. */
+  .card-nav.open .nav-card { flex-shrink: 0; }
+}
