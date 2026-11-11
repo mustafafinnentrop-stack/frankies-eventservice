@@ -300,11 +300,14 @@ export function CinematicFooter() {
       */}
       <div
         ref={wrapperRef}
-        className="relative h-screen w-full"
+        className="relative w-full md:h-screen"
         style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
       >
-        {/* The actual footer stays fixed to the viewport underneath everything */}
-        <footer className="fixed bottom-0 left-0 flex h-screen w-full flex-col justify-between overflow-hidden bg-background text-foreground cinematic-footer-wrapper">
+        {/* Ab 768 px liegt der Fussbereich fest unter der Seite (Vorhang-Effekt).
+            Am Handy ist sein Inhalt hoeher als der Bildschirm; fest auf
+            Bildschirmhoehe wurde oben "Ihr Event steht an?" abgeschnitten.
+            Dort waechst er deshalb mit dem Inhalt mit (11.11.2026). */}
+        <footer className="relative min-h-[100svh] md:fixed md:bottom-0 md:left-0 md:min-h-0 md:h-screen flex w-full flex-col justify-between overflow-hidden bg-background text-foreground cinematic-footer-wrapper">
 
           {/* Ambient Light & Grid Background */}
           <div className="footer-aurora absolute left-1/2 top-1/2 h-[60vh] w-[80vw] -translate-x-1/2 -translate-y-1/2 animate-footer-breathe rounded-[50%] blur-[80px] pointer-events-none z-0" />
@@ -327,10 +330,10 @@ export function CinematicFooter() {
           </div>
 
           {/* 2. Main Center Content */}
-          <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 mt-8 md:mt-20 w-full max-w-5xl mx-auto">
+          <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 pt-36 pb-10 md:pt-0 md:pb-0 md:mt-20 w-full max-w-5xl mx-auto">
             <h2
               ref={headingRef}
-              className="text-4xl md:text-8xl footer-text-glow tracking-tighter mb-6 md:mb-12 text-center"
+              className="text-4xl md:text-8xl footer-text-glow tracking-tighter mb-8 md:mb-12 text-center"
               style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
             >
               Ihr Event steht an?
@@ -358,37 +361,38 @@ export function CinematicFooter() {
 
               {/* Secondary Text Links */}
               <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-3 md:gap-4 w-full max-w-md sm:max-w-none mx-auto">
-                <MagneticButton as="a" href="/service" className="footer-glass-pill px-4 py-3 md:px-6 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground text-center justify-center">
+                <MagneticButton as="a" href="/service" className="footer-glass-pill px-3 max-[359px]:px-2 max-[359px]:text-[11px] max-[359px]:tracking-tight py-3 md:px-6 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground text-center justify-center whitespace-nowrap">
                   Service-Pakete
                 </MagneticButton>
-                <MagneticButton as="a" href="/cocktailbar-lennestadt" className="footer-glass-pill px-4 py-3 md:px-6 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground text-center justify-center">
+                <MagneticButton as="a" href="/cocktailbar-lennestadt" className="footer-glass-pill px-3 max-[359px]:px-2 max-[359px]:text-[11px] max-[359px]:tracking-tight py-3 md:px-6 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground text-center justify-center whitespace-nowrap">
                   Mobile Cocktailbar
                 </MagneticButton>
-                <MagneticButton as="a" href="/winterbar" className="footer-glass-pill px-4 py-3 md:px-6 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground text-center justify-center">
+                <MagneticButton as="a" href="/winterbar" className="footer-glass-pill px-3 max-[359px]:px-2 max-[359px]:text-[11px] max-[359px]:tracking-tight py-3 md:px-6 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground text-center justify-center whitespace-nowrap">
                   Winterbar
                 </MagneticButton>
                 {/* Der Blog liegt auf einer eigenen Subdomain. Ohne Link von hier
                     kennt ihn weder ein Besucher noch eine Suchmaschine, die von
                     der Hauptdomain kommt. Bewusst ohne rel="nofollow" — das
                     Signal soll fliessen. */}
-                <MagneticButton as="a" href="https://blog.frankies-eventservice.de/blog" className="footer-glass-pill px-4 py-3 md:px-6 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground text-center justify-center">
+                <MagneticButton as="a" href="https://blog.frankies-eventservice.de/blog" className="footer-glass-pill px-3 max-[359px]:px-2 max-[359px]:text-[11px] max-[359px]:tracking-tight py-3 md:px-6 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground text-center justify-center whitespace-nowrap">
                   Blog
                 </MagneticButton>
-                <MagneticButton as="a" href="/partner" className="footer-glass-pill px-4 py-3 md:px-6 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground text-center justify-center">
+                <MagneticButton as="a" href="/partner" className="footer-glass-pill px-3 max-[359px]:px-2 max-[359px]:text-[11px] max-[359px]:tracking-tight py-3 md:px-6 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground text-center justify-center whitespace-nowrap">
                   Partner werden
                 </MagneticButton>
-                <MagneticButton as="a" href="/agb" className="footer-glass-pill px-4 py-3 md:px-6 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground text-center justify-center">
+                <MagneticButton as="a" href="/agb" className="footer-glass-pill px-3 max-[359px]:px-2 max-[359px]:text-[11px] max-[359px]:tracking-tight py-3 md:px-6 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground text-center justify-center whitespace-nowrap">
                   AGB
                 </MagneticButton>
               </div>
             </div>
           </div>
 
-          {/* Partnersiegel und Logo von eventbook.com, beide auf das
-              Anbieterprofil verlinkt. Bildpfade und Adresse kommen aus
+          {/* Partnersiegel von eventbook.com, auf das Anbieterprofil
+              verlinkt. Das zusaetzliche Textlogo darunter ist entfernt
+              (11.11.2026): zweimal eventbook wirkte doppelt. Bildpfade und Adresse kommen aus
               components/eventbook-daten.ts — dort steht auch, warum die
               Bilder selbst gehostet sind. */}
-          <div className="relative z-20 w-full flex flex-wrap items-center justify-center gap-x-8 gap-y-3 px-6 pb-2">
+          <div className="relative z-20 w-full flex flex-wrap items-center justify-center px-6 pb-4 md:pb-2">
             <a
               href={EVENTBOOK.profil}
               target="_blank"
@@ -403,22 +407,6 @@ export function CinematicFooter() {
                 height={EVENTBOOK.badge.hoehe}
                 sizes="180px"
                 style={{ width: '180px', height: 'auto' }}
-              />
-            </a>
-            <a
-              href={EVENTBOOK.profil}
-              target="_blank"
-              rel="nofollow noopener noreferrer"
-              aria-label="Frankies Eventservice bei eventbook.com"
-              className="inline-block opacity-70 hover:opacity-100 transition-opacity"
-            >
-              <Image
-                src={EVENTBOOK.logo.src}
-                alt={EVENTBOOK.logo.alt}
-                width={EVENTBOOK.logo.breite}
-                height={EVENTBOOK.logo.hoehe}
-                sizes="150px"
-                style={{ width: '150px', height: 'auto' }}
               />
             </a>
           </div>
