@@ -696,3 +696,64 @@ a.sn-hero-angebot > span:last-child { font-size: 18px; line-height: 1; }
 .sn .sn-anfrage-seite { margin-top: 0; padding-top: 150px; }
 .sn .sn-anfrage-seite .sn-h1 { font-size: clamp(40px, 4.6vw, 72px); line-height: 1.06; }
 @media (max-width: 800px) { .sn .sn-anfrage-seite { padding-top: 118px; } }
+
+
+/* /kontakt als Schritt-Formular (11.11.2026).
+   Raster: am Handy Kopf, Formular, dann "Lieber direkt sprechen?" — das
+   Formular soll ohne langes Scrollen erreichbar sein. Ab 801 px zwei
+   gleiche Spalten wie auf der Startseite (5vw, ab 1101 px 8vw): links
+   Kopf und Direktkontakt, rechts das Formular ueber beide Zeilen. */
+.sn .sn-kontakt-layout { display: grid; grid-template-columns: minmax(0, 1fr); row-gap: 40px; }
+.sn .sn-kontakt-direkt > p { margin-top: 0; }
+.sn .sn-kontakt-direkt .sn-phone { margin-top: 14px; }
+@media (min-width: 801px) {
+  .sn .sn-kontakt-layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 5vw; row-gap: 56px; grid-template-rows: auto 1fr; grid-template-areas: "kopf funnel" "direkt funnel"; align-items: start; }
+  .sn .sn-kontakt-kopf { grid-area: kopf; }
+  .sn .sn-kontakt-direkt { grid-area: direkt; }
+  .sn .sn-funnel { grid-area: funnel; }
+}
+@media (min-width: 1101px) { .sn .sn-kontakt-layout { column-gap: 8vw; } }
+
+.sn .sn-funnel { scroll-margin-top: 110px; border: 1px solid var(--sn-line); padding: 32px; background: rgba(255,255,255,0.015); }
+.sn .sn-funnel .sn-erfolg { border: 0; padding: 12px 0; }
+.sn .sn-funnel-kopf { display: flex; align-items: center; gap: 16px; margin-bottom: 26px; }
+.sn .sn-funnel-zaehler { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-gold); white-space: nowrap; }
+.sn .sn-funnel-balken { flex: 1; height: 2px; background: rgba(240,236,227,0.16); }
+.sn .sn-funnel-balken > span { display: block; height: 100%; background: var(--color-gold); transition: width 0.4s ease; }
+.sn .sn-funnel-titel { font-size: clamp(26px, 2.4vw, 36px); line-height: 1.15; outline: none; }
+.sn .sn-funnel-unter { font-size: 15px; line-height: 1.6; color: var(--sn-text2); margin: 10px 0 28px; }
+
+.sn .sn-funnel-optionen { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.sn .sn-funnel-optionen button { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 58px; padding: 12px 16px; border: 1px solid rgba(240,236,227,0.3); background: transparent; color: var(--color-text); font-size: 15px; line-height: 1.3; text-align: left; cursor: pointer; transition: border-color 0.3s, background 0.3s, color 0.3s; }
+.sn .sn-funnel-optionen button > span:last-child { color: var(--color-gold); opacity: 0.55; transition: opacity 0.3s, transform 0.3s; }
+.sn .sn-funnel-optionen button:hover, .sn .sn-funnel-optionen button.is-on { border-color: var(--color-gold); background: rgba(200,164,78,0.1); }
+.sn .sn-funnel-optionen button:hover > span:last-child, .sn .sn-funnel-optionen button.is-on > span:last-child { opacity: 1; transform: translateX(3px); }
+.sn .sn-funnel-optionen button:focus-visible, .sn .sn-funnel-zurueck:focus-visible { outline: 2px solid var(--color-gold); outline-offset: 3px; }
+/* Neun Anlaesse: der letzte steht allein und nimmt die ganze Breite. */
+.sn .sn-funnel-optionen button:last-child:nth-child(odd) { grid-column: 1 / -1; }
+
+.sn .sn-funnel-kurz { grid-column: 1 / -1; font-size: 14px; line-height: 1.6; color: var(--color-text); padding: 12px 14px; border-left: 2px solid var(--color-gold); background: rgba(200,164,78,0.07); }
+.sn .sn-funnel-kurz > span { color: var(--sn-text2); }
+.sn .sn-funnel .sn-form-fehler { margin-top: 22px; }
+.sn .sn-funnel-nav { display: flex; align-items: stretch; gap: 14px; margin-top: 30px; }
+.sn .sn-funnel-nav .sn-submit { flex: 1; cursor: pointer; }
+.sn .sn-funnel-zurueck { display: inline-flex; align-items: center; gap: 8px; padding: 0 18px; border: 1px solid rgba(240,236,227,0.3); background: transparent; color: var(--color-text); font-size: 14px; cursor: pointer; transition: border-color 0.3s, color 0.3s; }
+.sn .sn-funnel-zurueck:hover { border-color: var(--color-gold); color: var(--color-gold); }
+.sn .sn-funnel .sn-form-note { margin-top: 14px; }
+
+@media (max-width: 800px) {
+  .sn .sn-funnel { padding: 22px 18px; }
+  .sn .sn-funnel-optionen button { font-size: 14px; padding: 10px 12px; min-height: 54px; }
+  .sn .sn-funnel-unter { margin-bottom: 22px; }
+}
+/* Sehr schmale Handys: "Anfrage senden" bricht neben "Zurueck" um. Dann
+   steht der Hauptknopf oben in voller Breite, "Zurueck" schmal darunter. */
+@media (max-width: 380px) {
+  .sn .sn-funnel-nav { flex-direction: column-reverse; gap: 10px; }
+  .sn .sn-funnel-zurueck { justify-content: center; min-height: 46px; }
+}
+/* Am Handy stehen die Felder im Schritt-Formular untereinander: zwei
+   Spalten schneiden bei 360 px den Platzhalter "Vor- und Nachname" ab. */
+@media (max-width: 480px) {
+  .sn .sn-funnel .sn-form { grid-template-columns: minmax(0, 1fr); }
+}
