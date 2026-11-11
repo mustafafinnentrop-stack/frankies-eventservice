@@ -37,8 +37,11 @@ const CardNav = ({
     const navEl = navRef.current;
     if (!navEl) return 260;
 
-    const isMobile = window.matchMedia('(max-width: 768px)').matches;
-    if (isMobile) {
+    // Frueher wurde nur mobil gemessen und am Desktop pauschal 260 px
+    // angenommen. Mit sechs bis sieben Links pro Karte schnitt das die
+    // letzten Eintraege ab. Jetzt wird auf jeder Breite gemessen, plus
+    // Reserve unten, damit die letzte Zeile nicht am Rand klebt.
+    {
       const contentEl = navEl.querySelector('.card-nav-content');
       if (contentEl) {
         const wasVisible = contentEl.style.visibility;
@@ -54,7 +57,7 @@ const CardNav = ({
         contentEl.offsetHeight;
 
         const topBar = 60;
-        const padding = 16;
+        const padding = 24;
         const contentHeight = contentEl.scrollHeight;
 
         contentEl.style.visibility = wasVisible;

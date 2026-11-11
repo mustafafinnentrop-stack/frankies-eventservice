@@ -688,3 +688,11 @@ a.sn-hero-angebot > span:last-child { font-size: 18px; line-height: 1; }
 @media (min-width: 1101px) {
   .sn .sn-winter-ablauf { gap: 8vw; }
 }
+
+
+/* /kontakt (11.11.2026): das Anfrage-Formular als eigene Seite. Oben Platz
+   fuer den festen Header wie .sn-seite, kein Abstand nach oben, weil
+   nichts davor steht. Die h1 nutzt die Groesse der Unterseiten-h1. */
+.sn .sn-anfrage-seite { margin-top: 0; padding-top: 150px; }
+.sn .sn-anfrage-seite .sn-h1 { font-size: clamp(40px, 4.6vw, 72px); line-height: 1.06; }
+@media (max-width: 800px) { .sn .sn-anfrage-seite { padding-top: 118px; } }

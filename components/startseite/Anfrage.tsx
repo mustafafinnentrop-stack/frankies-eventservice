@@ -24,7 +24,13 @@ const GAESTE = ['bis 50', '50–100', '100–200', '200–500', 'über 500']
 
 type Felder = { anlass: string; datum: string; gaeste: string; ort: string; leistungen: Leistung[]; nachricht: string; name: string; email: string; telefon: string }
 
-export default function Anfrage() {
+type Props = {
+  /* Als eigene Seite (/kontakt): h1 statt h2, eigener Eyebrow, Platz fuer
+     den festen Header. Auf der Startseite bleibt alles wie bisher. */
+  alsSeite?: boolean
+}
+
+export default function Anfrage({ alsSeite = false }: Props) {
   const [f, setF] = useState<Felder>({ anlass: '', datum: '', gaeste: '', ort: '', leistungen: [], nachricht: '', name: '', email: '', telefon: '' })
 
   /* Vorwahl aus dem Stufen-Block: setzt die Kaestchen, sonst nichts. */
@@ -92,15 +98,17 @@ export default function Anfrage() {
   const calUrl = `${CALCOM_URL}?name=${encodeURIComponent(f.name)}&email=${encodeURIComponent(f.email)}`
 
   return (
-    <section className="sn-anfrage" id="anfrage" aria-labelledby="sn-anfrage-titel">
+    <section className={alsSeite ? 'sn-anfrage sn-anfrage-seite' : 'sn-anfrage'} id="anfrage" aria-labelledby="sn-anfrage-titel">
       <div className="sn-wrap">
         <div className="sn-top sn-reveal">
-          <span className="sn-eyebrow">09 / Ihr Fest</span>
+          <span className="sn-eyebrow">{alsSeite ? 'Kontakt' : '09 / Ihr Fest'}</span>
           <span className="sn-note">Lennestadt · Kreis Olpe · Sauerland</span>
         </div>
         <div className="sn-anfrage-layout" id="kontakt">
           <div className="sn-anfrage-copy sn-reveal">
-            <h2 id="sn-anfrage-titel">Wann dürfen<br />wir <em>mit anpacken?</em></h2>
+            {alsSeite
+              ? <h1 id="sn-anfrage-titel" className="sn-h1">Wann dürfen<br />wir <em>mit anpacken?</em></h1>
+              : <h2 id="sn-anfrage-titel">Wann dürfen<br />wir <em>mit anpacken?</em></h2>}
             <p>Erzählen Sie uns kurz von Ihrem Fest.<br />Den Rest besprechen wir persönlich.</p>
             <a className="sn-phone" href="tel:+4915142840916">0151 42840916 <span aria-hidden="true">↗</span></a>
             <a className="sn-email" href="mailto:info@frankies-eventservice.de">info@frankies-eventservice.de</a>
