@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from 'react'
 import { LEISTUNGSWAHL, VORWAHL_EREIGNIS, type Leistung } from './vorwahl'
-import { MAX, kuerzen, HONEYPOT_STIL, gesperrt, sperren } from '@/components/formular-schutz'
+import { MAX, HONEYPOT_STIL, gesperrt, sperren } from '@/components/formular-schutz'
+import { ANLAESSE, GAESTE, ANFRAGE_LEER, CALCOM_URL, anfrageSenden, type AnfrageFelder as Felder } from './anfrage-daten'
 import dynamic from 'next/dynamic'
 
 /*
@@ -16,22 +17,10 @@ import dynamic from 'next/dynamic'
 */
 const LottieBox = dynamic(() => import('@/components/LottieBox'), { ssr: false })
 
-const CALCOM_URL = process.env.NEXT_PUBLIC_CALCOM_URL || 'https://cal.com/frankies.digital/15min'
-const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || ''
-
-const ANLAESSE = ['Schützenfest', 'Hochzeit', 'Firmenfeier', 'Geburtstag', 'Vereinsfest', 'Karneval', 'Mobile Cocktailbar', 'Equipment mieten', 'Sonstige Veranstaltung']
-const GAESTE = ['bis 50', '50–100', '100–200', '200–500', 'über 500']
-
-type Felder = { anlass: string; datum: string; gaeste: string; ort: string; leistungen: Leistung[]; nachricht: string; name: string; email: string; telefon: string }
-
-type Props = {
-  /* Als eigene Seite (/kontakt): h1 statt h2, eigener Eyebrow, Platz fuer
-     den festen Header. Auf der Startseite bleibt alles wie bisher. */
-  alsSeite?: boolean
-}
-
-export default function Anfrage({ alsSeite = false }: Props) {
-  const [f, setF] = useState<Felder>({ anlass: '', datum: '', gaeste: '', ort: '', leistungen: [], nachricht: '', name: '', email: '', telefon: '' })
+/* Auswahllisten, Feldtyp und Versand: anfrage-daten.ts (gemeinsam mit
+   dem Schritt-Formular auf /kontakt). */
+export default function Anfrage() {
+  const [f, setF] = useState<Felder>(ANFRAGE_LEER)
 
   /* Vorwahl aus dem Stufen-Block: setzt die Kaestchen, sonst nichts. */
   useEffect(() => {
@@ -67,48 +56,23 @@ export default function Anfrage({ alsSeite = false }: Props) {
     }
     setHinweis('')
     setStatus('sending')
-    const name = kuerzen(f.name, MAX.name)
-    try {
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          access_key: WEB3FORMS_KEY,
-          botcheck: false,
-          subject: `Anfrage: ${f.anlass} — ${name}`,
-          from_name: 'Frankies Eventservice Website',
-          Name: name,
-          'E-Mail': kuerzen(f.email, MAX.email),
-          Telefon: kuerzen(f.telefon, MAX.telefon) || '–',
-          Veranstaltung: f.anlass,
-          Datum: f.datum || '–',
-          Gäste: f.gaeste || '–',
-          Ort: kuerzen(f.ort, MAX.ort) || '–',
-          Leistungen: f.leistungen.join(', ') || '–',
-          Nachricht: kuerzen(f.nachricht, MAX.nachricht) || '–',
-        }),
-      })
-      if (res.ok) sperren('fe-anfrage')
-      setStatus(res.ok ? 'done' : 'error')
-    } catch {
-      setStatus('error')
-    }
+    const ok = await anfrageSenden(f)
+    if (ok) sperren('fe-anfrage')
+    setStatus(ok ? 'done' : 'error')
   }
 
   const calUrl = `${CALCOM_URL}?name=${encodeURIComponent(f.name)}&email=${encodeURIComponent(f.email)}`
 
   return (
-    <section className={alsSeite ? 'sn-anfrage sn-anfrage-seite' : 'sn-anfrage'} id="anfrage" aria-labelledby="sn-anfrage-titel">
+    <section className="sn-anfrage" id="anfrage" aria-labelledby="sn-anfrage-titel">
       <div className="sn-wrap">
         <div className="sn-top sn-reveal">
-          <span className="sn-eyebrow">{alsSeite ? 'Kontakt' : '09 / Ihr Fest'}</span>
+          <span className="sn-eyebrow">09 / Ihr Fest</span>
           <span className="sn-note">Lennestadt · Kreis Olpe · Sauerland</span>
         </div>
         <div className="sn-anfrage-layout" id="kontakt">
           <div className="sn-anfrage-copy sn-reveal">
-            {alsSeite
-              ? <h1 id="sn-anfrage-titel" className="sn-h1">Wann dürfen<br />wir <em>mit anpacken?</em></h1>
-              : <h2 id="sn-anfrage-titel">Wann dürfen<br />wir <em>mit anpacken?</em></h2>}
+            <h2 id="sn-anfrage-titel">Wann dürfen<br />wir <em>mit anpacken?</em></h2>
             <p>Erzählen Sie uns kurz von Ihrem Fest.<br />Den Rest besprechen wir persönlich.</p>
             <a className="sn-phone" href="tel:+4915142840916">0151 42840916 <span aria-hidden="true">↗</span></a>
             <a className="sn-email" href="mailto:info@frankies-eventservice.de">info@frankies-eventservice.de</a>

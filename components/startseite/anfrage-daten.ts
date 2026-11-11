@@ -1,0 +1,53 @@
+/*
+  Gemeinsame Basis der beiden Anfrageformulare (11.11.2026):
+  - Anfrage.tsx: das einseitige Formular auf der Startseite
+  - AnfrageFunnel.tsx: dieselben Fragen in drei Schritten auf /kontakt
+
+  Auswahllisten, Feldtyp und Versand stehen nur hier. So gehen beide Wege
+  mit denselben Feldnamen an dasselbe Postfach, und eine Aenderung an den
+  Fragen muss nicht an zwei Stellen passieren.
+*/
+import { MAX, kuerzen } from '@/components/formular-schutz'
+import type { Leistung } from './vorwahl'
+
+export const CALCOM_URL = process.env.NEXT_PUBLIC_CALCOM_URL || 'https://cal.com/frankies.digital/15min'
+const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || ''
+
+export const ANLAESSE = ['Schützenfest', 'Hochzeit', 'Firmenfeier', 'Geburtstag', 'Vereinsfest', 'Karneval', 'Mobile Cocktailbar', 'Equipment mieten', 'Sonstige Veranstaltung']
+export const GAESTE = ['bis 50', '50–100', '100–200', '200–500', 'über 500']
+
+export type AnfrageFelder = { anlass: string; datum: string; gaeste: string; ort: string; leistungen: Leistung[]; nachricht: string; name: string; email: string; telefon: string }
+
+export const ANFRAGE_LEER: AnfrageFelder = { anlass: '', datum: '', gaeste: '', ort: '', leistungen: [], nachricht: '', name: '', email: '', telefon: '' }
+
+/* Pflicht sind nur Anlass, Name und E-Mail. */
+export const kontaktGueltig = (f: AnfrageFelder) => !!f.name.trim() && f.email.includes('@')
+
+/* Schickt die Anfrage ueber Web3Forms ans Postfach. true = angenommen. */
+export async function anfrageSenden(f: AnfrageFelder): Promise<boolean> {
+  const name = kuerzen(f.name, MAX.name)
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_KEY,
+        botcheck: false,
+        subject: `Anfrage: ${f.anlass} — ${name}`,
+        from_name: 'Frankies Eventservice Website',
+        Name: name,
+        'E-Mail': kuerzen(f.email, MAX.email),
+        Telefon: kuerzen(f.telefon, MAX.telefon) || '–',
+        Veranstaltung: f.anlass,
+        Datum: f.datum || '–',
+        Gäste: f.gaeste || '–',
+        Ort: kuerzen(f.ort, MAX.ort) || '–',
+        Leistungen: f.leistungen.join(', ') || '–',
+        Nachricht: kuerzen(f.nachricht, MAX.nachricht) || '–',
+      }),
+    })
+    return res.ok
+  } catch {
+    return false
+  }
+}

@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Navbar from '@/components/Navbar'
 import { CinematicFooter } from '@/components/ui/motion-footer'
 import StartseiteEffekte from '@/components/startseite/StartseiteEffekte'
-import Anfrage from '@/components/startseite/Anfrage'
+import AnfrageFunnel from '@/components/startseite/AnfrageFunnel'
 import '@/components/startseite/startseite.css'
 
 const PAGE_URL = 'https://frankies-eventservice.de/kontakt'
@@ -24,10 +24,10 @@ export const metadata: Metadata = {
 }
 
 /*
-  /kontakt (11.11.2026). Das Anfrageformular der Startseite als eigene
-  Seite, damit Anzeigen und Profile direkt darauf verlinken koennen.
-  Gleiches Formular, gleiche Felder, gleicher Versand (Web3Forms), nur mit
-  h1 und Platz fuer den Header. Keine zweite Formularlogik.
+  /kontakt (11.11.2026). Die Anfrage als eigene Seite in drei Schritten
+  (AnfrageFunnel), damit Anzeigen und Profile direkt darauf verlinken
+  koennen. Gleiche Fragen und gleicher Versand wie das Formular der
+  Startseite; beides kommt aus components/startseite/anfrage-daten.ts.
 */
 export default function KontaktSeite() {
   return (
@@ -35,7 +35,7 @@ export default function KontaktSeite() {
       <Navbar />
       <div className="content-layer sn">
         <StartseiteEffekte />
-        <Anfrage alsSeite />
+        <AnfrageFunnel />
       </div>
       <CinematicFooter />
     </>
