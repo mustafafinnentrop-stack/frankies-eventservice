@@ -329,8 +329,11 @@ export function CinematicFooter() {
             FRANKIES
           </div>
 
-          {/* 1. Diagonal Sleek Marquee (Top of footer) */}
-          <div className="absolute top-12 left-0 w-full overflow-hidden border-y border-border/50 bg-background/60 backdrop-blur-md py-4 z-10 -rotate-2 scale-110 shadow-2xl">
+          {/* 1. Diagonal Sleek Marquee (Top of footer)
+              Unter 1024 px tiefer gesetzt (top-28 statt top-12): Auf 48 px lag der
+              Streifen genau hinter der festen Kopfleiste und war nicht zu
+              sehen (11.11.2026). Ab 1024 px unveraendert. */}
+          <div className="absolute top-28 lg:top-12 left-0 w-full overflow-hidden border-y border-border/50 bg-background/60 backdrop-blur-md py-4 z-10 -rotate-2 scale-110 shadow-2xl">
             <div className="flex w-max animate-footer-scroll-marquee text-xs md:text-sm font-bold tracking-[0.3em] text-muted-foreground uppercase">
               <MarqueeItem />
               <MarqueeItem />
@@ -338,7 +341,7 @@ export function CinematicFooter() {
           </div>
 
           {/* 2. Main Center Content */}
-          <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 pt-36 pb-10 md:pt-0 md:pb-0 md:mt-20 w-full max-w-5xl mx-auto">
+          <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 pt-44 pb-10 md:pt-0 md:pb-0 md:mt-20 w-full max-w-5xl mx-auto">
             <h2
               ref={headingRef}
               className="text-4xl md:text-8xl footer-text-glow tracking-tighter mb-8 md:mb-12 text-center"
