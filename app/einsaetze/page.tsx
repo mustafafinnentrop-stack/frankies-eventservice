@@ -55,14 +55,16 @@ export default function EinsaetzeSeite() {
                 <span className="sn-case-type">{art}{r.geplant ? ' · Steht an' : ''}</span>
                 <h3>{name}</h3>
               </div>
+              {/* Leistungen koennen bei Gebuchtem noch offen sein — dann bleibt
+                  die Spalte leer statt etwas zu behaupten. */}
               <span className="sn-case-scope">{r.leistungen.join(' · ')}</span>
               <span className="sn-case-arrow" aria-hidden="true">↗</span>
             </summary>
             <div className="sn-case-body">
-              <p>{r.geplant ? 'Gebucht — dieser Einsatz steht noch an.' : 'Durchgeführt mit eigener Mannschaft und eigenem Equipment.'}</p>
+              <p>{r.notiz ?? (r.geplant ? 'Gebucht — dieser Einsatz steht noch an.' : 'Durchgeführt mit eigener Mannschaft und eigenem Equipment.')}</p>
               <dl>
                 <div><dt>Veranstaltung</dt><dd>{r.ort}</dd></div>
-                <div><dt>Unser Einsatz</dt><dd>{r.leistungen.join(' · ')}</dd></div>
+                {r.leistungen.length > 0 && <div><dt>Unser Einsatz</dt><dd>{r.leistungen.join(' · ')}</dd></div>}
                 {r.zahlen?.map((z) => (
                   <div key={z.was}><dt>{z.was}</dt><dd>{z.wert}</dd></div>
                 ))}
