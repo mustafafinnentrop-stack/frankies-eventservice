@@ -211,6 +211,13 @@ export default function DatenschutzPage() {
                   Nachricht, Anlass, Datum und Gästezahl werden nicht übermittelt.
                 </p>
                 <p>
+                  Dasselbe Conversion-Ereignis wird zusätzlich serverseitig über die
+                  Conversions API an OpenAI übermittelt. Dabei werden IP-Adresse,
+                  Browserkennung (User-Agent), Klick-ID und Browser-ID weitergegeben, keine
+                  Angaben aus dem Formular. Auch diese Übermittlung erfolgt nur mit Ihrer
+                  Einwilligung in der Kategorie „Marketing“.
+                </p>
+                <p>
                   Rechtsgrundlage ist Ihre Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO und
                   § 25 Abs. 1 TDDDG. Sie können sie jederzeit über das Symbol unten links auf
                   jeder Seite widerrufen (Art. 7 Abs. 3 DSGVO). Dann werden die Cookies auf

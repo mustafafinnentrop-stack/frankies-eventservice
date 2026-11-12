@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Script from 'next/script'
+import { OAI_PIXEL_ID } from './oai-pixel'
 
 const GA_ID = 'G-MCG3V1FK4Y'
 const SPEICHER = 'cookie-consent'
@@ -9,11 +10,9 @@ const SPEICHER = 'cookie-consent'
 /*
   Mess-Pixel von OpenAI fuer die Anzeigen in ChatGPT (12.11.2026).
 
-  Die Pixel-ID ist kein Geheimnis: Sie steht bei jedem Besucher, der
-  zugestimmt hat, im ausgelieferten Seitencode — genau wie die Kennung von
-  Google Analytics oben. Mit ihr kann niemand das Werbekonto oeffnen oder
-  Daten lesen. Ein Conversions-API-Schluessel waere dagegen ein Geheimnis;
-  den gibt es hier nicht, weil die Seite keinen eigenen Server hat.
+  Die Pixel-ID steht in oai-pixel.ts (kein Geheimnis, siehe dort). Der
+  Conversions-API-Schluessel ist ein Geheimnis und liegt nur bei Vercel; ihn
+  benutzt allein die Server-Funktion app/api/conversion/route.ts.
 
   Fuer diesen Dienst gilt:
     Zweck           Messen, ob eine Anfrage auf eine unserer Anzeigen in
@@ -39,7 +38,6 @@ const SPEICHER = 'cookie-consent'
 
   Geladen wird das Skript ausschliesslich bei eingeschaltetem "Marketing".
 */
-const OAI_PIXEL_ID = 'D5KgcrttzWw1KsiGc1khM6'
 const OAI_SDK = 'https://bzrcdn.openai.com/sdk/oaiq.min.js'
 
 /*
@@ -134,6 +132,7 @@ const KATEGORIEN: Kategorie[] = [
     zweck: 'OpenAI Measurement Pixel (Conversion-Tracking): Messung, ob Anzeigen in ChatGPT zu Anfragen führen. Verarbeitet werden Nutzungsdaten sowie bei einer Anfrage E-\u2060Mail-Adresse, Telefonnummer und Name in gehashter Form (SHA-256) und der angegebene Ort. Empfänger: OpenAI; eine Verarbeitung in den USA ist möglich.',
     eintraege: [
       { name: 'Advanced Matching', dauer: 'kein Cookie', was: 'OpenAI: Beim Absenden einer Anfrage werden E-\u2060Mail-Adresse, Telefonnummer und Name im Browser gehasht (SHA-256) und übermittelt, der Ort ungehasht. OpenAI gleicht die Hashwerte mit eigenen Nutzerdaten ab. Nachricht, Anlass, Datum und Gästezahl werden nicht übermittelt.' },
+      { name: 'Conversions API', dauer: 'kein Cookie', was: 'OpenAI: Das Conversion-Ereignis wird zusätzlich serverseitig übermittelt. Dabei gehen IP-Adresse, User-Agent, Klick-ID und Browser-ID an OpenAI, keine Formulardaten.' },
       { name: '__oppref', dauer: '30 Tage', was: 'OpenAI: Klick-ID der Anzeige. Wird nur bei Aufruf über eine Anzeige in ChatGPT gesetzt.' },
       { name: '__obref', dauer: '1 Jahr', was: 'OpenAI: zufällige Browser-ID für diese Website.' },
       { name: '__oaiq_consent, oaiq_consent, oaiq_cs', dauer: '30 Tage bzw. bis zum Widerruf', was: 'OpenAI: Status Ihrer Einwilligung (Cookie, localStorage, sessionStorage).' },
