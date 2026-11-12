@@ -14,7 +14,7 @@ export default function Referenzen() {
           </h2>
           <p className="section-text" style={{ margin: '0 auto 3rem' }}>
             Rund 20 Veranstaltungen in dieser Saison — vom kleinen Schützenfest bis zur
-            Firmenfeier mit 1.200 geladenen Gästen. Eine Auswahl aus dem, was gelaufen
+            Firmenfeier mit 600 Gästen. Eine Auswahl aus dem, was gelaufen
             ist und was noch ansteht:
           </p>
         </div>

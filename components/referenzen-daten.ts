@@ -36,12 +36,13 @@ export const REFERENZEN: Referenz[] = [
   },
   // Durchgefuehrt (Angabe des Betreibers, 12.11.2026): ueber 700 Cocktails,
   // der Kunde hat danach fuer seine Weihnachtsfeier erneut gebucht.
-  // Leistungen und Gaestezahl stammen noch aus der Planung.
+  // Gaestezahl vom Betreiber korrigiert am 12.11.2026: 600 (die fruehere
+  // Angabe 1.200 war falsch). Die Leistungen stammen noch aus der Planung.
   {
     ort: 'Firmenfeier Westmark',
     leistungen: ['Mobile Cocktailbar', 'Foodtruck'],
     zahlen: [
-      { wert: '1.200', was: 'geladene Gäste' },
+      { wert: '600', was: 'Gäste' },
       { wert: 'über 700', was: 'Cocktails gemixt' },
     ],
     notiz: 'Über 700 Cocktails gemixt. Danach hat uns der Kunde für seine Weihnachtsfeier erneut gebucht.',
