@@ -179,52 +179,47 @@ export default function DatenschutzPage() {
                     liessen sich nicht automatisch abrufen. Vor einer
                     Aenderung am Pixel muss dieser Abschnitt mitgeaendert
                     werden. */}
-                <h3 style={H3}>Anzeigen in ChatGPT: Mess-Pixel von OpenAI</h3>
+                <h3 style={H3}>OpenAI Measurement Pixel (Conversion-Tracking)</h3>
                 <p>
-                  Wir schalten Anzeigen in ChatGPT. Um zu sehen, ob daraus Anfragen
-                  entstehen, setzen wir mit Ihrer Einwilligung das Mess-Pixel
-                  („Measurement Pixel“) von OpenAI ein. Empfänger der Daten ist OpenAI.
-                  Nach den Bedingungen von OpenAI verarbeitet die OpenAI Ireland Limited
-                  (Dublin, Irland) die Daten von Nutzern aus dem Europäischen
-                  Wirtschaftsraum; eine Übermittlung an die OpenAI OpCo, LLC in den USA
-                  ist möglich.
+                  Zur Erfolgsmessung unserer Anzeigen in ChatGPT (Conversion-Tracking) setzen
+                  wir mit Ihrer Einwilligung das Measurement Pixel von OpenAI ein. Empfänger
+                  der Daten ist OpenAI. Nach den Bedingungen von OpenAI verarbeitet die OpenAI
+                  Ireland Limited (Dublin, Irland) die Daten von Nutzern aus dem Europäischen
+                  Wirtschaftsraum; eine Übermittlung an die OpenAI OpCo, LLC in den USA ist
+                  möglich.
                 </p>
                 <p>
-                  Das Skript von OpenAI wird erst geladen, wenn Sie im Cookie-Fenster die
-                  Kategorie „Marketing“ einschalten. Dann erfährt OpenAI beim Laden einer
-                  Seite Ihre IP-Adresse, Angaben zu Browser und Betriebssystem, die Adresse
-                  der aufgerufenen Seite (ohne Parameter) und den Zeitpunkt. Dabei werden
-                  folgende Cookies gesetzt:
+                  Das Skript wird erst nach Ihrer Einwilligung in der Kategorie „Marketing“
+                  geladen. Beim Laden einer Seite werden IP-Adresse, Angaben zu Browser und
+                  Betriebssystem, die Adresse der aufgerufenen Seite (ohne Parameter) und der
+                  Zeitpunkt an OpenAI übermittelt. Dabei werden folgende Cookies gesetzt:
                 </p>
                 <ul style={UL}>
-                  <li><code>__oppref</code> (30 Tage): Kennung des Anzeigenklicks, über den Sie zu uns gekommen sind. Wird nur gesetzt, wenn Sie über eine Anzeige in ChatGPT kamen.</li>
-                  <li><code>__obref</code> (1 Jahr): zufällige Kennung Ihres Browsers für diese Website.</li>
-                  <li><code>__oaiq_consent</code> (30 Tage) sowie die Einträge <code>oaiq_consent</code> und <code>oaiq_cs</code> im Speicher Ihres Browsers: Vermerk über Ihre Zustimmung.</li>
-                  <li><code>__cf_bm</code> (30 Minuten) und <code>_cfuvid</code> (bis zum Schließen des Browsers): Cookies von Cloudflare unter der Adresse bzrcdn.openai.com, von der das Skript geladen wird.</li>
+                  <li><code>__oppref</code> (30 Tage): Klick-ID der Anzeige. Wird nur bei Aufruf über eine Anzeige in ChatGPT gesetzt.</li>
+                  <li><code>__obref</code> (1 Jahr): zufällige Browser-ID für diese Website.</li>
+                  <li><code>__oaiq_consent</code> (30 Tage) sowie die Einträge <code>oaiq_consent</code> (localStorage) und <code>oaiq_cs</code> (sessionStorage): Status Ihrer Einwilligung.</li>
+                  <li><code>__cf_bm</code> (30 Minuten) und <code>_cfuvid</code> (Sitzung): Cookies von Cloudflare unter bzrcdn.openai.com, dem CDN, von dem das Skript geladen wird; Schutz vor automatisierten Zugriffen.</li>
                 </ul>
                 <p>
-                  Wenn Sie eine Anfrage über eines unserer Formulare abschicken, meldet das
-                  Skript dies an OpenAI. Für unser Pixel ist das „automatische erweiterte
-                  Matching“ eingeschaltet: Das Skript liest dabei Ihre E-Mail-Adresse, Ihre
-                  Telefonnummer und Ihren Namen aus dem Formular, bildet daraus in Ihrem
-                  Browser einen Hashwert (SHA-256) und überträgt diesen an OpenAI. Den Ort,
-                  den Sie im Formular angeben, überträgt es im Klartext. Aus einem Hashwert
-                  lässt sich die ursprüngliche Angabe nicht zurückrechnen. OpenAI kann ihn
-                  aber mit den Daten seiner eigenen Nutzer abgleichen und so erkennen, ob
-                  eine Anfrage von jemandem stammt, der unsere Anzeige in ChatGPT gesehen
-                  oder angeklickt hat. Ihre Nachricht sowie Anlass, Datum und Gästezahl
-                  werden nicht an OpenAI übertragen.
+                  Beim Absenden einer Anfrage über eines unserer Formulare wird ein
+                  Conversion-Ereignis an OpenAI übermittelt. Dabei ist die Funktion „Automatic
+                  Advanced Matching“ aktiv: E-Mail-Adresse, Telefonnummer und Name aus dem
+                  Formular werden in Ihrem Browser gehasht (SHA-256) und an OpenAI übermittelt,
+                  der angegebene Ort ungehasht. Der Hashwert enthält die Angabe nicht im
+                  Klartext. OpenAI kann ihn jedoch mit den Daten eigener Nutzer abgleichen und
+                  so feststellen, ob eine Anfrage auf eine unserer Anzeigen zurückgeht.
+                  Nachricht, Anlass, Datum und Gästezahl werden nicht übermittelt.
                 </p>
                 <p>
                   Rechtsgrundlage ist Ihre Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO und
-                  § 25 Abs. 1 TDDDG. Sie können sie jederzeit über das Keks-Symbol unten
-                  links auf jeder Seite widerrufen (Art. 7 Abs. 3 DSGVO). Dann werden die
-                  Cookies auf unserer Domain gelöscht, und das Skript wird nicht mehr
-                  geladen. OpenAI verarbeitet die Daten nach eigenen Angaben in eigener
-                  Verantwortung und nicht in unserem Auftrag. Für die Übermittlung in die
-                  USA verweist OpenAI auf die Standardvertragsklauseln der Europäischen
-                  Kommission. Wie lange OpenAI die gemeldeten Ereignisse speichert, richtet
-                  sich nach den Bedingungen von OpenAI. Weitere Informationen:{' '}
+                  § 25 Abs. 1 TDDDG. Sie können sie jederzeit über das Symbol unten links auf
+                  jeder Seite widerrufen (Art. 7 Abs. 3 DSGVO). Dann werden die Cookies auf
+                  unserer Domain gelöscht, und das Skript wird nicht mehr geladen. OpenAI
+                  verarbeitet die Daten nach eigenen Angaben in eigener Verantwortung und
+                  nicht in unserem Auftrag. Für die Übermittlung in die USA verweist OpenAI
+                  auf die Standardvertragsklauseln der Europäischen Kommission. Die
+                  Speicherdauer der gemeldeten Ereignisse bei OpenAI richtet sich nach den
+                  Bedingungen von OpenAI. Weitere Informationen:{' '}
                   <a href="https://openai.com/policies/conversion-terms/" target="_blank" rel="noopener noreferrer" style={LINK}>
                     Conversion Terms von OpenAI
                   </a>{' '}
