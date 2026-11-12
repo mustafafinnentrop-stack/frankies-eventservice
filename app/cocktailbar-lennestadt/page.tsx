@@ -119,7 +119,7 @@ export default function CocktailbarLennestadt() {
                     <div className="cocktail-feature"><span className="cocktail-feature-icon"><Icon name="pin" /></span><div><strong>Mobiler Service</strong><span>±25 km um Lennestadt</span></div></div>
                   </div>
                   <div style={{ marginTop: '2rem' }}>
-                    <BookingCTA primary="Termin vereinbaren" />
+                    <BookingCTA primary="Termin vereinbaren" href="/kontakt/cocktailbar" />
                   </div>
                 </div>
               </div>
@@ -156,7 +156,7 @@ export default function CocktailbarLennestadt() {
                       ))}
                     </ul>
                     <p className="flat-fuer">Ideal für: {f.fuer}</p>
-                    <BookingCTA primary={`${flatName(f)} anfragen`} pkg={flatName(f)} />
+                    <BookingCTA primary={`${flatName(f)} anfragen`} href={`/kontakt/cocktailbar?paket=${f.anzahl}`} />
                   </div>
                 ))}
               </div>
@@ -173,7 +173,7 @@ export default function CocktailbarLennestadt() {
           {/* Booking Banner */}
           <section style={{ padding: '4rem 2rem', background: 'linear-gradient(135deg, rgba(200,164,78,0.07) 0%, var(--color-bg) 100%)', borderTop: '1px solid rgba(200,164,78,0.12)', borderBottom: '1px solid rgba(200,164,78,0.12)' }}>
             <div className="section-container reveal">
-              <BookingCTA layout="banner" primary="Angebot anfordern" />
+              <BookingCTA layout="banner" primary="Angebot anfordern" href="/kontakt/cocktailbar" />
             </div>
           </section>
 
@@ -263,7 +263,7 @@ export default function CocktailbarLennestadt() {
                   <span key={ort} style={{ padding: '0.5rem 1.1rem', border: '1px solid rgba(200,164,78,0.2)', fontSize: '0.82rem', color: 'var(--color-text-muted)' }}>{ort}</span>
                 ))}
               </div>
-              <BookingCTA primary="Jetzt anfragen" secondary="Jetzt anrufen" calcomUrl="tel:+4915142840916" />
+              <BookingCTA primary="Jetzt anfragen" secondary="Jetzt anrufen" calcomUrl="tel:+4915142840916" href="/kontakt/cocktailbar" />
             </div>
           </section>
 

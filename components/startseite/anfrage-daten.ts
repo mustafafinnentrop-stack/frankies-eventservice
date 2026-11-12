@@ -24,9 +24,17 @@ export const ANFRAGE_LEER: AnfrageFelder = { anlass: '', datum: '', gaeste: '', 
 /* Pflicht sind nur Anlass, Name und E-Mail. */
 export const kontaktGueltig = (f: AnfrageFelder) => !!f.name.trim() && f.email.includes('@')
 
+/*
+  Zusatz der Strecken fuer Winterbar und Cocktailbar (funnel-varianten.tsx):
+  der Name der Strecke und die Antwort auf deren letzte Frage. Beides kommt
+  aus festen Listen im Code, nie aus freier Eingabe.
+*/
+export type AnfrageZusatz = { formular?: string; zeilen?: Record<string, string> }
+
 /* Schickt die Anfrage ueber Web3Forms ans Postfach. true = angenommen. */
-export async function anfrageSenden(f: AnfrageFelder): Promise<boolean> {
+export async function anfrageSenden(f: AnfrageFelder, zusatz?: AnfrageZusatz): Promise<boolean> {
   const name = kuerzen(f.name, MAX.name)
+  const strecke = zusatz?.formular ? ` ${zusatz.formular}` : ''
   try {
     const res = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
@@ -34,7 +42,7 @@ export async function anfrageSenden(f: AnfrageFelder): Promise<boolean> {
       body: JSON.stringify({
         access_key: WEB3FORMS_KEY,
         botcheck: false,
-        subject: `Anfrage: ${f.anlass} — ${name}`,
+        subject: `Anfrage${strecke}: ${f.anlass} — ${name}`,
         from_name: 'Frankies Eventservice Website',
         Name: name,
         'E-Mail': kuerzen(f.email, MAX.email),
@@ -44,6 +52,7 @@ export async function anfrageSenden(f: AnfrageFelder): Promise<boolean> {
         Gäste: f.gaeste || '–',
         Ort: kuerzen(f.ort, MAX.ort) || '–',
         Leistungen: f.leistungen.join(', ') || '–',
+        ...(zusatz?.zeilen ?? {}),
         Nachricht: kuerzen(f.nachricht, MAX.nachricht) || '–',
       }),
     })
