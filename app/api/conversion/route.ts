@@ -33,6 +33,15 @@ import { OAI_PIXEL_ID } from '@/components/oai-pixel'
     die zuerst eingetroffene Meldung aus, und das Pixel sendet gemessen
     rund eine Sekunde nach dem Absenden.
 
+  BREMSE GEGEN MASSENAUFRUFE
+  - Eine echte Anfrage loest genau einen Aufruf aus. Mehr als fuenf je
+    Besucher-IP oder sechzig insgesamt in zehn Minuten nimmt die Funktion
+    nicht an (Antwort 429), und zwar bevor sie wartet oder OpenAI anspricht.
+  - Die Zaehler liegen nur im Arbeitsspeicher der einen Server-Instanz und
+    verfallen mit ihr. Das bremst einen Ansturm, ersetzt aber keine
+    Firewall-Regel. Dauerhaft gespeichert wird nichts; eine IP-Adresse steht
+    hoechstens zehn Minuten im Speicher.
+
   DER SCHLUESSEL
   - OPENAI_CONVERSIONS_API_KEY liegt nur bei Vercel (Production, als
     "Sensitive"). Ohne Schluessel tut die Funktion nichts. Er wird nie
@@ -52,6 +61,25 @@ const VORSPRUNG_PIXEL_MS = 3000
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
 // Kennungen aus den Cookies: nur harmlose Zeichen, begrenzte Laenge.
 const KENNUNG = /^[A-Za-z0-9._~:-]{1,512}$/
+
+const FENSTER_MS = 10 * 60 * 1000
+const HOECHSTENS_JE_IP = 5
+const HOECHSTENS_GESAMT = 60
+const aufrufe = new Map<string, number[]>()
+
+/* true = abweisen. Zaehlt den Aufruf sonst mit. */
+function gebremst(wer: string, jetzt: number): boolean {
+  const grenze = jetzt - FENSTER_MS
+  let gesamt = 0
+  for (const [k, zeiten] of aufrufe) {
+    const frisch = zeiten.filter((t) => t > grenze)
+    if (frisch.length > 0) { aufrufe.set(k, frisch); gesamt += frisch.length } else aufrufe.delete(k)
+  }
+  const eigene = aufrufe.get(wer) ?? []
+  if (gesamt >= HOECHSTENS_GESAMT || eigene.length >= HOECHSTENS_JE_IP) return true
+  aufrufe.set(wer, [...eigene, jetzt])
+  return false
+}
 
 const nichts = () => new NextResponse(null, { status: 204 })
 const abgelehnt = (status: number) => NextResponse.json({ ok: false }, { status })
@@ -105,6 +133,9 @@ export async function POST(req: NextRequest) {
   if (!schluessel) return nichts()
 
   const zeitpunkt = Date.now()
+
+  // 5. Bremse gegen Massenaufrufe — vor der Wartezeit und vor OpenAI.
+  if (gebremst(besucherIp(req) ?? 'unbekannt', zeitpunkt)) return abgelehnt(429)
 
   // Seite, von der die Anfrage kam — nur Adresse und Pfad, ohne Parameter.
   let seite = `https://${host}/`
