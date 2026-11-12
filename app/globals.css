@@ -1552,6 +1552,24 @@ html[data-cookie-consent='set'] .cookie-banner { display: none; }
     padding: 0.65rem 1.1rem;
     white-space: nowrap;
 }
+/* Auf Handys passten "Alle akzeptieren" und "Nur notwendige" nicht
+   nebeneinander (12.11.2026, gemessen): Die Beschriftung ist 139 px breit,
+   der Knopf war bei 320 px Bildschirmbreite nur 123 px breit — zu lesen
+   war "ALLE AKZEPTIE". Bis 390 px klebte der Text am Rand. Darum stehen
+   die drei Knoepfe unter 410 px untereinander, alle gleich breit; Zustimmen
+   und Ablehnen bleiben damit gleich gross. Ab 410 px reicht der Platz
+   nebeneinander, mit etwas weniger Innenabstand bis 430 px. */
+@media (max-width: 430px) {
+    .cookie-banner-aktionen .btn-primary,
+    .cookie-banner-aktionen .btn-secondary { padding-left: 0.75rem; padding-right: 0.75rem; }
+}
+@media (max-width: 409px) {
+    .cookie-banner-aktionen { grid-template-columns: 1fr; }
+}
+/* "Nur notwendige" hat einen 1-px-Rahmen, "Alle akzeptieren" keinen —
+   untereinander waeren die beiden sonst 38 und 36 px hoch. Der unsichtbare
+   Rahmen macht sie gleich. */
+.cookie-banner-aktionen .btn-primary { border: 1px solid transparent; }
 
 /* Der Schalter erscheint erst, wenn eine Entscheidung vorliegt — vorher
    steht der Banner ohnehin an derselben Stelle. Unten links, damit er

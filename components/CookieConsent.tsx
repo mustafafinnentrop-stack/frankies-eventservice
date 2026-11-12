@@ -7,6 +7,42 @@ const GA_ID = 'G-MCG3V1FK4Y'
 const SPEICHER = 'cookie-consent'
 
 /*
+  Mess-Pixel von OpenAI fuer die Anzeigen in ChatGPT (12.11.2026).
+
+  Die Pixel-ID ist kein Geheimnis: Sie steht bei jedem Besucher, der
+  zugestimmt hat, im ausgelieferten Seitencode — genau wie die Kennung von
+  Google Analytics oben. Mit ihr kann niemand das Werbekonto oeffnen oder
+  Daten lesen. Ein Conversions-API-Schluessel waere dagegen ein Geheimnis;
+  den gibt es hier nicht, weil die Seite keinen eigenen Server hat.
+
+  Fuer diesen Dienst gilt:
+    Zweck           Messen, ob eine Anfrage auf eine unserer Anzeigen in
+                    ChatGPT zurueckgeht.
+    Rechtsgrundlage Einwilligung, Art. 6 Abs. 1 lit. a DSGVO; fuer die
+                    Cookies § 25 Abs. 1 TDDDG.
+    Was fliesst     Bei jedem Laden einer Seite: IP-Adresse, Browser und
+                    Betriebssystem, Seitenadresse ohne Parameter, Zeitpunkt,
+                    die beiden Kennungen unten. Beim Absenden einer Anfrage
+                    zusaetzlich: E-Mail, Telefon und Name als SHA-256-Wert,
+                    der Ort im Klartext ("automatisches erweitertes
+                    Matching", vom Betreiber am 12.11.2026 eingeschaltet).
+                    Alles am lokalen Build im Browser gemessen.
+    Speicherort     Cookies im Browser des Besuchers (__oppref 30 Tage,
+                    __obref 1 Jahr, __oaiq_consent 30 Tage) und die
+                    gemeldeten Ereignisse bei OpenAI.
+    Loeschfrist     Cookies: siehe oben, sofort bei Widerruf. Bei OpenAI:
+                    nach deren Bedingungen — eine Frist nennt die
+                    Entwicklerdoku nicht (Stand 12.11.2026, nicht geprueft).
+    Vertrag         Kein Auftragsverarbeitungsvertrag: OpenAI verarbeitet
+                    nach eigenen Bedingungen als eigener Verantwortlicher.
+                    Vom Betreiber am 12.11.2026 so freigegeben.
+
+  Geladen wird das Skript ausschliesslich bei eingeschaltetem "Marketing".
+*/
+const OAI_PIXEL_ID = 'D5KgcrttzWw1KsiGc1khM6'
+const OAI_SDK = 'https://bzrcdn.openai.com/sdk/oaiq.min.js'
+
+/*
   Cookie-Einwilligung mit Auswahl pro Kategorie.
 
   Vorher war das eine Ja/Nein-Entscheidung. Das ist zu grob: wer die
@@ -18,7 +54,8 @@ const SPEICHER = 'cookie-consent'
 
   WAS DIE SEITE TATSAECHLICH LAEDT (im Code nachgezaehlt, nicht geraten):
 
-    - Google Analytics 4 (GA_ID) — der einzige echte Drittanbieter.
+    - Google Analytics 4 (GA_ID) — laedt bei "Statistik" oder "Marketing".
+    - Mess-Pixel von OpenAI (OAI_PIXEL_ID) — laedt nur bei "Marketing".
     - Vercel Analytics — laeuft ohne Cookies und ohne wiedererkennbare
       Kennung, braucht daher keine Einwilligung.
     - Schriften: next/font/google liefert sie beim Bauen mit aus, es geht
@@ -36,6 +73,26 @@ type Auswahl = { statistik: boolean; marketing: boolean }
 const KEINE: Auswahl = { statistik: false, marketing: false }
 const ALLE: Auswahl = { statistik: true, marketing: true }
 
+/*
+  Fassung der Einwilligung. Sie steigt, wenn eine Kategorie mehr umfasst
+  als zuvor.
+
+  Fassung 2 (12.11.2026): "Marketing" umfasst jetzt das Pixel von OpenAI
+  samt Weitergabe von Formularangaben. Bis dahin stand dort, es sei nichts
+  angeschlossen. Wer damals "Marketing" eingeschaltet hat, hat dem Neuen
+  also nicht zugestimmt — eine Einwilligung gilt nur fuer den bestimmten
+  Fall und in informierter Weise (Art. 4 Nr. 11 DSGVO). Deshalb:
+    - Alte Eintraege mit Marketing = an werden als "Marketing aus" gelesen,
+      und das Fenster erscheint einmal neu.
+    - Die Wahl bei "Statistik" bleibt, daran hat sich nichts geaendert.
+    - Wer abgelehnt hatte, wird nicht erneut gefragt.
+*/
+const FASSUNG = 2
+type Gelesen = { wahl: Auswahl; neuFragen: boolean }
+
+/* In den Texten unten steht hinter dem Bindestrich von "E-Mail" ein
+   unsichtbarer Wortverbinder (U+2060). Ohne ihn bricht die Zeile nach "E-"
+   um, und das "E-" haengt allein am Zeilenende. */
 type Kategorie = {
   id: 'notwendig' | 'statistik' | 'marketing'
   titel: string
@@ -65,8 +122,13 @@ const KATEGORIEN: Kategorie[] = [
   {
     id: 'marketing',
     titel: 'Marketing',
-    zweck: 'Erlaubt Google, Ihren Besuch für Werbezwecke auszuwerten. Offen gesagt: Wir schalten derzeit keine Werbung, es ist also aktuell nichts angeschlossen, was diese Signale nutzt. Der Schalter steht trotzdem hier, damit die Antwort schon feststeht, falls sich das ändert.',
+    zweck: 'Wir schalten Anzeigen in ChatGPT und wollen sehen, ob daraus Anfragen entstehen. Wenn Sie zustimmen, erfährt OpenAI, dass Sie unsere Seite besucht haben. Schicken Sie eine Anfrage ab, gehen außerdem Ihre E-\u2060Mail-Adresse, Ihre Telefonnummer und Ihr Name als Hash an OpenAI, der angegebene Ort im Klartext. So erkennt OpenAI, ob die Anfrage von jemandem kommt, der unsere Anzeige gesehen hat. Die Daten können in den USA verarbeitet werden. Derselbe Schalter gibt die Werbesignale für Google frei; dort ist derzeit nichts angeschlossen.',
     eintraege: [
+      { name: 'Angaben aus dem Formular', dauer: 'kein Cookie', was: 'OpenAI: Beim Absenden einer Anfrage liest das Skript von OpenAI E-\u2060Mail-Adresse, Telefonnummer und Namen aus dem Formular, bildet daraus in Ihrem Browser einen Hash (SHA-256) und sendet ihn mit. Den Ort sendet es im Klartext. Aus einem Hash lässt sich die Angabe nicht zurückrechnen, OpenAI kann ihn aber mit den Daten seiner eigenen Nutzer abgleichen. Ihre Nachricht, Anlass, Datum und Gästezahl gehen nicht an OpenAI.' },
+      { name: '__oppref', dauer: '30 Tage', was: 'OpenAI: Kennung des Anzeigenklicks, über den Sie zu uns gekommen sind. Entsteht nur, wenn Sie über eine Anzeige in ChatGPT kamen.' },
+      { name: '__obref', dauer: '1 Jahr', was: 'OpenAI: zufällige Kennung Ihres Browsers für diese Website.' },
+      { name: '__oaiq_consent, oaiq_consent', dauer: '30 Tage', was: 'OpenAI: Vermerk, dass Sie der Messung zugestimmt haben. Liegt als Cookie und zusätzlich im localStorage; dazu kommt ein Vermerk für die laufende Sitzung (oaiq_cs).' },
+      { name: '__cf_bm, _cfuvid', dauer: '30 Minuten bzw. bis Sie den Browser schließen', was: 'Cloudflare für OpenAI: Cookies der Adresse bzrcdn.openai.com, von der das Skript geladen wird. Dienen dort dem Schutz vor automatisierten Zugriffen.' },
       { name: 'ad_storage, ad_user_data, ad_personalization', dauer: 'kein eigenes Cookie', was: 'Einwilligungssignale, die wir an Google senden. Stehen ohne Ihre Zustimmung auf „verweigert".' },
     ],
   },
@@ -76,16 +138,20 @@ function setzeAttribut(gesetzt: boolean) {
   document.documentElement.dataset.cookieConsent = gesetzt ? 'set' : 'none'
 }
 
-function lesen(): Auswahl | null {
+function lesen(): Gelesen | null {
   try {
     const roh = localStorage.getItem(SPEICHER)
     if (roh === null) return null
-    // Alte Fassung kannte nur 'accepted'/'declined'. Diese Wahl bleibt
-    // gueltig — wer damals zugestimmt hat, wird nicht neu gefragt.
-    if (roh === 'accepted') return ALLE
-    if (roh === 'declined') return KEINE
-    const o = JSON.parse(roh)
-    return { statistik: !!o.statistik, marketing: !!o.marketing }
+    // Die aelteste Fassung kannte nur 'accepted'/'declined'.
+    if (roh === 'declined') return { wahl: KEINE, neuFragen: false }
+    const o = roh === 'accepted' ? { statistik: true, marketing: true } : JSON.parse(roh)
+    // Zustimmung zu "Marketing" zaehlt nur aus der aktuellen Fassung —
+    // siehe FASSUNG oben.
+    const aktuell = Number(o.fassung) >= FASSUNG
+    return {
+      wahl: { statistik: !!o.statistik, marketing: !!o.marketing && aktuell },
+      neuFragen: !!o.marketing && !aktuell,
+    }
   } catch {
     return null
   }
@@ -102,6 +168,33 @@ function loescheGoogleCookies() {
       document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/${d}`
     }
   }
+}
+
+/*
+  Beendet die Messung fuer OpenAI und raeumt weg, was das Skript angelegt
+  hat. Laut OpenAI-Doku loescht "consent false" die beiden Mess-Cookies und
+  stoppt jeden weiteren Versand. Das Skript merkt sich die Ablehnung dabei
+  selbst noch einmal (Cookie __oaiq_consent, localStorage oaiq_consent) —
+  auch das kommt weg: Unser eigener Eintrag "cookie-consent" reicht als
+  Gedaechtnis, und ohne Einwilligung soll von OpenAI nichts liegen bleiben.
+*/
+function beendePixel() {
+  const w = window as unknown as { oaiq?: (...a: unknown[]) => void }
+  try { w.oaiq?.('consent', false) } catch { /* Skript nicht da: nichts zu stoppen */ }
+  const basis = location.hostname.replace(/^www\./, '')
+  for (const name of ['__oppref', '__obref', '__oaiq_consent', '__oaiq_domain_probe']) {
+    // Das Skript setzt auf die Basisdomain; die Varianten decken localhost
+    // und Vorschau-Domains mit ab.
+    for (const d of ['', `; domain=${location.hostname}`, `; domain=.${basis}`]) {
+      document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/${d}`
+    }
+  }
+  try {
+    localStorage.removeItem('oaiq_consent')
+    for (const k of Object.keys(sessionStorage)) {
+      if (k.startsWith('oaiq')) sessionStorage.removeItem(k)
+    }
+  } catch { /* Speicher gesperrt: dann liegt dort auch nichts */ }
 }
 
 function Schalter({ an, aus, gesperrt, label }: { an: boolean; aus: () => void; gesperrt?: boolean; label: string }) {
@@ -128,17 +221,24 @@ export default function CookieConsent() {
   // immer — auch gegen die Ablehnung — und schickte cookielose Pings an
   // Google, also Datenuebertragung ohne Einwilligung.
   const [googleGeladen, setGoogleGeladen] = useState(false)
+  // Dasselbe fuer das Pixel von OpenAI: Ohne "Marketing" wird das Skript
+  // gar nicht erst angefordert — es geht also auch keine IP-Adresse dorthin.
+  const [pixelGeladen, setPixelGeladen] = useState(false)
 
   useEffect(() => {
-    const gespeichert = lesen()
-    if (!gespeichert) return
+    const gelesen = lesen()
+    if (!gelesen) return
+    const gespeichert = gelesen.wahl
     setWahl(gespeichert)
-    setEntschieden(true)
+    // Bei neuFragen hat der Kopf-Code das Fenster schon wieder
+    // eingeblendet; als entschieden gilt erst die neue Wahl.
+    if (!gelesen.neuFragen) setEntschieden(true)
     if (gespeichert.statistik || gespeichert.marketing) setGoogleGeladen(true)
+    if (gespeichert.marketing) setPixelGeladen(true)
   }, [])
 
   const uebernehmen = (neu: Auswahl) => {
-    localStorage.setItem(SPEICHER, JSON.stringify(neu))
+    localStorage.setItem(SPEICHER, JSON.stringify({ ...neu, fassung: FASSUNG }))
     setWahl(neu)
     setEntschieden(true)
     setOffen(false)
@@ -153,19 +253,26 @@ export default function CookieConsent() {
       ad_personalization: neu.marketing ? 'granted' : 'denied',
     })
 
-    if (braucht) { setGoogleGeladen(true); return }
+    // Das Pixel von OpenAI haengt allein am Schalter "Marketing".
+    if (neu.marketing) setPixelGeladen(true)
+    else beendePixel()
 
-    loescheGoogleCookies()
-    // Lief Google in dieser Sitzung bereits, ist Neuladen der einzige
-    // Weg, der es sicher beendet. Der gespeicherte Eintrag sorgt dafuer,
-    // dass es danach nicht wieder startet.
-    if (googleGeladen) location.reload()
+    if (braucht) setGoogleGeladen(true)
+    else loescheGoogleCookies()
+
+    // Lief ein Dienst in dieser Sitzung bereits und ist jetzt abgewaehlt,
+    // ist Neuladen der einzige Weg, der ihn sicher beendet. Der
+    // gespeicherte Eintrag sorgt dafuer, dass er danach nicht wieder
+    // startet.
+    const googleAus = !braucht && googleGeladen
+    const pixelAus = !neu.marketing && pixelGeladen
+    if (googleAus || pixelAus) location.reload()
   }
 
   const umschalten = (id: 'statistik' | 'marketing') =>
     setWahl((v) => ({ ...v, [id]: !v[id] }))
 
-  const wieder = () => { setWahl(lesen() ?? KEINE); setOffen(true); setzeAttribut(false) }
+  const wieder = () => { setWahl(lesen()?.wahl ?? KEINE); setOffen(true); setzeAttribut(false) }
 
   return (
     <>
@@ -181,13 +288,15 @@ export default function CookieConsent() {
         var w = { statistik: false, marketing: false }, gesetzt = false;
         try {
           var roh = localStorage.getItem('${SPEICHER}');
-          if (roh !== null) {
-            gesetzt = true;
-            if (roh === 'accepted') w = { statistik: true, marketing: true };
-            else if (roh !== 'declined') {
-              var o = JSON.parse(roh);
-              w = { statistik: !!o.statistik, marketing: !!o.marketing };
-            }
+          if (roh === 'declined') gesetzt = true;
+          else if (roh !== null) {
+            var o = roh === 'accepted' ? { statistik: true, marketing: true } : JSON.parse(roh);
+            // Zustimmung zu "Marketing" zaehlt nur aus der aktuellen
+            // Fassung; eine aeltere fuehrt dazu, dass das Fenster einmal
+            // neu erscheint (siehe FASSUNG).
+            var aktuell = Number(o.fassung) >= ${FASSUNG};
+            w = { statistik: !!o.statistik, marketing: !!o.marketing && aktuell };
+            gesetzt = !(o.marketing && !aktuell);
           }
         } catch (e) {}
 
@@ -211,6 +320,23 @@ export default function CookieConsent() {
         </>
       )}
 
+      {/* Pixel von OpenAI, nur mit "Marketing". Erst die Warteschlange,
+          dann das Skript — so wie OpenAI es vorgibt. "consent true" steht
+          vor "init", damit eine frueher vom Skript gemerkte Ablehnung die
+          neue Zustimmung nicht ueberstimmt. Gemeldet wird von hier aus
+          nichts; das einzige Ereignis loest eine abgeschickte Anfrage aus
+          (anfrage-daten.ts). */}
+      {pixelGeladen && (
+        <>
+          <Script id="oai-pixel" strategy="afterInteractive">{`
+            window.oaiq = window.oaiq || function () { (window.oaiq.q = window.oaiq.q || []).push(arguments); };
+            oaiq('consent', true);
+            oaiq('init', { pixelId: '${OAI_PIXEL_ID}' });
+          `}</Script>
+          <Script src={OAI_SDK} strategy="afterInteractive" />
+        </>
+      )}
+
       {/* Steht immer im ausgelieferten HTML und wird per CSS versteckt
           (html[data-cookie-consent='set']). Wuerde er erst nach der
           Hydration gerendert, erschiene er gemessen nach rund 3,3
@@ -227,9 +353,10 @@ export default function CookieConsent() {
             <h2 id="cookie-titel">Privatsphäre-Einstellungen</h2>
             <p>
               Diese Seite setzt von sich aus keine Cookies. Nur wenn Sie unten zustimmen,
-              messen wir mit Google Analytics, wie die Seite genutzt wird. Sie entscheiden
-              für jede Kategorie einzeln — und können das jederzeit über das Keks-Symbol
-              unten links wieder ändern.
+              messen wir mit Google Analytics, wie die Seite genutzt wird, und mit einem
+              Pixel von OpenAI, ob unsere Anzeigen in ChatGPT zu Anfragen führen. Sie
+              entscheiden für jede Kategorie einzeln — und können das jederzeit über das
+              Keks-Symbol unten links wieder ändern.
             </p>
 
             <ul className="cookie-kategorien">

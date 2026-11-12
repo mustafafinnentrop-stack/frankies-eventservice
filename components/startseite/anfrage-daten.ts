@@ -8,6 +8,7 @@
   Fragen muss nicht an zwei Stellen passieren.
 */
 import { MAX, kuerzen } from '@/components/formular-schutz'
+import { anfrageMelden } from '@/components/anfrage-melden'
 import type { Leistung } from './vorwahl'
 
 export const CALCOM_URL = process.env.NEXT_PUBLIC_CALCOM_URL || 'https://cal.com/frankies.digital/15min'
@@ -46,6 +47,8 @@ export async function anfrageSenden(f: AnfrageFelder): Promise<boolean> {
         Nachricht: kuerzen(f.nachricht, MAX.nachricht) || '–',
       }),
     })
+    // Zaehlt die Anfrage fuer die Anzeigen-Messung; nur mit Einwilligung.
+    if (res.ok) anfrageMelden()
     return res.ok
   } catch {
     return false
