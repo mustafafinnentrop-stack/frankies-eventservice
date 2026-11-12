@@ -99,6 +99,7 @@ export default function DatenschutzPage() {
                   <li>Anschrift (Straße, PLZ, Ort)</li>
                   <li>Veranstaltungsart, -datum und -ort</li>
                   <li>Gästeanzahl</li>
+                  <li>Gewünschte Leistungen und Pakete</li>
                   <li>Ihre Nachricht</li>
                 </ul>
                 <p>

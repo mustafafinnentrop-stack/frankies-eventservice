@@ -75,7 +75,7 @@ export default function WinterbarSeite() {
                 Für {WINTER_ANLAESSE}. Wir bauen auf, schenken aus und räumen wieder ab.
               </p>
               <div className="sn-hero-cta">
-                <a className="sn-submit sn-hero-angebot" href="/?leistung=winterbar#anfrage">Winterbar anfragen <span aria-hidden="true">↗</span></a>
+                <Link className="sn-submit sn-hero-angebot" href="/kontakt/winterbar">Winterbar anfragen <span aria-hidden="true">↗</span></Link>
                 <a className="sn-link" href="#karte">Zur Getränkekarte <span aria-hidden="true">↓</span></a>
               </div>
             </div>
@@ -159,7 +159,7 @@ export default function WinterbarSeite() {
             <div>
               <p className="sn-winter-lead">Buchbar von {WINTER_SAISON_TEXT}. Grundsätzlich gelten die Preise unserer Karte. Sagen Sie uns Datum, Ort und Gästezahl, Sie bekommen innerhalb von 24 Stunden ein Angebot.</p>
               <div className="sn-hero-cta">
-                <a className="sn-submit sn-hero-angebot" href="/?leistung=winterbar#anfrage">Winterbar anfragen <span aria-hidden="true">↗</span></a>
+                <Link className="sn-submit sn-hero-angebot" href="/kontakt/winterbar">Winterbar anfragen <span aria-hidden="true">↗</span></Link>
                 <a className="sn-link" href="tel:+4915142840916">Direkt anrufen <span aria-hidden="true">↗</span></a>
               </div>
             </div>

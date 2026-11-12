@@ -734,6 +734,16 @@ a.sn-hero-angebot > span:last-child { font-size: 18px; line-height: 1; }
 
 .sn .sn-funnel-kurz { grid-column: 1 / -1; font-size: 14px; line-height: 1.6; color: var(--color-text); padding: 12px 14px; border-left: 2px solid var(--color-gold); background: rgba(200,164,78,0.07); }
 .sn .sn-funnel-kurz > span { color: var(--sn-text2); }
+/* Strecken mit langen Anlass-Namen (Winterbar, Cocktailbar): Auf dem Handy
+   stehen die Knoepfe von Schritt 1 untereinander. Zu zweit nebeneinander
+   passten "Junggesellenabschied" und "Weihnachtsfeier" nicht in den Knopf
+   (12.11.2026, gemessen bei 320 bis 414 px). Der Text darf im Knopf umbrechen. */
+.sn .sn-funnel-optionen--lang button > span:first-child { min-width: 0; overflow-wrap: break-word; }
+@media (max-width: 480px) {
+  .sn .sn-funnel-optionen--lang { grid-template-columns: minmax(0, 1fr); }
+}
+/* Zeile unter der letzten Frage in Schritt 2, z. B. was im Paketpreis steckt. */
+.sn .sn-funnel-hinweis { font-size: 13px; line-height: 1.6; color: var(--sn-text2); margin: 14px 0 0; }
 .sn .sn-funnel .sn-form-fehler { margin-top: 22px; }
 .sn .sn-funnel-nav { display: flex; align-items: stretch; gap: 14px; margin-top: 30px; }
 .sn .sn-funnel-nav .sn-submit { flex: 1; cursor: pointer; }
