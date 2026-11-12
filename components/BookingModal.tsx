@@ -5,6 +5,7 @@ import { createPortal } from 'react-dom'
 import Icon from './Icon'
 import { FLATS, flatName, euro } from './preise-daten'
 import { MAX, kuerzen, HONEYPOT_STIL, gesperrt, sperren } from './formular-schutz'
+import { anfrageMelden } from './anfrage-melden'
 
 const EVENT_TYPES = ['Hochzeit', 'Schützenfest', 'Geburtstag', 'Firmenfeier', 'JGA', 'Vereinsfest', 'Dorffest', 'Sonstiges']
 const GUEST_COUNTS = ['bis 50', '50–100', '100–200', '200–300', '300+']
@@ -107,6 +108,7 @@ export default function BookingModal({ onClose, initialPackage }: Props) {
       const data = await res.json()
       if (!data.success) throw new Error(data.message || 'Unbekannter Fehler')
       sperren('fe-buchung')
+      anfrageMelden()
       setDone(true)
     } catch (err) {
       const msg = err instanceof Error ? err.message : ''

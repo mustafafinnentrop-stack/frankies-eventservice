@@ -4,6 +4,7 @@ import { useState } from 'react'
 import dynamic from 'next/dynamic'
 import Icon from './Icon'
 import { MAX, kuerzen, HONEYPOT_STIL, gesperrt, sperren } from './formular-schutz'
+import { anfrageMelden } from './anfrage-melden'
 
 /*
   Bewusst nachgeladen statt fest importiert. Fest importiert haengt der
@@ -69,7 +70,7 @@ export default function Kontakt() {
           'Nachricht': kuerzen(form.message, MAX.nachricht) || '–',
         }),
       })
-      if (res.ok) { sperren('fe-kontakt'); setStatus('done') }
+      if (res.ok) { sperren('fe-kontakt'); anfrageMelden(); setStatus('done') }
       else setStatus('error')
     } catch {
       setStatus('error')

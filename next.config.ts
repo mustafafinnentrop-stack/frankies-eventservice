@@ -12,15 +12,33 @@ import type { NextConfig } from 'next'
     vor dem ersten Rendern, und die Komponenten setzen style-Attribute.
   Fremde Skript-Hosts, Einbettung in fremde Seiten (Clickjacking), Plugins
   und Umleitungen von Formularzielen sind damit unterbunden.
+
+  Mess-Pixel von OpenAI (12.11.2026, laedt erst nach Einwilligung
+  "Marketing"): Das Skript kommt von bzrcdn.openai.com, die Ereignisse
+  gehen an bzr.openai.com. Die vier Eintraege entsprechen OpenAIs Doku
+  (developers.openai.com/ads/measurement-pixel).
+
+  WICHTIG zu connect-src bzrcdn.openai.com: Ueber diese Adresse holt das
+  Skript die Einstellung "automatisches erweitertes Matching" unseres
+  Pixels. Sie steht bei OpenAI auf "an". Dann liest das Skript im
+  Anfrageformular mit und schickt E-Mail, Namen und Telefon als
+  SHA-256-Wert und den Ort im Klartext an OpenAI (im Browser gemessen,
+  Skript-Version 0.1.103). Der Betreiber hat das am 12.11.2026 ausdruecklich
+  so entschieden — als bewusste Ausnahme von der Projektregel "keine
+  Kontaktdaten in Analytics-Events". Es steht deshalb offen im Cookie-Fenster
+  und in der Datenschutzerklaerung.
+  Abschalten ohne OpenAI-Konto: diesen einen connect-src-Eintrag entfernen.
+  Ohne die Einstellung bleibt das Matching aus (ebenfalls gemessen); der
+  Browser meldet dann nur einen geblockten Abruf in der Konsole.
 */
 const CSP = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com",
+  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://bzrcdn.openai.com",
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob: https://www.google-analytics.com https://www.googletagmanager.com",
+  "img-src 'self' data: blob: https://www.google-analytics.com https://www.googletagmanager.com https://bzr.openai.com",
   "font-src 'self' data:",
   "media-src 'self'",
-  "connect-src 'self' https://api.web3forms.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net",
+  "connect-src 'self' https://api.web3forms.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://bzr.openai.com https://bzrcdn.openai.com",
   "frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com",
   "object-src 'none'",
   "base-uri 'self'",
