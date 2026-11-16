@@ -82,7 +82,7 @@ export default function ImpressumPage() {
                   Mustafa Yildirim<br />
                   Hachener Str. 7, 57368 Lennestadt<br />
                   E-Mail: <a href="mailto:info@frankies-eventservice.de" style={LINK}>info@frankies-eventservice.de</a><br />
-                  Web: <a href="https://www.frankies-eventservice.de" style={LINK}>www.frankies-eventservice.de</a>
+                  Web: <a href="https://frankies-eventservice.de/" style={LINK}>frankies-eventservice.de</a>
                 </p>
               </div>
             </div>
